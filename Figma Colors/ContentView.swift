@@ -28,6 +28,39 @@ struct ContentView: View {
                     Text("Dark").font(.title3)
                     TextEditor(text: $viewModel.darkColors)
                 }
+                
+                if viewModel.parsedColors.isEmpty == false {
+                    ScrollView {
+                        VStack(spacing: 8) {
+                            ForEach(viewModel.parsedColors.indices) { i in
+                                let color = viewModel.parsedColors[i]
+                                let previus: FigmaColor? = i > 0 ? viewModel.parsedColors[i - 1] : nil
+                                let newSection = previus?.groupName != color.groupName
+                                
+                                if newSection {
+                                    Text(color.groupName).font(.title2).bold().padding(.top).padding(.leading, 100 + 8)
+                                }
+                                
+                                HStack(spacing: 8) {
+                                    Text(color.name)
+                                        .font(.headline)
+                                        .bold()
+                                        .frame(width: 100)
+                                    
+                                    color.light
+                                        .frame(width: 60,
+                                               height: 60)
+                                        .cornerRadius(16)
+                                    
+                                    color.dark
+                                        .frame(width: 60,
+                                               height: 60)
+                                        .cornerRadius(16)
+                                }
+                            }
+                        }.padding()
+                    }
+                }
             }
             
             HStack {

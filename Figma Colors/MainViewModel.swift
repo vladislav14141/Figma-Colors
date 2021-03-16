@@ -6,12 +6,31 @@
 //
 
 import SwiftUI
+
+struct FigmaColor: Identifiable {
+    var id: String {
+        return name
+    }
+    var hex: String
+    var rgbLight: (CGFloat, CGFloat, CGFloat, CGFloat)
+    var rgbDark: (CGFloat, CGFloat, CGFloat, CGFloat)
+
+    var name: String
+    var groupName: String {
+        name.components(separatedBy: "-").first ?? ""
+    }
+    var light: Color
+    var dark: Color
+}
+
 class MainViewModel: ObservableObject {
     let fileManager = FileManager.default
     @AppStorage("lightColors") var lightColors: String = ""
     @AppStorage("darkColors") var darkColors: String = ""
     @AppStorage("folderName") var folderName: String = "Figma Colors"
+    @Published var parsedColors = [FigmaColor]()
 
+    
     func createFolder(name: String? = nil) -> String? {
         let name = name ?? folderName
         let downloadsDirectory = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!
@@ -71,17 +90,29 @@ class MainViewModel: ObservableObject {
         saveColor(name + "_2", folder, secondColor, secondColorBlack)
     }
     
+    fileprivate func removeData() {
+        parsedColors.removeAll()
+    }
+    
     fileprivate func saveColor(_ name: String, _ folder: String, _ color: String, _ colorDark: String) {
         if let dir = createColorset(name: name, directoryPath: folder) {
+            let light = hexStringToUIColor(hex: color)
+            let dark = hexStringToUIColor(hex: colorDark)
+            
+            let colorLight = Color(red: Double(light.0), green: Double(light.1), blue: Double(light.2), opacity: Double(light.3))
+            let colorDark = Color(red: Double(dark.0), green: Double(dark.1), blue: Double(dark.2), opacity: Double(dark.3))
+            
+            let figmaColors = FigmaColor(hex: color, rgbLight: light, rgbDark: dark, name: name, light: colorLight, dark: colorDark)
+            parsedColors.append(figmaColors)
             createContentsJSON(folderPath: dir,
-                               data: getJson(light: hexStringToUIColor(hex: color),
-                                             dark: hexStringToUIColor(hex: colorDark)))
+                               data: getJson(light: light,
+                                             dark: dark))
         }
     }
     
     func generateColor() {
         guard let folder = createFolder() else { return }
-        
+        removeData()
         let lines = lightColors.components(separatedBy: "\n").filter({$0.isEmpty == false})
         let linesDark = darkColors.components(separatedBy: "\n").filter({$0.isEmpty == false})
         

@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @StateObject var viewModel = MainViewModel()
-    
+    @State var openCode = false
     var body: some View {
         VStack(alignment: .center, spacing: 16) {
             HStack {
@@ -67,6 +67,7 @@ struct ContentView: View {
                 Button("Очистить") {
                     viewModel.darkColors = ""
                     viewModel.lightColors = ""
+                    viewModel.removeData()
                 }
                 
                 Button (action: {
@@ -74,9 +75,18 @@ struct ContentView: View {
                 }, label: {
                     Text("Сгенерировать").frame(minWidth: 200)
                 }).accentColor(.blue)
-            }
+
+
+                Button (action: {
+                    openCode = true
+                }, label: {
+                    Text("Код").frame(minWidth: 200)
+                }).accentColor(.blue)
+                .disabled(viewModel.parsedColors.isEmpty)
+            }.sheet(isPresented: $openCode, content: {
+                CodeController(figmaColors: viewModel.parsedColors)
+            })
         }.padding()
-        
     }
 }
 

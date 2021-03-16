@@ -78,6 +78,9 @@ class MainViewModel: ObservableObject {
         print("====================================")
     }
     
+    func removeData() {
+        parsedColors.removeAll()
+    }
     
     fileprivate func saveGradient(_ color: String, _ colorDark: String, _ name: String, _ folder: String) {
         let firstColor = color.components(separatedBy: " ")[1]
@@ -90,9 +93,6 @@ class MainViewModel: ObservableObject {
         saveColor(name + "_2", folder, secondColor, secondColorBlack)
     }
     
-    fileprivate func removeData() {
-        parsedColors.removeAll()
-    }
     
     fileprivate func saveColor(_ name: String, _ folder: String, _ color: String, _ colorDark: String) {
         if let dir = createColorset(name: name, directoryPath: folder) {

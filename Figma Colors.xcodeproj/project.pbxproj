@@ -12,6 +12,9 @@
 		7E2B82D626009DE000C8CD74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E2B82D526009DE000C8CD74 /* Assets.xcassets */; };
 		7E2B82D926009DE000C8CD74 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E2B82D826009DE000C8CD74 /* Preview Assets.xcassets */; };
 		7E2B82E326009E8800C8CD74 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B82E226009E8800C8CD74 /* MainViewModel.swift */; };
+		7E2B82ED2600C0BF00C8CD74 /* CodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B82EA2600C0BF00C8CD74 /* CodeController.swift */; };
+		7E2B82EE2600C0BF00C8CD74 /* CodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B82EB2600C0BF00C8CD74 /* CodeModel.swift */; };
+		7E2B82EF2600C0BF00C8CD74 /* CodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B82EC2600C0BF00C8CD74 /* CodeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,9 @@
 		7E2B82DA26009DE000C8CD74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E2B82DB26009DE000C8CD74 /* Figma_Colors.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Figma_Colors.entitlements; sourceTree = "<group>"; };
 		7E2B82E226009E8800C8CD74 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		7E2B82EA2600C0BF00C8CD74 /* CodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeController.swift; sourceTree = "<group>"; };
+		7E2B82EB2600C0BF00C8CD74 /* CodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeModel.swift; sourceTree = "<group>"; };
+		7E2B82EC2600C0BF00C8CD74 /* CodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,7 @@
 				7E2B82D126009DDF00C8CD74 /* Figma_ColorsApp.swift */,
 				7E2B82D326009DDF00C8CD74 /* ContentView.swift */,
 				7E2B82E226009E8800C8CD74 /* MainViewModel.swift */,
+				7E2B82F12600C0C400C8CD74 /* Code */,
 				7E2B82D526009DE000C8CD74 /* Assets.xcassets */,
 				7E2B82DA26009DE000C8CD74 /* Info.plist */,
 				7E2B82DB26009DE000C8CD74 /* Figma_Colors.entitlements */,
@@ -72,6 +79,16 @@
 				7E2B82D826009DE000C8CD74 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7E2B82F12600C0C400C8CD74 /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				7E2B82EA2600C0BF00C8CD74 /* CodeController.swift */,
+				7E2B82EB2600C0BF00C8CD74 /* CodeModel.swift */,
+				7E2B82EC2600C0BF00C8CD74 /* CodeViewModel.swift */,
+			);
+			path = Code;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,7 +161,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E2B82D426009DDF00C8CD74 /* ContentView.swift in Sources */,
+				7E2B82EE2600C0BF00C8CD74 /* CodeModel.swift in Sources */,
 				7E2B82D226009DDF00C8CD74 /* Figma_ColorsApp.swift in Sources */,
+				7E2B82EF2600C0BF00C8CD74 /* CodeViewModel.swift in Sources */,
+				7E2B82ED2600C0BF00C8CD74 /* CodeController.swift in Sources */,
 				7E2B82E326009E8800C8CD74 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

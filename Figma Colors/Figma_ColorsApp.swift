@@ -11,7 +11,7 @@ import SwiftUI
 struct Figma_ColorsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            FigmaController()
         }
     }
 }

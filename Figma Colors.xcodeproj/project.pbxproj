@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,18 @@
 		7E2B82ED2600C0BF00C8CD74 /* CodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B82EA2600C0BF00C8CD74 /* CodeController.swift */; };
 		7E2B82EE2600C0BF00C8CD74 /* CodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B82EB2600C0BF00C8CD74 /* CodeModel.swift */; };
 		7E2B82EF2600C0BF00C8CD74 /* CodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B82EC2600C0BF00C8CD74 /* CodeViewModel.swift */; };
+		7E391B092601955200227BAC /* FigmaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E391B062601955200227BAC /* FigmaController.swift */; };
+		7E391B0A2601955200227BAC /* FigmaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E391B072601955200227BAC /* FigmaModel.swift */; };
+		7E391B0B2601955200227BAC /* FigmaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E391B082601955200227BAC /* FigmaViewModel.swift */; };
+		7E391B1026019C2300227BAC /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E391B0F26019C2300227BAC /* WebView.swift */; };
+		7E391B142601AF1600227BAC /* HTMLKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7E391B132601AF1600227BAC /* HTMLKit */; };
+		7EB5DBA3260365BA00CAF4D7 /* NetworkWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DB9D260365BA00CAF4D7 /* NetworkWebSocket.swift */; };
+		7EB5DBA4260365BA00CAF4D7 /* DataPosterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DB9E260365BA00CAF4D7 /* DataPosterService.swift */; };
+		7EB5DBA5260365BA00CAF4D7 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DB9F260365BA00CAF4D7 /* NetworkService.swift */; };
+		7EB5DBA6260365BA00CAF4D7 /* DataFetcherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DBA0260365BA00CAF4D7 /* DataFetcherService.swift */; };
+		7EB5DBA7260365BA00CAF4D7 /* NetworkDataPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DBA1260365BA00CAF4D7 /* NetworkDataPoster.swift */; };
+		7EB5DBA8260365BA00CAF4D7 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DBA2260365BA00CAF4D7 /* NetworkDataFetcher.swift */; };
+		7ED0AC8A260627A800A49E3C /* NodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED0AC89260627A800A49E3C /* NodeModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +41,17 @@
 		7E2B82EA2600C0BF00C8CD74 /* CodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeController.swift; sourceTree = "<group>"; };
 		7E2B82EB2600C0BF00C8CD74 /* CodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeModel.swift; sourceTree = "<group>"; };
 		7E2B82EC2600C0BF00C8CD74 /* CodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewModel.swift; sourceTree = "<group>"; };
+		7E391B062601955200227BAC /* FigmaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaController.swift; sourceTree = "<group>"; };
+		7E391B072601955200227BAC /* FigmaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaModel.swift; sourceTree = "<group>"; };
+		7E391B082601955200227BAC /* FigmaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaViewModel.swift; sourceTree = "<group>"; };
+		7E391B0F26019C2300227BAC /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		7EB5DB9D260365BA00CAF4D7 /* NetworkWebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkWebSocket.swift; sourceTree = "<group>"; };
+		7EB5DB9E260365BA00CAF4D7 /* DataPosterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPosterService.swift; sourceTree = "<group>"; };
+		7EB5DB9F260365BA00CAF4D7 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		7EB5DBA0260365BA00CAF4D7 /* DataFetcherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetcherService.swift; sourceTree = "<group>"; };
+		7EB5DBA1260365BA00CAF4D7 /* NetworkDataPoster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDataPoster.swift; sourceTree = "<group>"; };
+		7EB5DBA2260365BA00CAF4D7 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
+		7ED0AC89260627A800A49E3C /* NodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E391B142601AF1600227BAC /* HTMLKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,10 +88,13 @@
 				7E2B82D126009DDF00C8CD74 /* Figma_ColorsApp.swift */,
 				7E2B82D326009DDF00C8CD74 /* ContentView.swift */,
 				7E2B82E226009E8800C8CD74 /* MainViewModel.swift */,
+				7E391B0F26019C2300227BAC /* WebView.swift */,
+				7E391B0D2601955700227BAC /* Figma */,
 				7E2B82F12600C0C400C8CD74 /* Code */,
 				7E2B82D526009DE000C8CD74 /* Assets.xcassets */,
 				7E2B82DA26009DE000C8CD74 /* Info.plist */,
 				7E2B82DB26009DE000C8CD74 /* Figma_Colors.entitlements */,
+				7EB5DB9C260365BA00CAF4D7 /* Network */,
 				7E2B82D726009DE000C8CD74 /* Preview Content */,
 			);
 			path = "Figma Colors";
@@ -91,6 +118,30 @@
 			path = Code;
 			sourceTree = "<group>";
 		};
+		7E391B0D2601955700227BAC /* Figma */ = {
+			isa = PBXGroup;
+			children = (
+				7E391B062601955200227BAC /* FigmaController.swift */,
+				7E391B072601955200227BAC /* FigmaModel.swift */,
+				7E391B082601955200227BAC /* FigmaViewModel.swift */,
+				7ED0AC89260627A800A49E3C /* NodeModel.swift */,
+			);
+			path = Figma;
+			sourceTree = "<group>";
+		};
+		7EB5DB9C260365BA00CAF4D7 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				7EB5DB9D260365BA00CAF4D7 /* NetworkWebSocket.swift */,
+				7EB5DB9E260365BA00CAF4D7 /* DataPosterService.swift */,
+				7EB5DB9F260365BA00CAF4D7 /* NetworkService.swift */,
+				7EB5DBA0260365BA00CAF4D7 /* DataFetcherService.swift */,
+				7EB5DBA1260365BA00CAF4D7 /* NetworkDataPoster.swift */,
+				7EB5DBA2260365BA00CAF4D7 /* NetworkDataFetcher.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -107,6 +158,9 @@
 			dependencies = (
 			);
 			name = "Figma Colors";
+			packageProductDependencies = (
+				7E391B132601AF1600227BAC /* HTMLKit */,
+			);
 			productName = "Figma Colors";
 			productReference = 7E2B82CE26009DDF00C8CD74 /* Figma Colors.app */;
 			productType = "com.apple.product-type.application";
@@ -134,6 +188,9 @@
 				Base,
 			);
 			mainGroup = 7E2B82C526009DDF00C8CD74;
+			packageReferences = (
+				7E391B122601AF1600227BAC /* XCRemoteSwiftPackageReference "HTMLKit" */,
+			);
 			productRefGroup = 7E2B82CF26009DDF00C8CD74 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -160,11 +217,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ED0AC8A260627A800A49E3C /* NodeModel.swift in Sources */,
+				7E391B0A2601955200227BAC /* FigmaModel.swift in Sources */,
+				7EB5DBA6260365BA00CAF4D7 /* DataFetcherService.swift in Sources */,
+				7EB5DBA3260365BA00CAF4D7 /* NetworkWebSocket.swift in Sources */,
+				7E391B1026019C2300227BAC /* WebView.swift in Sources */,
+				7E391B0B2601955200227BAC /* FigmaViewModel.swift in Sources */,
 				7E2B82D426009DDF00C8CD74 /* ContentView.swift in Sources */,
 				7E2B82EE2600C0BF00C8CD74 /* CodeModel.swift in Sources */,
 				7E2B82D226009DDF00C8CD74 /* Figma_ColorsApp.swift in Sources */,
+				7EB5DBA8260365BA00CAF4D7 /* NetworkDataFetcher.swift in Sources */,
 				7E2B82EF2600C0BF00C8CD74 /* CodeViewModel.swift in Sources */,
 				7E2B82ED2600C0BF00C8CD74 /* CodeController.swift in Sources */,
+				7E391B092601955200227BAC /* FigmaController.swift in Sources */,
+				7EB5DBA7260365BA00CAF4D7 /* NetworkDataPoster.swift in Sources */,
+				7EB5DBA4260365BA00CAF4D7 /* DataPosterService.swift in Sources */,
+				7EB5DBA5260365BA00CAF4D7 /* NetworkService.swift in Sources */,
 				7E2B82E326009E8800C8CD74 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,6 +425,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7E391B122601AF1600227BAC /* XCRemoteSwiftPackageReference "HTMLKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/iabudiab/HTMLKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7E391B132601AF1600227BAC /* HTMLKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7E391B122601AF1600227BAC /* XCRemoteSwiftPackageReference "HTMLKit" */;
+			productName = HTMLKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7E2B82C626009DDF00C8CD74 /* Project object */;
 }

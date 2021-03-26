@@ -34,7 +34,7 @@ struct ContentView: View {
                         VStack(spacing: 8) {
                             ForEach(viewModel.parsedColors.indices) { i in
                                 let color = viewModel.parsedColors[i]
-                                let previus: FigmaColor? = i > 0 ? viewModel.parsedColors[i - 1] : nil
+                                let previus: FigmaColorTest? = i > 0 ? viewModel.parsedColors[i - 1] : nil
                                 let newSection = previus?.groupName != color.groupName
                                 
                                 if newSection {

@@ -13,7 +13,7 @@ struct CodeController: View {
     // MARK: - Public Properties
     @StateObject private var viewModel: CodeViewModel = CodeViewModel()
     // MARK: - Private Properties
-    let figmaColors: [FigmaColor]
+    let figmaColors: [FigmaColorTest]
     // MARK: - Lifecycle
     
     var body: some View {

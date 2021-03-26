@@ -10,7 +10,7 @@ import Foundation
 
 class CodeViewModel: ObservableObject {
     // MARK: - Public Properties
-    @Published var figmaColors = [FigmaColor]()
+    @Published var figmaColors = [FigmaColorTest]()
     @Published var uikit: String = ""
     @Published var swiftui: String = ""
     @Published var head = false
@@ -36,7 +36,7 @@ class CodeViewModel: ObservableObject {
             content += nextLine
         }
         
-        var previus: FigmaColor?
+        var previus: FigmaColorTest?
         figmaColors.forEach { color in
             if color.groupName != previus?.groupName {
                 content += nextLine
@@ -62,7 +62,7 @@ class CodeViewModel: ObservableObject {
             content += nextLine
         }
         
-        var previus: FigmaColor?
+        var previus: FigmaColorTest?
         figmaColors.forEach { color in
             if color.groupName != previus?.groupName {
                 content += nextLine

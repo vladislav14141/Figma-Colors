@@ -24,29 +24,31 @@ struct NodeModel: Codable {
     // MARK: - Node
     struct Node: Codable {
         let document: Document
-//        let components: Components
-//        let schemaVersion: Int
-//        let styles: Components
     }
 
 //    // MARK: - Components
 //    struct Components: Codable {
 //    }
 //
+    
+    enum FillType: String, Codable {
+        case linearG = "GRADIENT_LINEAR"
+        case solid = "SOLID"
+    }
     // MARK: - Document
     struct Document: Codable {
-//        let name: String?
+
         let id, name: String
         let blendMode: String?
         let type: String
 
-//        let absoluteBoundingBox: AbsoluteBoundingBox
-//        let constraints: Constraints
         let fills: [Fill]
         let strokes: [Fill]
         let strokeWeight: Int
         let strokeAlign: String
         let effects: [Fill]
+        
+        
     }
 //
 //    // MARK: - AbsoluteBoundingBox
@@ -60,9 +62,23 @@ struct NodeModel: Codable {
 //    }
 
     // MARK: - Fill
+    struct Point: Codable {
+        let x: Double
+        let y: Double
+    }
+    
+    struct GradienColor: Codable {
+        let position: Double
+        let color: Color
+    }
+    
     struct Fill: Codable {
-        let blendMode, type: String
+        let opacity: Double?
+        let type: FillType
+        let blendMode: String
         let color: Color?
+        let gradientHandlePositions: [Point]?
+        let gradientStops: [GradienColor]?
     }
 
     // MARK: - Color

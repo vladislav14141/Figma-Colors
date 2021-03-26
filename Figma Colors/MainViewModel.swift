@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FigmaColor: Identifiable {
+struct FigmaColorTest: Identifiable {
     var id: String {
         return name
     }
@@ -28,7 +28,7 @@ class MainViewModel: ObservableObject {
     @AppStorage("lightColors") var lightColors: String = ""
     @AppStorage("darkColors") var darkColors: String = ""
     @AppStorage("folderName") var folderName: String = "Figma Colors"
-    @Published var parsedColors = [FigmaColor]()
+    @Published var parsedColors = [FigmaColorTest]()
 
     
     func createFolder(name: String? = nil) -> String? {
@@ -102,7 +102,7 @@ class MainViewModel: ObservableObject {
             let colorLight = Color(red: Double(light.0), green: Double(light.1), blue: Double(light.2), opacity: Double(light.3))
             let colorDark = Color(red: Double(dark.0), green: Double(dark.1), blue: Double(dark.2), opacity: Double(dark.3))
             
-            let figmaColors = FigmaColor(hex: color, rgbLight: light, rgbDark: dark, name: name, light: colorLight, dark: colorDark)
+            let figmaColors = FigmaColorTest(hex: color, rgbLight: light, rgbDark: dark, name: name, light: colorLight, dark: colorDark)
             parsedColors.append(figmaColors)
             createContentsJSON(folderPath: dir,
                                data: getJson(light: light,

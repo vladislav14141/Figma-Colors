@@ -27,6 +27,7 @@
 		7EB5DBA7260365BA00CAF4D7 /* NetworkDataPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DBA1260365BA00CAF4D7 /* NetworkDataPoster.swift */; };
 		7EB5DBA8260365BA00CAF4D7 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DBA2260365BA00CAF4D7 /* NetworkDataFetcher.swift */; };
 		7ED0AC8A260627A800A49E3C /* NodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED0AC89260627A800A49E3C /* NodeModel.swift */; };
+		7EE22E66260DD7ED002E8EDF /* Extension + View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE22E51260DD7ED002E8EDF /* Extension + View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		7EB5DBA1260365BA00CAF4D7 /* NetworkDataPoster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDataPoster.swift; sourceTree = "<group>"; };
 		7EB5DBA2260365BA00CAF4D7 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		7ED0AC89260627A800A49E3C /* NodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeModel.swift; sourceTree = "<group>"; };
+		7EE22E51260DD7ED002E8EDF /* Extension + View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension + View.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				7E2B82D526009DE000C8CD74 /* Assets.xcassets */,
 				7E2B82DA26009DE000C8CD74 /* Info.plist */,
 				7E2B82DB26009DE000C8CD74 /* Figma_Colors.entitlements */,
+				7EE22E51260DD7ED002E8EDF /* Extension + View.swift */,
 				7EB5DB9C260365BA00CAF4D7 /* Network */,
 				7E2B82D726009DE000C8CD74 /* Preview Content */,
 			);
@@ -228,6 +231,7 @@
 				7E2B82D226009DDF00C8CD74 /* Figma_ColorsApp.swift in Sources */,
 				7EB5DBA8260365BA00CAF4D7 /* NetworkDataFetcher.swift in Sources */,
 				7E2B82EF2600C0BF00C8CD74 /* CodeViewModel.swift in Sources */,
+				7EE22E66260DD7ED002E8EDF /* Extension + View.swift in Sources */,
 				7E2B82ED2600C0BF00C8CD74 /* CodeController.swift in Sources */,
 				7E391B092601955200227BAC /* FigmaController.swift in Sources */,
 				7EB5DBA7260365BA00CAF4D7 /* NetworkDataPoster.swift in Sources */,

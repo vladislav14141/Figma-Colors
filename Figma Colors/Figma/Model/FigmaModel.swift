@@ -47,4 +47,5 @@ struct MetaModel: Codable {
 struct StyleModel: Codable {
     let key, name, description, nodeId: String
     let styleType: String?
+    
 }

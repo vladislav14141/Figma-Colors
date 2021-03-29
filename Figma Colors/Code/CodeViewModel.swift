@@ -10,16 +10,17 @@ import Foundation
 
 class CodeViewModel: ObservableObject {
     // MARK: - Public Properties
-    @Published var figmaColors = [FigmaColorTest]()
+    @Published var figmaColors: FigmaBlocks
     @Published var uikit: String = ""
     @Published var swiftui: String = ""
     @Published var head = false
     var bag = [AnyCancellable]()
+    
     // MARK: - Private Methods
-//    fileprivate let dataFetcher = NetworkDataFetcher()
 
     // MARK: - Lifecycle
-    init() {
+    init(block: FigmaBlocks) {
+        _figmaColors = Published(wrappedValue: block)
         $head.sink(receiveValue: { head in
             self.uikit = self.generateUIKit(useHead: head)
             self.swiftui = self.generateSwiftUI(useHead: head)
@@ -36,16 +37,16 @@ class CodeViewModel: ObservableObject {
             content += nextLine
         }
         
-        var previus: FigmaColorTest?
-        figmaColors.forEach { color in
-            if color.groupName != previus?.groupName {
-                content += nextLine
-                content += "    // MARK: - \(color.groupName)"
+        figmaColors.colors.forEach { section in
+            content += nextLine
+            content += "    // MARK: - \(section.name)"
+            content += nextLine
+            
+            section.colors.forEach { color in
+                
+                content += "    static let \(color.fullName) = UIColor(named: \"\(color.fullName)\")!"
                 content += nextLine
             }
-            content += "    static let \(color.name.split(separator: "-").joined()) = UIColor(named: \"\(color.name)\")!"
-            content += nextLine
-            previus = color
         }
         content += nextLine
         if useHead { content += down }
@@ -61,17 +62,16 @@ class CodeViewModel: ObservableObject {
             content += head
             content += nextLine
         }
-        
-        var previus: FigmaColorTest?
-        figmaColors.forEach { color in
-            if color.groupName != previus?.groupName {
-                content += nextLine
-                content += "    // MARK: - \(color.groupName)"
+        figmaColors.colors.forEach { section in
+            content += nextLine
+            content += "    // MARK: - \(section.name)"
+            content += nextLine
+            
+            section.colors.forEach { color in
+                
+                content += "    static let \(color.fullName) = Color(\"\(color.fullName)\")"
                 content += nextLine
             }
-            content += "    static let \(color.name.split(separator: "-").joined()) = Color(\"\(color.name)\")"
-            content += nextLine
-            previus = color
         }
         content += nextLine
         if useHead { content += down }

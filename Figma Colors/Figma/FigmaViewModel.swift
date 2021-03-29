@@ -7,97 +7,28 @@
 
 import Combine
 import SwiftUI
-class FigmaGradientColor: Identifiable {
-    var id: String {
-        return name
-    }
-    
-    var name: String
-    let figmaName: String
-    var groupName: String?
-    var light: [FigmaColor]?
-    var dark: [FigmaColor]?
-    
-    internal init(figmaName: String, light: [FigmaColor]? = nil, dark: [FigmaColor]? = nil) {
-        let nameComponents = figmaName.components(separatedBy: #"/"#).map({$0.trimmingCharacters(in: .whitespacesAndNewlines)})
-        let name = nameComponents.joined(separator: "-")
-        self.name = name
-        self.figmaName = figmaName
-        self.groupName = nameComponents.count > 1 ? nameComponents[0] : nil
-        self.light = light
-        self.dark = dark
-    }
-}
-class FigmaRow: Identifiable {
-    var id: String {
-        return name
-    }
 
-    var name: String
-    let figmaName: String
-    var groupName: String?
-    var light: FigmaColor?
-    var dark: FigmaColor?
-    
-    internal init(figmaName: String, light: FigmaColor? = nil, dark: FigmaColor? = nil) {
-        let nameComponents = figmaName.components(separatedBy: #"/"#).map({$0.trimmingCharacters(in: .whitespacesAndNewlines)})
-        let name = nameComponents.joined(separator: "-")
-        self.name = name
-        self.figmaName = figmaName
-        self.groupName = nameComponents.count > 1 ? nameComponents[0] : nil
-        self.light = light
-        self.dark = dark
-    }
-}
 
-class FigmaColor: Identifiable {
-    let color: Color
-    let hex: String
-    
-    let red: Double
-    let blue: Double
-    let green: Double
-    let alpha: Double
-    
-    init(r: Double, g: Double, b: Double, a: Double) {
-        self.red = r
-        self.green = g
-        self.blue = b
-        self.alpha = a
-        self.color = Color(.sRGB, red: r, green: g, blue: b, opacity: a)
-        self.hex = FigmaColor.rgbToHex(r: r, g: g, b: b, a: a)
-    }
-    
-    static func rgbToHex(r: Double, g: Double, b: Double, a: Double) -> String {
-        if a == 1 {
-            
-            let rgb:Int = (Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0
-            return String(format: "%06x", rgb)
-        } else {
-            let rgba:Int = (Int)(r*255)<<24 | (Int)(g*255)<<16 | (Int)(b*255)<<8 | (Int)(a*255)<<0
-            return String(format: "%08x", rgba)
-        }
 
-    }
-}
+
+
 
 enum FigmaSheme {
     case light
     case dark
 }
 
-class FigmaSection: Identifiable {
-    var id: String {
-        return name
-    }
-    let name: String
-    var colors = [FigmaRow]()
+class FigmaBlocks {
+    var colors = [FigmaSection]()
+    var gradient = [FigmaSection]()
     
-    internal init(name: String, colors: [FigmaRow] = [FigmaRow]()) {
-        self.name = name
+    init(colors:[FigmaSection] = [], gradient: [FigmaSection] = []) {
         self.colors = colors
+        self.gradient = gradient
     }
 }
+
+
 
 class FigmaViewModel: ObservableObject {
     // MARK: - Public Properties
@@ -105,24 +36,151 @@ class FigmaViewModel: ObservableObject {
     @AppStorage("fileKeyDark") var fileKeyDark: String = ""
     @AppStorage("X-Figma-Token") var figmaToken: String = ""
     
-    @Published var isLoading = false
-
-    // MARK: - Private Methods
-    let dataFetcher = NetworkDataFetcher()
-
     @Published var figmaColors = [FigmaSection]()
-    var sections: [String: FigmaSection] = [:]
-    var colors: [String: FigmaRow] = [:]
+    @Published var figmaGradient = [FigmaSection]()
+
+    @Published var figmaData = FigmaBlocks()
+    @Published var isLoading = false
+    @Published var showCode: Bool = false
+
+    var bag = [AnyCancellable]()
+    // MARK: - Private Properties
+    private let directoryHelper = DirectoryHelper()
+    private let dataFetcher = NetworkDataFetcher()
+
+    private var sections: [String: FigmaSection] = [:]
+    private var colors: [String: FigmaRow] = [:]
     
     // MARK: - Lifecycle
     init() {
-        
+        Notifications.showCode.publisher().sink {[weak self] g in
+            self?.showCode = true
+        }.store(in: &bag)
     }
     
+    
+
+    // MARK: - Public methods
     func clearData() {
         figmaColors.removeAll()
         colors.removeAll()
         sections.removeAll()
+    }
+    
+    func onExportAll() {
+        let dialog = NSOpenPanel();
+        
+        dialog.title                   = "Choose a file| Our Code World";
+        dialog.showsResizeIndicator    = true;
+        dialog.showsHiddenFiles        = false;
+        dialog.allowsMultipleSelection = false;
+        dialog.canChooseFiles = false;
+        dialog.canChooseDirectories = true;
+        dialog.prompt = "Save"
+        
+        if (dialog.runModal() ==  NSApplication.ModalResponse.OK) {
+            let result = dialog.url // Pathname of the file
+            
+            if (result != nil) {
+                
+                let path: String = result!.path
+                var colors: [FigmaRow] = []
+                figmaColors.forEach {
+                    $0.colors.forEach {
+                        colors.append($0)
+                    }
+                }
+                directoryHelper.exportColors(colors: colors, directoryPath: path)
+                print("path", path)
+                // path contains the file path e.g
+                // /Users/ourcodeworld/Desktop/file.txt
+            }
+            
+        } else {
+            // User clicked on "Cancel"
+            return
+        }
+    }
+    
+    
+    
+    
+    func getData() {
+        clearData()
+        if fileKeyLight.isEmpty == false {
+            fetchFigmaStyles(sheme: .light)
+        }
+        
+        if fileKeyDark.isEmpty == false {
+            fetchFigmaStyles(sheme: .dark)
+        }
+    }
+
+    
+    // MARK: - Private Methods
+    fileprivate func getFigmaColor(name: String, rgb: NodeModel.Color, sheme: FigmaSheme) -> FigmaRow {
+        switch sheme {
+     
+        case .light:
+            return FigmaRow(figmaName: name, light: .init(r: rgb.r, g: rgb.g, b: rgb.b, a: rgb.a))
+        case .dark:
+            return FigmaRow(figmaName: name, dark: .init(r: rgb.r, g: rgb.g, b: rgb.b, a: rgb.a))
+
+        }
+    }
+    
+    fileprivate func getColorSection(name: String, rgb: NodeModel.Color, sheme: FigmaSheme) {
+        let figmaColor = getFigmaColor(name: name, rgb: rgb, sheme: sheme)
+        
+        let groupName = figmaColor.groupName
+        DispatchQueue.main.async {
+            if let section = self.sections[groupName ?? ""] {
+                if let row = self.colors[figmaColor.name] {
+                    switch sheme {
+                    case .light:
+                        row.light = figmaColor.light
+                    case .dark:
+                        row.dark = figmaColor.dark
+                    }
+                    
+                } else {
+                    self.colors[figmaColor.name] = figmaColor
+                    section.colors.append(figmaColor)
+                }
+            } else {
+                self.sections[groupName ?? ""] = FigmaSection(name: groupName ?? "", colors: [figmaColor])
+                self.colors[figmaColor.name] = figmaColor
+            }
+        }
+    }
+    
+    fileprivate func keyFor(sheme: FigmaSheme) -> String {
+        
+        switch sheme {
+       
+        case .light:
+            if let url = URL(string: fileKeyLight) {
+                let components = url.pathComponents
+                guard let index = components.firstIndex(of: "file") else { return "a" }
+                guard components.count > index + 2 else { return "b"}
+                let key = components[index + 1]
+                return key
+            } else {
+                
+                return fileKeyLight
+            }
+        case .dark:
+            if let url = URL(string: fileKeyDark) {
+                let components = url.pathComponents
+                guard let index = components.firstIndex(of: "file") else { return "a" }
+                guard components.count > index + 2 else { return "b"}
+                let key = components[index + 1]
+                return key
+            } else {
+                return fileKeyDark
+            }
+
+        }
     }
     
     fileprivate func fetchFigmaStyles(sheme: FigmaSheme) {
@@ -152,88 +210,7 @@ class FigmaViewModel: ObservableObject {
         })
     }
     
-    func getData() {
-        clearData()
-        if fileKeyLight.isEmpty == false {
-            fetchFigmaStyles(sheme: .light)
-        }
-        
-        if fileKeyDark.isEmpty == false {
-            fetchFigmaStyles(sheme: .dark)
-        }
-    }
-    
-    fileprivate func getFigmaColor(name: String, rgb: NodeModel.Color, sheme: FigmaSheme) -> FigmaRow {
-        switch sheme {
-     
-        case .light:
-            return FigmaRow(figmaName: name, light: .init(r: rgb.r, g: rgb.g, b: rgb.b, a: rgb.a))
-        case .dark:
-            return FigmaRow(figmaName: name, dark: .init(r: rgb.r, g: rgb.g, b: rgb.b, a: rgb.a))
-
-        }
-    }
-    
-    fileprivate func getColorSection(name: String, rgb: NodeModel.Color, sheme: FigmaSheme) {
-        let figmaColor = getFigmaColor(name: name, rgb: rgb, sheme: sheme)
-        let groupName = figmaColor.groupName
-        DispatchQueue.main.async {
-            if let section = self.sections[groupName ?? ""] {
-                if let row = self.colors[figmaColor.name] {
-                    switch sheme {
-                    case .light:
-                        row.light = figmaColor.light
-                    case .dark:
-                        row.dark = figmaColor.dark
-                    }
-                    
-                } else {
-                    self.colors[figmaColor.name] = figmaColor
-                    section.colors.append(figmaColor)
-                }
-            } else {
-                self.sections[groupName ?? ""] = FigmaSection(name: groupName ?? "", colors: [figmaColor])
-                self.colors[figmaColor.name] = figmaColor
-            }
-        }
-    }
-    
-//    fileprivate func getGradientSection(_ value: NodeModel.Node, sheme: FigmaSheme) {
-//        guard let figmaColor = getFigmaColor(value.document, sheme: sheme) else { return }
-//        let groupName = figmaColor.groupName
-//        DispatchQueue.main.async {
-//            if let section = self.sections[groupName ?? ""] {
-//                if let row = self.colors[figmaColor.name] {
-//                    switch sheme {
-//                    case .light:
-//                        row.light = figmaColor.light
-//                    case .dark:
-//                        row.dark = figmaColor.dark
-//                    }
-//
-//                } else {
-//                    self.colors[figmaColor.name] = figmaColor
-//                    section.colors.append(figmaColor)
-//                }
-//            } else {
-//                self.sections[groupName ?? ""] = FigmaSection(name: groupName ?? "", colors: [figmaColor])
-//                self.colors[figmaColor.name] = figmaColor
-//            }
-//        }
-//    }
-    
-    func keyFor(sheme: FigmaSheme) -> String {
-        switch sheme {
-       
-        case .light:
-            return fileKeyLight
-        case .dark:
-            return fileKeyDark
-
-        }
-    }
-    
-    func getNode(nodeIds: String, sheme: FigmaSheme) {
+    fileprivate func getNode(nodeIds: String, sheme: FigmaSheme) {
         DispatchQueue.main.async {
             self.isLoading = true
         }
@@ -252,23 +229,35 @@ class FigmaViewModel: ObservableObject {
                     
                     for (i, fill) in fills.enumerated() {
                         
-                        let subname = fills.count == 1 ? "" : "-\(i)"
+                        let subname = fills.count == 1 ? "" : "-\(i + 1)"
                         
                         switch fill.type {
                         
                         case .linearG:
                             if let colors = fill.gradientStops {
                                 for (i, color) in colors.enumerated() {
-                                    let subname2 = colors.count == 1 ? "" : "-\(i)"
-
-                                    self.getColorSection(name: value.document.name + subname + subname2, rgb: color.color, sheme: sheme)
+                                    
+                                    let subname2 = colors.count == 1 ? "" : "-\(i + 1)"
+                                    if let opacity = fill.opacity {
+                                        let color = NodeModel.Color(r: color.color.r, g: color.color.g, b: color.color.b, a: color.color.a * opacity)
+                                        self.getColorSection(name: value.document.name + subname + subname2, rgb: color, sheme: sheme)
+                                    } else {
+                                        
+                                        self.getColorSection(name: value.document.name + subname + subname2, rgb: color.color, sheme: sheme)
+                                    }
                                 }
                             }
                             
                         case .solid:
                             if let color = fill.color {
-                                
-                                self.getColorSection(name: value.document.name, rgb: color, sheme: sheme)
+                                if let opacity = fill.opacity {
+                                    let color = NodeModel.Color(r: color.r, g: color.g, b: color.b, a: color.a * opacity)
+                                    self.getColorSection(name: value.document.name, rgb: color, sheme: sheme)
+
+                                } else {
+                                    
+                                    self.getColorSection(name: value.document.name, rgb: color, sheme: sheme)
+                                }
                             }
                         }
                     }
@@ -288,11 +277,6 @@ class FigmaViewModel: ObservableObject {
             }
         }
     }
-    // MARK: - Public methods
-
-    
-    // MARK: - Private Methods
-    
 }
 import Cocoa
 extension Color {

@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E28D08F261060C0003EAB0F /* DirectoryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D08E261060C0003EAB0F /* DirectoryHelper.swift */; };
+		7E28D092261071F1003EAB0F /* Extension+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D091261071F1003EAB0F /* Extension+JSON.swift */; };
+		7E28D0992610A4A2003EAB0F /* Tooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0982610A4A2003EAB0F /* Tooltip.swift */; };
+		7E28D09E2610A4FC003EAB0F /* ExportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D09D2610A4FC003EAB0F /* ExportModel.swift */; };
+		7E28D0A12610A506003EAB0F /* IOSExportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0A02610A506003EAB0F /* IOSExportModel.swift */; };
+		7E28D0A426117B35003EAB0F /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0A326117B35003EAB0F /* AppSettings.swift */; };
+		7E28D0A926117B83003EAB0F /* FigmaRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0A826117B83003EAB0F /* FigmaRow.swift */; };
+		7E28D0AD26117B99003EAB0F /* FigmaColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0AC26117B99003EAB0F /* FigmaColor.swift */; };
+		7E28D0B126117BB0003EAB0F /* FigmaSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0B026117BB0003EAB0F /* FigmaSection.swift */; };
+		7E28D0B82611A5AF003EAB0F /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0B72611A5AF003EAB0F /* NotificationService.swift */; };
 		7E2B82D226009DDF00C8CD74 /* Figma_ColorsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B82D126009DDF00C8CD74 /* Figma_ColorsApp.swift */; };
 		7E2B82D426009DDF00C8CD74 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B82D326009DDF00C8CD74 /* ContentView.swift */; };
 		7E2B82D626009DE000C8CD74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E2B82D526009DE000C8CD74 /* Assets.xcassets */; };
@@ -31,6 +41,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E28D08E261060C0003EAB0F /* DirectoryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryHelper.swift; sourceTree = "<group>"; };
+		7E28D091261071F1003EAB0F /* Extension+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+JSON.swift"; sourceTree = "<group>"; };
+		7E28D0982610A4A2003EAB0F /* Tooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tooltip.swift; sourceTree = "<group>"; };
+		7E28D09D2610A4FC003EAB0F /* ExportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportModel.swift; sourceTree = "<group>"; };
+		7E28D0A02610A506003EAB0F /* IOSExportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSExportModel.swift; sourceTree = "<group>"; };
+		7E28D0A326117B35003EAB0F /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		7E28D0A826117B83003EAB0F /* FigmaRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaRow.swift; sourceTree = "<group>"; };
+		7E28D0AC26117B99003EAB0F /* FigmaColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaColor.swift; sourceTree = "<group>"; };
+		7E28D0B026117BB0003EAB0F /* FigmaSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaSection.swift; sourceTree = "<group>"; };
+		7E28D0B72611A5AF003EAB0F /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		7E2B82CE26009DDF00C8CD74 /* Figma Colors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Figma Colors.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E2B82D126009DDF00C8CD74 /* Figma_ColorsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Figma_ColorsApp.swift; sourceTree = "<group>"; };
 		7E2B82D326009DDF00C8CD74 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +88,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E28D09B2610A4A7003EAB0F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7E28D0982610A4A2003EAB0F /* Tooltip.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7E28D0A626117B61003EAB0F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7E28D09D2610A4FC003EAB0F /* ExportModel.swift */,
+				7E28D0A02610A506003EAB0F /* IOSExportModel.swift */,
+				7E28D0A826117B83003EAB0F /* FigmaRow.swift */,
+				7E28D0B026117BB0003EAB0F /* FigmaSection.swift */,
+				7E28D0AC26117B99003EAB0F /* FigmaColor.swift */,
+				7ED0AC89260627A800A49E3C /* NodeModel.swift */,
+				7E391B072601955200227BAC /* FigmaModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		7E2B82C526009DDF00C8CD74 = {
 			isa = PBXGroup;
 			children = (
@@ -87,16 +129,20 @@
 		7E2B82D026009DDF00C8CD74 /* Figma Colors */ = {
 			isa = PBXGroup;
 			children = (
+				7E28D0B72611A5AF003EAB0F /* NotificationService.swift */,
 				7E2B82D126009DDF00C8CD74 /* Figma_ColorsApp.swift */,
 				7E2B82D326009DDF00C8CD74 /* ContentView.swift */,
 				7E2B82E226009E8800C8CD74 /* MainViewModel.swift */,
 				7E391B0F26019C2300227BAC /* WebView.swift */,
+				7E28D08E261060C0003EAB0F /* DirectoryHelper.swift */,
+				7E28D0A326117B35003EAB0F /* AppSettings.swift */,
 				7E391B0D2601955700227BAC /* Figma */,
 				7E2B82F12600C0C400C8CD74 /* Code */,
 				7E2B82D526009DE000C8CD74 /* Assets.xcassets */,
 				7E2B82DA26009DE000C8CD74 /* Info.plist */,
 				7E2B82DB26009DE000C8CD74 /* Figma_Colors.entitlements */,
 				7EE22E51260DD7ED002E8EDF /* Extension + View.swift */,
+				7E28D091261071F1003EAB0F /* Extension+JSON.swift */,
 				7EB5DB9C260365BA00CAF4D7 /* Network */,
 				7E2B82D726009DE000C8CD74 /* Preview Content */,
 			);
@@ -125,9 +171,9 @@
 			isa = PBXGroup;
 			children = (
 				7E391B062601955200227BAC /* FigmaController.swift */,
-				7E391B072601955200227BAC /* FigmaModel.swift */,
 				7E391B082601955200227BAC /* FigmaViewModel.swift */,
-				7ED0AC89260627A800A49E3C /* NodeModel.swift */,
+				7E28D09B2610A4A7003EAB0F /* Views */,
+				7E28D0A626117B61003EAB0F /* Model */,
 			);
 			path = Figma;
 			sourceTree = "<group>";
@@ -221,23 +267,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				7ED0AC8A260627A800A49E3C /* NodeModel.swift in Sources */,
+				7E28D092261071F1003EAB0F /* Extension+JSON.swift in Sources */,
 				7E391B0A2601955200227BAC /* FigmaModel.swift in Sources */,
+				7E28D08F261060C0003EAB0F /* DirectoryHelper.swift in Sources */,
+				7E28D0AD26117B99003EAB0F /* FigmaColor.swift in Sources */,
 				7EB5DBA6260365BA00CAF4D7 /* DataFetcherService.swift in Sources */,
 				7EB5DBA3260365BA00CAF4D7 /* NetworkWebSocket.swift in Sources */,
+				7E28D0A12610A506003EAB0F /* IOSExportModel.swift in Sources */,
 				7E391B1026019C2300227BAC /* WebView.swift in Sources */,
 				7E391B0B2601955200227BAC /* FigmaViewModel.swift in Sources */,
 				7E2B82D426009DDF00C8CD74 /* ContentView.swift in Sources */,
+				7E28D09E2610A4FC003EAB0F /* ExportModel.swift in Sources */,
 				7E2B82EE2600C0BF00C8CD74 /* CodeModel.swift in Sources */,
 				7E2B82D226009DDF00C8CD74 /* Figma_ColorsApp.swift in Sources */,
 				7EB5DBA8260365BA00CAF4D7 /* NetworkDataFetcher.swift in Sources */,
+				7E28D0A426117B35003EAB0F /* AppSettings.swift in Sources */,
+				7E28D0B82611A5AF003EAB0F /* NotificationService.swift in Sources */,
 				7E2B82EF2600C0BF00C8CD74 /* CodeViewModel.swift in Sources */,
 				7EE22E66260DD7ED002E8EDF /* Extension + View.swift in Sources */,
 				7E2B82ED2600C0BF00C8CD74 /* CodeController.swift in Sources */,
 				7E391B092601955200227BAC /* FigmaController.swift in Sources */,
 				7EB5DBA7260365BA00CAF4D7 /* NetworkDataPoster.swift in Sources */,
 				7EB5DBA4260365BA00CAF4D7 /* DataPosterService.swift in Sources */,
+				7E28D0B126117BB0003EAB0F /* FigmaSection.swift in Sources */,
+				7E28D0A926117B83003EAB0F /* FigmaRow.swift in Sources */,
 				7EB5DBA5260365BA00CAF4D7 /* NetworkService.swift in Sources */,
 				7E2B82E326009E8800C8CD74 /* MainViewModel.swift in Sources */,
+				7E28D0992610A4A2003EAB0F /* Tooltip.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

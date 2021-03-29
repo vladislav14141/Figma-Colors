@@ -84,7 +84,7 @@ struct ContentView: View {
                 }).accentColor(.blue)
                 .disabled(viewModel.parsedColors.isEmpty)
             }.sheet(isPresented: $openCode, content: {
-                CodeController(figmaColors: viewModel.parsedColors)
+                
             })
         }.padding()
     }

@@ -69,7 +69,7 @@ struct NodeModel: Codable {
     
     struct GradienColor: Codable {
         let position: Double
-        let color: Color
+        var color: Color
     }
     
     struct Fill: Codable {
@@ -84,7 +84,7 @@ struct NodeModel: Codable {
     // MARK: - Color
     struct Color: Codable {
         let r, g, b: Double
-        let a: Double
+        var a: Double
     }
 }
 

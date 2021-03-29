@@ -7,10 +7,12 @@
 
 import SwiftUI
 enum FigmaContentType: String, CaseIterable {
+    case all
     case colors
     case gradients
     case images
 }
+
 struct FigmaController: View {
     
     // MARK: - Public Properties
@@ -18,22 +20,32 @@ struct FigmaController: View {
     let columns = [
         GridItem(.adaptive(minimum: 120))
     ]
+    
     // MARK: - Private Properties
-    let figmaTokenURL = URL(string: "https://www.figma.com/")!
-    @State var currentType: String = "images"
-    var types = FigmaContentType.allCases.map({$0.rawValue})
-//    let availableTypes = ["Images", ""]
+    private let figmaTokenURL = URL(string: "https://www.figma.com/")!
+    private var types = FigmaContentType.allCases.map({$0.rawValue})
+    private var exportTypes: [ExportModel]
+    
+    @State var currentType: String = FigmaContentType.colors.rawValue
+    @State var currentExportTypeId: Int = 0
+    @State var currentExportType: ExportModel
+
+    
+
     // MARK: - Lifecycle
     init() {
+        let array = [IOSExportModel(), IOSAssetsExportModel()]
+        exportTypes = array
+        self._currentExportType = State(wrappedValue: array[0])
+//        $currentExportTypeId.sin
         
     }
-    @State var selection = 0
     var body: some View {
         VStack(spacing: 16) {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Access token").font(.headline)
                 HStack {
-                    TextField("165961-035dfc42-d428-4cb2-a7d7-7c63ba242e72", text: viewModel.$figmaToken)
+                    TextField("165961-035dfc42-d428-4cb2-a7d7-7c63ba242e72", text: $viewModel.figmaToken)
                     Button("Get access token", action: {
                         NSWorkspace.shared.open(figmaTokenURL)
                     })
@@ -41,22 +53,48 @@ struct FigmaController: View {
             }
             HStack(alignment: .center, spacing: 16) {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Figma file light").font(.headline)
-                    TextField("ulzno6iXBBVlvMog2k6XsX", text: viewModel.$fileKeyDark)
+                    Text("Figma LIGHT theme URL").font(.headline)
+                    TextField("ulzno6iXBBVlvMog2k6XsX", text: $viewModel.fileKeyLight)
                 }
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Figma file dark").font(.headline)
-                    TextField("GQz3OLZgxac5doTwkzTRM6", text: viewModel.$fileKeyDark)
+                    Text("Figma DARK theme URL").font(.headline)
+                    TextField("GQz3OLZgxac5doTwkzTRM6", text: $viewModel.fileKeyDark)
                 }
             }
-            Button("Get") {
-                viewModel.getData()
-            }
-            Picker("Type", selection: $currentType) {
-                ForEach(types, id: \.self) {
-                    Text($0)
+            HStack {
+                Button("Get") {
+                    viewModel.getData()
+                }
+                
+                
+                Button("Export All") {
+                    viewModel.onExportAll()
+                }
+                
+                ForEach(currentExportType.buttons, id: \.title) { bt in
+                    Button(bt.title) {
+                        bt.handle()
+                    }
                 }
             }
+            
+            HStack {
+                Picker("Type", selection: $currentType) {
+                    ForEach(types, id: \.self) {
+                        Text($0)
+                    }
+                }
+                
+                Picker("Export type", selection: $currentExportTypeId) {
+                    ForEach(0..<exportTypes.count, id: \.self) {
+                        Text(exportTypes[$0].title)
+                    }
+                }.onChange(of: currentExportTypeId, perform: { value in
+                    currentExportType = exportTypes[value]
+
+                })
+            }
+            
             if viewModel.isLoading { ProgressView()
                 
                 
@@ -65,6 +103,9 @@ struct FigmaController: View {
             
             Spacer()
         }.padding()
+        .sheet(isPresented: $viewModel.showCode, content: {
+            CodeController(viewModel: .init(block: FigmaBlocks(colors: viewModel.figmaColors)))
+        })
         .onAppear {
             viewModel.getData()
         }
@@ -147,7 +188,6 @@ struct ColorButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration
             .label
-//            .opacity(configuration.isPressed ? 0.8 : 1)
             .opacity(configuration.isPressed ? 0.8 : 1)
 
 
@@ -160,34 +200,4 @@ struct FigmaController_Previews: PreviewProvider {
     }
 }
 
-struct SafariPreview: View {
-    @ObservedObject var model: WebViewModel
-    init(mesgURL: String) {
-        self.model = WebViewModel(link: mesgURL)
-    }
-    
-    var body: some View {
-        //Create a VStack that contains the buttons in a preview as well a the webpage itself
-        VStack {
-            HStack(alignment: .center) {
-                Spacer()
-                Spacer()
-                //The title of the webpage
-                Text(self.model.didFinishLoading ? self.model.pageTitle : "")
-                Spacer()
-                //The "Open with Safari" button on the top right side of the preview
-                Button(action: {
-                    if let url = URL(string: self.model.link) {
-                        NSWorkspace.shared.open(url)
-                    }
-                }) {
-                    Text("Open with Safari")
-                }
-            }
-            //The webpage itself
-            SwiftUIWebView(viewModel: model)
-        }.frame(width: 800, height: 450, alignment: .bottom)
-        .padding(5.0)
-    }
-}
 

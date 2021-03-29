@@ -11,10 +11,17 @@ struct CodeController: View {
     @Environment(\.presentationMode) var presentationMode
 
     // MARK: - Public Properties
-    @StateObject private var viewModel: CodeViewModel = CodeViewModel()
+    @StateObject private var viewModel: CodeViewModel
     // MARK: - Private Properties
-    let figmaColors: [FigmaColorTest]
+    var figmaBlock: FigmaBlocks {
+        viewModel.figmaColors
+    }
+    
     // MARK: - Lifecycle
+    
+    init(viewModel: CodeViewModel) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+    }
     
     var body: some View {
         return VStack {
@@ -40,7 +47,6 @@ struct CodeController: View {
                 
 
             }.onAppear {
-                viewModel.figmaColors = figmaColors
                 viewModel.uikit = viewModel.generateUIKit(useHead: viewModel.head)
                 viewModel.swiftui = viewModel.generateSwiftUI(useHead: viewModel.head)
 
@@ -56,6 +62,6 @@ struct CodeController: View {
 
 struct CodeController_Previews: PreviewProvider {
     static var previews: some View {
-        CodeController(figmaColors: [])
+        CodeController(viewModel: .init(block: FigmaBlocks(colors: [])))
     }
 }

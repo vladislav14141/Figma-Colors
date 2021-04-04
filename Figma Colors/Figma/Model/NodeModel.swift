@@ -68,7 +68,7 @@ struct NodeModel: Codable {
     }
     
     struct GradienColor: Codable {
-        let position: Double
+        let position: Float
         var color: Color
     }
     

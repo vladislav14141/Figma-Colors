@@ -9,6 +9,8 @@ import SwiftUI
 
 class FigmaColor: Identifiable {
     let color: Color
+    
+    /// ffffff, 00000000
     let hex: String
     
     let red: Double

@@ -42,7 +42,7 @@ class CodeViewModel: ObservableObject {
             content += "    // MARK: - \(section.name)"
             content += nextLine
             
-            section.colors.forEach { color in
+            section.rows.forEach { color in
                 
                 content += "    static let \(color.fullName) = UIColor(named: \"\(color.fullName)\")!"
                 content += nextLine
@@ -67,7 +67,7 @@ class CodeViewModel: ObservableObject {
             content += "    // MARK: - \(section.name)"
             content += nextLine
             
-            section.colors.forEach { color in
+            section.rows.forEach { color in
                 
                 content += "    static let \(color.fullName) = Color(\"\(color.fullName)\")"
                 content += nextLine

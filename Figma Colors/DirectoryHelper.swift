@@ -12,14 +12,14 @@ struct DirectoryHelper {
     let fileManager = FileManager.default
     var folderName: String = "Figma Colors"
     
-    func exportColors(colors: [FigmaRow], directoryPath: String) {
+    func exportColors(colors: [ColorItem], directoryPath: String) {
         
         guard let assets = createAssets(directoryPath: directoryPath) else { return }//createColorset(name: "bla bla", directoryPath: directoryPath) else { return }
         guard let folder = createFolder(name: "colors", atPath: assets) else { return }
         saveColors(colors: colors, at: folder)
     }
     
-    func saveColors(colors: [FigmaRow], at path: String) {
+    func saveColors(colors: [ColorItem], at path: String) {
         colors.forEach { color in
             let components = color.figmaNameComponents
             var path = path
@@ -110,19 +110,19 @@ struct DirectoryHelper {
     
 
     
-    fileprivate func saveGradient(colors: [FigmaRow], at path: String) {
+    fileprivate func saveGradient(colors: [ColorItem], at path: String) {
         colors.forEach{
             saveColor(color: $0, at: path)
         }
     }
     
     
-    fileprivate func saveColor(color: FigmaRow, at path: String) {
+    fileprivate func saveColor(color: ColorItem, at path: String) {
         guard let colorSet = createColorset(name: color.fullName, directoryPath: path) else { return }
         createContentsJSON(folderPath: colorSet, data: getJson(color: color))
     }
     
-    func getJson(color: FigmaRow) -> Data? {
+    func getJson(color: ColorItem) -> Data? {
         
         var dictionary: [String: Any] = ["info": ["author": "xcode", "version": 1]]
         var colors: [[String: Any]] = []

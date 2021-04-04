@@ -13,10 +13,14 @@
 		7E28D09E2610A4FC003EAB0F /* ExportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D09D2610A4FC003EAB0F /* ExportModel.swift */; };
 		7E28D0A12610A506003EAB0F /* IOSExportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0A02610A506003EAB0F /* IOSExportModel.swift */; };
 		7E28D0A426117B35003EAB0F /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0A326117B35003EAB0F /* AppSettings.swift */; };
-		7E28D0A926117B83003EAB0F /* FigmaRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0A826117B83003EAB0F /* FigmaRow.swift */; };
+		7E28D0A926117B83003EAB0F /* ColorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0A826117B83003EAB0F /* ColorItem.swift */; };
 		7E28D0AD26117B99003EAB0F /* FigmaColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0AC26117B99003EAB0F /* FigmaColor.swift */; };
 		7E28D0B126117BB0003EAB0F /* FigmaSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0B026117BB0003EAB0F /* FigmaSection.swift */; };
 		7E28D0B82611A5AF003EAB0F /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0B72611A5AF003EAB0F /* NotificationService.swift */; };
+		7E28D0C626130DBC003EAB0F /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0C326130DBC003EAB0F /* SettingsController.swift */; };
+		7E28D0C726130DBC003EAB0F /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0C426130DBC003EAB0F /* SettingsModel.swift */; };
+		7E28D0C826130DBC003EAB0F /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0C526130DBC003EAB0F /* SettingsViewModel.swift */; };
+		7E28D0CD261310D3003EAB0F /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0CC261310D3003EAB0F /* Extension+Color.swift */; };
 		7E2B82D226009DDF00C8CD74 /* Figma_ColorsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B82D126009DDF00C8CD74 /* Figma_ColorsApp.swift */; };
 		7E2B82D426009DDF00C8CD74 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B82D326009DDF00C8CD74 /* ContentView.swift */; };
 		7E2B82D626009DE000C8CD74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E2B82D526009DE000C8CD74 /* Assets.xcassets */; };
@@ -36,6 +40,9 @@
 		7EB5DBA6260365BA00CAF4D7 /* DataFetcherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DBA0260365BA00CAF4D7 /* DataFetcherService.swift */; };
 		7EB5DBA7260365BA00CAF4D7 /* NetworkDataPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DBA1260365BA00CAF4D7 /* NetworkDataPoster.swift */; };
 		7EB5DBA8260365BA00CAF4D7 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DBA2260365BA00CAF4D7 /* NetworkDataFetcher.swift */; };
+		7EBD53222616E9C500D69B9B /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBD53212616E9C500D69B9B /* Button.swift */; };
+		7EBD53252616E9DE00D69B9B /* Textfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBD53242616E9DE00D69B9B /* Textfield.swift */; };
+		7EBD532C26173ACD00D69B9B /* Extension+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBD532B26173ACD00D69B9B /* Extension+Collection.swift */; };
 		7ED0AC8A260627A800A49E3C /* NodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED0AC89260627A800A49E3C /* NodeModel.swift */; };
 		7EE22E66260DD7ED002E8EDF /* Extension + View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE22E51260DD7ED002E8EDF /* Extension + View.swift */; };
 /* End PBXBuildFile section */
@@ -47,10 +54,14 @@
 		7E28D09D2610A4FC003EAB0F /* ExportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportModel.swift; sourceTree = "<group>"; };
 		7E28D0A02610A506003EAB0F /* IOSExportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSExportModel.swift; sourceTree = "<group>"; };
 		7E28D0A326117B35003EAB0F /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
-		7E28D0A826117B83003EAB0F /* FigmaRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaRow.swift; sourceTree = "<group>"; };
+		7E28D0A826117B83003EAB0F /* ColorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorItem.swift; sourceTree = "<group>"; };
 		7E28D0AC26117B99003EAB0F /* FigmaColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaColor.swift; sourceTree = "<group>"; };
 		7E28D0B026117BB0003EAB0F /* FigmaSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaSection.swift; sourceTree = "<group>"; };
 		7E28D0B72611A5AF003EAB0F /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		7E28D0C326130DBC003EAB0F /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		7E28D0C426130DBC003EAB0F /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		7E28D0C526130DBC003EAB0F /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		7E28D0CC261310D3003EAB0F /* Extension+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Color.swift"; sourceTree = "<group>"; };
 		7E2B82CE26009DDF00C8CD74 /* Figma Colors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Figma Colors.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E2B82D126009DDF00C8CD74 /* Figma_ColorsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Figma_ColorsApp.swift; sourceTree = "<group>"; };
 		7E2B82D326009DDF00C8CD74 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,6 +83,9 @@
 		7EB5DBA0260365BA00CAF4D7 /* DataFetcherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetcherService.swift; sourceTree = "<group>"; };
 		7EB5DBA1260365BA00CAF4D7 /* NetworkDataPoster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDataPoster.swift; sourceTree = "<group>"; };
 		7EB5DBA2260365BA00CAF4D7 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
+		7EBD53212616E9C500D69B9B /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		7EBD53242616E9DE00D69B9B /* Textfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Textfield.swift; sourceTree = "<group>"; };
+		7EBD532B26173ACD00D69B9B /* Extension+Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Collection.swift"; sourceTree = "<group>"; };
 		7ED0AC89260627A800A49E3C /* NodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeModel.swift; sourceTree = "<group>"; };
 		7EE22E51260DD7ED002E8EDF /* Extension + View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension + View.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,13 +115,21 @@
 			children = (
 				7E28D09D2610A4FC003EAB0F /* ExportModel.swift */,
 				7E28D0A02610A506003EAB0F /* IOSExportModel.swift */,
-				7E28D0A826117B83003EAB0F /* FigmaRow.swift */,
-				7E28D0B026117BB0003EAB0F /* FigmaSection.swift */,
-				7E28D0AC26117B99003EAB0F /* FigmaColor.swift */,
+				7EBD532726171DE900D69B9B /* Colors */,
 				7ED0AC89260627A800A49E3C /* NodeModel.swift */,
 				7E391B072601955200227BAC /* FigmaModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		7E28D0CA26130DC1003EAB0F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				7E28D0C326130DBC003EAB0F /* SettingsController.swift */,
+				7E28D0C426130DBC003EAB0F /* SettingsModel.swift */,
+				7E28D0C526130DBC003EAB0F /* SettingsViewModel.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		7E2B82C526009DDF00C8CD74 = {
@@ -136,13 +158,18 @@
 				7E391B0F26019C2300227BAC /* WebView.swift */,
 				7E28D08E261060C0003EAB0F /* DirectoryHelper.swift */,
 				7E28D0A326117B35003EAB0F /* AppSettings.swift */,
+				7E28D0CA26130DC1003EAB0F /* Settings */,
 				7E391B0D2601955700227BAC /* Figma */,
 				7E2B82F12600C0C400C8CD74 /* Code */,
 				7E2B82D526009DE000C8CD74 /* Assets.xcassets */,
+				7EBD53212616E9C500D69B9B /* Button.swift */,
+				7EBD53242616E9DE00D69B9B /* Textfield.swift */,
 				7E2B82DA26009DE000C8CD74 /* Info.plist */,
 				7E2B82DB26009DE000C8CD74 /* Figma_Colors.entitlements */,
+				7EBD532B26173ACD00D69B9B /* Extension+Collection.swift */,
 				7EE22E51260DD7ED002E8EDF /* Extension + View.swift */,
 				7E28D091261071F1003EAB0F /* Extension+JSON.swift */,
+				7E28D0CC261310D3003EAB0F /* Extension+Color.swift */,
 				7EB5DB9C260365BA00CAF4D7 /* Network */,
 				7E2B82D726009DE000C8CD74 /* Preview Content */,
 			);
@@ -189,6 +216,16 @@
 				7EB5DBA2260365BA00CAF4D7 /* NetworkDataFetcher.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		7EBD532726171DE900D69B9B /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				7E28D0B026117BB0003EAB0F /* FigmaSection.swift */,
+				7E28D0AC26117B99003EAB0F /* FigmaColor.swift */,
+				7E28D0A826117B83003EAB0F /* ColorItem.swift */,
+			);
+			path = Colors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,28 +309,35 @@
 				7E28D08F261060C0003EAB0F /* DirectoryHelper.swift in Sources */,
 				7E28D0AD26117B99003EAB0F /* FigmaColor.swift in Sources */,
 				7EB5DBA6260365BA00CAF4D7 /* DataFetcherService.swift in Sources */,
+				7E28D0C726130DBC003EAB0F /* SettingsModel.swift in Sources */,
 				7EB5DBA3260365BA00CAF4D7 /* NetworkWebSocket.swift in Sources */,
 				7E28D0A12610A506003EAB0F /* IOSExportModel.swift in Sources */,
 				7E391B1026019C2300227BAC /* WebView.swift in Sources */,
+				7EBD53222616E9C500D69B9B /* Button.swift in Sources */,
+				7EBD53252616E9DE00D69B9B /* Textfield.swift in Sources */,
 				7E391B0B2601955200227BAC /* FigmaViewModel.swift in Sources */,
 				7E2B82D426009DDF00C8CD74 /* ContentView.swift in Sources */,
 				7E28D09E2610A4FC003EAB0F /* ExportModel.swift in Sources */,
 				7E2B82EE2600C0BF00C8CD74 /* CodeModel.swift in Sources */,
 				7E2B82D226009DDF00C8CD74 /* Figma_ColorsApp.swift in Sources */,
+				7E28D0C626130DBC003EAB0F /* SettingsController.swift in Sources */,
 				7EB5DBA8260365BA00CAF4D7 /* NetworkDataFetcher.swift in Sources */,
 				7E28D0A426117B35003EAB0F /* AppSettings.swift in Sources */,
+				7E28D0C826130DBC003EAB0F /* SettingsViewModel.swift in Sources */,
 				7E28D0B82611A5AF003EAB0F /* NotificationService.swift in Sources */,
 				7E2B82EF2600C0BF00C8CD74 /* CodeViewModel.swift in Sources */,
 				7EE22E66260DD7ED002E8EDF /* Extension + View.swift in Sources */,
 				7E2B82ED2600C0BF00C8CD74 /* CodeController.swift in Sources */,
+				7E28D0CD261310D3003EAB0F /* Extension+Color.swift in Sources */,
 				7E391B092601955200227BAC /* FigmaController.swift in Sources */,
 				7EB5DBA7260365BA00CAF4D7 /* NetworkDataPoster.swift in Sources */,
 				7EB5DBA4260365BA00CAF4D7 /* DataPosterService.swift in Sources */,
 				7E28D0B126117BB0003EAB0F /* FigmaSection.swift in Sources */,
-				7E28D0A926117B83003EAB0F /* FigmaRow.swift in Sources */,
+				7E28D0A926117B83003EAB0F /* ColorItem.swift in Sources */,
 				7EB5DBA5260365BA00CAF4D7 /* NetworkService.swift in Sources */,
 				7E2B82E326009E8800C8CD74 /* MainViewModel.swift in Sources */,
 				7E28D0992610A4A2003EAB0F /* Tooltip.swift in Sources */,
+				7EBD532C26173ACD00D69B9B /* Extension+Collection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

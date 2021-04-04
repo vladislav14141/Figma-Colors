@@ -17,8 +17,13 @@ struct FigmaController: View {
     
     // MARK: - Public Properties
     @StateObject private var viewModel: FigmaViewModel = FigmaViewModel()
-    let columns = [
+    let colorColumns = [
         GridItem(.adaptive(minimum: 120))
+    ]
+    let gradientColumns = [
+        GridItem(.fixed(300)),
+        GridItem(.adaptive(minimum: 120))
+
     ]
     
     // MARK: - Private Properties
@@ -29,7 +34,7 @@ struct FigmaController: View {
     @State var currentType: String = FigmaContentType.colors.rawValue
     @State var currentExportTypeId: Int = 0
     @State var currentExportType: ExportModel
-
+    @State var showSettings = false
     
 
     // MARK: - Lifecycle
@@ -37,78 +42,43 @@ struct FigmaController: View {
         let array = [IOSExportModel(), IOSAssetsExportModel()]
         exportTypes = array
         self._currentExportType = State(wrappedValue: array[0])
-//        $currentExportTypeId.sin
-        
     }
+    
     var body: some View {
-        VStack(spacing: 16) {
-            VStack(alignment: .leading, spacing: 4) {
-                Text("Access token").font(.headline)
-                HStack {
-                    TextField("165961-035dfc42-d428-4cb2-a7d7-7c63ba242e72", text: $viewModel.figmaToken)
-                    Button("Get access token", action: {
-                        NSWorkspace.shared.open(figmaTokenURL)
-                    })
-                }
-            }
-            HStack(alignment: .center, spacing: 16) {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Figma LIGHT theme URL").font(.headline)
-                    TextField("ulzno6iXBBVlvMog2k6XsX", text: $viewModel.fileKeyLight)
-                }
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Figma DARK theme URL").font(.headline)
-                    TextField("GQz3OLZgxac5doTwkzTRM6", text: $viewModel.fileKeyDark)
-                }
-            }
-            HStack {
-                Button("Get") {
-                    viewModel.getData()
-                }
-                
-                
-                Button("Export All") {
-                    viewModel.onExportAll()
-                }
-                
-                ForEach(currentExportType.buttons, id: \.title) { bt in
-                    Button(bt.title) {
-                        bt.handle()
-                    }
-                }
-            }
-            
-            HStack {
+        HStack(spacing: 16) {
+            VStack(spacing: 16) {
                 Picker("Type", selection: $currentType) {
                     ForEach(types, id: \.self) {
                         Text($0)
                     }
                 }
-                
-                Picker("Export type", selection: $currentExportTypeId) {
-                    ForEach(0..<exportTypes.count, id: \.self) {
-                        Text(exportTypes[$0].title)
-                    }
-                }.onChange(of: currentExportTypeId, perform: { value in
-                    currentExportType = exportTypes[value]
+                if viewModel.isLoading { ProgressView() }
 
-                })
-            }
+                ScrollView {
+                    gradientView().isHidden(currentType != FigmaContentType.gradients.rawValue)
+                    colorView().isHidden(currentType != FigmaContentType.colors.rawValue)
+                    mockColorView().isHidden(!viewModel.isLoading)
+                }
+                HStack {
+                    Text("\(viewModel.figmaColors.count) colors").font(.subheadline)
+                    Text("\(viewModel.figmaGradient.count) gradients").font(.subheadline)
+
+                }
+            }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             
-            if viewModel.isLoading { ProgressView()
-                
-                
-            }
-            colorView().isHidden(currentType != FigmaContentType.colors.rawValue)
-            
-            Spacer()
-        }.padding()
+            InfoView()
+                .background(Color.secondaryBackground).cornerRadius(8)
+        }
+        .padding()
+        .popover(isPresented: $viewModel.showSettings, content: {
+            SettingsController()
+        })
         .sheet(isPresented: $viewModel.showCode, content: {
             CodeController(viewModel: .init(block: FigmaBlocks(colors: viewModel.figmaColors)))
         })
         .onAppear {
             viewModel.getData()
-        }
+        }.background(Color.primaryBackground)
         
         // MARK: - Public methods
         
@@ -116,33 +86,67 @@ struct FigmaController: View {
         
     }
     
-    @ViewBuilder func colorView() -> some View {
+    @ViewBuilder func InfoView() -> some View {
         ScrollView {
-            
-            LazyVGrid (
-                columns: columns,
-                alignment: .center,
-                spacing: 8,
-                pinnedViews: [.sectionHeaders, .sectionFooters] )
-            {
-                ForEach(viewModel.figmaColors) { section in
+            VStack(spacing: 32) {
+                VStack(spacing: 16) {
+                    HStack {
+                        Spacer()
+                        MRButton(iconName: "gearshape", title: nil, enabled: true) {
+                            viewModel.showSettings = true
+                        }.frame(width: 32)
+                    }
                     
-                    Section(header: Text(section.name.capitalized).font(.title).bold().padding(.top).padding(.horizontal,4)) {
-                        
-                        ForEach(section.colors) { row in
-                            //                                ZStack(alignment: .top) {
-                            VStack {
-                                Text(row.name).font(.headline).foregroundColor(.label)
-                                VStack(spacing: 0) {
-                                    
-                                    FigmaColorCell(figmaColor: row.light, scheme: .light)
-                                    
-                                    FigmaColorCell(figmaColor: row.dark, scheme: .dark)
-                                }
-                                .cornerRadius(16)
-                                .frame(height: 120)
+                    MRTextfield(title: "Figma access token", placeholder: "165961-035dfc42-d428-4cb2-a7d7-7c63ba242e72", text: $viewModel.figmaToken)
+                    
+                    Group {
+                        MRTextfield(title: "Figma LIGHT theme URL", placeholder: "ulzno6iXBBVlvMog2k6XsX", text: $viewModel.fileKeyLight)
+                        MRTextfield(title: "Figma DARK theme URL", placeholder: "GQz3OLZgxac5doTwkzTRM6", text: $viewModel.fileKeyDark)
+                        MRButton(iconName: "repeat.circle", title: "Update", enabled: true) {
+                            viewModel.getData()
+                        }
+                    }
+                }
+                
+                VStack {
+                    Picker("Export type", selection: $currentExportTypeId) {
+                        ForEach(0..<exportTypes.count, id: \.self) {
+                            Text(exportTypes[$0].title)
+                        }
+                    }.onChange(of: currentExportTypeId, perform: { value in
+                        currentExportType = exportTypes[value]
+                    })
+                    
+                    HStack(spacing: 16) {
+                        ForEach(currentExportType.buttons, id: \.title) { bt in
+                            MRButton(iconName: "folder.circle.fill", title: bt.title, enabled: true) {
+                                bt.handle()
                             }
-                            .padding(.horizontal,4)
+                        }
+                    }
+                }
+                Spacer()
+            }.frame(minWidth: 100, maxWidth: 300).padding()
+        }
+    }
+    
+    @ViewBuilder func gradientView() -> some View {
+        
+        LazyVGrid (
+            columns: gradientColumns,
+            alignment: .center,
+            spacing: 8,
+            pinnedViews: [] )
+        {
+            ForEach(viewModel.figmaGradient) { section in
+                
+                Section(header: Text(section.name.capitalized).font(.title).bold().padding(.top).padding(.horizontal,4)) {
+                    
+                    
+                    ForEach(section.rows) { row in
+                        FigmaGradientCellItem(gradientItem: row)
+                        ForEach(row.colors) { color in
+                            FigmaColorCell(colorItem: color)
                             
                         }
                     }
@@ -150,9 +154,104 @@ struct FigmaController: View {
             }
         }
     }
+    
+    @ViewBuilder func colorView() -> some View {
+        LazyVGrid (
+            columns: colorColumns,
+            alignment: .center,
+            spacing: 8,
+            pinnedViews: [] )
+        {
+            ForEach(viewModel.figmaColors) { section in
+                
+                Section(header: Text(section.name.capitalized).font(.title).bold().padding(.top).padding(.horizontal,4)) {
+                    
+                    ForEach(section.rows) { row in
+                        FigmaColorCell(colorItem: row)
+                    }
+                }
+            }
+        }
+    }
+    
+    @ViewBuilder func mockColorView() -> some View {
+        LazyVGrid (
+            columns: colorColumns,
+            alignment: .center,
+            spacing: 8,
+            pinnedViews: [] )
+        {
+            ForEach(0..<5, id: \.self) { section in
+                
+                Section(header: Text("section.name").font(.title).bold().padding(.top).padding(.horizontal,4)) {
+                    
+                    ForEach(1..<12, id: \.self) { row in
+                        FigmaColorCell().id("\(section) - \(row)")
+                    }
+                }
+            }.redacted()
+        }
+    }
 }
 
+
+
+
+struct FigmaGradientCellItem: View {
+    let gradientItem: GradientItem
+    var body: some View {
+        VStack {
+            Text(gradientItem.name).font(.headline).foregroundColor(.label)
+
+            VStack(spacing: 0) {
+                if let light = gradientItem.gradientLight {
+                    LinearGradient(gradient: light, startPoint: gradientItem.start, endPoint: gradientItem.end)
+                }
+                
+                if let dark = gradientItem.gradientDark {
+                    LinearGradient(gradient: dark, startPoint: gradientItem.start, endPoint: gradientItem.end)
+                }
+            }
+            .cornerRadius(16)
+            .frame(height: 120)
+        }
+        .padding(.horizontal,4)
+    }
+}
+
+//struct
 struct FigmaColorCell: View {
+    let colorItem: ColorItem
+    var isMock = false
+    init() {
+        isMock = true
+        self.colorItem = .init(figmaName: "Bla bla", light: .init(r: Double(Int.random(in: 0...255)), g: Double(Int.random(in: 0...255)), b: Double(Int.random(in: 0...255)), a: 1), dark: nil, description: nil)
+    }
+    
+    init(colorItem: ColorItem) {
+        self.colorItem = colorItem
+    }
+    var body: some View {
+        VStack {
+            Text(colorItem.fullName).font(.headline).foregroundColor(.label)
+            VStack(spacing: 0) {
+                if isMock {
+                    Color.secondaryBackground
+                } else {
+                    FigmaColorCellItem(figmaColor: colorItem.light, scheme: .light)
+                    
+                    FigmaColorCellItem(figmaColor: colorItem.dark, scheme: .dark)
+                }
+                
+            }
+            .cornerRadius(16)
+            .frame(height: 120)
+        }
+        .padding(.horizontal,4)
+    }
+}
+
+struct FigmaColorCellItem: View {
     let figmaColor: FigmaColor?
     let scheme: FigmaSheme
     @State var isHover = false

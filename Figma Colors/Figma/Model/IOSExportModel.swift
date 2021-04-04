@@ -25,7 +25,7 @@ class IOSAssetsExportModel: ExportModel {
     }
     let directoryHelper = DirectoryHelper()
     
-    func onExportAll(figmaColors: [FigmaSection]) {
+    func onExportAll(figmaColors: [FigmaSection<ColorItem>]) {
         let dialog = NSOpenPanel();
 
         dialog.title                   = "Choose a file| Our Code World";
@@ -42,13 +42,13 @@ class IOSAssetsExportModel: ExportModel {
             if (result != nil) {
                 
                 let path: String = result!.path
-                var colors: [FigmaRow] = []
-                figmaColors.forEach {
-                    $0.colors.forEach {
-                        colors.append($0)
-                    }
-                }
-                directoryHelper.exportColors(colors: colors, directoryPath: path)
+//                var colors: [ColorItem] = []
+//                figmaColors.forEach {
+//                    $0.colors.forEach {
+//                        colors.append($0)
+//                    }
+//                }
+//                directoryHelper.exportColors(colors: colors, directoryPath: path)
                 print("path", path)
                 // path contains the file path e.g
                 // /Users/ourcodeworld/Desktop/file.txt

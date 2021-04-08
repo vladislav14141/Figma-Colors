@@ -17,6 +17,10 @@ enum FigmaSheme {
     case light
     case dark
 }
+enum FigmaNodeType {
+    case components
+    case styles
+}
 
 class FigmaBlocks {
     var colors = [FigmaSection<ColorItem>]()
@@ -38,6 +42,7 @@ class FigmaViewModel: ObservableObject {
     
     @Published var figmaColors = [FigmaSection<ColorItem>]()
     @Published var figmaGradient = [FigmaSection<GradientItem>]()
+    @Published var figmaImages = [FigmaSection<ImageItem>]()
 
     @Published var figmaData = FigmaBlocks()
     @Published var isLoading = false
@@ -48,17 +53,22 @@ class FigmaViewModel: ObservableObject {
     @Published var fileLight: FigmaModel?
 
     var bag = [AnyCancellable]()
+    
     // MARK: - Private Properties
     private let directoryHelper = DirectoryHelper()
     private let dataFetcher = NetworkDataFetcher()
+    private let queue = DispatchQueue(label: "fetch.queue")
 
     private var gradientSection: [String: FigmaSection<ColorItem>] = [:]
-    private var sections: [String: FigmaSection<ColorItem>] = [:]
+
     private var colors: [String: ColorItem] = [:]
     private var gradientItem: [String: GradientItem] = [:]
+    private var imageItemDict: [String: ImageItem] = [:]
+    private var imageItemNameDict: [String: ImageItem] = [:]
+
     private var gradientItems = [GradientItem]()
     private var colorItems = [ColorItem]()
-
+    private var imageItems = [ImageItem]()
     
     // MARK: - Lifecycle
     init() {
@@ -82,16 +92,25 @@ class FigmaViewModel: ObservableObject {
             settings.figmaToken = key
         }.store(in: &bag)
         
+        $figmaColors.sink { sections in
+            ExportStorage.shared.colors = sections
+        }.store(in: &bag)
 
+        $figmaGradient.sink { sections in
+            ExportStorage.shared.gradient = sections
+        }.store(in: &bag)
     }
     
     
 
     // MARK: - Public methods
     func clearData() {
+        figmaGradient.removeAll()
         figmaColors.removeAll()
         colors.removeAll()
-        sections.removeAll()
+        gradientItems.removeAll()
+        gradientItem.removeAll()
+        colorItems.removeAll()
     }
     
     func onExportAll() {
@@ -112,12 +131,12 @@ class FigmaViewModel: ObservableObject {
                 
                 let path: String = result!.path
                 var colors: [ColorItem] = []
-//                figmaColors.forEach {
-//                    $0.colors.forEach {
-//                        colors.append($0)
-//                    }
-//                }
-//                directoryHelper.exportColors(colors: colors, directoryPath: path)
+                figmaColors.forEach {
+                    $0.rows.forEach {
+                        colors.append($0)
+                    }
+                }
+                directoryHelper.exportColors(colors: colors, directoryPath: path)
 //                print("path", path)
                 // path contains the file path e.g
                 // /Users/ourcodeworld/Desktop/file.txt
@@ -147,7 +166,7 @@ class FigmaViewModel: ObservableObject {
     // MARK: - Private Methods
     fileprivate func fetchFigmaStyles(sheme: FigmaSheme) {
         isLoading = true
-        let url = "https://api.figma.com/v1/files/\(keyFor(sheme: sheme))/styles"
+        let url = "https://api.figma.com/v1/files/\(keyFor(sheme: sheme))"
         print(url)
         dataFetcher.fetchGenericJsonData(urlString: url, decodeBy: FigmaModel.self, completion: { result in
             DispatchQueue.main.async {
@@ -162,14 +181,24 @@ class FigmaViewModel: ObservableObject {
                     }
                 }
                 
-                let styles: [String] = success.meta.styles.compactMap({
-                    if $0.styleType == "FILL" {
-                        return $0.nodeId
+                let styles: String = success.styles.compactMap({
+                    if $1.styleType == .fill {
+                        return $0
                     } else {
                         return nil
                     }
-                })
-                self.getNode(nodeIds: styles.joined(separator: ","), sheme: sheme)
+                }).joined(separator: ",")
+                
+                let components: String = success.components.compactMap({ key, value in
+                    let image = ImageItem(figmaName: value.name)
+                    self.imageItemDict[key] = image
+                    self.imageItemNameDict[value.name] = image
+                    return key
+                }).joined(separator: ",")
+//
+                self.getImages(nodeIds: components, sheme: sheme)
+                self.getNode(nodeIds: components, nodeType: .components, sheme: sheme)
+                self.getNode(nodeIds: styles, nodeType: .styles, sheme: sheme)
                 print(success)
                 
             case .failure(let err):
@@ -177,18 +206,40 @@ class FigmaViewModel: ObservableObject {
             }
         })
     }
+
+    fileprivate func getImages(nodeIds: String, sheme: FigmaSheme) {
+        
+        let url = "https://api.figma.com/v1/images/\(keyFor(sheme: sheme))?scale=3&ids=\(nodeIds)"
+        
+        dataFetcher.fetchGenericJsonData(urlString: url, decodeBy: FigmaImagesModel.self) { result in
+            switch result {
+            
+            case .success(let responce):
+                responce.images.forEach {
+                    self.imageItemDict[$0]?.x3 = $1
+                }
+                self.imageItems = self.imageItemDict.compactMap({$0.value})
+                DispatchQueue.main.async {
+                    self.figmaImages = self.getSections(rows: self.imageItems)//self.imageItemNameDict.compactMap({$0.value})
+                }
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
+    
     
     fileprivate func onFetchedColor(fill: NodeModel.Fill, value: NodeModel.Node, sheme: FigmaSheme) {
         if let color = fill.color {
             if let opacity = fill.opacity {
                 let color = NodeModel.Color(r: color.r, g: color.g, b: color.b, a: color.a * opacity)
                 let row = self.getFigmaColorRow(name: value.document.name, rgb: color, sheme: sheme)
-                colorRows.append(row)
+                colorItems.append(row)
                 
             } else {
                 
                 let row = self.getFigmaColorRow(name: value.document.name, rgb: color, sheme: sheme)
-                colorRows.append(row)
+                colorItems.append(row)
                 
             }
         }
@@ -219,35 +270,65 @@ class FigmaViewModel: ObservableObject {
         }
         
         if let item = self.gradientItem[value.document.name] {
-            gradients.append(item)
+            gradientItems.append(item)
         } else {
             
             let gradientItem = GradientItem(figmaName: value.document.name, colors: gradientsColors, colorLocation: positions, start: start, end: end)
             self.gradientItem[value.document.name] = gradientItem
-            gradients.append(gradientItem)
+            gradientItems.append(gradientItem)
+        }
+    }
+    
+    fileprivate func onFetchedImageNode(_ nodes: [String: NodeModel.Node], sheme: FigmaSheme) {
+        nodes.forEach { key, value in
+            if let size = value.document.absoluteBoundingBox {
+                self.imageItemDict[key]?.size = .init(width: size.width, height: size.height)
+            }
+            
+                
+            
         }
     }
     
     fileprivate func onFetchedNode(_ nodes: [String: NodeModel.Node], sheme: FigmaSheme) {
         nodes.forEach { key, value in
-            
-            let fills = value.document.fills
-            for (i, fill) in fills.enumerated() {
-                
-                let subname = fills.count == 1 ? "" : "\(i + 1)"
-                
-                switch fill.type {
-                
-                case .linearG:
-                    self.onFetchedGradient(value: value, fill: fill, sheme: sheme, subname: subname)
-                case .solid:
-                    self.onFetchedColor(fill: fill, value: value, sheme: sheme)
+            switch value.document.type {
+            case .component:
+                print(value)
+            case .rectangle:
+                let fills = value.document.fills
+                for (i, fill) in fills.enumerated() {
+                    
+                    let subname = fills.count == 1 ? "" : "\(i + 1)"
+                    
+                    switch fill.type {
+                    
+                    case .linearG:
+                        self.onFetchedGradient(value: value, fill: fill, sheme: sheme, subname: subname)
+                    case .solid:
+                        self.onFetchedColor(fill: fill, value: value, sheme: sheme)
+                    default: ()
+                    //                case .radialG:
+                    //                    <#code#>
+                    //                case .angularG:
+                    //                    <#code#>
+                    //                case .diamonG:
+                    //                    <#code#>
+                    //                case .image:
+                    //                    <#code#>
+                    //                case .emoji:
+                    //                    <#code#>
+                    }
                 }
+                
+            default: ()
             }
         }
     }
     
-    fileprivate func getNode(nodeIds: String, sheme: FigmaSheme) {
+    
+    
+    fileprivate func getNode(nodeIds: String, nodeType: FigmaNodeType, sheme: FigmaSheme) {
         DispatchQueue.main.async {
             self.isLoading = true
         }
@@ -259,53 +340,47 @@ class FigmaViewModel: ObservableObject {
             switch $0 {
             
             case .success(let responce):
-                var colorRows = [ColorItem]()
-//                var gradientSections = [FigmaSection<GradientItem>]()
-                var gradients = [GradientItem]()
                 
-                self.onFetchedNode(responce.nodes, sheme: sheme)
-
-                var sections: [String : FigmaSection<ColorItem>] = [:]
-                
-                for value in colorRows {
-                    if let section = sections[value.groupName ?? "Colors"]  {
-                        section.append(value)
-                    } else {
-                        sections[value.groupName ?? "Colors"] = .init(name: value.groupName ?? "Colors", colors: [value])
+                switch nodeType {
+                case .components:
+                    self.onFetchedImageNode(responce.nodes, sheme: sheme)
+                case .styles:
+                    self.queue.async {
+                        self.onFetchedNode(responce.nodes, sheme: sheme)
+                        let colors = self.getSections(rows: self.colorItems)
+                        let gradients = self.getSections(rows: self.gradientItems)
+                        
+                        DispatchQueue.main.async {
+                            self.figmaColors = colors
+                            self.figmaGradient = gradients
+                        }
                     }
                 }
-                
-                let sectionArray: [FigmaSection<ColorItem>] = sections.map({
-                    let section = $0.value
-                    section.sortColors()
-                    return section
-                }).sorted(by: {$0.name < $1.name})
-                
-                gradients.sort(by: {$0.name < $1.name})
-                DispatchQueue.main.async {
-                    self.figmaColors = sectionArray
-                    var dict = [String: FigmaSection<GradientItem>]()
-                    
-                    gradients.forEach {
-                        let value: FigmaSection<GradientItem> = dict[$0.groupName ?? ""] ?? FigmaSection(name: $0.groupName ?? "", colors: [])
-                        value.append($0)
-                        dict[$0.groupName ?? ""] = value
-                    }
-                    
-                    self.figmaGradient = dict.values.sorted(by: {$0.name > $1.name})
-                }
-                
             case .failure(let err):
                 print(err)
             }
         }
     }
     
+    fileprivate func getSections<Row: Identifiable & FigmaSectionProtocol>(rows: [Row]) -> [FigmaSection<Row>]{
+        var dict = [String: FigmaSection<Row>]()
+
+        rows.forEach {
+            let value: FigmaSection<Row> = dict[$0.groupName] ?? FigmaSection(name: $0.groupName, colors: [])
+            value.append($0)
+            dict[$0.groupName] = value
+        }
+        return dict.values.compactMap({
+            $0.sortColors()
+            return $0
+        }).sorted(by: {$0.name < $1.name})
+    }
+    
     fileprivate func getFigmaColorRow(name: String, gradientNameComponents: [String] = [],rgb: NodeModel.Color, sheme: FigmaSheme) -> ColorItem {
         let figmaRow = ColorItem(figmaName: name)
         figmaRow.gradientComponents = gradientNameComponents
         
-        var row: ColorItem = colors[figmaRow.fullName] ?? figmaRow
+        let row: ColorItem = colors[figmaRow.fullName] ?? figmaRow
         let figmaColor = FigmaColor(r: rgb.r, g: rgb.g, b: rgb.b, a: rgb.a)
         switch sheme {
         case .light:
@@ -346,9 +421,3 @@ class FigmaViewModel: ObservableObject {
         }
     }
 }
-
-//extension Array {
-//    func groupBy(key: (Element)->Bool) -> [Element] {
-//
-//    }
-//}

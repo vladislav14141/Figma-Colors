@@ -14,6 +14,8 @@ extension Color {
     static let label = Color(NSColor.labelColor)
     static let primaryBackground = Color(NSColor.gridColor)//Color("primaryBackground")
     static let secondaryBackground = Color(NSColor.controlBackgroundColor)//Color("secondaryBackground")
+    static let tertiaryBackground = Color(NSColor.unemphasizedSelectedContentBackgroundColor)//Color("secondaryBackground")
+
     static let buttonBackground = Color("buttonBackground")
 
     static func random() -> Color{

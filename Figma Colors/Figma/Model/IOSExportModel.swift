@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+class ExportStorage {
+    static let shared = ExportStorage()
+    var colors = [FigmaSection<ColorItem>]()
+    var gradient = [FigmaSection<GradientItem>]()
+    
+    init() {
+        
+    }
+}
 class IOSExportModel: ExportModel {
     override var title: String { "iOS" }
     override var buttons: [ExportButtonModel] {
@@ -21,7 +30,7 @@ class IOSAssetsExportModel: ExportModel {
     override var title: String { "iOS Assets" }
     override var buttons: [ExportButtonModel] {
         
-        return [.init(title: "Code", handle: {Notifications.showCode.post()}), .init(title: "Download Assets", handle: {self.onExportAll(figmaColors: [])})]
+        return [.init(title: "Code", handle: {Notifications.showCode.post()}), .init(title: "Download Assets", handle: {self.onExportAll(figmaColors: ExportStorage.shared.colors)})]
     }
     let directoryHelper = DirectoryHelper()
     
@@ -42,13 +51,13 @@ class IOSAssetsExportModel: ExportModel {
             if (result != nil) {
                 
                 let path: String = result!.path
-//                var colors: [ColorItem] = []
-//                figmaColors.forEach {
-//                    $0.colors.forEach {
-//                        colors.append($0)
-//                    }
-//                }
-//                directoryHelper.exportColors(colors: colors, directoryPath: path)
+                var colors: [ColorItem] = []
+                figmaColors.forEach {
+                    $0.rows.forEach {
+                        colors.append($0)
+                    }
+                }
+                directoryHelper.exportColors(colors: colors, directoryPath: path)
                 print("path", path)
                 // path contains the file path e.g
                 // /Users/ourcodeworld/Desktop/file.txt

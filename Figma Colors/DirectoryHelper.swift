@@ -11,6 +11,11 @@ struct DirectoryHelper {
     
     let fileManager = FileManager.default
     var folderName: String = "Figma Colors"
+    let storage = ExportStorage.shared
+    
+    func downloadAssets() {
+        
+    }
     
     func exportColors(colors: [ColorItem], directoryPath: String) {
         

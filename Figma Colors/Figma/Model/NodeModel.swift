@@ -32,23 +32,41 @@ struct NodeModel: Codable {
 //
     
     enum FillType: String, Codable {
-        case linearG = "GRADIENT_LINEAR"
         case solid = "SOLID"
+        case linearG = "GRADIENT_LINEAR"
+        case radialG = "GRADIENT_RADIAL"
+        case angularG = "GRADIENT_ANGULAR"
+        case diamonG = "GRADIENT_DIAMOND"
+        case image = "IMAGE"
+        case emoji = "EMOJI"
     }
+    
     // MARK: - Document
     struct Document: Codable {
 
         let id, name: String
         let blendMode: String?
-        let type: String
+        let type: DocumentType
+        let absoluteBoundingBox: BoundingBox?
 
         let fills: [Fill]
         let strokes: [Fill]
-        let strokeWeight: Int
+        let strokeWeight: Float
         let strokeAlign: String
         let effects: [Fill]
         
         
+    }
+    
+    struct BoundingBox: Codable {
+        let width: CGFloat
+        let height: CGFloat
+    }
+    
+    enum DocumentType: String, Codable {
+        case component = "COMPONENT"
+        case rectangle = "RECTANGLE"
+        case text = "TEXT"
     }
 //
 //    // MARK: - AbsoluteBoundingBox

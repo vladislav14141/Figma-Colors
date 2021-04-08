@@ -20,10 +20,12 @@ import Foundation
 //    }
 //}
 
-class FigmaSection<Row: Identifiable>: Identifiable where Row.ID == String {
-    var id: String {
-        return name
-    }
+class FigmaSection<Row: Identifiable & FigmaSectionProtocol>: Identifiable {
+//    var id: String {
+//        return name
+//    }
+    let id = UUID()
+
     
     /// "danger"
     let name: String
@@ -44,6 +46,6 @@ class FigmaSection<Row: Identifiable>: Identifiable where Row.ID == String {
     }
     
     func sortColors() {
-        rows.sort(by: {$0.id < $1.id})
+        rows.sort(by: {$0.fullName < $1.fullName})
     }
 }

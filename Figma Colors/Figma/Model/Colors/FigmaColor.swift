@@ -8,6 +8,8 @@
 import SwiftUI
 
 class FigmaColor: Identifiable {
+    let id = UUID()
+
     let color: Color
     
     /// ffffff, 00000000

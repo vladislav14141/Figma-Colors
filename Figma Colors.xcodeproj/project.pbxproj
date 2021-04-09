@@ -64,6 +64,7 @@
 		7EB3B935262004F0003DE911 /* TestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B934262004F0003DE911 /* TestPage.swift */; };
 		7EB3B938262019BC003DE911 /* ContentPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B937262019BC003DE911 /* ContentPage.swift */; };
 		7EB3B93F26201BCE003DE911 /* InfoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B93E26201BCE003DE911 /* InfoPage.swift */; };
+		7EB3B94626202ED2003DE911 /* FigmaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B94526202ED2003DE911 /* FigmaItem.swift */; };
 		7EB5DBA3260365BA00CAF4D7 /* NetworkWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DB9D260365BA00CAF4D7 /* NetworkWebSocket.swift */; };
 		7EB5DBA4260365BA00CAF4D7 /* DataPosterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DB9E260365BA00CAF4D7 /* DataPosterService.swift */; };
 		7EB5DBA5260365BA00CAF4D7 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DB9F260365BA00CAF4D7 /* NetworkService.swift */; };
@@ -136,6 +137,7 @@
 		7EB3B934262004F0003DE911 /* TestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPage.swift; sourceTree = "<group>"; };
 		7EB3B937262019BC003DE911 /* ContentPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPage.swift; sourceTree = "<group>"; };
 		7EB3B93E26201BCE003DE911 /* InfoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPage.swift; sourceTree = "<group>"; };
+		7EB3B94526202ED2003DE911 /* FigmaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaItem.swift; sourceTree = "<group>"; };
 		7EB5DB9D260365BA00CAF4D7 /* NetworkWebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkWebSocket.swift; sourceTree = "<group>"; };
 		7EB5DB9E260365BA00CAF4D7 /* DataPosterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPosterService.swift; sourceTree = "<group>"; };
 		7EB5DB9F260365BA00CAF4D7 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				7E28D0B026117BB0003EAB0F /* FigmaSection.swift */,
 				7E28D0AC26117B99003EAB0F /* FigmaColor.swift */,
 				7E28D0A826117B83003EAB0F /* ColorItem.swift */,
+				7EB3B94526202ED2003DE911 /* FigmaItem.swift */,
 				7E9B22E3261EC1D400850A01 /* GradientItem.swift */,
 				7E9B22E0261EC1BC00850A01 /* ImageItem.swift */,
 			);
@@ -514,6 +517,7 @@
 				7E28D0992610A4A2003EAB0F /* Tooltip.swift in Sources */,
 				7E9B22ED261EC72B00850A01 /* FigmaColorCell.swift in Sources */,
 				7EBD532C26173ACD00D69B9B /* Extension+Collection.swift in Sources */,
+				7EB3B94626202ED2003DE911 /* FigmaItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -91,3 +91,53 @@ struct MRButton: View {
         
     }
 }
+
+
+struct MRSmallButton: View {
+    
+//    private let icon: String?
+    @State var isHovered = false
+    private let title: String?
+    private var onTap: (()->())?
+    
+    init(_ title: String?, onTap: (()->())? = nil) {
+        self.title = title
+        self.onTap = onTap
+    }
+    var body: some View {
+        Button(action: {
+            onTap?()
+        }, label: {
+            HStack {
+                if let title = title {
+                    Text(title).customFont(.body).foregroundColor(isHovered ? .white : .label)
+                }
+            }
+//            .padding(.horizontal)
+        })
+        .frame(minWidth: 44, maxWidth: .infinity)
+        .frame(height: 44)
+        .background(isHovered ? Color.smallButtonSelectedBackground : Color.smallButtonBackground)
+        .buttonStyle(MRSmallButtonStyle())
+        .cornerRadius(8)
+        .overlay( onHover() )
+
+        .onHover(perform: {
+            isHovered = $0
+        })
+    }
+    
+    @ViewBuilder func onHover() -> some View {
+        if isHovered {
+            RoundedRectangle(cornerRadius: 8).stroke(Color.white, lineWidth: 1)
+        }
+    }
+}
+
+struct MRSmallButtonStyle: ButtonStyle {
+    
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
+    }
+}

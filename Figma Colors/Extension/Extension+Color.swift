@@ -17,6 +17,8 @@ extension Color {
     static let tertiaryBackground = Color(NSColor.unemphasizedSelectedContentBackgroundColor)//Color("secondaryBackground")
 
     static let buttonBackground = Color("buttonBackground")
+    static let smallButtonSelectedBackground = Color(NSColor.systemBlue)
+    static let smallButtonBackground = Color(NSColor.systemGray)
 
     static func random() -> Color{
         return Color(red: Double.random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0.5...1))
@@ -41,17 +43,12 @@ extension Color {
         var fAlpha: CGFloat = 0
         
         color.getRed(&fRed, green: &fGreen, blue: &fBlue, alpha: &fAlpha)
-//        if  {
-            let iRed = Int(fRed * 255.0)
-            let iGreen = Int(fGreen * 255.0)
-            let iBlue = Int(fBlue * 255.0)
-            let iAlpha = Int(fAlpha * 255.0)
-            
-            return (red:iRed, green:iGreen, blue:iBlue, alpha:iAlpha)
-//        } else {
-//            // Could not extract RGBA components:
-//            return nil
-//        }
+        let iRed = Int(fRed * 255.0)
+        let iGreen = Int(fGreen * 255.0)
+        let iBlue = Int(fBlue * 255.0)
+        let iAlpha = Int(fAlpha * 255.0)
+        
+        return (red:iRed, green:iGreen, blue:iBlue, alpha:iAlpha)
     }
     
     public func rgbToHex() -> String {

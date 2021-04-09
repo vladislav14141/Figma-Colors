@@ -13,44 +13,47 @@ struct FigmaColorCellItem: View {
     @State var isCopied = false {
         didSet {
             if isCopied {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-                    isCopied = false
-                }
+//                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+//                    isCopied = false
+//                }
             }
         }
     }
     var body: some View {
         if let figmaColor = figmaColor {
-            Button(action: {
-                let pasteboard = NSPasteboard.general
-                pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
-                pasteboard.setString(figmaColor.hex, forType: NSPasteboard.PasteboardType.string)
-                isCopied = true
-            }, label: {
-                
-                ZStack(alignment: scheme == .light ? .bottomTrailing : .topTrailing) {
-                    figmaColor.color.overlay(
-                        VStack {
-                            if isCopied {
+            ZStack(alignment: scheme == .light ? .bottomTrailing : .topTrailing) {
+                figmaColor.color.overlay(
+                    VStack {
+                        if isCopied {
+                            
+                            Text("Copied")
+                                .font(.jetBrains(.body))
+                                .foregroundColor(figmaColor.color.labelText())
+                            
+                        } else if isHover {
+                            
+                            HStack(spacing: 8) {
+                                MRSmallButton("hex") {
+                                    let pasteboard = NSPasteboard.general
+                                    pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
+                                    pasteboard.setString(figmaColor.hex, forType: NSPasteboard.PasteboardType.string)
+                                    isCopied = true
+                                }
                                 
-                                Text("Copied")
-                                    .font(.jetBrains(.body))
-                                    .foregroundColor(figmaColor.color.labelText())
-                                
-                            } else if isHover {
-                                
-                                Text(figmaColor.hex)
-                                    .font(.jetBrains(.body))
-                                    .foregroundColor(figmaColor.color.labelText())
-                                
-                            }
-
+                                MRSmallButton("rgba") {
+                                    let pasteboard = NSPasteboard.general
+                                    pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
+                                    let rgba = "\(figmaColor.red),\(figmaColor.green),\(figmaColor.blue),\(figmaColor.alpha)"
+                                    pasteboard.setString(rgba, forType: NSPasteboard.PasteboardType.string)
+                                    isCopied = true
+                                }
+                            }.padding(8)
                         }
-                    )
-                    
-                }.opacity(isHover ? 0.9 : 1)
-
-            }).buttonStyle(ColorButtonStyle())
+                        
+                    }
+                )
+                
+            }.opacity(isHover ? 0.9 : 1)
 
             .onHover { over in
                 isHover = over
@@ -70,3 +73,11 @@ struct FigmaColorCellItem: View {
         }
     }
 }
+
+//struct SmallButton: View {
+//    var body: some View {
+//        Button("HEX") {
+//            MRButton
+//        }
+//    }
+//}

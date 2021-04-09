@@ -14,11 +14,13 @@ struct InfoPage: View {
     private let figmaTokenURL = URL(string: "https://www.figma.com/")!
     
     @State var exportModels = [IOSExportModel(), IOSAssetsExportModel()]
-    @State var selectedExportModel = 0 {
-        didSet {
-            currentExportType = exportModels[selectedExportModel]
-        }
+    @State var selectedExportModel = 0
+    
+    init(viewModel: FigmaViewModel) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+        self.currentExportType = exportModels[selectedExportModel]
     }
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 32) {

@@ -6,24 +6,52 @@
 //
 
 import Foundation
-
+import Cocoa
 struct DirectoryHelper {
     
     let fileManager = FileManager.default
     var folderName: String = "Figma Colors"
     let storage = ExportStorage.shared
     
-    func downloadAssets(directoryPath: String) {
-        guard let assets = createAssets(directoryPath: directoryPath) else { return }
-        
-        if storage.colors.isEmpty == false, let folder = createFolder(name: "colors", atPath: assets) {
-            let colors = storage.colors.flatMap({$0.rows.map({$0})})
-            saveColors(colors: colors, at: folder)
+    func pathSelector(completion: (String)->()) {
+        let dialog = NSOpenPanel()
+
+        dialog.title                   = "Choose a file| Our Code World"
+        dialog.showsResizeIndicator    = true
+        dialog.showsHiddenFiles        = false
+        dialog.allowsMultipleSelection = false
+        dialog.canChooseFiles = false
+        dialog.canChooseDirectories = true
+        dialog.prompt = "Save"
+
+        if (dialog.runModal() ==  NSApplication.ModalResponse.OK) {
+            let result = dialog.url // Pathname of the file
+
+            if (result != nil) {
+                
+                let path: String = result!.path
+                completion(path)
+            }
+            
+        } else {
+            // User clicked on "Cancel"
+            return
         }
-        
-        if storage.gradient.isEmpty == false, let folder = createFolder(name: "gradients", atPath: assets) {
-            let gradients = storage.gradient.flatMap({$0.rows.flatMap({$0.colors.map({$0})})})
-            saveColors(colors: gradients, at: folder)
+    }
+    
+    func downloadAssets() {
+        pathSelector { (directoryPath) in
+            guard let assets = createAssets(directoryPath: directoryPath) else { return }
+            
+            if storage.colors.isEmpty == false, let folder = createFolder(name: "colors", atPath: assets) {
+                let colors = storage.colors.flatMap({$0.rows.map({$0})})
+                saveColors(colors: colors, at: folder)
+            }
+            
+            if storage.gradient.isEmpty == false, let folder = createFolder(name: "gradients", atPath: assets) {
+                let gradients = storage.gradient.flatMap({$0.rows.flatMap({$0.colors.map({$0})})})
+                saveColors(colors: gradients, at: folder)
+            }
         }
     }
     

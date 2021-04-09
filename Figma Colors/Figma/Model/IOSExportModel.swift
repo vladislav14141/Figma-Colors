@@ -16,51 +16,54 @@ class ExportStorage {
         
     }
 }
-class IOSExportModel: ExportModel {
-    override var title: String { "iOS" }
-    override var buttons: [ExportButtonModel] {
-        return [.init(title: "Code", handle: {print("Code")})]
-    }
-}
-struct ExportButtonModel {
+
+struct ExportButtonModel: Identifiable {
+    var id = UUID()
     let title: String
     let handle: ()->()
 }
-class IOSAssetsExportModel: ExportModel {
-    override var title: String { "iOS Assets" }
-    override var buttons: [ExportButtonModel] {
-        
-        return [.init(title: "Code", handle: {Notifications.showCode.post()}), .init(title: "Download Assets", handle: {self.onExportAll(figmaColors: ExportStorage.shared.colors)})]
+
+class ExportModel: Identifiable, Hashable {
+    
+    var id = UUID()
+    var buttons:  [MRButton] {return []}
+    var title: String { "Unknown" }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
+//
+    static func == (lhs: ExportModel, rhs: ExportModel) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+}
+
+class IOSExportModel: ExportModel {
+    override var title: String { "iOS" }
+    override var buttons: [MRButton] {
+        return [
+            MRButton(iconName: nil, title: "Code") {
+                
+            }
+        ]
+    }
+}
+class IOSAssetsExportModel: ExportModel {
+    
+    override var title: String { "iOS Assets" }
+    
     let directoryHelper = DirectoryHelper()
     
-    func onExportAll(figmaColors: [FigmaSection<ColorItem>]) {
-        let dialog = NSOpenPanel();
-
-        dialog.title                   = "Choose a file| Our Code World";
-        dialog.showsResizeIndicator    = true;
-        dialog.showsHiddenFiles        = false;
-        dialog.allowsMultipleSelection = false;
-        dialog.canChooseFiles = false;
-        dialog.canChooseDirectories = true;
-        dialog.prompt = "Save"
-
-        if (dialog.runModal() ==  NSApplication.ModalResponse.OK) {
-            let result = dialog.url // Pathname of the file
-
-            if (result != nil) {
-                
-                let path: String = result!.path
-                var colors: [ColorItem] = []
-                directoryHelper.downloadAssets(directoryPath: path)
-                print("path", path)
-                // path contains the file path e.g
-                // /Users/ourcodeworld/Desktop/file.txt
+    override var buttons: [MRButton] {
+        return [
+            MRButton(iconName: nil, title: "Code") {
+                print("Code")
+            },
+            MRButton(iconName: nil, title: "Download Assets") { [weak self] in
+                self?.directoryHelper.downloadAssets()
             }
-            
-        } else {
-            // User clicked on "Cancel"
-            return
-        }
+        
+        ]
     }
 }

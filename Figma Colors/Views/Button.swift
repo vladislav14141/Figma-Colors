@@ -47,6 +47,9 @@ struct MRButtonStyle: ButtonStyle {
 }
 
 struct MRButton: View {
+    var id: String {
+        (icon ?? "") + (title ?? "")
+    }
     private let icon: String?
     private let title: String?
     private var onTap: (()->())?

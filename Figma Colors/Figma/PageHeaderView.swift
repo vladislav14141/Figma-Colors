@@ -10,8 +10,8 @@ import SwiftUI
 struct PageHeaderView: View {
     let title: String
     var body: some View {
-        HStack {
-            Text(title.capitalized).font(.title2).bold().padding(.top).padding(4)//.offset(x: 8, y: 16)
+        HStack(alignment: .bottom) {
+            Text(title.lowercased()).customFont(.title).padding(.top, 40)
             Spacer()
         }.background(Color.primaryBackground)
     }

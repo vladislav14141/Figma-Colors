@@ -8,16 +8,20 @@
 import SwiftUI
 
 struct FigmaColorCell: View {
+    
     let colorItem: ColorItem
     var isMock = false
+    
     init() {
         isMock = true
-        self.colorItem = .init(figmaName: "Bla bla", light: .init(r: Double(Int.random(in: 0...255)), g: Double(Int.random(in: 0...255)), b: Double(Int.random(in: 0...255)), a: 1), dark: nil, description: nil)
+        let color = FigmaColor(r: Double(Int.random(in: 0...255)), g: Double(Int.random(in: 0...255)), b: Double(Int.random(in: 0...255)), a: 1)
+        self.colorItem = ColorItem(figmaName: "Bla/bloBelka", light: color, dark: color)
     }
     
     init(colorItem: ColorItem) {
         self.colorItem = colorItem
     }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             VStack(spacing: 0) {
@@ -33,11 +37,11 @@ struct FigmaColorCell: View {
             .cornerRadius(16)
             .frame(height: 120)
             
-            Text(colorItem.fullName)
-                .frame(width: 120, alignment: .leading)
-//                .truncationMode(.)
+            Text(colorItem.shortName)
+                .frame(minWidth: 120, maxWidth: .infinity, alignment: .leading)
                 .lineLimit(1)
-                .font(.jRegular)
+                .customFont(.callout)
+//                .font(.jetBrains(.callout))
                 .foregroundColor(.label)
                 .overlay(
                     LinearGradient(gradient: .init(colors: [Color.primaryBackground.opacity(0.01), .primaryBackground]),

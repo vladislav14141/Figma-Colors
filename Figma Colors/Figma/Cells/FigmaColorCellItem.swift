@@ -32,10 +32,17 @@ struct FigmaColorCellItem: View {
                     figmaColor.color.overlay(
                         VStack {
                             if isCopied {
-                                Text("Copied").font(.jSemibold).foregroundColor(figmaColor.color.labelText())
+                                
+                                Text("Copied")
+                                    .font(.jetBrains(.body))
+                                    .foregroundColor(figmaColor.color.labelText())
+                                
                             } else if isHover {
                                 
-                                Text(figmaColor.hex).font(.jSemibold).foregroundColor(figmaColor.color.labelText())
+                                Text(figmaColor.hex)
+                                    .font(.jetBrains(.body))
+                                    .foregroundColor(figmaColor.color.labelText())
+                                
                             }
 
                         }

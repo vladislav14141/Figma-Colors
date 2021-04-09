@@ -20,12 +20,10 @@ import Foundation
 //    }
 //}
 
-class FigmaSection<Row: Identifiable & FigmaSectionProtocol>: Identifiable {
-//    var id: String {
-//        return name
-//    }
-    let id = UUID()
+class FigmaSection<Row: FigmaItem>: Identifiable {
 
+    let id = UUID()
+//    typealias Row = FigmaItem
     
     /// "danger"
     let name: String

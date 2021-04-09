@@ -61,6 +61,9 @@
 		7EB3B928261F06E1003DE911 /* GradientsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B927261F06E1003DE911 /* GradientsPage.swift */; };
 		7EB3B92B261F07B9003DE911 /* ComponentsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B92A261F07B9003DE911 /* ComponentsPage.swift */; };
 		7EB3B92E261F0A11003DE911 /* MockPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B92D261F0A11003DE911 /* MockPage.swift */; };
+		7EB3B935262004F0003DE911 /* TestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B934262004F0003DE911 /* TestPage.swift */; };
+		7EB3B938262019BC003DE911 /* ContentPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B937262019BC003DE911 /* ContentPage.swift */; };
+		7EB3B93F26201BCE003DE911 /* InfoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B93E26201BCE003DE911 /* InfoPage.swift */; };
 		7EB5DBA3260365BA00CAF4D7 /* NetworkWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DB9D260365BA00CAF4D7 /* NetworkWebSocket.swift */; };
 		7EB5DBA4260365BA00CAF4D7 /* DataPosterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DB9E260365BA00CAF4D7 /* DataPosterService.swift */; };
 		7EB5DBA5260365BA00CAF4D7 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DB9F260365BA00CAF4D7 /* NetworkService.swift */; };
@@ -130,6 +133,9 @@
 		7EB3B927261F06E1003DE911 /* GradientsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientsPage.swift; sourceTree = "<group>"; };
 		7EB3B92A261F07B9003DE911 /* ComponentsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsPage.swift; sourceTree = "<group>"; };
 		7EB3B92D261F0A11003DE911 /* MockPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPage.swift; sourceTree = "<group>"; };
+		7EB3B934262004F0003DE911 /* TestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPage.swift; sourceTree = "<group>"; };
+		7EB3B937262019BC003DE911 /* ContentPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPage.swift; sourceTree = "<group>"; };
+		7EB3B93E26201BCE003DE911 /* InfoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPage.swift; sourceTree = "<group>"; };
 		7EB5DB9D260365BA00CAF4D7 /* NetworkWebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkWebSocket.swift; sourceTree = "<group>"; };
 		7EB5DB9E260365BA00CAF4D7 /* DataPosterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPosterService.swift; sourceTree = "<group>"; };
 		7EB5DB9F260365BA00CAF4D7 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -245,10 +251,7 @@
 			children = (
 				7E391B062601955200227BAC /* FigmaController.swift */,
 				7E391B082601955200227BAC /* FigmaViewModel.swift */,
-				7EB3B921261F0569003DE911 /* ColorsPage.swift */,
-				7EB3B927261F06E1003DE911 /* GradientsPage.swift */,
-				7EB3B92A261F07B9003DE911 /* ComponentsPage.swift */,
-				7EB3B92D261F0A11003DE911 /* MockPage.swift */,
+				7EB3B930261FFA64003DE911 /* Pages */,
 				7EB3B924261F0602003DE911 /* PageHeaderView.swift */,
 				7E9B22F2261EC76800850A01 /* Cells */,
 				7E28D09B2610A4A7003EAB0F /* Views */,
@@ -329,6 +332,20 @@
 				7E9B2304261ECBC400850A01 /* JetBrainsMono-BoldItalic.ttf */,
 			);
 			path = fonts;
+			sourceTree = "<group>";
+		};
+		7EB3B930261FFA64003DE911 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				7EB3B937262019BC003DE911 /* ContentPage.swift */,
+				7EB3B93E26201BCE003DE911 /* InfoPage.swift */,
+				7EB3B921261F0569003DE911 /* ColorsPage.swift */,
+				7EB3B927261F06E1003DE911 /* GradientsPage.swift */,
+				7EB3B92A261F07B9003DE911 /* ComponentsPage.swift */,
+				7EB3B92D261F0A11003DE911 /* MockPage.swift */,
+				7EB3B934262004F0003DE911 /* TestPage.swift */,
+			);
+			path = Pages;
 			sourceTree = "<group>";
 		};
 		7EB5DB9C260365BA00CAF4D7 /* Network */ = {
@@ -451,6 +468,7 @@
 			files = (
 				7EB3B92E261F0A11003DE911 /* MockPage.swift in Sources */,
 				7E9B22E1261EC1BC00850A01 /* ImageItem.swift in Sources */,
+				7EB3B93F26201BCE003DE911 /* InfoPage.swift in Sources */,
 				7EB3B922261F0569003DE911 /* ColorsPage.swift in Sources */,
 				7ED0AC8A260627A800A49E3C /* NodeModel.swift in Sources */,
 				7E28D092261071F1003EAB0F /* Extension+JSON.swift in Sources */,
@@ -471,6 +489,7 @@
 				7E391B0B2601955200227BAC /* FigmaViewModel.swift in Sources */,
 				7E28D09E2610A4FC003EAB0F /* ExportModel.swift in Sources */,
 				7E2B82EE2600C0BF00C8CD74 /* CodeModel.swift in Sources */,
+				7EB3B935262004F0003DE911 /* TestPage.swift in Sources */,
 				7E2B82D226009DDF00C8CD74 /* Figma_ColorsApp.swift in Sources */,
 				7E28D0C626130DBC003EAB0F /* SettingsController.swift in Sources */,
 				7EB5DBA8260365BA00CAF4D7 /* NetworkDataFetcher.swift in Sources */,
@@ -482,6 +501,7 @@
 				7EB3B928261F06E1003DE911 /* GradientsPage.swift in Sources */,
 				7EE22E66260DD7ED002E8EDF /* Extension + View.swift in Sources */,
 				7E2B82ED2600C0BF00C8CD74 /* CodeController.swift in Sources */,
+				7EB3B938262019BC003DE911 /* ContentPage.swift in Sources */,
 				7E28D0CD261310D3003EAB0F /* Extension+Color.swift in Sources */,
 				7E9B2317261ECC2500850A01 /* Extension+Font.swift in Sources */,
 				7EB3B92B261F07B9003DE911 /* ComponentsPage.swift in Sources */,

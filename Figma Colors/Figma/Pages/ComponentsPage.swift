@@ -24,7 +24,7 @@ struct ComponentsPage: View {
             pinnedViews: [.sectionHeaders] )
         {
             ForEach(items) { section in
-                Section(header: PageHeaderView(title: section.name)) {
+                Section(header: PageHeaderView(title: "grey")) {
                     ForEach(section.rows) { row in
                         FigmaImageCellItem(item: row)
                     }

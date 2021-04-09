@@ -324,7 +324,7 @@ class FigmaViewModel: ObservableObject {
         }
     }
     
-    fileprivate func getSections<Row: Identifiable & FigmaSectionProtocol>(rows: [Row]) -> [FigmaSection<Row>]{
+    fileprivate func getSections<Row: FigmaItem>(rows: [Row]) -> [FigmaSection<Row>]{
         var dict = [String: FigmaSection<Row>]()
 
         rows.forEach {
@@ -340,7 +340,7 @@ class FigmaViewModel: ObservableObject {
     
     fileprivate func getFigmaColorRow(name: String, gradientNameComponents: [String] = [],rgb: NodeModel.Color, sheme: FigmaSheme) -> ColorItem {
         let figmaRow = ColorItem(figmaName: name)
-        figmaRow.gradientComponents = gradientNameComponents
+        figmaRow.gradientNameComponents = gradientNameComponents
         
         let row: ColorItem = colors[figmaRow.fullName] ?? figmaRow
         let figmaColor = FigmaColor(r: rgb.r, g: rgb.g, b: rgb.b, a: rgb.a)

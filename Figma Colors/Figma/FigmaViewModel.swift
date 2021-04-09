@@ -113,44 +113,6 @@ class FigmaViewModel: ObservableObject {
         colorItems.removeAll()
     }
     
-    func onExportAll() {
-        let dialog = NSOpenPanel();
-        
-        dialog.title                   = "Choose a file| Our Code World";
-        dialog.showsResizeIndicator    = true;
-        dialog.showsHiddenFiles        = false;
-        dialog.allowsMultipleSelection = false;
-        dialog.canChooseFiles = false;
-        dialog.canChooseDirectories = true;
-        dialog.prompt = "Save"
-        
-        if (dialog.runModal() ==  NSApplication.ModalResponse.OK) {
-            let result = dialog.url // Pathname of the file
-            
-            if (result != nil) {
-                
-                let path: String = result!.path
-                var colors: [ColorItem] = []
-                figmaColors.forEach {
-                    $0.rows.forEach {
-                        colors.append($0)
-                    }
-                }
-                directoryHelper.exportColors(colors: colors, directoryPath: path)
-//                print("path", path)
-                // path contains the file path e.g
-                // /Users/ourcodeworld/Desktop/file.txt
-            }
-            
-        } else {
-            // User clicked on "Cancel"
-            return
-        }
-    }
-    
-    
-    
-    
     func getData() {
         clearData()
         if fileKeyLight.isEmpty == false {
@@ -195,7 +157,7 @@ class FigmaViewModel: ObservableObject {
                     self.imageItemNameDict[value.name] = image
                     return key
                 }).joined(separator: ",")
-//
+
                 self.getImages(nodeIds: components, sheme: sheme)
                 self.getNode(nodeIds: components, nodeType: .components, sheme: sheme)
                 self.getNode(nodeIds: styles, nodeType: .styles, sheme: sheme)

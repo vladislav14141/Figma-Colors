@@ -18,24 +18,49 @@
 		7E28D0A926117B83003EAB0F /* ColorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0A826117B83003EAB0F /* ColorItem.swift */; };
 		7E28D0AD26117B99003EAB0F /* FigmaColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0AC26117B99003EAB0F /* FigmaColor.swift */; };
 		7E28D0B126117BB0003EAB0F /* FigmaSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0B026117BB0003EAB0F /* FigmaSection.swift */; };
-		7E28D0B82611A5AF003EAB0F /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0B72611A5AF003EAB0F /* NotificationService.swift */; };
+		7E28D0B82611A5AF003EAB0F /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0B72611A5AF003EAB0F /* Notifications.swift */; };
 		7E28D0C626130DBC003EAB0F /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0C326130DBC003EAB0F /* SettingsController.swift */; };
 		7E28D0C726130DBC003EAB0F /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0C426130DBC003EAB0F /* SettingsModel.swift */; };
 		7E28D0C826130DBC003EAB0F /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0C526130DBC003EAB0F /* SettingsViewModel.swift */; };
 		7E28D0CD261310D3003EAB0F /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0CC261310D3003EAB0F /* Extension+Color.swift */; };
 		7E2B82D226009DDF00C8CD74 /* Figma_ColorsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B82D126009DDF00C8CD74 /* Figma_ColorsApp.swift */; };
-		7E2B82D426009DDF00C8CD74 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B82D326009DDF00C8CD74 /* ContentView.swift */; };
 		7E2B82D926009DE000C8CD74 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E2B82D826009DE000C8CD74 /* Preview Assets.xcassets */; };
-		7E2B82E326009E8800C8CD74 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B82E226009E8800C8CD74 /* MainViewModel.swift */; };
 		7E2B82ED2600C0BF00C8CD74 /* CodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B82EA2600C0BF00C8CD74 /* CodeController.swift */; };
 		7E2B82EE2600C0BF00C8CD74 /* CodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B82EB2600C0BF00C8CD74 /* CodeModel.swift */; };
 		7E2B82EF2600C0BF00C8CD74 /* CodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B82EC2600C0BF00C8CD74 /* CodeViewModel.swift */; };
 		7E391B092601955200227BAC /* FigmaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E391B062601955200227BAC /* FigmaController.swift */; };
 		7E391B0A2601955200227BAC /* FigmaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E391B072601955200227BAC /* FigmaModel.swift */; };
 		7E391B0B2601955200227BAC /* FigmaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E391B082601955200227BAC /* FigmaViewModel.swift */; };
-		7E391B1026019C2300227BAC /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E391B0F26019C2300227BAC /* WebView.swift */; };
 		7E391B142601AF1600227BAC /* HTMLKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7E391B132601AF1600227BAC /* HTMLKit */; };
 		7E9B22CD261EA68D00850A01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B22CC261EA68D00850A01 /* Assets.xcassets */; };
+		7E9B22E1261EC1BC00850A01 /* ImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B22E0261EC1BC00850A01 /* ImageItem.swift */; };
+		7E9B22E4261EC1D400850A01 /* GradientItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B22E3261EC1D400850A01 /* GradientItem.swift */; };
+		7E9B22E7261EC6E100850A01 /* FigmaColorCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B22E6261EC6E100850A01 /* FigmaColorCellItem.swift */; };
+		7E9B22EA261EC70D00850A01 /* FigmaImageCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B22E9261EC70D00850A01 /* FigmaImageCellItem.swift */; };
+		7E9B22ED261EC72B00850A01 /* FigmaColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B22EC261EC72B00850A01 /* FigmaColorCell.swift */; };
+		7E9B22F0261EC75000850A01 /* FigmaGradientCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B22EF261EC75000850A01 /* FigmaGradientCellItem.swift */; };
+		7E9B2305261ECBC400850A01 /* JetBrainsMono-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B22F5261ECBC400850A01 /* JetBrainsMono-Thin.ttf */; };
+		7E9B2306261ECBC400850A01 /* JetBrainsMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B22F6261ECBC400850A01 /* JetBrainsMono-Bold.ttf */; };
+		7E9B2307261ECBC400850A01 /* JetBrainsMono-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B22F7261ECBC400850A01 /* JetBrainsMono-Italic.ttf */; };
+		7E9B2308261ECBC400850A01 /* JetBrainsMono-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B22F8261ECBC400850A01 /* JetBrainsMono-LightItalic.ttf */; };
+		7E9B2309261ECBC400850A01 /* JetBrainsMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B22F9261ECBC400850A01 /* JetBrainsMono-Regular.ttf */; };
+		7E9B230A261ECBC400850A01 /* JetBrainsMono-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B22FA261ECBC400850A01 /* JetBrainsMono-ExtraLightItalic.ttf */; };
+		7E9B230B261ECBC400850A01 /* JetBrainsMono-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B22FB261ECBC400850A01 /* JetBrainsMono-SemiBoldItalic.ttf */; };
+		7E9B230C261ECBC400850A01 /* JetBrainsMono-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B22FC261ECBC400850A01 /* JetBrainsMono-Light.ttf */; };
+		7E9B230D261ECBC400850A01 /* JetBrainsMono-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B22FD261ECBC400850A01 /* JetBrainsMono-MediumItalic.ttf */; };
+		7E9B230E261ECBC400850A01 /* JetBrainsMono-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B22FE261ECBC400850A01 /* JetBrainsMono-ExtraBold.ttf */; };
+		7E9B230F261ECBC400850A01 /* JetBrainsMono-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B22FF261ECBC400850A01 /* JetBrainsMono-SemiBold.ttf */; };
+		7E9B2310261ECBC400850A01 /* JetBrainsMono-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B2300261ECBC400850A01 /* JetBrainsMono-ExtraBoldItalic.ttf */; };
+		7E9B2311261ECBC400850A01 /* JetBrainsMono-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B2301261ECBC400850A01 /* JetBrainsMono-ThinItalic.ttf */; };
+		7E9B2312261ECBC400850A01 /* JetBrainsMono-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B2302261ECBC400850A01 /* JetBrainsMono-ExtraLight.ttf */; };
+		7E9B2313261ECBC400850A01 /* JetBrainsMono-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B2303261ECBC400850A01 /* JetBrainsMono-Medium.ttf */; };
+		7E9B2314261ECBC400850A01 /* JetBrainsMono-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B2304261ECBC400850A01 /* JetBrainsMono-BoldItalic.ttf */; };
+		7E9B2317261ECC2500850A01 /* Extension+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B2316261ECC2500850A01 /* Extension+Font.swift */; };
+		7EB3B922261F0569003DE911 /* ColorsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B921261F0569003DE911 /* ColorsPage.swift */; };
+		7EB3B925261F0602003DE911 /* PageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B924261F0602003DE911 /* PageHeaderView.swift */; };
+		7EB3B928261F06E1003DE911 /* GradientsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B927261F06E1003DE911 /* GradientsPage.swift */; };
+		7EB3B92B261F07B9003DE911 /* ComponentsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B92A261F07B9003DE911 /* ComponentsPage.swift */; };
+		7EB3B92E261F0A11003DE911 /* MockPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B92D261F0A11003DE911 /* MockPage.swift */; };
 		7EB5DBA3260365BA00CAF4D7 /* NetworkWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DB9D260365BA00CAF4D7 /* NetworkWebSocket.swift */; };
 		7EB5DBA4260365BA00CAF4D7 /* DataPosterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DB9E260365BA00CAF4D7 /* DataPosterService.swift */; };
 		7EB5DBA5260365BA00CAF4D7 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DB9F260365BA00CAF4D7 /* NetworkService.swift */; };
@@ -60,26 +85,51 @@
 		7E28D0A826117B83003EAB0F /* ColorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorItem.swift; sourceTree = "<group>"; };
 		7E28D0AC26117B99003EAB0F /* FigmaColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaColor.swift; sourceTree = "<group>"; };
 		7E28D0B026117BB0003EAB0F /* FigmaSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaSection.swift; sourceTree = "<group>"; };
-		7E28D0B72611A5AF003EAB0F /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		7E28D0B72611A5AF003EAB0F /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		7E28D0C326130DBC003EAB0F /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		7E28D0C426130DBC003EAB0F /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		7E28D0C526130DBC003EAB0F /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		7E28D0CC261310D3003EAB0F /* Extension+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Color.swift"; sourceTree = "<group>"; };
 		7E2B82CE26009DDF00C8CD74 /* Figma Colors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Figma Colors.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E2B82D126009DDF00C8CD74 /* Figma_ColorsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Figma_ColorsApp.swift; sourceTree = "<group>"; };
-		7E2B82D326009DDF00C8CD74 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7E2B82D826009DE000C8CD74 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7E2B82DA26009DE000C8CD74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E2B82DB26009DE000C8CD74 /* Figma_Colors.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Figma_Colors.entitlements; sourceTree = "<group>"; };
-		7E2B82E226009E8800C8CD74 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		7E2B82EA2600C0BF00C8CD74 /* CodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeController.swift; sourceTree = "<group>"; };
 		7E2B82EB2600C0BF00C8CD74 /* CodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeModel.swift; sourceTree = "<group>"; };
 		7E2B82EC2600C0BF00C8CD74 /* CodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewModel.swift; sourceTree = "<group>"; };
 		7E391B062601955200227BAC /* FigmaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaController.swift; sourceTree = "<group>"; };
 		7E391B072601955200227BAC /* FigmaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaModel.swift; sourceTree = "<group>"; };
 		7E391B082601955200227BAC /* FigmaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaViewModel.swift; sourceTree = "<group>"; };
-		7E391B0F26019C2300227BAC /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		7E9B22CC261EA68D00850A01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7E9B22E0261EC1BC00850A01 /* ImageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageItem.swift; sourceTree = "<group>"; };
+		7E9B22E3261EC1D400850A01 /* GradientItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientItem.swift; sourceTree = "<group>"; };
+		7E9B22E6261EC6E100850A01 /* FigmaColorCellItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaColorCellItem.swift; sourceTree = "<group>"; };
+		7E9B22E9261EC70D00850A01 /* FigmaImageCellItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaImageCellItem.swift; sourceTree = "<group>"; };
+		7E9B22EC261EC72B00850A01 /* FigmaColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaColorCell.swift; sourceTree = "<group>"; };
+		7E9B22EF261EC75000850A01 /* FigmaGradientCellItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaGradientCellItem.swift; sourceTree = "<group>"; };
+		7E9B22F5261ECBC400850A01 /* JetBrainsMono-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Thin.ttf"; sourceTree = "<group>"; };
+		7E9B22F6261ECBC400850A01 /* JetBrainsMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Bold.ttf"; sourceTree = "<group>"; };
+		7E9B22F7261ECBC400850A01 /* JetBrainsMono-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Italic.ttf"; sourceTree = "<group>"; };
+		7E9B22F8261ECBC400850A01 /* JetBrainsMono-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-LightItalic.ttf"; sourceTree = "<group>"; };
+		7E9B22F9261ECBC400850A01 /* JetBrainsMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Regular.ttf"; sourceTree = "<group>"; };
+		7E9B22FA261ECBC400850A01 /* JetBrainsMono-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		7E9B22FB261ECBC400850A01 /* JetBrainsMono-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		7E9B22FC261ECBC400850A01 /* JetBrainsMono-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Light.ttf"; sourceTree = "<group>"; };
+		7E9B22FD261ECBC400850A01 /* JetBrainsMono-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-MediumItalic.ttf"; sourceTree = "<group>"; };
+		7E9B22FE261ECBC400850A01 /* JetBrainsMono-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-ExtraBold.ttf"; sourceTree = "<group>"; };
+		7E9B22FF261ECBC400850A01 /* JetBrainsMono-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-SemiBold.ttf"; sourceTree = "<group>"; };
+		7E9B2300261ECBC400850A01 /* JetBrainsMono-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		7E9B2301261ECBC400850A01 /* JetBrainsMono-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-ThinItalic.ttf"; sourceTree = "<group>"; };
+		7E9B2302261ECBC400850A01 /* JetBrainsMono-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-ExtraLight.ttf"; sourceTree = "<group>"; };
+		7E9B2303261ECBC400850A01 /* JetBrainsMono-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Medium.ttf"; sourceTree = "<group>"; };
+		7E9B2304261ECBC400850A01 /* JetBrainsMono-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-BoldItalic.ttf"; sourceTree = "<group>"; };
+		7E9B2316261ECC2500850A01 /* Extension+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Font.swift"; sourceTree = "<group>"; };
+		7EB3B921261F0569003DE911 /* ColorsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsPage.swift; sourceTree = "<group>"; };
+		7EB3B924261F0602003DE911 /* PageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageHeaderView.swift; sourceTree = "<group>"; };
+		7EB3B927261F06E1003DE911 /* GradientsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientsPage.swift; sourceTree = "<group>"; };
+		7EB3B92A261F07B9003DE911 /* ComponentsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsPage.swift; sourceTree = "<group>"; };
+		7EB3B92D261F0A11003DE911 /* MockPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPage.swift; sourceTree = "<group>"; };
 		7EB5DB9D260365BA00CAF4D7 /* NetworkWebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkWebSocket.swift; sourceTree = "<group>"; };
 		7EB5DB9E260365BA00CAF4D7 /* DataPosterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPosterService.swift; sourceTree = "<group>"; };
 		7EB5DB9F260365BA00CAF4D7 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -117,9 +167,9 @@
 		7E28D0A626117B61003EAB0F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7EBD532726171DE900D69B9B /* Colors */,
 				7E28D09D2610A4FC003EAB0F /* ExportModel.swift */,
 				7E28D0A02610A506003EAB0F /* IOSExportModel.swift */,
-				7EBD532726171DE900D69B9B /* Colors */,
 				7ED0AC89260627A800A49E3C /* NodeModel.swift */,
 				7E391B072601955200227BAC /* FigmaModel.swift */,
 				7E2343B32619DDA300875A11 /* FigmaImagesModel.swift */,
@@ -156,26 +206,17 @@
 		7E2B82D026009DDF00C8CD74 /* Figma Colors */ = {
 			isa = PBXGroup;
 			children = (
-				7E28D0B72611A5AF003EAB0F /* NotificationService.swift */,
+				7E9B22CF261EB95500850A01 /* Support */,
+				7E2B82DB26009DE000C8CD74 /* Figma_Colors.entitlements */,
+				7E2B82DA26009DE000C8CD74 /* Info.plist */,
 				7E2B82D126009DDF00C8CD74 /* Figma_ColorsApp.swift */,
-				7E2B82D326009DDF00C8CD74 /* ContentView.swift */,
-				7E2B82E226009E8800C8CD74 /* MainViewModel.swift */,
-				7E391B0F26019C2300227BAC /* WebView.swift */,
-				7E28D08E261060C0003EAB0F /* DirectoryHelper.swift */,
-				7E28D0A326117B35003EAB0F /* AppSettings.swift */,
+				7E9B22D3261EB9B800850A01 /* Helpers */,
 				7E28D0CA26130DC1003EAB0F /* Settings */,
 				7E391B0D2601955700227BAC /* Figma */,
 				7E2B82F12600C0C400C8CD74 /* Code */,
-				7EBD53212616E9C500D69B9B /* Button.swift */,
-				7E9B22CC261EA68D00850A01 /* Assets.xcassets */,
-				7EBD53242616E9DE00D69B9B /* Textfield.swift */,
-				7E2B82DA26009DE000C8CD74 /* Info.plist */,
-				7E2B82DB26009DE000C8CD74 /* Figma_Colors.entitlements */,
-				7EBD532B26173ACD00D69B9B /* Extension+Collection.swift */,
-				7EE22E51260DD7ED002E8EDF /* Extension + View.swift */,
-				7E28D091261071F1003EAB0F /* Extension+JSON.swift */,
-				7E28D0CC261310D3003EAB0F /* Extension+Color.swift */,
+				7E9B22D1261EB99600850A01 /* Views */,
 				7EB5DB9C260365BA00CAF4D7 /* Network */,
+				7E9B22D2261EB9A400850A01 /* Extension */,
 				7E2B82D726009DE000C8CD74 /* Preview Content */,
 			);
 			path = "Figma Colors";
@@ -204,10 +245,90 @@
 			children = (
 				7E391B062601955200227BAC /* FigmaController.swift */,
 				7E391B082601955200227BAC /* FigmaViewModel.swift */,
+				7EB3B921261F0569003DE911 /* ColorsPage.swift */,
+				7EB3B927261F06E1003DE911 /* GradientsPage.swift */,
+				7EB3B92A261F07B9003DE911 /* ComponentsPage.swift */,
+				7EB3B92D261F0A11003DE911 /* MockPage.swift */,
+				7EB3B924261F0602003DE911 /* PageHeaderView.swift */,
+				7E9B22F2261EC76800850A01 /* Cells */,
 				7E28D09B2610A4A7003EAB0F /* Views */,
 				7E28D0A626117B61003EAB0F /* Model */,
 			);
 			path = Figma;
+			sourceTree = "<group>";
+		};
+		7E9B22CF261EB95500850A01 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				7E9B22F4261ECBC400850A01 /* fonts */,
+				7E9B22CC261EA68D00850A01 /* Assets.xcassets */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		7E9B22D1261EB99600850A01 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7EBD53212616E9C500D69B9B /* Button.swift */,
+				7EBD53242616E9DE00D69B9B /* Textfield.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7E9B22D2261EB9A400850A01 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7EBD532B26173ACD00D69B9B /* Extension+Collection.swift */,
+				7EE22E51260DD7ED002E8EDF /* Extension + View.swift */,
+				7E28D091261071F1003EAB0F /* Extension+JSON.swift */,
+				7E9B2316261ECC2500850A01 /* Extension+Font.swift */,
+				7E28D0CC261310D3003EAB0F /* Extension+Color.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		7E9B22D3261EB9B800850A01 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7E28D0A326117B35003EAB0F /* AppSettings.swift */,
+				7E28D0B72611A5AF003EAB0F /* Notifications.swift */,
+				7E28D08E261060C0003EAB0F /* DirectoryHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		7E9B22F2261EC76800850A01 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7E9B22EF261EC75000850A01 /* FigmaGradientCellItem.swift */,
+				7E9B22EC261EC72B00850A01 /* FigmaColorCell.swift */,
+				7E9B22E9261EC70D00850A01 /* FigmaImageCellItem.swift */,
+				7E9B22E6261EC6E100850A01 /* FigmaColorCellItem.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		7E9B22F4261ECBC400850A01 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7E9B22F5261ECBC400850A01 /* JetBrainsMono-Thin.ttf */,
+				7E9B22F6261ECBC400850A01 /* JetBrainsMono-Bold.ttf */,
+				7E9B22F7261ECBC400850A01 /* JetBrainsMono-Italic.ttf */,
+				7E9B22F8261ECBC400850A01 /* JetBrainsMono-LightItalic.ttf */,
+				7E9B22F9261ECBC400850A01 /* JetBrainsMono-Regular.ttf */,
+				7E9B22FA261ECBC400850A01 /* JetBrainsMono-ExtraLightItalic.ttf */,
+				7E9B22FB261ECBC400850A01 /* JetBrainsMono-SemiBoldItalic.ttf */,
+				7E9B22FC261ECBC400850A01 /* JetBrainsMono-Light.ttf */,
+				7E9B22FD261ECBC400850A01 /* JetBrainsMono-MediumItalic.ttf */,
+				7E9B22FE261ECBC400850A01 /* JetBrainsMono-ExtraBold.ttf */,
+				7E9B22FF261ECBC400850A01 /* JetBrainsMono-SemiBold.ttf */,
+				7E9B2300261ECBC400850A01 /* JetBrainsMono-ExtraBoldItalic.ttf */,
+				7E9B2301261ECBC400850A01 /* JetBrainsMono-ThinItalic.ttf */,
+				7E9B2302261ECBC400850A01 /* JetBrainsMono-ExtraLight.ttf */,
+				7E9B2303261ECBC400850A01 /* JetBrainsMono-Medium.ttf */,
+				7E9B2304261ECBC400850A01 /* JetBrainsMono-BoldItalic.ttf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 		7EB5DB9C260365BA00CAF4D7 /* Network */ = {
@@ -229,6 +350,8 @@
 				7E28D0B026117BB0003EAB0F /* FigmaSection.swift */,
 				7E28D0AC26117B99003EAB0F /* FigmaColor.swift */,
 				7E28D0A826117B83003EAB0F /* ColorItem.swift */,
+				7E9B22E3261EC1D400850A01 /* GradientItem.swift */,
+				7E9B22E0261EC1BC00850A01 /* ImageItem.swift */,
 			);
 			path = Colors;
 			sourceTree = "<group>";
@@ -298,8 +421,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E9B230E261ECBC400850A01 /* JetBrainsMono-ExtraBold.ttf in Resources */,
+				7E9B230A261ECBC400850A01 /* JetBrainsMono-ExtraLightItalic.ttf in Resources */,
+				7E9B2307261ECBC400850A01 /* JetBrainsMono-Italic.ttf in Resources */,
 				7E2B82D926009DE000C8CD74 /* Preview Assets.xcassets in Resources */,
+				7E9B2310261ECBC400850A01 /* JetBrainsMono-ExtraBoldItalic.ttf in Resources */,
+				7E9B2309261ECBC400850A01 /* JetBrainsMono-Regular.ttf in Resources */,
+				7E9B2311261ECBC400850A01 /* JetBrainsMono-ThinItalic.ttf in Resources */,
 				7E9B22CD261EA68D00850A01 /* Assets.xcassets in Resources */,
+				7E9B230F261ECBC400850A01 /* JetBrainsMono-SemiBold.ttf in Resources */,
+				7E9B2308261ECBC400850A01 /* JetBrainsMono-LightItalic.ttf in Resources */,
+				7E9B230B261ECBC400850A01 /* JetBrainsMono-SemiBoldItalic.ttf in Resources */,
+				7E9B230C261ECBC400850A01 /* JetBrainsMono-Light.ttf in Resources */,
+				7E9B2312261ECBC400850A01 /* JetBrainsMono-ExtraLight.ttf in Resources */,
+				7E9B2313261ECBC400850A01 /* JetBrainsMono-Medium.ttf in Resources */,
+				7E9B2305261ECBC400850A01 /* JetBrainsMono-Thin.ttf in Resources */,
+				7E9B2314261ECBC400850A01 /* JetBrainsMono-BoldItalic.ttf in Resources */,
+				7E9B230D261ECBC400850A01 /* JetBrainsMono-MediumItalic.ttf in Resources */,
+				7E9B2306261ECBC400850A01 /* JetBrainsMono-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,20 +449,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EB3B92E261F0A11003DE911 /* MockPage.swift in Sources */,
+				7E9B22E1261EC1BC00850A01 /* ImageItem.swift in Sources */,
+				7EB3B922261F0569003DE911 /* ColorsPage.swift in Sources */,
 				7ED0AC8A260627A800A49E3C /* NodeModel.swift in Sources */,
 				7E28D092261071F1003EAB0F /* Extension+JSON.swift in Sources */,
 				7E391B0A2601955200227BAC /* FigmaModel.swift in Sources */,
 				7E28D08F261060C0003EAB0F /* DirectoryHelper.swift in Sources */,
+				7EB3B925261F0602003DE911 /* PageHeaderView.swift in Sources */,
 				7E28D0AD26117B99003EAB0F /* FigmaColor.swift in Sources */,
+				7E9B22E4261EC1D400850A01 /* GradientItem.swift in Sources */,
 				7EB5DBA6260365BA00CAF4D7 /* DataFetcherService.swift in Sources */,
+				7E9B22EA261EC70D00850A01 /* FigmaImageCellItem.swift in Sources */,
 				7E28D0C726130DBC003EAB0F /* SettingsModel.swift in Sources */,
+				7E9B22F0261EC75000850A01 /* FigmaGradientCellItem.swift in Sources */,
+				7E9B22E7261EC6E100850A01 /* FigmaColorCellItem.swift in Sources */,
 				7EB5DBA3260365BA00CAF4D7 /* NetworkWebSocket.swift in Sources */,
 				7E28D0A12610A506003EAB0F /* IOSExportModel.swift in Sources */,
-				7E391B1026019C2300227BAC /* WebView.swift in Sources */,
 				7EBD53222616E9C500D69B9B /* Button.swift in Sources */,
 				7EBD53252616E9DE00D69B9B /* Textfield.swift in Sources */,
 				7E391B0B2601955200227BAC /* FigmaViewModel.swift in Sources */,
-				7E2B82D426009DDF00C8CD74 /* ContentView.swift in Sources */,
 				7E28D09E2610A4FC003EAB0F /* ExportModel.swift in Sources */,
 				7E2B82EE2600C0BF00C8CD74 /* CodeModel.swift in Sources */,
 				7E2B82D226009DDF00C8CD74 /* Figma_ColorsApp.swift in Sources */,
@@ -332,19 +477,22 @@
 				7E28D0A426117B35003EAB0F /* AppSettings.swift in Sources */,
 				7E2343B42619DDA300875A11 /* FigmaImagesModel.swift in Sources */,
 				7E28D0C826130DBC003EAB0F /* SettingsViewModel.swift in Sources */,
-				7E28D0B82611A5AF003EAB0F /* NotificationService.swift in Sources */,
+				7E28D0B82611A5AF003EAB0F /* Notifications.swift in Sources */,
 				7E2B82EF2600C0BF00C8CD74 /* CodeViewModel.swift in Sources */,
+				7EB3B928261F06E1003DE911 /* GradientsPage.swift in Sources */,
 				7EE22E66260DD7ED002E8EDF /* Extension + View.swift in Sources */,
 				7E2B82ED2600C0BF00C8CD74 /* CodeController.swift in Sources */,
 				7E28D0CD261310D3003EAB0F /* Extension+Color.swift in Sources */,
+				7E9B2317261ECC2500850A01 /* Extension+Font.swift in Sources */,
+				7EB3B92B261F07B9003DE911 /* ComponentsPage.swift in Sources */,
 				7E391B092601955200227BAC /* FigmaController.swift in Sources */,
 				7EB5DBA7260365BA00CAF4D7 /* NetworkDataPoster.swift in Sources */,
 				7EB5DBA4260365BA00CAF4D7 /* DataPosterService.swift in Sources */,
 				7E28D0B126117BB0003EAB0F /* FigmaSection.swift in Sources */,
 				7E28D0A926117B83003EAB0F /* ColorItem.swift in Sources */,
 				7EB5DBA5260365BA00CAF4D7 /* NetworkService.swift in Sources */,
-				7E2B82E326009E8800C8CD74 /* MainViewModel.swift in Sources */,
 				7E28D0992610A4A2003EAB0F /* Tooltip.swift in Sources */,
+				7E9B22ED261EC72B00850A01 /* FigmaColorCell.swift in Sources */,
 				7EBD532C26173ACD00D69B9B /* Extension+Collection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

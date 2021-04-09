@@ -13,8 +13,18 @@ struct DirectoryHelper {
     var folderName: String = "Figma Colors"
     let storage = ExportStorage.shared
     
-    func downloadAssets() {
+    func downloadAssets(directoryPath: String) {
+        guard let assets = createAssets(directoryPath: directoryPath) else { return }
         
+        if storage.colors.isEmpty == false, let folder = createFolder(name: "colors", atPath: assets) {
+            let colors = storage.colors.flatMap({$0.rows.map({$0})})
+            saveColors(colors: colors, at: folder)
+        }
+        
+        if storage.gradient.isEmpty == false, let folder = createFolder(name: "gradients", atPath: assets) {
+            let gradients = storage.gradient.flatMap({$0.rows.flatMap({$0.colors.map({$0})})})
+            saveColors(colors: gradients, at: folder)
+        }
     }
     
     func exportColors(colors: [ColorItem], directoryPath: String) {
@@ -24,7 +34,7 @@ struct DirectoryHelper {
         saveColors(colors: colors, at: folder)
     }
     
-    func saveColors(colors: [ColorItem], at path: String) {
+    fileprivate func saveColors(colors: [ColorItem], at path: String) {
         colors.forEach { color in
             let components = color.figmaNameComponents
             var path = path
@@ -44,7 +54,7 @@ struct DirectoryHelper {
         }
     }
     
-    func createFolder(name: String? = nil, atPath: String) -> String? {
+    fileprivate func createFolder(name: String? = nil, atPath: String) -> String? {
         let name = name ?? folderName
         let downloadsDirectoryWithFolder = atPath + "/" + name
 
@@ -62,7 +72,7 @@ struct DirectoryHelper {
         }
     }
     
-    func createColorset(name: String, directoryPath: String) -> String? {
+    fileprivate func createColorset(name: String, directoryPath: String) -> String? {
         
         do {
             let fullPath = "\(directoryPath)/\(name).colorset"
@@ -77,7 +87,7 @@ struct DirectoryHelper {
         }
     }
     
-    func createAssets(name: String = "Assets", directoryPath: String) -> String? {
+    fileprivate func createAssets(name: String = "Assets", directoryPath: String) -> String? {
         
         do {
             let path = "\(directoryPath)"
@@ -107,7 +117,7 @@ struct DirectoryHelper {
         }
     }
     
-    func printInConsole(_ message:Any){
+    fileprivate func printInConsole(_ message:Any){
         print("====================================")
         print("\(message)")
         print("====================================")
@@ -127,7 +137,7 @@ struct DirectoryHelper {
         createContentsJSON(folderPath: colorSet, data: getJson(color: color))
     }
     
-    func getJson(color: ColorItem) -> Data? {
+    fileprivate func getJson(color: ColorItem) -> Data? {
         
         var dictionary: [String: Any] = ["info": ["author": "xcode", "version": 1]]
         var colors: [[String: Any]] = []
@@ -174,12 +184,12 @@ struct DirectoryHelper {
         return dictionary.toJSON()
     }
     
-    func createContentsJSON(folderPath: String, data: Data?) {
+    fileprivate func createContentsJSON(folderPath: String, data: Data?) {
         fileManager.createFile(atPath: "\(folderPath)/Contents.json", contents: data, attributes: nil)
         print("Writing \(folderPath)")
     }
     
-    func hexStringToUIColor(hex: String) -> (CGFloat, CGFloat, CGFloat, CGFloat){
+    fileprivate func hexStringToUIColor(hex: String) -> (CGFloat, CGFloat, CGFloat, CGFloat){
         let r, g, b, a: CGFloat
         let hex = hex.hasPrefix("#") ? String(hex.dropFirst()) : hex
         

@@ -52,12 +52,7 @@ class IOSAssetsExportModel: ExportModel {
                 
                 let path: String = result!.path
                 var colors: [ColorItem] = []
-                figmaColors.forEach {
-                    $0.rows.forEach {
-                        colors.append($0)
-                    }
-                }
-                directoryHelper.exportColors(colors: colors, directoryPath: path)
+                directoryHelper.downloadAssets(directoryPath: path)
                 print("path", path)
                 // path contains the file path e.g
                 // /Users/ourcodeworld/Desktop/file.txt

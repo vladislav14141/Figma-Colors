@@ -65,6 +65,7 @@
 		7EB3B938262019BC003DE911 /* ContentPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B937262019BC003DE911 /* ContentPage.swift */; };
 		7EB3B93F26201BCE003DE911 /* InfoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B93E26201BCE003DE911 /* InfoPage.swift */; };
 		7EB3B94626202ED2003DE911 /* FigmaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B94526202ED2003DE911 /* FigmaItem.swift */; };
+		7EB3B9542621751C003DE911 /* FigmaGradientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B9532621751C003DE911 /* FigmaGradientCell.swift */; };
 		7EB5DBA3260365BA00CAF4D7 /* NetworkWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DB9D260365BA00CAF4D7 /* NetworkWebSocket.swift */; };
 		7EB5DBA4260365BA00CAF4D7 /* DataPosterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DB9E260365BA00CAF4D7 /* DataPosterService.swift */; };
 		7EB5DBA5260365BA00CAF4D7 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DB9F260365BA00CAF4D7 /* NetworkService.swift */; };
@@ -138,6 +139,7 @@
 		7EB3B937262019BC003DE911 /* ContentPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPage.swift; sourceTree = "<group>"; };
 		7EB3B93E26201BCE003DE911 /* InfoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPage.swift; sourceTree = "<group>"; };
 		7EB3B94526202ED2003DE911 /* FigmaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaItem.swift; sourceTree = "<group>"; };
+		7EB3B9532621751C003DE911 /* FigmaGradientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaGradientCell.swift; sourceTree = "<group>"; };
 		7EB5DB9D260365BA00CAF4D7 /* NetworkWebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkWebSocket.swift; sourceTree = "<group>"; };
 		7EB5DB9E260365BA00CAF4D7 /* DataPosterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPosterService.swift; sourceTree = "<group>"; };
 		7EB5DB9F260365BA00CAF4D7 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				7E9B22EF261EC75000850A01 /* FigmaGradientCellItem.swift */,
+				7EB3B9532621751C003DE911 /* FigmaGradientCell.swift */,
 				7E9B22EC261EC72B00850A01 /* FigmaColorCell.swift */,
 				7E9B22E9261EC70D00850A01 /* FigmaImageCellItem.swift */,
 				7E9B22E6261EC6E100850A01 /* FigmaColorCellItem.swift */,
@@ -511,6 +514,7 @@
 				7E391B092601955200227BAC /* FigmaController.swift in Sources */,
 				7EB5DBA7260365BA00CAF4D7 /* NetworkDataPoster.swift in Sources */,
 				7EB5DBA4260365BA00CAF4D7 /* DataPosterService.swift in Sources */,
+				7EB3B9542621751C003DE911 /* FigmaGradientCell.swift in Sources */,
 				7E28D0B126117BB0003EAB0F /* FigmaSection.swift in Sources */,
 				7E28D0A926117B83003EAB0F /* ColorItem.swift in Sources */,
 				7EB5DBA5260365BA00CAF4D7 /* NetworkService.swift in Sources */,

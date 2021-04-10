@@ -68,8 +68,6 @@ struct FigmaColorCellItem: View {
             configuration
                 .label
                 .opacity(configuration.isPressed ? 0.8 : 1)
-            
-            
         }
     }
 }

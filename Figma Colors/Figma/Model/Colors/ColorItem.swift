@@ -36,6 +36,13 @@ class ColorItem: FigmaItem  {
         self.light = light
         self.dark = dark
     }
+    
+    func setColor(_ color: FigmaColor, for sheme: FigmaSheme) {
+        switch sheme {
+        case .dark: dark = color
+        case .light: light = color
+        }
+    }
 }
 
 

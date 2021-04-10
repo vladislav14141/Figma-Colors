@@ -210,6 +210,8 @@ class FigmaViewModel: ObservableObject {
     fileprivate func onFetchedGradient(value: NodeModel.Node, fill: NodeModel.Fill, sheme: FigmaSheme, subname: String) {
         //                            var gradients = [GradientItem]()
         var gradientsColors = [ColorItem]()
+        var gradientsColorses = [FigmaColor]()
+
         var positions = [Float]()
         let start: UnitPoint = fill.gradientHandlePositions?.first.map({UnitPoint(x: CGFloat($0.x), y: CGFloat($0.y))}) ?? UnitPoint.init(x: 0, y: 0)
         let end = fill.gradientHandlePositions?[safe:1].map({UnitPoint(x: CGFloat($0.x), y: CGFloat($0.y))}) ?? UnitPoint.init(x: 1, y: 1)
@@ -219,23 +221,21 @@ class FigmaViewModel: ObservableObject {
                 positions.append(stop.position)
                 
                 let subname2 = stops.count == 1 ? "" : "\(i + 1)"
-                if let opacity = fill.opacity {
-                    let color = NodeModel.Color(r: stop.color.r, g: stop.color.g, b: stop.color.b, a: stop.color.a * opacity)
-                    let row = self.getFigmaColorRow(name: value.document.name, gradientNameComponents: [subname, subname2].filter({!$0.isEmpty}),rgb: color, sheme: sheme)
-                    gradientsColors.append(row)
-                } else {
-                    let row = self.getFigmaColorRow(name: value.document.name, gradientNameComponents: [subname, subname2].filter({!$0.isEmpty}),rgb: stop.color, sheme: sheme)
-                    gradientsColors.append(row)
-                    
-                }
+                let viewOpacity = fill.opacity ?? 1
+                let color = NodeModel.Color(r: stop.color.r, g: stop.color.g, b: stop.color.b, a: stop.color.a * viewOpacity)
+                let row = self.getFigmaColorRow(name: value.document.name, gradientNameComponents: [subname, subname2].filter({!$0.isEmpty}),rgb: color, sheme: sheme)
+                gradientsColors.append(row)
             }
         }
+        
+        let gradient = FigmaGradient(figmaName: value.document.name, colors: gradientsColorses, location: positions, start: start, end: end)
         
         if let item = self.gradientItem[value.document.name] {
             gradientItems.append(item)
         } else {
             
-            let gradientItem = GradientItem(figmaName: value.document.name, colors: gradientsColors, colorLocation: positions, start: start, end: end)
+            let gradientItem = GradientItem(figmaName: value.document.name, colors: gradientsColors)
+            gradientItem.setGradient(gradient, for: sheme)
             self.gradientItem[value.document.name] = gradientItem
             gradientItems.append(gradientItem)
         }
@@ -246,9 +246,6 @@ class FigmaViewModel: ObservableObject {
             if let size = value.document.absoluteBoundingBox {
                 self.imageItemDict[key]?.size = .init(width: size.width, height: size.height)
             }
-            
-                
-            
         }
     }
     

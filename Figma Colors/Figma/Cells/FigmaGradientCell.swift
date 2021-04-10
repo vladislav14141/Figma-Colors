@@ -7,16 +7,14 @@
 
 import SwiftUI
 
-struct FigmaGradientCell {
+struct FigmaGradientCellItem: View {
     let gradientItem: FigmaGradient
     
-    @State var hoveredItem: ColorItem?
+    @State var hoveredItem: FigmaColor?
     @State var isHoveredView = false
 
     var body: some View {
-        VStack {
-            Text("").font(.headline).foregroundColor(.label)
-            
+        VStack(alignment: .leading, spacing: 16) {
             LinearGradient(gradient: gradientItem.gradient, startPoint: gradientItem.start, endPoint: gradientItem.end)
                 .onHover { hover in
                     withAnimation(.easeInOut) {
@@ -32,35 +30,39 @@ struct FigmaGradientCell {
                             ForEach(gradientItem.colors) { figmaColor in
                                 
 //                                FigmaColorCellItem(figmaColor: figmaColor, scheme: .light)
-//                                    .onHover { hovered in
-//                                        withAnimation(.easeInOut) {
-//
-//                                            hoveredItem = hovered ? figmaColor : nil
-//                                        }
-//                                    }
-//                                    .frame(width: hoverWidth(item: figmaColor, reader: reader))
+                                figmaColor.color
+                                    .onHover { hovered in
+                                        withAnimation(.easeInOut) {
+                                            hoveredItem = figmaColor
+                                            print(hovered, figmaColor.blue)
+                                        }
+                                    }
+                                    .frame(width: hoverWidth(item: figmaColor, reader: reader))
                             }
                         }
                     }.isHidden(!isHoveredView)
-                ).foregroundColor(gradientItem.colors.first?.color.labelText())
+                )
+                .foregroundColor(gradientItem.colors.first?.color.labelText())
+                .cornerRadius(16)
+                .frame(height: 120)
+            
+            Text(gradientItem.shortName).customFont(.callout).foregroundColor(.label)
         }
-        .cornerRadius(16)
-        .frame(height: 120)
     }
-
-func hoverWidth(item: ColorItem, reader: GeometryProxy) -> CGFloat {
-    let hoveredWidth = reader.frame(in: .local).width / 2 * 1.5
-    let unhovered = (reader.frame(in: .local).width - hoveredWidth) / (CGFloat(gradientItem.colors.count) - 1)
-    print(hoveredWidth," as ", unhovered)
     
-    if let hover = hoveredItem {
-        if (hover.id == item.id) {
-            return hoveredWidth
+    func hoverWidth(item: FigmaColor, reader: GeometryProxy) -> CGFloat {
+        let hoveredWidth = reader.frame(in: .local).width / 2 * 1.3
+        let unhovered = (reader.frame(in: .local).width - hoveredWidth) / (CGFloat(gradientItem.colors.count) - 1)
+//        print(hoveredWidth," as ", unhovered)
+        
+        if let hover = hoveredItem {
+            if (hover.id == item.id) {
+                return hoveredWidth
+            } else {
+                return (reader.frame(in: .local).width - hoveredWidth) / (CGFloat(gradientItem.colors.count) - 1)
+            }
         } else {
-            return (reader.frame(in: .local).width - hoveredWidth) / (CGFloat(gradientItem.colors.count) - 1)
+            return reader.frame(in: .local).width / CGFloat(gradientItem.colors.count)
         }
-    } else {
-        return reader.frame(in: .local).width / CGFloat(gradientItem.colors.count)
     }
-}
 }

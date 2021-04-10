@@ -11,7 +11,10 @@ import SwiftUI
 class GradientItem: FigmaItem {
     var light: FigmaGradient?
     var dark: FigmaGradient?
-    var colors: [ColorItem]
+    
+    var colors: [ColorItem] = []
+    private var colorsCache: [String: ColorItem] = [:]
+    
     internal init(figmaName: String, colors: [ColorItem]) {
         self.colors = colors
         super.init(figmaName: figmaName)
@@ -23,6 +26,17 @@ class GradientItem: FigmaItem {
         case .light: self.light = gradient
             
         }
+    }
+    
+    func setColors(_ colors: [FigmaColor], for sheme: FigmaSheme) {
+//        colors.forEach {
+//            let color = colorsCache[$0.]
+//        }
+//        switch sheme {
+//        case .dark: self.dark = gradient
+//        case .light: self.light = gradient
+//            
+//        }
     }
 }
 

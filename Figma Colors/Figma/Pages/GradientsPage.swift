@@ -29,23 +29,8 @@ struct GradientsPage: View {
                     
                     
                     ForEach(section.rows) { row in
-                        FigmaGradientCellItem(gradientItem: row, sheme: .light)
-//                        HStack(alignment: .bottom, spacing: 16) {
-//
-//                            HStack(spacing: 8) {
-//
-//                                FigmaGradientCellItem(gradientItem: row, sheme: .light).frame(width: 160)
-//                                FigmaGradientCellItem(gradientItem: row, sheme: .dark).frame(width: 160)
-//                            }
-//                            Divider().frame(height: 120)
-//                            HStack(spacing: 8) {
-//
-//                                ForEach(row.colors) { color in
-//                                    FigmaColorCell(colorItem: color).frame(width: 120)
-//
-//                                }
-//                            }
-//                        }
+                        FigmaGradientCell(gradientItem: row)
+
                     }
                 }
             }

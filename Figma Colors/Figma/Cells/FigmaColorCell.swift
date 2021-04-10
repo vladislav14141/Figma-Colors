@@ -41,7 +41,6 @@ struct FigmaColorCell: View {
                 .frame(minWidth: 120, maxWidth: .infinity, alignment: .leading)
                 .lineLimit(1)
                 .customFont(.callout)
-//                .font(.jetBrains(.callout))
                 .foregroundColor(.label)
                 .overlay(
                     LinearGradient(gradient: .init(colors: [Color.primaryBackground.opacity(0.01), .primaryBackground]),

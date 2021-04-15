@@ -13,7 +13,7 @@ struct GradientsPage: View {
     
     fileprivate let lazyStackSpacing: CGFloat = 16
     fileprivate let gradientColumns = [
-        GridItem(.flexible(minimum: 200, maximum: 640), spacing: 16)
+        GridItem(.flexible(minimum: 260, maximum: 320), spacing: 16)
     ]
     
     var body: some View {

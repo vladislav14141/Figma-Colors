@@ -123,6 +123,10 @@ class FigmaViewModel: ObservableObject {
         if fileKeyDark.isEmpty == false {
             fetchFigmaStyles(sheme: .dark)
         }
+        self.isLoading = true
+        group.notify(queue: .main) {
+            self.isLoading = false
+        }
     }
 
     
@@ -287,14 +291,11 @@ class FigmaViewModel: ObservableObject {
 extension FigmaViewModel {
     fileprivate func getNode(nodeIds: String, nodeType: FigmaNodeType, sheme: FigmaSheme) {
         guard let components = urlComponents(sheme: sheme) else { return }
-        DispatchQueue.main.async {
-            self.isLoading = true
-        }
+
         let url = "https://api.figma.com/v1/files/\(components.token)/nodes?ids=\(nodeIds)"
+        group.enter()
         dataFetcher.fetchGenericJsonData(urlString: url, decodeBy: NodeModel.self) {
-            DispatchQueue.main.async {
-                self.isLoading = false
-            }
+
             switch $0 {
             
             case .success(let responce):
@@ -311,27 +312,28 @@ extension FigmaViewModel {
                         DispatchQueue.main.async {
                             self.figmaColors = colors
                             self.figmaGradient = gradients
+                            self.group.leave()
+                            self.objectWillChange.send()
                         }
                     }
                 }
             case .failure(let err):
                 print(err)
+                self.group.leave()
+
             }
         }
     }
     
     fileprivate func fetchFigmaStyles(sheme: FigmaSheme) {
         guard let components = urlComponents(sheme: sheme) else { return }
-        isLoading = true
+
         group.enter()
         var url = "https://api.figma.com/v1/files/\(components.token)"
         if let nodeId = components.nodeId {
             url += "?ids=\(nodeId)"
         }
         dataFetcher.fetchGenericJsonData(urlString: url, decodeBy: FigmaModel.self, completion: { result in
-            DispatchQueue.main.async {
-                self.isLoading = false
-            }
             switch result {
             case .success(let success):
                 DispatchQueue.main.async {
@@ -371,8 +373,8 @@ extension FigmaViewModel {
     
     fileprivate func getImages(nodeIds: String, sheme: FigmaSheme) {
         guard let components = urlComponents(sheme: sheme) else { return }
-//        DispatchQueue.main.async { self.isLoading = true }
-        
+
+        group.enter()
         let url = "https://api.figma.com/v1/images/\(components.token)?scale=3&ids=\(nodeIds)"
         
         dataFetcher.fetchGenericJsonData(urlString: url, decodeBy: FigmaImagesModel.self) { result in
@@ -389,6 +391,7 @@ extension FigmaViewModel {
             case .failure(let err):
                 print(err)
             }
+            self.group.leave()
         }
     }
 }

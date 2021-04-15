@@ -7,7 +7,7 @@
 
 import SwiftUI
 struct FigmaColorCellItem: View {
-    let figmaColor: FigmaColor?
+     var figmaColor: FigmaColor?
     let scheme: FigmaSheme
     @State var isHover = false
     @State var isCopied = false {

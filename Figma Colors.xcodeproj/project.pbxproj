@@ -31,14 +31,13 @@
 		7E391B092601955200227BAC /* FigmaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E391B062601955200227BAC /* FigmaController.swift */; };
 		7E391B0A2601955200227BAC /* FigmaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E391B072601955200227BAC /* FigmaModel.swift */; };
 		7E391B0B2601955200227BAC /* FigmaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E391B082601955200227BAC /* FigmaViewModel.swift */; };
-		7E391B142601AF1600227BAC /* HTMLKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7E391B132601AF1600227BAC /* HTMLKit */; };
 		7E9B22CD261EA68D00850A01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B22CC261EA68D00850A01 /* Assets.xcassets */; };
 		7E9B22E1261EC1BC00850A01 /* ImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B22E0261EC1BC00850A01 /* ImageItem.swift */; };
 		7E9B22E4261EC1D400850A01 /* GradientItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B22E3261EC1D400850A01 /* GradientItem.swift */; };
 		7E9B22E7261EC6E100850A01 /* FigmaColorCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B22E6261EC6E100850A01 /* FigmaColorCellItem.swift */; };
 		7E9B22EA261EC70D00850A01 /* FigmaImageCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B22E9261EC70D00850A01 /* FigmaImageCellItem.swift */; };
 		7E9B22ED261EC72B00850A01 /* FigmaColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B22EC261EC72B00850A01 /* FigmaColorCell.swift */; };
-		7E9B22F0261EC75000850A01 /* FigmaGradientCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B22EF261EC75000850A01 /* FigmaGradientCellItem.swift */; };
+		7E9B22F0261EC75000850A01 /* FigmaGradientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B22EF261EC75000850A01 /* FigmaGradientCell.swift */; };
 		7E9B2305261ECBC400850A01 /* JetBrainsMono-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B22F5261ECBC400850A01 /* JetBrainsMono-Thin.ttf */; };
 		7E9B2306261ECBC400850A01 /* JetBrainsMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B22F6261ECBC400850A01 /* JetBrainsMono-Bold.ttf */; };
 		7E9B2307261ECBC400850A01 /* JetBrainsMono-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B22F7261ECBC400850A01 /* JetBrainsMono-Italic.ttf */; };
@@ -65,7 +64,7 @@
 		7EB3B938262019BC003DE911 /* ContentPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B937262019BC003DE911 /* ContentPage.swift */; };
 		7EB3B93F26201BCE003DE911 /* InfoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B93E26201BCE003DE911 /* InfoPage.swift */; };
 		7EB3B94626202ED2003DE911 /* FigmaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B94526202ED2003DE911 /* FigmaItem.swift */; };
-		7EB3B9542621751C003DE911 /* FigmaGradientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B9532621751C003DE911 /* FigmaGradientCell.swift */; };
+		7EB3B9542621751C003DE911 /* FigmaGradientCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B9532621751C003DE911 /* FigmaGradientCellItem.swift */; };
 		7EB5DBA3260365BA00CAF4D7 /* NetworkWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DB9D260365BA00CAF4D7 /* NetworkWebSocket.swift */; };
 		7EB5DBA4260365BA00CAF4D7 /* DataPosterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DB9E260365BA00CAF4D7 /* DataPosterService.swift */; };
 		7EB5DBA5260365BA00CAF4D7 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DB9F260365BA00CAF4D7 /* NetworkService.swift */; };
@@ -112,7 +111,7 @@
 		7E9B22E6261EC6E100850A01 /* FigmaColorCellItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaColorCellItem.swift; sourceTree = "<group>"; };
 		7E9B22E9261EC70D00850A01 /* FigmaImageCellItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaImageCellItem.swift; sourceTree = "<group>"; };
 		7E9B22EC261EC72B00850A01 /* FigmaColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaColorCell.swift; sourceTree = "<group>"; };
-		7E9B22EF261EC75000850A01 /* FigmaGradientCellItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaGradientCellItem.swift; sourceTree = "<group>"; };
+		7E9B22EF261EC75000850A01 /* FigmaGradientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaGradientCell.swift; sourceTree = "<group>"; };
 		7E9B22F5261ECBC400850A01 /* JetBrainsMono-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Thin.ttf"; sourceTree = "<group>"; };
 		7E9B22F6261ECBC400850A01 /* JetBrainsMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Bold.ttf"; sourceTree = "<group>"; };
 		7E9B22F7261ECBC400850A01 /* JetBrainsMono-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Italic.ttf"; sourceTree = "<group>"; };
@@ -139,7 +138,7 @@
 		7EB3B937262019BC003DE911 /* ContentPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPage.swift; sourceTree = "<group>"; };
 		7EB3B93E26201BCE003DE911 /* InfoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPage.swift; sourceTree = "<group>"; };
 		7EB3B94526202ED2003DE911 /* FigmaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaItem.swift; sourceTree = "<group>"; };
-		7EB3B9532621751C003DE911 /* FigmaGradientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaGradientCell.swift; sourceTree = "<group>"; };
+		7EB3B9532621751C003DE911 /* FigmaGradientCellItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaGradientCellItem.swift; sourceTree = "<group>"; };
 		7EB5DB9D260365BA00CAF4D7 /* NetworkWebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkWebSocket.swift; sourceTree = "<group>"; };
 		7EB5DB9E260365BA00CAF4D7 /* DataPosterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPosterService.swift; sourceTree = "<group>"; };
 		7EB5DB9F260365BA00CAF4D7 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -159,7 +158,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E2343B82619E1CA00875A11 /* SDWebImageSwiftUI in Frameworks */,
-				7E391B142601AF1600227BAC /* HTMLKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,11 +305,11 @@
 		7E9B22F2261EC76800850A01 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				7E9B22EF261EC75000850A01 /* FigmaGradientCellItem.swift */,
-				7EB3B9532621751C003DE911 /* FigmaGradientCell.swift */,
+				7E9B22EF261EC75000850A01 /* FigmaGradientCell.swift */,
+				7EB3B9532621751C003DE911 /* FigmaGradientCellItem.swift */,
 				7E9B22EC261EC72B00850A01 /* FigmaColorCell.swift */,
-				7E9B22E9261EC70D00850A01 /* FigmaImageCellItem.swift */,
 				7E9B22E6261EC6E100850A01 /* FigmaColorCellItem.swift */,
+				7E9B22E9261EC70D00850A01 /* FigmaImageCellItem.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -396,7 +394,6 @@
 			);
 			name = "Figma Colors";
 			packageProductDependencies = (
-				7E391B132601AF1600227BAC /* HTMLKit */,
 				7E2343B72619E1CA00875A11 /* SDWebImageSwiftUI */,
 			);
 			productName = "Figma Colors";
@@ -486,7 +483,7 @@
 				7EB5DBA6260365BA00CAF4D7 /* DataFetcherService.swift in Sources */,
 				7E9B22EA261EC70D00850A01 /* FigmaImageCellItem.swift in Sources */,
 				7E28D0C726130DBC003EAB0F /* SettingsModel.swift in Sources */,
-				7E9B22F0261EC75000850A01 /* FigmaGradientCellItem.swift in Sources */,
+				7E9B22F0261EC75000850A01 /* FigmaGradientCell.swift in Sources */,
 				7E9B22E7261EC6E100850A01 /* FigmaColorCellItem.swift in Sources */,
 				7EB5DBA3260365BA00CAF4D7 /* NetworkWebSocket.swift in Sources */,
 				7E28D0A12610A506003EAB0F /* IOSExportModel.swift in Sources */,
@@ -514,7 +511,7 @@
 				7E391B092601955200227BAC /* FigmaController.swift in Sources */,
 				7EB5DBA7260365BA00CAF4D7 /* NetworkDataPoster.swift in Sources */,
 				7EB5DBA4260365BA00CAF4D7 /* DataPosterService.swift in Sources */,
-				7EB3B9542621751C003DE911 /* FigmaGradientCell.swift in Sources */,
+				7EB3B9542621751C003DE911 /* FigmaGradientCellItem.swift in Sources */,
 				7E28D0B126117BB0003EAB0F /* FigmaSection.swift in Sources */,
 				7E28D0A926117B83003EAB0F /* ColorItem.swift in Sources */,
 				7EB5DBA5260365BA00CAF4D7 /* NetworkService.swift in Sources */,
@@ -738,11 +735,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7E2343B62619E1CA00875A11 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
-		};
-		7E391B132601AF1600227BAC /* HTMLKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7E391B122601AF1600227BAC /* XCRemoteSwiftPackageReference "HTMLKit" */;
-			productName = HTMLKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FigmaColorCell: View {
     
-    let colorItem: ColorItem
+    @ObservedObject var colorItem: ColorItem
     var isMock = false
     
     init() {

@@ -5,16 +5,16 @@
 //  Created by Владислав Миронов on 29.03.2021.
 //
 
-import Foundation
+import SwiftUI
 //protocol FigmaSectionProtocol {
 //    var groupName: String { get }
 //    var fullName: String { get }
 //
 //}
-class ColorItem: FigmaItem  {
+class ColorItem: FigmaItem, ObservableObject  {
 
-    var light: FigmaColor?
-    var dark: FigmaColor?
+    @Published var light: FigmaColor?
+    @Published  var dark: FigmaColor?
     
 
     
@@ -25,9 +25,11 @@ class ColorItem: FigmaItem  {
     }
     
     func setColor(_ color: FigmaColor, for sheme: FigmaSheme) {
-        switch sheme {
-        case .dark: dark = color
-        case .light: light = color
+        DispatchQueue.main.async {
+            switch sheme {
+            case .dark: self.dark = color
+            case .light: self.light = color
+            }
         }
     }
     

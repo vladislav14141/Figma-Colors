@@ -10,8 +10,9 @@ import SwiftUI
 struct FigmaGradientCellItem: View {
     let gradientItem: FigmaGradient
     
-    @State var hoveredItem: FigmaColor?
+//    @State var hoveredItem: FigmaColor?
     @State var isHoveredView = false
+    @State var hoveredColorIndex: Int?
 
 
     
@@ -23,7 +24,7 @@ struct FigmaGradientCellItem: View {
                         
                         isHoveredView = hover
                         if hover == false {
-                            hoveredItem = nil
+                            hoveredColorIndex = nil
                         }
                     }
                 }
@@ -32,14 +33,20 @@ struct FigmaGradientCellItem: View {
                     GeometryReader { reader in
                         HStack(spacing: 0) {
                             
-                            ForEach(gradientItem.colors) { figmaColor in
-                                gradientOverlay(figmaColor, reader: reader)
-                                    .overlay(
-                                        buttonOverlay(figmaColor, reader: reader)
-                                            .isHidden(hoveredItem?.id != figmaColor.id)
-                                    ).clipped()
+                            ForEach(0..<gradientItem.colors.count) { i in
+                                let figmaColor = gradientItem.colors[i]
+                                gradientOverlay(figmaColor, i: i, reader: reader)
                             }
+                      
                         }
+                        .overlay(
+                            buttonOverlay()
+                                .frame(width: hoveredWidth(reader).hoverWidth)
+                                .offset(x: buttonOffset(reader: reader), y: 0)
+                                .isHidden(hoveredColorIndex == nil)
+                            ,alignment: .leading
+                                
+                        ).clipped()
                     }.isHidden(!isHoveredView)
                 )
                 .foregroundColor(gradientItem.colors.first?.color.labelText())
@@ -47,65 +54,84 @@ struct FigmaGradientCellItem: View {
         }
     }
     
-    @ViewBuilder fileprivate func gradientOverlay(_ figmaColor: FigmaColor, reader: GeometryProxy) -> some View {
+    @ViewBuilder fileprivate func gradientOverlay(_ figmaColor: FigmaColor, i: Int, reader: GeometryProxy) -> some View {
         figmaColor
             .color
-            .frame(width: hoverWidth(item: figmaColor, reader: reader))
+            .frame(width: hoverWidth(i: i, reader: reader))
             .onHover { hovered in
                 withAnimation(.easeInOut) {
                     if hovered {
-                        hoveredItem = figmaColor
+                        hoveredColorIndex = i
                     }
                     print("hex hover", figmaColor.hex, hovered)
                 }
             }
             .onTapGesture {
                 withAnimation(.easeInOut) {
-                    self.hoveredItem = figmaColor
+                    self.hoveredColorIndex = i
                 }
             }
             .id(figmaColor.hex)
     }
     
-    @ViewBuilder fileprivate func buttonOverlay(_ figmaColor: FigmaColor, reader: GeometryProxy) -> some View {
+    @ViewBuilder fileprivate func buttonOverlay() -> some View {
+        let figmaColor = gradientItem.colors[hoveredColorIndex ?? 0]
         HStack(spacing: 8) {
             
-            MRSmallButton("hex") {
+            MRSmallButton("HEX") {
                 let pasteboard = NSPasteboard.general
                 pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
                 pasteboard.setString(figmaColor.hex, forType: NSPasteboard.PasteboardType.string)
-            }
-            
-            MRSmallButton("rgba") {
+            }.frame(width: 55)
+            .id("Buttons j")
+
+            MRSmallButton("RGBA") {
                 let pasteboard = NSPasteboard.general
                 pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
                 let rgba = "\(figmaColor.red),\(figmaColor.green),\(figmaColor.blue),\(figmaColor.alpha)"
                 pasteboard.setString(rgba, forType: NSPasteboard.PasteboardType.string)
-            }
+            }.frame(width: 55)
+            .id("Buttons d")
+
         }.padding(8)
-        .frame(width: 120)
+        .id("Buttons")
+//        .animation(Animation.easeInOut.delay(0.2))
+//        .offset(x: 0, y: 0)
 //        .animation(Animation.easeInOut.delay(0.2))
 //        .transition(.flipFromRight)
 //        .transition(AnyTransition.scale(scale: 0.2, anchor: .top).combined(with: AnyTransition.fade))
     }
+    var colorCount: CGFloat { CGFloat(gradientItem.colors.count) }
     
-    func hoverWidth(item: FigmaColor, reader: GeometryProxy) -> CGFloat {
-        let width = reader.frame(in: .local).width
-        let colorCount = CGFloat(gradientItem.colors.count)
-        let hoveredWidth: CGFloat = 120//min(width / colorCount * 2, width / 2 * 1.3)
-        
-        let openWidth = width - hoveredWidth
-        let unhovered = openWidth / (colorCount - 1)
-//        print(hoveredWidth," as ", unhovered)
-        
-        if let hover = hoveredItem {
-            if (hover.id == item.id) {
-                return hoveredWidth
+    func hoverWidth(i: Int, reader: GeometryProxy) -> CGFloat {
+        let widths = hoveredWidth(reader)
+
+        if let hoverIndex = hoveredColorIndex {
+            if (hoverIndex == i) {
+                return widths.hoverWidth
             } else {
-                return unhovered
+                return widths.unHoverWidth
             }
         } else {
-            return width / colorCount
+            return widths.width / colorCount
+        }
+    }
+    
+    func hoveredWidth(_ reader: GeometryProxy)-> (hoverWidth: CGFloat, unHoverWidth: CGFloat, width: CGFloat, openWidth: CGFloat) {
+        let width = reader.frame(in: .local).width
+        let hoveredWidth: CGFloat = max(120, width / 2 * 1.1)
+        let openWidth = width - hoveredWidth
+        let unhovered = openWidth / (colorCount - 1)
+        return (hoveredWidth, unhovered, width, openWidth)
+    }
+    
+    func buttonOffset(reader: GeometryProxy) -> CGFloat {
+        let widths = hoveredWidth(reader)
+        
+        if let hoverIndex = hoveredColorIndex {
+            return widths.unHoverWidth * CGFloat(hoverIndex)
+        } else {
+            return .zero
         }
     }
 }

@@ -14,7 +14,7 @@ struct FigmaGradientCell: View {
     @State var isHoveredView = false
     
     var body: some View {
-        VStack(spacing: 16) {
+        VStack(alignment: .leading, spacing: 8) {
             VStack(spacing: 0) {
                 if let light = gradientItem.light {
                     FigmaGradientCellItem(gradientItem: light)

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E1EB754262815C300910DE9 /* GradientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1EB753262815C300910DE9 /* GradientViewModel.swift */; };
 		7E2343B42619DDA300875A11 /* FigmaImagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2343B32619DDA300875A11 /* FigmaImagesModel.swift */; };
 		7E2343B82619E1CA00875A11 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7E2343B72619E1CA00875A11 /* SDWebImageSwiftUI */; };
 		7E28D08F261060C0003EAB0F /* DirectoryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D08E261060C0003EAB0F /* DirectoryHelper.swift */; };
@@ -79,6 +80,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E1EB753262815C300910DE9 /* GradientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientViewModel.swift; sourceTree = "<group>"; };
 		7E2343B32619DDA300875A11 /* FigmaImagesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaImagesModel.swift; sourceTree = "<group>"; };
 		7E28D08E261060C0003EAB0F /* DirectoryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryHelper.swift; sourceTree = "<group>"; };
 		7E28D091261071F1003EAB0F /* Extension+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+JSON.swift"; sourceTree = "<group>"; };
@@ -164,6 +166,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E1EB752262815A700910DE9 /* GradientPage */ = {
+			isa = PBXGroup;
+			children = (
+				7EB3B927261F06E1003DE911 /* GradientsPage.swift */,
+				7E1EB753262815C300910DE9 /* GradientViewModel.swift */,
+			);
+			path = GradientPage;
+			sourceTree = "<group>";
+		};
 		7E28D09B2610A4A7003EAB0F /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -343,7 +354,7 @@
 				7EB3B937262019BC003DE911 /* ContentPage.swift */,
 				7EB3B93E26201BCE003DE911 /* InfoPage.swift */,
 				7EB3B921261F0569003DE911 /* ColorsPage.swift */,
-				7EB3B927261F06E1003DE911 /* GradientsPage.swift */,
+				7E1EB752262815A700910DE9 /* GradientPage */,
 				7EB3B92A261F07B9003DE911 /* ComponentsPage.swift */,
 				7EB3B92D261F0A11003DE911 /* MockPage.swift */,
 				7EB3B934262004F0003DE911 /* TestPage.swift */,
@@ -514,6 +525,7 @@
 				7EB3B9542621751C003DE911 /* FigmaGradientCellItem.swift in Sources */,
 				7E28D0B126117BB0003EAB0F /* FigmaSection.swift in Sources */,
 				7E28D0A926117B83003EAB0F /* ColorItem.swift in Sources */,
+				7E1EB754262815C300910DE9 /* GradientViewModel.swift in Sources */,
 				7EB5DBA5260365BA00CAF4D7 /* NetworkService.swift in Sources */,
 				7E28D0992610A4A2003EAB0F /* Tooltip.swift in Sources */,
 				7E9B22ED261EC72B00850A01 /* FigmaColorCell.swift in Sources */,

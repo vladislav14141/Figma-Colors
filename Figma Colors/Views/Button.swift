@@ -113,14 +113,13 @@ struct MRSmallButton: View {
                     Text(title).customFont(.body).foregroundColor(isHovered ? .white : .label)
                 }
             }
-//            .padding(.horizontal)
+            .frame(minWidth: 44, maxWidth: .infinity)
+            .frame(height: 44)
+            .background(isHovered ? Color.smallButtonSelectedBackground : Color.smallButtonBackground)
+            .cornerRadius(8)
+            .overlay( onHover() )
         })
-        .frame(minWidth: 44, maxWidth: .infinity)
-        .frame(height: 44)
-        .background(isHovered ? Color.smallButtonSelectedBackground : Color.smallButtonBackground)
         .buttonStyle(MRSmallButtonStyle())
-        .cornerRadius(8)
-        .overlay( onHover() )
 
         .onHover(perform: {
             isHovered = $0
@@ -138,6 +137,9 @@ struct MRSmallButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
+            .scaleEffect(configuration.isPressed ? 0.90 : 1.0)
+            .opacity(configuration.isPressed ? 0.90 : 1.0)
+//            .background(configuration.isPressed ? Color.primary : Color.primary)
+
     }
 }

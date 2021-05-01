@@ -14,6 +14,7 @@ struct ContentPage: View {
     var body: some View {
         ScrollView {
             VStack {
+//                ImagesPage().isHidden(hide(view: .images))
                 ColorsPage(items: $viewModel.figmaColors).isHidden(hide(view: .colors))
                 GradientsPage(items: $viewModel.figmaGradient).isHidden(hide(view: .gradients))
                 ComponentsPage(items: $viewModel.figmaImages).isHidden(hide(view: .images))

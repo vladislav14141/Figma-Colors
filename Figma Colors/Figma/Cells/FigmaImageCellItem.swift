@@ -9,7 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct FigmaImageCellItem: View {
-    let item: ImageItem
+    let item: ComponentItem
     
     var body: some View {
         if let img = item.x3, let url = URL(string: img) {

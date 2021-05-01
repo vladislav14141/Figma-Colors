@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FigmaItem: Identifiable {
+class FigmaItem: Identifiable, ObservableObject {
     let id = UUID()
     
     /// "g / 10"
@@ -27,8 +27,9 @@ class FigmaItem: Identifiable {
         var components = figmaNameComponents
         components.removeFirst()
         return createName(nameComponents: components)
-
     }
+    
+    @Published var isSelected = true
     
     init(figmaName: String) {
         let nameComponents = figmaName.components(separatedBy: #"/"#).map({$0.trimmingCharacters(in: .whitespacesAndNewlines)})

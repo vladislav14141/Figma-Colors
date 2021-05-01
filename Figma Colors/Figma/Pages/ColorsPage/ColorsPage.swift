@@ -17,21 +17,23 @@ struct ColorsPage: View {
     ]
     
     var body: some View {
-        LazyVGrid (
-            columns: colorColumns,
-            alignment: .leading,
-            spacing: lazyStackSpacing,
-            pinnedViews: [] )
-        {
-            ForEach(items) { section in
-
-                Section(header: PageHeaderView(title: section.name)) {
-                    ForEach(section.rows) { row in
-                        FigmaColorCell(colorItem: row)
+        ScrollView {
+            
+            LazyVGrid (
+                columns: colorColumns,
+                alignment: .leading,
+                spacing: lazyStackSpacing,
+                pinnedViews: [] ) {
+                ForEach(items) { section in
+                    
+                    Section(header: PageHeaderView(title: section.name)) {
+                        ForEach(section.rows) { row in
+                            FigmaColorCell(colorItem: row)
+                        }
                     }
                 }
-            }
-        }
+            }.padding()
+        }.background(Color.primaryBackground)
     }
 }
 

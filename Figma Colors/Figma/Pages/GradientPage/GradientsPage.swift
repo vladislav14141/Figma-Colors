@@ -13,28 +13,31 @@ struct GradientsPage: View {
     
     fileprivate let lazyStackSpacing: CGFloat = 16
     fileprivate let gradientColumns = [
-        GridItem(.flexible(minimum: 260, maximum: 320), spacing: 16)
+        GridItem(.adaptive(minimum: 260, maximum: 320), spacing: 16)
     ]
     
     var body: some View {
-        LazyVGrid (
-            columns: gradientColumns,
-            alignment: .leading,
-            spacing: lazyStackSpacing,
-            pinnedViews: [.sectionHeaders] )
-        {
-            ForEach(items) { section in
-                
-                Section(header: PageHeaderView(title: section.name)) {
+        ScrollView {
+            
+            LazyVGrid (
+                columns: gradientColumns,
+                alignment: .leading,
+                spacing: lazyStackSpacing,
+                pinnedViews: [.sectionHeaders] )
+            {
+                ForEach(items) { section in
                     
-                    
-                    ForEach(section.rows) { row in
-                        FigmaGradientCell(gradientItem: row)
-
+                    Section(header: PageHeaderView(title: section.name)) {
+                        
+                        
+                        ForEach(section.rows) { row in
+                            FigmaGradientCell(gradientItem: row)
+                            
+                        }
                     }
                 }
-            }
-        }.padding()
+            }.padding()
+        }.background(Color.primaryBackground)
     }
 }
 

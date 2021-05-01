@@ -11,7 +11,10 @@ import SwiftUI
 struct Figma_ColorsApp: App {
     var body: some Scene {
         WindowGroup {
-            FigmaController()
+            HStack(spacing: 0) {
+                SideBarController()
+                InfoPage(viewModel: .init())
+            }
         }
     }
 }

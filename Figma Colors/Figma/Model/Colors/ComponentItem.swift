@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ImageItem: FigmaItem {
+class ComponentItem: FigmaItem {
     var x3: String?
     var x2: String?
     var x1: String?

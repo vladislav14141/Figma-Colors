@@ -42,7 +42,7 @@ class FigmaViewModel: ObservableObject {
     
     @Published var figmaColors = [FigmaSection<ColorItem>]()
     @Published var figmaGradient = [FigmaSection<GradientItem>]()
-    @Published var figmaImages = [FigmaSection<ImageItem>]()
+    @Published var figmaImages = [FigmaSection<ComponentItem>]()
 
     @Published var figmaData = FigmaBlocks()
     @Published var isLoading = false
@@ -65,11 +65,11 @@ class FigmaViewModel: ObservableObject {
     private var gradientsCache: [String: GradientItem] = [:]
     private var gradientsColorsCache: [String: ColorItem] = [:]
 
-    private var imageItemDict: [String: ImageItem] = [:]
-    private var imageItemNameDict: [String: ImageItem] = [:]
+    private var imageItemDict: [String: ComponentItem] = [:]
+    private var imageItemNameDict: [String: ComponentItem] = [:]
 
 
-    private var imageItems = [ImageItem]()
+    private var imageItems = [ComponentItem]()
     
     // MARK: - Lifecycle
     init() {
@@ -352,7 +352,7 @@ extension FigmaViewModel {
                 }).joined(separator: ",")
                 
                 let components: String = success.components.compactMap({ key, value in
-                    let image = ImageItem(figmaName: value.name)
+                    let image = ComponentItem(figmaName: value.name)
                     self.imageItemDict[key] = image
                     self.imageItemNameDict[value.name] = image
                     return key

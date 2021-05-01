@@ -11,7 +11,7 @@ import SwiftUI
 //    var fullName: String { get }
 //
 //}
-class ColorItem: FigmaItem, ObservableObject  {
+class ColorItem: FigmaItem  {
 
     @Published var light: FigmaColor?
     @Published  var dark: FigmaColor?

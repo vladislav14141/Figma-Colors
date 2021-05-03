@@ -16,30 +16,20 @@ class FigmaSection<Row: FigmaItem>: Identifiable, ObservableObject {
     /// "danger"
     let name: String
 
-    var isSelected: Bool {
-        selectedCount == count
-    }
     var count: Int {
         rows.count
     }
+    
+    
     
     var selectedCount: Int {
         rows.filter({$0.isSelected}).count
     }
     
-    @Published var selected = true
+    @Published var isSelected = true
     
     private(set) var colorsName = Set<Row.ID>()
-    private(set) var rows: [Row] = [] {
-        didSet {
-            rows.forEach { row in
-                row.$isSelected.sink { [weak self] value in
-                    guard let self = self else { return }
-                    self.selected = self.isSelected
-                }.store(in: &bag)
-            }
-        }
-    }
+    private(set) var rows: [Row] = []
     fileprivate var bag = [AnyCancellable]()
     
     internal init(name: String, colors: [Row] = [Row]()) {
@@ -54,6 +44,10 @@ class FigmaSection<Row: FigmaItem>: Identifiable, ObservableObject {
             rows.append(object)
             colorsName.insert(object.id)
         }
+    }
+    
+    func selected() -> Bool {
+        selectedCount == count
     }
     
     func selectAll() {

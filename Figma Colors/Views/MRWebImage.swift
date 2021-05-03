@@ -30,8 +30,8 @@ struct MRWebImage: View, Identifiable {
     var body: some View {
         URLImage(url: url,
                  options: URLImageOptions(
-                    identifier: id.uuidString,      // Custom identifier
-                    expireAfter: 300.0,             // Expire after 5 minutes
+                    identifier: url.absoluteString,      // Custom identifier
+                    expireAfter: 600.0,             // Expire after 5 minutes
                     cachePolicy: .returnCacheElseLoad(cacheDelay: nil, downloadDelay: 0.25) // Return cached image or download after delay
                  ),
                  empty: {

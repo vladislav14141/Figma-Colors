@@ -13,14 +13,14 @@ import SwiftUI
 
 
 
-enum FigmaSheme {
-    case light
-    case dark
-}
-enum FigmaNodeType {
-    case components
-    case styles
-}
+//enum FigmaSheme {
+//    case light
+//    case dark
+//}
+//enum FigmaNodeType {
+//    case components
+//    case styles
+//}
 
 class FigmaBlocks {
     var colors = [FigmaSection<ColorItem>]()
@@ -109,9 +109,7 @@ class FigmaViewModel: ObservableObject {
         figmaGradient.removeAll()
         figmaColors.removeAll()
         colorsCache.removeAll()
-//        gradientItems.removeAll()
         gradientsCache.removeAll()
-//        colorItems.removeAll()
     }
     
     func getData() {
@@ -202,16 +200,6 @@ class FigmaViewModel: ObservableObject {
                     case .solid:
                         self.onFetchedColor(fill: fill, value: value, sheme: sheme, subname: subname)
                     default: ()
-                    //                case .radialG:
-                    //                    <#code#>
-                    //                case .angularG:
-                    //                    <#code#>
-                    //                case .diamonG:
-                    //                    <#code#>
-                    //                case .image:
-                    //                    <#code#>
-                    //                case .emoji:
-                    //                    <#code#>
                     }
                 }
                 
@@ -386,7 +374,7 @@ extension FigmaViewModel {
                 }
                 self.imageItems = self.imageItemDict.compactMap({$0.value})
                 DispatchQueue.main.async {
-                    self.figmaImages = self.getSections(rows: self.imageItems)//self.imageItemNameDict.compactMap({$0.value})
+                    self.figmaImages = self.getSections(rows: self.imageItems)
                 }
             case .failure(let err):
                 print(err)

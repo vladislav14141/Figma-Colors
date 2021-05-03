@@ -26,3 +26,18 @@ class AppSettings {
     @AppStorage("X-Figma-Token") var figmaToken: String = ""
 }
 
+
+class FigmaStorage: ObservableObject {
+    static var shared = FigmaStorage()
+    @Published var colors = [FigmaSection<ColorItem>]()
+    @Published var gradients = [FigmaSection<GradientItem>]()
+    @Published var components = [FigmaSection<ComponentItem>]()
+    @Published var images: [MRWebImage] = []
+
+    func removeAll() {
+        colors.removeAll()
+        gradients.removeAll()
+        components.removeAll()
+        images.removeAll()
+    }
+}

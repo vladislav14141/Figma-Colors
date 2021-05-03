@@ -46,6 +46,10 @@
 		7E658987263BC593008CAAC9 /* ProjectsSideBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E658984263BC593008CAAC9 /* ProjectsSideBarController.swift */; };
 		7E658988263BC593008CAAC9 /* ProjectsSideBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E658985263BC593008CAAC9 /* ProjectsSideBarModel.swift */; };
 		7E658989263BC593008CAAC9 /* ProjectsSideBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E658986263BC593008CAAC9 /* ProjectsSideBarViewModel.swift */; };
+		7E658991263D23D8008CAAC9 /* SideBarComponentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E658990263D23D8008CAAC9 /* SideBarComponentButton.swift */; };
+		7E658994263D23E1008CAAC9 /* SideBarColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E658993263D23E1008CAAC9 /* SideBarColorButton.swift */; };
+		7E65899D263D3C76008CAAC9 /* FigmaNetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E65899C263D3C76008CAAC9 /* FigmaNetworkHelper.swift */; };
+		7E6589A1263FA745008CAAC9 /* SideBarGradientButton copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6589A0263FA745008CAAC9 /* SideBarGradientButton copy.swift */; };
 		7E9B22CD261EA68D00850A01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B22CC261EA68D00850A01 /* Assets.xcassets */; };
 		7E9B22E1261EC1BC00850A01 /* ComponentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B22E0261EC1BC00850A01 /* ComponentItem.swift */; };
 		7E9B22E4261EC1D400850A01 /* GradientItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B22E3261EC1D400850A01 /* GradientItem.swift */; };
@@ -133,6 +137,10 @@
 		7E658984263BC593008CAAC9 /* ProjectsSideBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsSideBarController.swift; sourceTree = "<group>"; };
 		7E658985263BC593008CAAC9 /* ProjectsSideBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsSideBarModel.swift; sourceTree = "<group>"; };
 		7E658986263BC593008CAAC9 /* ProjectsSideBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsSideBarViewModel.swift; sourceTree = "<group>"; };
+		7E658990263D23D8008CAAC9 /* SideBarComponentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarComponentButton.swift; sourceTree = "<group>"; };
+		7E658993263D23E1008CAAC9 /* SideBarColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarColorButton.swift; sourceTree = "<group>"; };
+		7E65899C263D3C76008CAAC9 /* FigmaNetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaNetworkHelper.swift; sourceTree = "<group>"; };
+		7E6589A0263FA745008CAAC9 /* SideBarGradientButton copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SideBarGradientButton copy.swift"; sourceTree = "<group>"; };
 		7E9B22CC261EA68D00850A01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E9B22E0261EC1BC00850A01 /* ComponentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentItem.swift; sourceTree = "<group>"; };
 		7E9B22E3261EC1D400850A01 /* GradientItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientItem.swift; sourceTree = "<group>"; };
@@ -219,6 +227,7 @@
 				7E1EB7942628355400910DE9 /* SideBarController.swift */,
 				7E1EB7952628355400910DE9 /* SideBarModel.swift */,
 				7E1EB7962628355400910DE9 /* SideBarViewModel.swift */,
+				7E658998263D2400008CAAC9 /* Buttons */,
 			);
 			path = SideBar;
 			sourceTree = "<group>";
@@ -351,6 +360,16 @@
 			path = ProjectSideBar;
 			sourceTree = "<group>";
 		};
+		7E658998263D2400008CAAC9 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				7E658993263D23E1008CAAC9 /* SideBarColorButton.swift */,
+				7E6589A0263FA745008CAAC9 /* SideBarGradientButton copy.swift */,
+				7E658990263D23D8008CAAC9 /* SideBarComponentButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		7E9B22CF261EB95500850A01 /* Support */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +406,7 @@
 			children = (
 				7E28D0A326117B35003EAB0F /* AppSettings.swift */,
 				7E28D0B72611A5AF003EAB0F /* Notifications.swift */,
+				7E65899C263D3C76008CAAC9 /* FigmaNetworkHelper.swift */,
 				7E28D08E261060C0003EAB0F /* DirectoryHelper.swift */,
 			);
 			path = Helpers;
@@ -584,8 +604,10 @@
 				7E28D0C726130DBC003EAB0F /* SettingsModel.swift in Sources */,
 				7E9B22F0261EC75000850A01 /* FigmaGradientCell.swift in Sources */,
 				7E9B22E7261EC6E100850A01 /* FigmaColorCellItem.swift in Sources */,
+				7E658994263D23E1008CAAC9 /* SideBarColorButton.swift in Sources */,
 				7EB5DBA3260365BA00CAF4D7 /* NetworkWebSocket.swift in Sources */,
 				7E28D0A12610A506003EAB0F /* IOSExportModel.swift in Sources */,
+				7E6589A1263FA745008CAAC9 /* SideBarGradientButton copy.swift in Sources */,
 				7E1EB7652628164700910DE9 /* ImagesViewModel.swift in Sources */,
 				7E4C6E8B2636A658001CA544 /* MRCheckBox.swift in Sources */,
 				7EBD53222616E9C500D69B9B /* Button.swift in Sources */,
@@ -617,11 +639,13 @@
 				7E391B092601955200227BAC /* FigmaController.swift in Sources */,
 				7EB5DBA7260365BA00CAF4D7 /* NetworkDataPoster.swift in Sources */,
 				7EB5DBA4260365BA00CAF4D7 /* DataPosterService.swift in Sources */,
+				7E65899D263D3C76008CAAC9 /* FigmaNetworkHelper.swift in Sources */,
 				7EB3B9542621751C003DE911 /* FigmaGradientCellItem.swift in Sources */,
 				7E28D0B126117BB0003EAB0F /* FigmaSection.swift in Sources */,
 				7E28D0A926117B83003EAB0F /* ColorItem.swift in Sources */,
 				7E1EB754262815C300910DE9 /* GradientViewModel.swift in Sources */,
 				7EB5DBA5260365BA00CAF4D7 /* NetworkService.swift in Sources */,
+				7E658991263D23D8008CAAC9 /* SideBarComponentButton.swift in Sources */,
 				7E1EB7642628164700910DE9 /* ImagesModel.swift in Sources */,
 				7E28D0992610A4A2003EAB0F /* Tooltip.swift in Sources */,
 				7E9B22ED261EC72B00850A01 /* FigmaColorCell.swift in Sources */,

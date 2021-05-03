@@ -21,7 +21,7 @@ struct MRCheckBox: View {
                 } else {
                     Image(systemName: "checkmark.circle").font(.system(size: 17, weight: .light))
                 }
-            }.transition(.fade).background(Color.clear).clipShape(Circle())
+            }.background(Color.clear).clipShape(Circle())
         }).buttonStyle(MRButtonStyle1(type: .opacity))
     }
 }

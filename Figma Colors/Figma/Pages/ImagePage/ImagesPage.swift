@@ -12,7 +12,8 @@ import URLImage
 struct ImagesPage: View {
     
     // MARK: - Public Properties
-    @StateObject private var viewModel: ImagesViewModel = ImagesViewModel()
+//    @StateObject private var viewModel: ImagesViewModel = ImagesViewModel()
+    @Binding var images: [MRWebImage]
     fileprivate let columns = [
         GridItem(.adaptive(minimum: 200, maximum: 300))
     ]
@@ -22,24 +23,21 @@ struct ImagesPage: View {
     @State var style = StaggeredGridStyle(.vertical, tracks: .min(200), spacing: 1)
 
     // MARK: - Lifecycle
-    init() {
 
-    }
-    
     @State var items: [Int] = (1...69).map { $0 }
 
     var body: some View {
         ScrollView {
-            Grid(viewModel.webImages) { image in
+            Grid(images) { image in
                 image
             }
             .animation(.easeInOut)
             .gridStyle(
                 self.style
             )
-            .onAppear {
-                viewModel.fetchData()
-            }
+//            .onAppear {
+//                viewModel.fetchData()
+//            }
         }
     }
     
@@ -49,8 +47,8 @@ struct ImagesPage: View {
     
 }
 
-struct ImagesController_Previews: PreviewProvider {
-    static var previews: some View {
-        ImagesPage()
-    }
-}
+//struct ImagesController_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ImagesPage()
+//    }
+//}

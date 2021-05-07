@@ -6,17 +6,38 @@
 //
 
 import SwiftUI
+import HighlightedTextEditor
+let function = try! NSRegularExpression(pattern: "import |extension |static |let ", options: [])
+let classes = try! NSRegularExpression(pattern: " Color| UIColor| UIImage|", options: [])
+let string = try! NSRegularExpression(pattern: "\"\\S*\"", options: [])
+let mark = try! NSRegularExpression(pattern: "// MARK: - \\S*", options: [])
+let named = try! NSRegularExpression(pattern: "let \\S*", options: [])
 
 struct CodeController: View {
     @Environment(\.presentationMode) var presentationMode
 
     // MARK: - Public Properties
-    @StateObject private var viewModel: CodeViewModel
-    // MARK: - Private Properties
-    var figmaBlock: FigmaBlocks {
-        viewModel.figmaColors
-    }
     
+    
+    // MARK: - Private Properties
+    @StateObject private var viewModel: CodeViewModel
+    private let rules: [HighlightRule] = [
+        HighlightRule(pattern: named, formattingRules: [
+            TextFormattingRule(key: .foregroundColor, value: NSColor(Color.nameColor)),
+        ]),
+        HighlightRule(pattern: string, formattingRules: [
+            TextFormattingRule(key: .foregroundColor, value: NSColor(Color.stringColor))
+        ]),
+        HighlightRule(pattern: function, formattingRules: [
+            TextFormattingRule(key: .foregroundColor, value: NSColor(Color.xcodeColor)),
+        ]),
+        HighlightRule(pattern: classes, formattingRules: [
+            TextFormattingRule(key: .foregroundColor, value: NSColor(Color.classesColor)),
+        ]),
+        HighlightRule(pattern: mark, formattingRules: [
+            TextFormattingRule(key: .foregroundColor, value: NSColor(Color.markColor)),
+        ])
+    ]
     // MARK: - Lifecycle
     
     init(viewModel: CodeViewModel) {
@@ -27,28 +48,26 @@ struct CodeController: View {
         return VStack {
             HStack {
                 Spacer()
-                Toggle("Использовать шапку?", isOn: $viewModel.head)
-                Button(action: {
+                Toggle("Использовать шапку?", isOn: $viewModel.useHead)
+                MRButton(iconName: "xmark", title: nil) {
                     presentationMode.wrappedValue.dismiss()
-                }, label: {
-                    Image(systemName: "xmark")
-                })
+                }.frame(width: 44, height: 44)
             }
             HStack {
                 VStack {
                     Text("UIKit").font(.title).bold()
-                    TextEditor(text: $viewModel.uikit)
+                    HighlightedTextEditor(text: $viewModel.uikit, highlightRules: rules).font(.body)
                 }
                 
                 VStack {
                     Text("SwiftUI").font(.title).bold()
-                    TextEditor(text: $viewModel.swiftui)
+                    HighlightedTextEditor(text: $viewModel.swiftui, highlightRules: rules).font(.body)
                 }
                 
 
             }.onAppear {
-                viewModel.uikit = viewModel.generateUIKit(useHead: viewModel.head)
-                viewModel.swiftui = viewModel.generateSwiftUI(useHead: viewModel.head)
+                viewModel.uikit = viewModel.generateCode(codeType: .UIKit, contentType: .colors(viewModel.storage.colors))
+                viewModel.swiftui = viewModel.generateCode(codeType: .SwiftUI, contentType: .colors(viewModel.storage.colors))
 
             }.frame(minWidth: 600, idealWidth: 1000, maxWidth: .infinity, minHeight: 600, idealHeight: 1000, maxHeight: .infinity, alignment: .center)
         }.padding()
@@ -60,8 +79,5 @@ struct CodeController: View {
     
 }
 
-struct CodeController_Previews: PreviewProvider {
-    static var previews: some View {
-        CodeController(viewModel: .init(block: FigmaBlocks(colors: [])))
-    }
-}
+
+

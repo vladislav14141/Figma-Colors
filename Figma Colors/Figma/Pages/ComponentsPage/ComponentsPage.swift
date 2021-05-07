@@ -16,7 +16,8 @@ struct ComponentsPage: View {
         GridItem(.adaptive(minimum: 120), spacing: 16)
     ]
     @StateObject var viewModel = ComponentViewModel()
-    
+    @State var selected: String?
+
     var body: some View {
         ScrollView {
             LazyVGrid (
@@ -30,7 +31,7 @@ struct ComponentsPage: View {
                         ForEach(section.rows) { row in
                             FigmaImageCellItem(item: row)
                         }
-                    }
+                    }.isHidden(!(selected == nil || section.name == selected))
                 }
             }.padding()
             .onAppear {

@@ -30,7 +30,7 @@ struct MockPage: View {
                     }
                 }
             }.redacted()
-        }
+        }.padding()
     }
 }
 

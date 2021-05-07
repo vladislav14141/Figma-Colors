@@ -9,16 +9,22 @@ import SwiftUI
 
 struct InfoPage: View {
     
-    @StateObject var factory: FigmaFactory
-    @State private var currentExportType: ExportModel?
+//    @StateObject var factory: FigmaFactory
+    @EnvironmentObject var factory: FigmaFactory
+
+//    @State private var currentExportType: ExportModel?
     private let figmaTokenURL = URL(string: "https://www.figma.com/")!
-    
+    let directoryHelper = DirectoryHelper()
+
 //    @State var exportModels = [IOSExportModel(), IOSAssetsExportModel()]
     @State var selectedExportModel = 0
-    
-    init(viewModel: FigmaFactory) {
-        self._factory = StateObject(wrappedValue: viewModel)
-        self.currentExportType = exportModels[selectedExportModel]
+    @State var codeOpened = false
+    @State var navLinkTag: Int?
+    @EnvironmentObject var storage: FigmaStorage
+ 
+    init() {
+//        self._factory = StateObject(wrappedValue: viewModel)
+//        self.currentExportType = exportModels[selectedExportModel]
     }
     
     var body: some View {
@@ -40,38 +46,30 @@ struct InfoPage: View {
                         MRButton(iconName: "repeat.circle", title: "Update", enabled: true) {
                             factory.getData()
                         }
-                        
-                        MRButton(iconName: "folder.fill", title: "Download Assets", enabled: true) {
-//                            factory.getData()
-                        }
                     }
-                }
-                
-//                VStack {
-//                    Picker("Export type", selection: $selectedExportModel) {
-//                        ForEach(0..<exportModels.count, id: \.self) { i in
-//                            Text(exportModels[i].title).tag(i)
-//                        }
-//                    }.onChange(of: selectedExportModel, perform: { i in
-//                        self.currentExportType = exportModels[i]
-//                    })
-//
-//                    HStack(spacing: 16) {
-//                        if let buttons = currentExportType?.buttons {
-//                            ForEach(buttons, id: \.id) { bt in
-//                                 bt
-//                            }
-//                        }
-//                    }
-//                }
+                    
+                    Group {
+                        MRButton(iconName: "folder.fill", title: "Code", enabled: true) {
+                            codeOpened = true
+                        }
+                        
+                        MRButton(iconName: "doc.plaintext.fill", title: "Download Assets", enabled: true) {
+                            directoryHelper.downloadAssets(factory: factory)
+                        }
+                        
+                    }
+                    
+                }.sheet(isPresented: $codeOpened, content: {
+                    CodeController(viewModel: .init(storage: factory.storage))
+                })
                 Spacer()
-            }.frame(minWidth: 100, maxWidth: 300).padding()
-        }.background(Color.secondaryBackground).cornerRadius(8)
+            }.padding()
+        }.background(Color.secondaryBackground).cornerRadius(8).frame(minWidth: 150, idealWidth: 200, maxWidth: .infinity).layoutPriority(2)
     }
 }
 
-struct InfoPage_Previews: PreviewProvider {
-    static var previews: some View {
-        InfoPage(viewModel: FigmaFactory())
-    }
-}
+//struct InfoPage_Previews: PreviewProvider {
+//    static var previews: some View {
+//        InfoPage(viewModel: FigmaFactory())
+//    }
+//}

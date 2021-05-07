@@ -20,7 +20,7 @@ struct TestPage: View {
 
             ForEach(JetBrainsFont.allCases, id: \.rawValue) { font in
                 HStack {
-                    Text("gray").customFont(font).background(Color.random())
+//                    Text("gray").customFont(font).background(Color.random())
                     Spacer()
                     Text("\(font.name) \(Int(font.size)) \(font.weight.0)\nblad").lineLimit(nil).lineSpacing(100).font(.jetBrains(font)).background(Color.random())
                 }

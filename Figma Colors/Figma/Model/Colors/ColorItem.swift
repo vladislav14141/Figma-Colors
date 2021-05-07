@@ -15,13 +15,19 @@ class ColorItem: FigmaItem  {
 
     @Published var light: FigmaColor?
     @Published  var dark: FigmaColor?
-    
-
-    
+        
     internal init(figmaName: String, light: FigmaColor? = nil, dark: FigmaColor? = nil) {
         super.init(figmaName: figmaName)
         self.light = light
         self.dark = dark
+    }
+    
+    override var swftUICode: String {
+        "   static let \(fullName) = Color(\"\(fullName)\")"
+    }
+    
+    override var uiKitCode: String {
+        "    static let \(fullName) = UIColor(named: \"\(fullName)\")!"
     }
     
     func setColor(_ color: FigmaColor, for sheme: FigmaSheme) {

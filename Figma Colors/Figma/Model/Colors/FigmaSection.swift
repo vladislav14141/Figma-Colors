@@ -30,7 +30,14 @@ class FigmaSection<Row: FigmaItem>: Identifiable, ObservableObject {
     
     private(set) var colorsName = Set<Row.ID>()
     private(set) var rows: [Row] = []
-    fileprivate var bag = [AnyCancellable]()
+    
+    var selectedRows: [Row] {
+        rows.filter({$0.isSelected})
+    }
+
+    var description: String {
+        "    // MARK: - \(name)"
+    }
     
     internal init(name: String, colors: [Row] = [Row]()) {
         self.name = name
@@ -61,4 +68,8 @@ class FigmaSection<Row: FigmaItem>: Identifiable, ObservableObject {
     func sortColors() {
         rows.sort(by: {$0.fullName < $1.fullName})
     }
+}
+
+extension FigmaSection where Row == ColorItem {
+    
 }

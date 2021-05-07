@@ -9,8 +9,14 @@ import Foundation
 import Cocoa
 import SwiftUI
 //import UIKit
+
 extension Color {
-    
+    static let markColor = Color("markColor")
+    static let classesColor = Color("classesColor")
+    static let nameColor = Color("nameColor")
+    static let stringColor = Color("stringColor")
+    static let xcodeColor = Color("xcodeColor")
+
     static let label = Color(NSColor.labelColor)
     static let primaryBackground = Color(NSColor.gridColor)//Color("primaryBackground")
     static let secondaryBackground = Color(NSColor.controlBackgroundColor)//Color("secondaryBackground")

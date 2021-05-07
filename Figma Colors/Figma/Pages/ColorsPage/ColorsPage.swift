@@ -15,25 +15,31 @@ struct ColorsPage: View {
     fileprivate let colorColumns = [
         GridItem(.adaptive(minimum: 120), spacing: 16)
     ]
-    
+    @EnvironmentObject var storage: FigmaStorage
+    @State var selected: String?
     var body: some View {
         ScrollView {
-            
-            LazyVGrid (
-                columns: colorColumns,
-                alignment: .leading,
-                spacing: lazyStackSpacing,
-                pinnedViews: [] ) {
-                ForEach(items) { section in
-                    
-                    Section(header: PageHeaderView(title: section.name)) {
-                        ForEach(section.rows) { row in
-                            FigmaColorCell(colorItem: row)
-                        }
+            if storage.isLoading {
+                MockPage()
+            } else {
+                
+                LazyVGrid (
+                    columns: colorColumns,
+                    alignment: .leading,
+                    spacing: lazyStackSpacing,
+                    pinnedViews: [] ) {
+                    ForEach(items) { section in
+                        
+                        Section(header: PageHeaderView(title: section.name)) {
+                            ForEach(section.rows) { row in
+                                FigmaColorCell(colorItem: row)
+                            }
+                        }.isHidden(!(selected == nil || section.name == selected))
                     }
-                }
-            }.padding()
-        }.background(Color.primaryBackground)
+                }.padding()
+            }
+        }.background(Color.primaryBackground).frame(minWidth: 600,idealWidth: 650, maxWidth: .infinity).layoutPriority(5)
+        
     }
 }
 

@@ -50,6 +50,18 @@
 		7E658994263D23E1008CAAC9 /* SideBarColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E658993263D23E1008CAAC9 /* SideBarColorButton.swift */; };
 		7E65899D263D3C76008CAAC9 /* FigmaNetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E65899C263D3C76008CAAC9 /* FigmaNetworkHelper.swift */; };
 		7E6589A1263FA745008CAAC9 /* SideBarGradientButton copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6589A0263FA745008CAAC9 /* SideBarGradientButton copy.swift */; };
+		7E6F90C82643B8FF004FD4AC /* HighlightedTextEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 7E6F90C72643B8FF004FD4AC /* HighlightedTextEditor */; };
+		7E6F91252643E982004FD4AC /* SidebarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F91182643E982004FD4AC /* SidebarViewModel.swift */; };
+		7E6F91262643E982004FD4AC /* TVShowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F91192643E982004FD4AC /* TVShowViewModel.swift */; };
+		7E6F91272643E982004FD4AC /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F911A2643E982004FD4AC /* MovieViewModel.swift */; };
+		7E6F91282643E982004FD4AC /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F911C2643E982004FD4AC /* MovieDetailView.swift */; };
+		7E6F91292643E982004FD4AC /* MovieListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F911D2643E982004FD4AC /* MovieListView.swift */; };
+		7E6F912A2643E982004FD4AC /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F911E2643E982004FD4AC /* SidebarView.swift */; };
+		7E6F912B2643E982004FD4AC /* TVShowListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F911F2643E982004FD4AC /* TVShowListView.swift */; };
+		7E6F912C2643E982004FD4AC /* TVShowDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F91202643E982004FD4AC /* TVShowDetailView.swift */; };
+		7E6F912D2643E982004FD4AC /* TVShowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F91222643E982004FD4AC /* TVShowModel.swift */; };
+		7E6F912E2643E982004FD4AC /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F91232643E982004FD4AC /* MovieModel.swift */; };
+		7E6F912F2643E982004FD4AC /* SidebarMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F91242643E982004FD4AC /* SidebarMenuModel.swift */; };
 		7E9B22CD261EA68D00850A01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B22CC261EA68D00850A01 /* Assets.xcassets */; };
 		7E9B22E1261EC1BC00850A01 /* ComponentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B22E0261EC1BC00850A01 /* ComponentItem.swift */; };
 		7E9B22E4261EC1D400850A01 /* GradientItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B22E3261EC1D400850A01 /* GradientItem.swift */; };
@@ -141,6 +153,17 @@
 		7E658993263D23E1008CAAC9 /* SideBarColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarColorButton.swift; sourceTree = "<group>"; };
 		7E65899C263D3C76008CAAC9 /* FigmaNetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaNetworkHelper.swift; sourceTree = "<group>"; };
 		7E6589A0263FA745008CAAC9 /* SideBarGradientButton copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SideBarGradientButton copy.swift"; sourceTree = "<group>"; };
+		7E6F91182643E982004FD4AC /* SidebarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarViewModel.swift; sourceTree = "<group>"; };
+		7E6F91192643E982004FD4AC /* TVShowViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowViewModel.swift; sourceTree = "<group>"; };
+		7E6F911A2643E982004FD4AC /* MovieViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
+		7E6F911C2643E982004FD4AC /* MovieDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
+		7E6F911D2643E982004FD4AC /* MovieListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListView.swift; sourceTree = "<group>"; };
+		7E6F911E2643E982004FD4AC /* SidebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		7E6F911F2643E982004FD4AC /* TVShowListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowListView.swift; sourceTree = "<group>"; };
+		7E6F91202643E982004FD4AC /* TVShowDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowDetailView.swift; sourceTree = "<group>"; };
+		7E6F91222643E982004FD4AC /* TVShowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowModel.swift; sourceTree = "<group>"; };
+		7E6F91232643E982004FD4AC /* MovieModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
+		7E6F91242643E982004FD4AC /* SidebarMenuModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarMenuModel.swift; sourceTree = "<group>"; };
 		7E9B22CC261EA68D00850A01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E9B22E0261EC1BC00850A01 /* ComponentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentItem.swift; sourceTree = "<group>"; };
 		7E9B22E3261EC1D400850A01 /* GradientItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientItem.swift; sourceTree = "<group>"; };
@@ -195,6 +218,7 @@
 			files = (
 				7E1EB76D2628208A00910DE9 /* Grid in Frameworks */,
 				7E1EB78F2628313000910DE9 /* URLImage in Frameworks */,
+				7E6F90C82643B8FF004FD4AC /* HighlightedTextEditor in Frameworks */,
 				7E2343B82619E1CA00875A11 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +328,7 @@
 				7E2B82DB26009DE000C8CD74 /* Figma_Colors.entitlements */,
 				7E2B82DA26009DE000C8CD74 /* Info.plist */,
 				7E2B82D126009DDF00C8CD74 /* Figma_ColorsApp.swift */,
+				7E6F91162643E975004FD4AC /* Test */,
 				7E9B22D3261EB9B800850A01 /* Helpers */,
 				7E65898B263BC598008CAAC9 /* ProjectSideBar */,
 				7E1EB79B2628355900910DE9 /* SideBar */,
@@ -368,6 +393,48 @@
 				7E658990263D23D8008CAAC9 /* SideBarComponentButton.swift */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		7E6F91162643E975004FD4AC /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				7E6F91212643E982004FD4AC /* Model */,
+				7E6F91172643E982004FD4AC /* ViewModel */,
+				7E6F911B2643E982004FD4AC /* Views */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		7E6F91172643E982004FD4AC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7E6F91182643E982004FD4AC /* SidebarViewModel.swift */,
+				7E6F91192643E982004FD4AC /* TVShowViewModel.swift */,
+				7E6F911A2643E982004FD4AC /* MovieViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7E6F911B2643E982004FD4AC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7E6F911C2643E982004FD4AC /* MovieDetailView.swift */,
+				7E6F911D2643E982004FD4AC /* MovieListView.swift */,
+				7E6F911E2643E982004FD4AC /* SidebarView.swift */,
+				7E6F911F2643E982004FD4AC /* TVShowListView.swift */,
+				7E6F91202643E982004FD4AC /* TVShowDetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7E6F91212643E982004FD4AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7E6F91222643E982004FD4AC /* TVShowModel.swift */,
+				7E6F91232643E982004FD4AC /* MovieModel.swift */,
+				7E6F91242643E982004FD4AC /* SidebarMenuModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		7E9B22CF261EB95500850A01 /* Support */ = {
@@ -508,6 +575,7 @@
 				7E2343B72619E1CA00875A11 /* SDWebImageSwiftUI */,
 				7E1EB76C2628208A00910DE9 /* Grid */,
 				7E1EB78E2628313000910DE9 /* URLImage */,
+				7E6F90C72643B8FF004FD4AC /* HighlightedTextEditor */,
 			);
 			productName = "Figma Colors";
 			productReference = 7E2B82CE26009DDF00C8CD74 /* Figma Colors.app */;
@@ -541,6 +609,7 @@
 				7E2343B62619E1CA00875A11 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				7E1EB76B2628208A00910DE9 /* XCRemoteSwiftPackageReference "swiftui-grid" */,
 				7E1EB78D2628313000910DE9 /* XCRemoteSwiftPackageReference "url-image" */,
+				7E6F90C62643B8FF004FD4AC /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */,
 			);
 			productRefGroup = 7E2B82CF26009DDF00C8CD74 /* Products */;
 			projectDirPath = "";
@@ -584,15 +653,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E6F912E2643E982004FD4AC /* MovieModel.swift in Sources */,
 				7EB3B92E261F0A11003DE911 /* MockPage.swift in Sources */,
 				7E658987263BC593008CAAC9 /* ProjectsSideBarController.swift in Sources */,
 				7E9B22E1261EC1BC00850A01 /* ComponentItem.swift in Sources */,
 				7EB3B93F26201BCE003DE911 /* InfoPage.swift in Sources */,
 				7E658988263BC593008CAAC9 /* ProjectsSideBarModel.swift in Sources */,
 				7E1EB792262831D200910DE9 /* MRWebImage.swift in Sources */,
+				7E6F912F2643E982004FD4AC /* SidebarMenuModel.swift in Sources */,
 				7EB3B922261F0569003DE911 /* ColorsPage.swift in Sources */,
 				7ED0AC8A260627A800A49E3C /* NodeModel.swift in Sources */,
 				7E1EB7982628355400910DE9 /* SideBarModel.swift in Sources */,
+				7E6F912B2643E982004FD4AC /* TVShowListView.swift in Sources */,
 				7E28D092261071F1003EAB0F /* Extension+JSON.swift in Sources */,
 				7E391B0A2601955200227BAC /* FigmaModel.swift in Sources */,
 				7E28D08F261060C0003EAB0F /* DirectoryHelper.swift in Sources */,
@@ -605,6 +677,7 @@
 				7E9B22F0261EC75000850A01 /* FigmaGradientCell.swift in Sources */,
 				7E9B22E7261EC6E100850A01 /* FigmaColorCellItem.swift in Sources */,
 				7E658994263D23E1008CAAC9 /* SideBarColorButton.swift in Sources */,
+				7E6F91262643E982004FD4AC /* TVShowViewModel.swift in Sources */,
 				7EB5DBA3260365BA00CAF4D7 /* NetworkWebSocket.swift in Sources */,
 				7E28D0A12610A506003EAB0F /* IOSExportModel.swift in Sources */,
 				7E6589A1263FA745008CAAC9 /* SideBarGradientButton copy.swift in Sources */,
@@ -612,10 +685,13 @@
 				7E4C6E8B2636A658001CA544 /* MRCheckBox.swift in Sources */,
 				7EBD53222616E9C500D69B9B /* Button.swift in Sources */,
 				7EBD53252616E9DE00D69B9B /* Textfield.swift in Sources */,
+				7E6F91292643E982004FD4AC /* MovieListView.swift in Sources */,
 				7E391B0B2601955200227BAC /* FigmaViewModel.swift in Sources */,
 				7E28D09E2610A4FC003EAB0F /* ExportModel.swift in Sources */,
 				7E2B82EE2600C0BF00C8CD74 /* CodeModel.swift in Sources */,
+				7E6F91252643E982004FD4AC /* SidebarViewModel.swift in Sources */,
 				7EB3B935262004F0003DE911 /* TestPage.swift in Sources */,
+				7E6F912C2643E982004FD4AC /* TVShowDetailView.swift in Sources */,
 				7E2B82D226009DDF00C8CD74 /* Figma_ColorsApp.swift in Sources */,
 				7E28D0C626130DBC003EAB0F /* SettingsController.swift in Sources */,
 				7EB5DBA8260365BA00CAF4D7 /* NetworkDataFetcher.swift in Sources */,
@@ -627,12 +703,15 @@
 				7E2B82EF2600C0BF00C8CD74 /* CodeViewModel.swift in Sources */,
 				7EB3B928261F06E1003DE911 /* GradientsPage.swift in Sources */,
 				7E1EB7992628355400910DE9 /* SideBarViewModel.swift in Sources */,
+				7E6F912D2643E982004FD4AC /* TVShowModel.swift in Sources */,
 				7EE22E66260DD7ED002E8EDF /* Extension + View.swift in Sources */,
+				7E6F91282643E982004FD4AC /* MovieDetailView.swift in Sources */,
 				7E25612726293BFC006C17C1 /* ComponentsViewModel.swift in Sources */,
 				7E2B82ED2600C0BF00C8CD74 /* CodeController.swift in Sources */,
 				7EB3B938262019BC003DE911 /* ContentPage.swift in Sources */,
 				7E658989263BC593008CAAC9 /* ProjectsSideBarViewModel.swift in Sources */,
 				7E28D0CD261310D3003EAB0F /* Extension+Color.swift in Sources */,
+				7E6F912A2643E982004FD4AC /* SidebarView.swift in Sources */,
 				7E1EB7972628355400910DE9 /* SideBarController.swift in Sources */,
 				7E9B2317261ECC2500850A01 /* Extension+Font.swift in Sources */,
 				7EB3B92B261F07B9003DE911 /* ComponentsPage.swift in Sources */,
@@ -643,6 +722,7 @@
 				7EB3B9542621751C003DE911 /* FigmaGradientCellItem.swift in Sources */,
 				7E28D0B126117BB0003EAB0F /* FigmaSection.swift in Sources */,
 				7E28D0A926117B83003EAB0F /* ColorItem.swift in Sources */,
+				7E6F91272643E982004FD4AC /* MovieViewModel.swift in Sources */,
 				7E1EB754262815C300910DE9 /* GradientViewModel.swift in Sources */,
 				7EB5DBA5260365BA00CAF4D7 /* NetworkService.swift in Sources */,
 				7E658991263D23D8008CAAC9 /* SideBarComponentButton.swift in Sources */,
@@ -876,6 +956,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		7E6F90C62643B8FF004FD4AC /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kyle-n/HighlightedTextEditor";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -893,6 +981,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7E2343B62619E1CA00875A11 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		7E6F90C72643B8FF004FD4AC /* HighlightedTextEditor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7E6F90C62643B8FF004FD4AC /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */;
+			productName = HighlightedTextEditor;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -33,7 +33,10 @@ class FigmaStorage: ObservableObject {
     @Published var gradients = [FigmaSection<GradientItem>]()
     @Published var components = [FigmaSection<ComponentItem>]()
     @Published var images: [MRWebImage] = []
-
+    @Published var isLoading = false
+    var storageIsEmpty: Bool {
+        colors.isEmpty && gradients.isEmpty && components.isEmpty
+    }
     func removeAll() {
         colors.removeAll()
         gradients.removeAll()

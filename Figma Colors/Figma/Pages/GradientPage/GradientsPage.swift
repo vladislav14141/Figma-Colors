@@ -15,7 +15,8 @@ struct GradientsPage: View {
     fileprivate let gradientColumns = [
         GridItem(.adaptive(minimum: 260, maximum: 320), spacing: 16)
     ]
-    
+    @State var selected: String?
+
     var body: some View {
         ScrollView {
             
@@ -34,7 +35,7 @@ struct GradientsPage: View {
                             FigmaGradientCell(gradientItem: row)
                             
                         }
-                    }
+                    }.isHidden(!(selected == nil || section.name == selected))
                 }
             }.padding()
         }.background(Color.primaryBackground)

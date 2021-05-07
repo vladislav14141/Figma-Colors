@@ -11,7 +11,10 @@ struct DirectoryHelper {
     
     let fileManager = FileManager.default
     var folderName: String = "Figma Colors"
-    let storage = ExportStorage.shared
+////    let storage = ExportStorage.shared
+//    init(facto) {
+//        <#statements#>
+//    }
     
     func pathSelector(completion: (String)->()) {
         let dialog = NSOpenPanel()
@@ -39,19 +42,28 @@ struct DirectoryHelper {
         }
     }
     
-    func downloadAssets() {
+    func downloadAssets(factory: FigmaFactory) {
+        let storage = factory.storage
         pathSelector { (directoryPath) in
             guard let assets = createAssets(directoryPath: directoryPath) else { return }
             
-            if storage.colors.isEmpty == false, let folder = createFolder(name: "colors", atPath: assets) {
-                let colors = storage.colors.flatMap({$0.rows.map({$0})})
+            let colors = storage.colors.flatMap({$0.selectedRows})
+            let gradients = storage.gradients.flatMap({$0.selectedRows.flatMap({$0.colors.map({$0})})})
+            let components: [ComponentItem] = storage.components.flatMap({$0.selectedRows})
+            if colors.isEmpty == false, let folder = createFolder(name: "colors", atPath: assets) {
                 saveColors(colors: colors, at: folder)
             }
-            
-            if storage.gradient.isEmpty == false, let folder = createFolder(name: "gradients", atPath: assets) {
-                let gradients = storage.gradient.flatMap({$0.rows.flatMap({$0.colors.map({$0})})})
+//
+            if gradients.isEmpty == false, let folder = createFolder(name: "gradients", atPath: assets) {
                 saveColors(colors: gradients, at: folder)
             }
+            
+            if components.isEmpty == false, let folder = createFolder(name: "components", atPath: assets) {
+//                saveColors(colors: gradients, at: folder)
+                saveComponents(components: components, at: folder)
+            }
+//
+//            if storage.
         }
     }
     
@@ -60,6 +72,26 @@ struct DirectoryHelper {
         guard let assets = createAssets(directoryPath: directoryPath) else { return }//createColorset(name: "bla bla", directoryPath: directoryPath) else { return }
         guard let folder = createFolder(name: "colors", atPath: assets) else { return }
         saveColors(colors: colors, at: folder)
+    }
+    
+    fileprivate func saveComponents(components: [ComponentItem], at path: String) {
+        components.forEach { (component) in
+            let components = component.figmaNameComponents
+            var path = path
+            for i in 0..<components.count {
+                let name = components[i]
+                let isLast = (i + 1) == components.count
+                if isLast {
+                    saveComponent(component: component, at: path)
+                } else {
+                    if let newPath = createFolder(name: name, atPath: path) {
+                        path = newPath
+                    } else {
+                        printInConsole("Error - can't create folder")
+                    }
+                }
+            }
+        }
     }
     
     fileprivate func saveColors(colors: [ColorItem], at path: String) {
@@ -81,6 +113,20 @@ struct DirectoryHelper {
             }
         }
     }
+    
+    fileprivate func saveColor(color: ColorItem, at path: String) {
+        guard let colorSet = createColorset(name: color.fullName, directoryPath: path) else { return }
+        createContentsJSON(folderPath: colorSet, data: getJson(color: color))
+    }
+    
+    fileprivate func saveComponent(component: ComponentItem, at path: String) {
+        guard let componentSet = createImageset(name: component.fullName, directoryPath: path) else { return }
+        fileManager.createFile(atPath: "\(componentSet)/\(component.fullName)@3x.png", contents: component.imageX3?.sd_imageData(), attributes: nil)
+        fileManager.createFile(atPath: "\(componentSet)/\(component.fullName)@2x.png", contents: component.imageX2?.sd_imageData(as: .PNG), attributes: nil)
+        fileManager.createFile(atPath: "\(componentSet)/\(component.fullName).png", contents: component.imageX1?.sd_imageData(as: .PNG), attributes: nil)
+        createContentsJSON(folderPath: componentSet, data: component.json())
+    }
+
     
     fileprivate func createFolder(name: String? = nil, atPath: String) -> String? {
         let name = name ?? folderName
@@ -104,6 +150,21 @@ struct DirectoryHelper {
         
         do {
             let fullPath = "\(directoryPath)/\(name).colorset"
+
+            try fileManager.createDirectory(atPath: fullPath, withIntermediateDirectories: true, attributes: nil)
+            
+            return fullPath
+            
+        } catch let error as NSError {
+            print("Unable to create directory \(error.debugDescription)")
+            return nil
+        }
+    }
+    
+    fileprivate func createImageset(name: String, directoryPath: String) -> String? {
+        
+        do {
+            let fullPath = "\(directoryPath)/\(name).imageset"
 
             try fileManager.createDirectory(atPath: fullPath, withIntermediateDirectories: true, attributes: nil)
             
@@ -157,12 +218,6 @@ struct DirectoryHelper {
         colors.forEach{
             saveColor(color: $0, at: path)
         }
-    }
-    
-    
-    fileprivate func saveColor(color: ColorItem, at path: String) {
-        guard let colorSet = createColorset(name: color.fullName, directoryPath: path) else { return }
-        createContentsJSON(folderPath: colorSet, data: getJson(color: color))
     }
     
     fileprivate func getJson(color: ColorItem) -> Data? {

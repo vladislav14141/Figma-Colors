@@ -73,7 +73,8 @@ extension Font {
 }
 
 extension View {
-    func customFont(_ font: JetBrainsFont) -> some View {
-        return self.font(.jetBrains(font)).lineSpacing(font.lineHeight)
+    func customFont(_ font: Font) -> some View {
+        self.font(font)
+//        return self.font(.jetBrains(font)).lineSpacing(font.lineHeight)
     }
 }

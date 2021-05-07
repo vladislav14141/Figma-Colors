@@ -15,15 +15,18 @@ struct FigmaImageCellItem: View {
         if let img = item.x3, let url = URL(string: img) {
             VStack(alignment: .leading, spacing: 8) {
                 
-                if let size = item.size {
+//                if let size = item.size {
+//
+//
+//                } else {
+//                    MRWebImage(url: url).frame(height: 120).clipped()
+//                }
+                if let img = item.imageX3 {
                     VStack {
-                        MRWebImage(url: url).frame(width: min(size.width, 120),height: min(size.height, 120)).clipped()
+//                        MRWebImage(url: url).frame(width: min(size.width, 120),height: min(size.height, 120)).clipped()
                         
+                        Image(nsImage: img).resizable().aspectRatio(contentMode: .fit).frame(width: min(img.size.height, 120), height: min(img.size.height, 120)).clipped()
                     }.frame(width: 120, height: 120, alignment: .center).background(Color.tertiaryBackground).cornerRadius(8)
-                    
-                    
-                } else {
-                    MRWebImage(url: url).frame(height: 120).clipped()
                 }
                 Text(item.shortName)
                     .frame(minWidth: 120, maxWidth: .infinity, alignment: .leading)

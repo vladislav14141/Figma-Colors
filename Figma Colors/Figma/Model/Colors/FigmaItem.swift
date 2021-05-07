@@ -21,6 +21,14 @@ class FigmaItem: Identifiable, ObservableObject {
         return createName(nameComponents: figmaNameComponents)
     }
     
+    var uiKitCode: String {
+        ""
+    }
+    
+    var swftUICode: String {
+        ""
+    }
+    
     var fillSubnames: [String] = []
 
     var shortName: String {
@@ -31,11 +39,12 @@ class FigmaItem: Identifiable, ObservableObject {
     
     @Published var isSelected = true
     
+  
     init(figmaName: String) {
         let nameComponents = figmaName.components(separatedBy: #"/"#).map({$0.trimmingCharacters(in: .whitespacesAndNewlines)})
         self.figmaName = figmaName
         self.figmaNameComponents = nameComponents
-        self.groupName = nameComponents.count > 1 ? nameComponents[0] : ""
+        self.groupName = nameComponents.count > 1 ? nameComponents[0] : "Not a group"
     }
     
     func createName(nameComponents: [String]) -> String {
@@ -53,6 +62,9 @@ class FigmaItem: Identifiable, ObservableObject {
         case .snakecase:
             name = nameComponents.joined(separator: "_")
         }
-        return ([name] + fillSubnames).joined(separator: settings.gradientSeparator)
+        let currentName = ([name] + fillSubnames).joined(separator: settings.gradientSeparator)
+        return currentName.isEmpty ? fullName : currentName
     }
 }
+
+

@@ -92,14 +92,6 @@ class FigmaViewModel: ObservableObject {
         $figmaToken.dropFirst().sink { key in
             settings.figmaToken = key
         }.store(in: &bag)
-        
-        $figmaColors.sink { sections in
-            ExportStorage.shared.colors = sections
-        }.store(in: &bag)
-
-        $figmaGradient.sink { sections in
-            ExportStorage.shared.gradient = sections
-        }.store(in: &bag)
     }
     
     let group = DispatchGroup()

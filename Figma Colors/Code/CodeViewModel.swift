@@ -9,73 +9,120 @@ import Combine
 import Foundation
 
 class CodeViewModel: ObservableObject {
+    enum CodeType {
+        case UIKit
+        case SwiftUI
+        
+        func getExtension(contentType: CodeContentType) -> String {
+            switch contentType {
+            case .colors, .gradients:
+                switch self {
+                case .SwiftUI:
+                    return "extension Color {"
+                case .UIKit:
+                    return "extension UIColor {"
+
+                }
+            case .components: return "extension UIImage {"
+            }
+        }
+        
+        var imp: String {
+            switch self {
+            case .SwiftUI: return "import SwiftUI\n\n"
+            case .UIKit: return "import UIKit\n\n"
+            }
+        }
+    }
+    
+    enum CodeContentType {
+        case colors([FigmaSection<ColorItem>])
+        case gradients([FigmaSection<GradientItem>])
+        case components([FigmaSection<ComponentItem>])
+
+    }
     // MARK: - Public Properties
-    @Published var figmaColors: FigmaBlocks
+    @Published var storage: FigmaStorage
     @Published var uikit: String = ""
     @Published var swiftui: String = ""
-    @Published var head = false
+    @Published var useHead = false
     var bag = [AnyCancellable]()
-    
+
+
     // MARK: - Private Methods
 
     // MARK: - Lifecycle
-    init(block: FigmaBlocks) {
-        _figmaColors = Published(wrappedValue: block)
-        $head.sink(receiveValue: { head in
-            self.uikit = self.generateUIKit(useHead: head)
-            self.swiftui = self.generateSwiftUI(useHead: head)
-        }).store(in: &bag)
+    init(storage: FigmaStorage) {
+        self._storage = Published(wrappedValue: storage)
     }
     
-    func generateUIKit(useHead: Bool) -> String {
+    func generateCode(codeType: CodeType, contentType: CodeContentType) -> String {
         var content = ""
-        let head = "import UIKit\n\nextension UIColor {"
-        let down = "}"
+
+        let bracket = "}"
         let nextLine = "\n"
-        if useHead {
-            content += head
-            content += nextLine
+        let spacer = nextLine + nextLine
+
+
+        content += codeType.imp
+        
+        content += codeType.getExtension(contentType: contentType)
+        content += spacer
+        
+        switch contentType {
+        case .colors(let sections):
+            sections.forEach { (section) in
+                let rows = section.selectedRows
+                
+                if rows.isEmpty == false {
+                    content += section.description
+                    content += nextLine
+                }
+                
+                rows.forEach { (color) in
+
+                    switch codeType {
+                    case .SwiftUI: content += color.swftUICode
+                    case .UIKit: content += color.uiKitCode
+                    }
+                    content += nextLine
+                }
+                content += nextLine
+            }
+            
+        case .components(let sections):
+            sections.forEach { (section) in
+                content += section.description
+                content += nextLine
+                section.selectedRows.forEach { (color) in
+
+                    switch codeType {
+                    case .SwiftUI: content += color.swftUICode
+                    case .UIKit: content += color.uiKitCode
+                    }
+                    content += nextLine
+                }
+                content += nextLine
+            }
+            
+        case .gradients(let sections):
+            sections.forEach { (section) in
+                content += section.description
+                content += nextLine
+                section.selectedRows.forEach { (color) in
+
+                    switch codeType {
+                    case .SwiftUI: content += color.swftUICode
+                    case .UIKit: content += color.uiKitCode
+                    }
+                    content += nextLine
+                }
+                content += nextLine
+            }
         }
         
-        figmaColors.colors.forEach { section in
-            content += nextLine
-            content += "    // MARK: - \(section.name)"
-            content += nextLine
-            
-            section.rows.forEach { color in
-                
-                content += "    static let \(color.fullName) = UIColor(named: \"\(color.fullName)\")!"
-                content += nextLine
-            }
-        }
-        content += nextLine
-        if useHead { content += down }
+        content += spacer
+        content += bracket
         return content
     }
-    
-    func generateSwiftUI(useHead: Bool) -> String {
-        var content = ""
-        let head = "import SwiftUI\n\nextension Color {"
-        let down = "}"
-        let nextLine = "\n"
-        if useHead {
-            content += head
-            content += nextLine
-        }
-        figmaColors.colors.forEach { section in
-            content += nextLine
-            content += "    // MARK: - \(section.name)"
-            content += nextLine
-            
-            section.rows.forEach { color in
-                
-                content += "    static let \(color.fullName) = Color(\"\(color.fullName)\")"
-                content += nextLine
-            }
-        }
-        content += nextLine
-        if useHead { content += down }
-        return content
-    }
-    
 }

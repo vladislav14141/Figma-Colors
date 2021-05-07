@@ -57,7 +57,7 @@ struct FigmaController: View {
             SettingsController()
         })
         .sheet(isPresented: $viewModel.showCode, content: {
-            CodeController(viewModel: .init(block: FigmaBlocks(colors: viewModel.figmaColors)))
+//            CodeController(viewModel: .init(block: FigmaBlocks(colors: viewModel.figmaColors)))
         })
         .onAppear {
             viewModel.getData()

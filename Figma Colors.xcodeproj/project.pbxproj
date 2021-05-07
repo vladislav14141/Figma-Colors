@@ -22,18 +22,23 @@
 		7E204DB12644FD1E00A23563 /* NetworkCachedDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DB02644FD1E00A23563 /* NetworkCachedDataFetcher.swift */; };
 		7E204DB52644FDAC00A23563 /* Cache in Frameworks */ = {isa = PBXBuildFile; productRef = 7E204DB42644FDAC00A23563 /* Cache */; };
 		7E204DB82644FDF300A23563 /* CacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DB72644FDF300A23563 /* CacheHelper.swift */; };
-		7E2343B42619DDA300875A11 /* FigmaImagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2343B32619DDA300875A11 /* FigmaImagesModel.swift */; };
+		7E204DBE2645064D00A23563 /* SideBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DBD2645064D00A23563 /* SideBarItems.swift */; };
+		7E204DC9264507EB00A23563 /* MRButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DC8264507EB00A23563 /* MRButton.swift */; };
+		7E204DDA26450DF100A23563 /* FigmaColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DD526450DF100A23563 /* FigmaColor.swift */; };
+		7E204DDB26450DF100A23563 /* ComponentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DD626450DF100A23563 /* ComponentItem.swift */; };
+		7E204DDC26450DF100A23563 /* FigmaSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DD726450DF100A23563 /* FigmaSection.swift */; };
+		7E204DDD26450DF100A23563 /* GradientItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DD826450DF100A23563 /* GradientItem.swift */; };
+		7E204DDE26450DF100A23563 /* FigmaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DD926450DF100A23563 /* FigmaItem.swift */; };
+		7E204DE126450DF700A23563 /* ColorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DE026450DF700A23563 /* ColorItem.swift */; };
+		7E204DE626450EC000A23563 /* FigmaImagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DE526450EC000A23563 /* FigmaImagesModel.swift */; };
+		7E204DEA26450EC500A23563 /* FigmaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DE826450EC500A23563 /* FigmaModel.swift */; };
+		7E204DEB26450EC500A23563 /* NodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DE926450EC500A23563 /* NodeModel.swift */; };
 		7E2343B82619E1CA00875A11 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7E2343B72619E1CA00875A11 /* SDWebImageSwiftUI */; };
 		7E25612726293BFC006C17C1 /* ComponentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25612626293BFC006C17C1 /* ComponentsViewModel.swift */; };
 		7E28D08F261060C0003EAB0F /* DirectoryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D08E261060C0003EAB0F /* DirectoryHelper.swift */; };
 		7E28D092261071F1003EAB0F /* Extension+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D091261071F1003EAB0F /* Extension+JSON.swift */; };
 		7E28D0992610A4A2003EAB0F /* Tooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0982610A4A2003EAB0F /* Tooltip.swift */; };
-		7E28D09E2610A4FC003EAB0F /* ExportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D09D2610A4FC003EAB0F /* ExportModel.swift */; };
-		7E28D0A12610A506003EAB0F /* IOSExportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0A02610A506003EAB0F /* IOSExportModel.swift */; };
 		7E28D0A426117B35003EAB0F /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0A326117B35003EAB0F /* AppSettings.swift */; };
-		7E28D0A926117B83003EAB0F /* ColorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0A826117B83003EAB0F /* ColorItem.swift */; };
-		7E28D0AD26117B99003EAB0F /* FigmaColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0AC26117B99003EAB0F /* FigmaColor.swift */; };
-		7E28D0B126117BB0003EAB0F /* FigmaSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0B026117BB0003EAB0F /* FigmaSection.swift */; };
 		7E28D0B82611A5AF003EAB0F /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0B72611A5AF003EAB0F /* Notifications.swift */; };
 		7E28D0C626130DBC003EAB0F /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0C326130DBC003EAB0F /* SettingsController.swift */; };
 		7E28D0C726130DBC003EAB0F /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D0C426130DBC003EAB0F /* SettingsModel.swift */; };
@@ -44,32 +49,12 @@
 		7E2B82ED2600C0BF00C8CD74 /* CodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B82EA2600C0BF00C8CD74 /* CodeController.swift */; };
 		7E2B82EE2600C0BF00C8CD74 /* CodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B82EB2600C0BF00C8CD74 /* CodeModel.swift */; };
 		7E2B82EF2600C0BF00C8CD74 /* CodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B82EC2600C0BF00C8CD74 /* CodeViewModel.swift */; };
-		7E391B092601955200227BAC /* FigmaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E391B062601955200227BAC /* FigmaController.swift */; };
-		7E391B0A2601955200227BAC /* FigmaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E391B072601955200227BAC /* FigmaModel.swift */; };
-		7E391B0B2601955200227BAC /* FigmaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E391B082601955200227BAC /* FigmaViewModel.swift */; };
 		7E4C6E8B2636A658001CA544 /* MRCheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4C6E8A2636A658001CA544 /* MRCheckBox.swift */; };
-		7E658987263BC593008CAAC9 /* ProjectsSideBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E658984263BC593008CAAC9 /* ProjectsSideBarController.swift */; };
-		7E658988263BC593008CAAC9 /* ProjectsSideBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E658985263BC593008CAAC9 /* ProjectsSideBarModel.swift */; };
-		7E658989263BC593008CAAC9 /* ProjectsSideBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E658986263BC593008CAAC9 /* ProjectsSideBarViewModel.swift */; };
 		7E658991263D23D8008CAAC9 /* SideBarComponentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E658990263D23D8008CAAC9 /* SideBarComponentButton.swift */; };
 		7E658994263D23E1008CAAC9 /* SideBarColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E658993263D23E1008CAAC9 /* SideBarColorButton.swift */; };
-		7E65899D263D3C76008CAAC9 /* FigmaNetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E65899C263D3C76008CAAC9 /* FigmaNetworkHelper.swift */; };
 		7E6589A1263FA745008CAAC9 /* SideBarGradientButton copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6589A0263FA745008CAAC9 /* SideBarGradientButton copy.swift */; };
 		7E6F90C82643B8FF004FD4AC /* HighlightedTextEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 7E6F90C72643B8FF004FD4AC /* HighlightedTextEditor */; };
-		7E6F91252643E982004FD4AC /* SidebarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F91182643E982004FD4AC /* SidebarViewModel.swift */; };
-		7E6F91262643E982004FD4AC /* TVShowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F91192643E982004FD4AC /* TVShowViewModel.swift */; };
-		7E6F91272643E982004FD4AC /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F911A2643E982004FD4AC /* MovieViewModel.swift */; };
-		7E6F91282643E982004FD4AC /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F911C2643E982004FD4AC /* MovieDetailView.swift */; };
-		7E6F91292643E982004FD4AC /* MovieListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F911D2643E982004FD4AC /* MovieListView.swift */; };
-		7E6F912A2643E982004FD4AC /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F911E2643E982004FD4AC /* SidebarView.swift */; };
-		7E6F912B2643E982004FD4AC /* TVShowListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F911F2643E982004FD4AC /* TVShowListView.swift */; };
-		7E6F912C2643E982004FD4AC /* TVShowDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F91202643E982004FD4AC /* TVShowDetailView.swift */; };
-		7E6F912D2643E982004FD4AC /* TVShowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F91222643E982004FD4AC /* TVShowModel.swift */; };
-		7E6F912E2643E982004FD4AC /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F91232643E982004FD4AC /* MovieModel.swift */; };
-		7E6F912F2643E982004FD4AC /* SidebarMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F91242643E982004FD4AC /* SidebarMenuModel.swift */; };
 		7E9B22CD261EA68D00850A01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B22CC261EA68D00850A01 /* Assets.xcassets */; };
-		7E9B22E1261EC1BC00850A01 /* ComponentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B22E0261EC1BC00850A01 /* ComponentItem.swift */; };
-		7E9B22E4261EC1D400850A01 /* GradientItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B22E3261EC1D400850A01 /* GradientItem.swift */; };
 		7E9B22E7261EC6E100850A01 /* FigmaColorCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B22E6261EC6E100850A01 /* FigmaColorCellItem.swift */; };
 		7E9B22EA261EC70D00850A01 /* FigmaImageCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B22E9261EC70D00850A01 /* FigmaImageCellItem.swift */; };
 		7E9B22ED261EC72B00850A01 /* FigmaColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B22EC261EC72B00850A01 /* FigmaColorCell.swift */; };
@@ -96,10 +81,7 @@
 		7EB3B928261F06E1003DE911 /* GradientsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B927261F06E1003DE911 /* GradientsPage.swift */; };
 		7EB3B92B261F07B9003DE911 /* ComponentsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B92A261F07B9003DE911 /* ComponentsPage.swift */; };
 		7EB3B92E261F0A11003DE911 /* MockPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B92D261F0A11003DE911 /* MockPage.swift */; };
-		7EB3B935262004F0003DE911 /* TestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B934262004F0003DE911 /* TestPage.swift */; };
-		7EB3B938262019BC003DE911 /* ContentPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B937262019BC003DE911 /* ContentPage.swift */; };
 		7EB3B93F26201BCE003DE911 /* InfoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B93E26201BCE003DE911 /* InfoPage.swift */; };
-		7EB3B94626202ED2003DE911 /* FigmaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B94526202ED2003DE911 /* FigmaItem.swift */; };
 		7EB3B9542621751C003DE911 /* FigmaGradientCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB3B9532621751C003DE911 /* FigmaGradientCellItem.swift */; };
 		7EB5DBA3260365BA00CAF4D7 /* NetworkWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DB9D260365BA00CAF4D7 /* NetworkWebSocket.swift */; };
 		7EB5DBA4260365BA00CAF4D7 /* DataPosterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5DB9E260365BA00CAF4D7 /* DataPosterService.swift */; };
@@ -110,7 +92,6 @@
 		7EBD53222616E9C500D69B9B /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBD53212616E9C500D69B9B /* Button.swift */; };
 		7EBD53252616E9DE00D69B9B /* Textfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBD53242616E9DE00D69B9B /* Textfield.swift */; };
 		7EBD532C26173ACD00D69B9B /* Extension+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBD532B26173ACD00D69B9B /* Extension+Collection.swift */; };
-		7ED0AC8A260627A800A49E3C /* NodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED0AC89260627A800A49E3C /* NodeModel.swift */; };
 		7EE22E66260DD7ED002E8EDF /* Extension + View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE22E51260DD7ED002E8EDF /* Extension + View.swift */; };
 /* End PBXBuildFile section */
 
@@ -127,17 +108,22 @@
 		7E204DAD2644E1FA00A23563 /* HoverModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoverModifier.swift; sourceTree = "<group>"; };
 		7E204DB02644FD1E00A23563 /* NetworkCachedDataFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkCachedDataFetcher.swift; sourceTree = "<group>"; };
 		7E204DB72644FDF300A23563 /* CacheHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheHelper.swift; sourceTree = "<group>"; };
-		7E2343B32619DDA300875A11 /* FigmaImagesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaImagesModel.swift; sourceTree = "<group>"; };
+		7E204DBD2645064D00A23563 /* SideBarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarItems.swift; sourceTree = "<group>"; };
+		7E204DC8264507EB00A23563 /* MRButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRButton.swift; sourceTree = "<group>"; };
+		7E204DD526450DF100A23563 /* FigmaColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaColor.swift; sourceTree = "<group>"; };
+		7E204DD626450DF100A23563 /* ComponentItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentItem.swift; sourceTree = "<group>"; };
+		7E204DD726450DF100A23563 /* FigmaSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaSection.swift; sourceTree = "<group>"; };
+		7E204DD826450DF100A23563 /* GradientItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientItem.swift; sourceTree = "<group>"; };
+		7E204DD926450DF100A23563 /* FigmaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaItem.swift; sourceTree = "<group>"; };
+		7E204DE026450DF700A23563 /* ColorItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorItem.swift; sourceTree = "<group>"; };
+		7E204DE526450EC000A23563 /* FigmaImagesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaImagesModel.swift; sourceTree = "<group>"; };
+		7E204DE826450EC500A23563 /* FigmaModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaModel.swift; sourceTree = "<group>"; };
+		7E204DE926450EC500A23563 /* NodeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeModel.swift; sourceTree = "<group>"; };
 		7E25612626293BFC006C17C1 /* ComponentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsViewModel.swift; sourceTree = "<group>"; };
 		7E28D08E261060C0003EAB0F /* DirectoryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryHelper.swift; sourceTree = "<group>"; };
 		7E28D091261071F1003EAB0F /* Extension+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+JSON.swift"; sourceTree = "<group>"; };
 		7E28D0982610A4A2003EAB0F /* Tooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tooltip.swift; sourceTree = "<group>"; };
-		7E28D09D2610A4FC003EAB0F /* ExportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportModel.swift; sourceTree = "<group>"; };
-		7E28D0A02610A506003EAB0F /* IOSExportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSExportModel.swift; sourceTree = "<group>"; };
 		7E28D0A326117B35003EAB0F /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
-		7E28D0A826117B83003EAB0F /* ColorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorItem.swift; sourceTree = "<group>"; };
-		7E28D0AC26117B99003EAB0F /* FigmaColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaColor.swift; sourceTree = "<group>"; };
-		7E28D0B026117BB0003EAB0F /* FigmaSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaSection.swift; sourceTree = "<group>"; };
 		7E28D0B72611A5AF003EAB0F /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		7E28D0C326130DBC003EAB0F /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		7E28D0C426130DBC003EAB0F /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
@@ -151,31 +137,11 @@
 		7E2B82EA2600C0BF00C8CD74 /* CodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeController.swift; sourceTree = "<group>"; };
 		7E2B82EB2600C0BF00C8CD74 /* CodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeModel.swift; sourceTree = "<group>"; };
 		7E2B82EC2600C0BF00C8CD74 /* CodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewModel.swift; sourceTree = "<group>"; };
-		7E391B062601955200227BAC /* FigmaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaController.swift; sourceTree = "<group>"; };
-		7E391B072601955200227BAC /* FigmaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaModel.swift; sourceTree = "<group>"; };
-		7E391B082601955200227BAC /* FigmaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaViewModel.swift; sourceTree = "<group>"; };
 		7E4C6E8A2636A658001CA544 /* MRCheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRCheckBox.swift; sourceTree = "<group>"; };
-		7E658984263BC593008CAAC9 /* ProjectsSideBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsSideBarController.swift; sourceTree = "<group>"; };
-		7E658985263BC593008CAAC9 /* ProjectsSideBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsSideBarModel.swift; sourceTree = "<group>"; };
-		7E658986263BC593008CAAC9 /* ProjectsSideBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsSideBarViewModel.swift; sourceTree = "<group>"; };
 		7E658990263D23D8008CAAC9 /* SideBarComponentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarComponentButton.swift; sourceTree = "<group>"; };
 		7E658993263D23E1008CAAC9 /* SideBarColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarColorButton.swift; sourceTree = "<group>"; };
-		7E65899C263D3C76008CAAC9 /* FigmaNetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaNetworkHelper.swift; sourceTree = "<group>"; };
 		7E6589A0263FA745008CAAC9 /* SideBarGradientButton copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SideBarGradientButton copy.swift"; sourceTree = "<group>"; };
-		7E6F91182643E982004FD4AC /* SidebarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarViewModel.swift; sourceTree = "<group>"; };
-		7E6F91192643E982004FD4AC /* TVShowViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowViewModel.swift; sourceTree = "<group>"; };
-		7E6F911A2643E982004FD4AC /* MovieViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
-		7E6F911C2643E982004FD4AC /* MovieDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
-		7E6F911D2643E982004FD4AC /* MovieListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListView.swift; sourceTree = "<group>"; };
-		7E6F911E2643E982004FD4AC /* SidebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
-		7E6F911F2643E982004FD4AC /* TVShowListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowListView.swift; sourceTree = "<group>"; };
-		7E6F91202643E982004FD4AC /* TVShowDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowDetailView.swift; sourceTree = "<group>"; };
-		7E6F91222643E982004FD4AC /* TVShowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowModel.swift; sourceTree = "<group>"; };
-		7E6F91232643E982004FD4AC /* MovieModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
-		7E6F91242643E982004FD4AC /* SidebarMenuModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarMenuModel.swift; sourceTree = "<group>"; };
 		7E9B22CC261EA68D00850A01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7E9B22E0261EC1BC00850A01 /* ComponentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentItem.swift; sourceTree = "<group>"; };
-		7E9B22E3261EC1D400850A01 /* GradientItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientItem.swift; sourceTree = "<group>"; };
 		7E9B22E6261EC6E100850A01 /* FigmaColorCellItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaColorCellItem.swift; sourceTree = "<group>"; };
 		7E9B22E9261EC70D00850A01 /* FigmaImageCellItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaImageCellItem.swift; sourceTree = "<group>"; };
 		7E9B22EC261EC72B00850A01 /* FigmaColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaColorCell.swift; sourceTree = "<group>"; };
@@ -202,10 +168,7 @@
 		7EB3B927261F06E1003DE911 /* GradientsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientsPage.swift; sourceTree = "<group>"; };
 		7EB3B92A261F07B9003DE911 /* ComponentsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsPage.swift; sourceTree = "<group>"; };
 		7EB3B92D261F0A11003DE911 /* MockPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPage.swift; sourceTree = "<group>"; };
-		7EB3B934262004F0003DE911 /* TestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPage.swift; sourceTree = "<group>"; };
-		7EB3B937262019BC003DE911 /* ContentPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPage.swift; sourceTree = "<group>"; };
 		7EB3B93E26201BCE003DE911 /* InfoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPage.swift; sourceTree = "<group>"; };
-		7EB3B94526202ED2003DE911 /* FigmaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaItem.swift; sourceTree = "<group>"; };
 		7EB3B9532621751C003DE911 /* FigmaGradientCellItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaGradientCellItem.swift; sourceTree = "<group>"; };
 		7EB5DB9D260365BA00CAF4D7 /* NetworkWebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkWebSocket.swift; sourceTree = "<group>"; };
 		7EB5DB9E260365BA00CAF4D7 /* DataPosterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPosterService.swift; sourceTree = "<group>"; };
@@ -216,7 +179,6 @@
 		7EBD53212616E9C500D69B9B /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		7EBD53242616E9DE00D69B9B /* Textfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Textfield.swift; sourceTree = "<group>"; };
 		7EBD532B26173ACD00D69B9B /* Extension+Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Collection.swift"; sourceTree = "<group>"; };
-		7ED0AC89260627A800A49E3C /* NodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeModel.swift; sourceTree = "<group>"; };
 		7EE22E51260DD7ED002E8EDF /* Extension + View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension + View.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -259,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				7E1EB7942628355400910DE9 /* SideBarController.swift */,
+				7E204DBD2645064D00A23563 /* SideBarItems.swift */,
 				7E1EB7952628355400910DE9 /* SideBarModel.swift */,
 				7E1EB7962628355400910DE9 /* SideBarViewModel.swift */,
 				7E658998263D2400008CAAC9 /* Buttons */,
@@ -283,27 +246,52 @@
 			path = ComponentsPage;
 			sourceTree = "<group>";
 		};
+		7E204DC3264506CF00A23563 /* MockPage */ = {
+			isa = PBXGroup;
+			children = (
+				7EB3B92D261F0A11003DE911 /* MockPage.swift */,
+			);
+			path = MockPage;
+			sourceTree = "<group>";
+		};
+		7E204DCB26450B3600A23563 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7E204DED26450ED800A23563 /* Items */,
+				7E204DEE26450EE000A23563 /* Api */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7E204DED26450ED800A23563 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				7E204DD626450DF100A23563 /* ComponentItem.swift */,
+				7E204DD526450DF100A23563 /* FigmaColor.swift */,
+				7E204DE826450EC500A23563 /* FigmaModel.swift */,
+				7E204DD926450DF100A23563 /* FigmaItem.swift */,
+				7E204DD726450DF100A23563 /* FigmaSection.swift */,
+				7E204DE526450EC000A23563 /* FigmaImagesModel.swift */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		7E204DEE26450EE000A23563 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				7E204DE926450EC500A23563 /* NodeModel.swift */,
+				7E204DE026450DF700A23563 /* ColorItem.swift */,
+				7E204DD826450DF100A23563 /* GradientItem.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
 		7E28D09B2610A4A7003EAB0F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7E28D0982610A4A2003EAB0F /* Tooltip.swift */,
-				7E4C6E8A2636A658001CA544 /* MRCheckBox.swift */,
 				7E204DAA2644DD9100A23563 /* FigmaCellLabel.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		7E28D0A626117B61003EAB0F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				7EBD532726171DE900D69B9B /* Colors */,
-				7E28D09D2610A4FC003EAB0F /* ExportModel.swift */,
-				7E28D0A02610A506003EAB0F /* IOSExportModel.swift */,
-				7ED0AC89260627A800A49E3C /* NodeModel.swift */,
-				7E391B072601955200227BAC /* FigmaModel.swift */,
-				7E2343B32619DDA300875A11 /* FigmaImagesModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		7E28D0CA26130DC1003EAB0F /* Settings */ = {
@@ -339,13 +327,12 @@
 				7E2B82DB26009DE000C8CD74 /* Figma_Colors.entitlements */,
 				7E2B82DA26009DE000C8CD74 /* Info.plist */,
 				7E2B82D126009DDF00C8CD74 /* Figma_ColorsApp.swift */,
-				7E6F91162643E975004FD4AC /* Test */,
 				7E9B22D3261EB9B800850A01 /* Helpers */,
-				7E65898B263BC598008CAAC9 /* ProjectSideBar */,
 				7E1EB79B2628355900910DE9 /* SideBar */,
 				7E28D0CA26130DC1003EAB0F /* Settings */,
-				7E391B0D2601955700227BAC /* Figma */,
+				7EB3B930261FFA64003DE911 /* Pages */,
 				7E2B82F12600C0C400C8CD74 /* Code */,
+				7E204DCB26450B3600A23563 /* Models */,
 				7E9B22D1261EB99600850A01 /* Views */,
 				7EB5DB9C260365BA00CAF4D7 /* Network */,
 				7E9B22D2261EB9A400850A01 /* Extension */,
@@ -372,30 +359,6 @@
 			path = Code;
 			sourceTree = "<group>";
 		};
-		7E391B0D2601955700227BAC /* Figma */ = {
-			isa = PBXGroup;
-			children = (
-				7E391B062601955200227BAC /* FigmaController.swift */,
-				7E391B082601955200227BAC /* FigmaViewModel.swift */,
-				7EB3B930261FFA64003DE911 /* Pages */,
-				7EB3B924261F0602003DE911 /* PageHeaderView.swift */,
-				7E9B22F2261EC76800850A01 /* Cells */,
-				7E28D09B2610A4A7003EAB0F /* Views */,
-				7E28D0A626117B61003EAB0F /* Model */,
-			);
-			path = Figma;
-			sourceTree = "<group>";
-		};
-		7E65898B263BC598008CAAC9 /* ProjectSideBar */ = {
-			isa = PBXGroup;
-			children = (
-				7E658984263BC593008CAAC9 /* ProjectsSideBarController.swift */,
-				7E658985263BC593008CAAC9 /* ProjectsSideBarModel.swift */,
-				7E658986263BC593008CAAC9 /* ProjectsSideBarViewModel.swift */,
-			);
-			path = ProjectSideBar;
-			sourceTree = "<group>";
-		};
 		7E658998263D2400008CAAC9 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,48 +367,6 @@
 				7E658990263D23D8008CAAC9 /* SideBarComponentButton.swift */,
 			);
 			path = Buttons;
-			sourceTree = "<group>";
-		};
-		7E6F91162643E975004FD4AC /* Test */ = {
-			isa = PBXGroup;
-			children = (
-				7E6F91212643E982004FD4AC /* Model */,
-				7E6F91172643E982004FD4AC /* ViewModel */,
-				7E6F911B2643E982004FD4AC /* Views */,
-			);
-			path = Test;
-			sourceTree = "<group>";
-		};
-		7E6F91172643E982004FD4AC /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				7E6F91182643E982004FD4AC /* SidebarViewModel.swift */,
-				7E6F91192643E982004FD4AC /* TVShowViewModel.swift */,
-				7E6F911A2643E982004FD4AC /* MovieViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		7E6F911B2643E982004FD4AC /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				7E6F911C2643E982004FD4AC /* MovieDetailView.swift */,
-				7E6F911D2643E982004FD4AC /* MovieListView.swift */,
-				7E6F911E2643E982004FD4AC /* SidebarView.swift */,
-				7E6F911F2643E982004FD4AC /* TVShowListView.swift */,
-				7E6F91202643E982004FD4AC /* TVShowDetailView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		7E6F91212643E982004FD4AC /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				7E6F91222643E982004FD4AC /* TVShowModel.swift */,
-				7E6F91232643E982004FD4AC /* MovieModel.swift */,
-				7E6F91242643E982004FD4AC /* SidebarMenuModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		7E9B22CF261EB95500850A01 /* Support */ = {
@@ -460,7 +381,11 @@
 		7E9B22D1261EB99600850A01 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7E4C6E8A2636A658001CA544 /* MRCheckBox.swift */,
+				7E28D0982610A4A2003EAB0F /* Tooltip.swift */,
+				7EB3B924261F0602003DE911 /* PageHeaderView.swift */,
 				7EBD53212616E9C500D69B9B /* Button.swift */,
+				7E204DC8264507EB00A23563 /* MRButton.swift */,
 				7E1EB791262831D200910DE9 /* MRWebImage.swift */,
 				7EBD53242616E9DE00D69B9B /* Textfield.swift */,
 			);
@@ -485,7 +410,6 @@
 				7E28D0A326117B35003EAB0F /* AppSettings.swift */,
 				7E28D0B72611A5AF003EAB0F /* Notifications.swift */,
 				7E204DAD2644E1FA00A23563 /* HoverModifier.swift */,
-				7E65899C263D3C76008CAAC9 /* FigmaNetworkHelper.swift */,
 				7E204DB72644FDF300A23563 /* CacheHelper.swift */,
 				7E28D08E261060C0003EAB0F /* DirectoryHelper.swift */,
 			);
@@ -530,14 +454,14 @@
 		7EB3B930261FFA64003DE911 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				7EB3B937262019BC003DE911 /* ContentPage.swift */,
 				7EB3B93E26201BCE003DE911 /* InfoPage.swift */,
 				7E1EB79E2628506900910DE9 /* ColorsPage */,
 				7E1EB752262815A700910DE9 /* GradientPage */,
 				7E1EB7A02628509400910DE9 /* ComponentsPage */,
-				7EB3B92D261F0A11003DE911 /* MockPage.swift */,
 				7E1EB7682628165100910DE9 /* ImagePage */,
-				7EB3B934262004F0003DE911 /* TestPage.swift */,
+				7E204DC3264506CF00A23563 /* MockPage */,
+				7E28D09B2610A4A7003EAB0F /* Views */,
+				7E9B22F2261EC76800850A01 /* Cells */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -554,19 +478,6 @@
 				7EB5DBA2260365BA00CAF4D7 /* NetworkDataFetcher.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		7EBD532726171DE900D69B9B /* Colors */ = {
-			isa = PBXGroup;
-			children = (
-				7E28D0B026117BB0003EAB0F /* FigmaSection.swift */,
-				7E28D0AC26117B99003EAB0F /* FigmaColor.swift */,
-				7E28D0A826117B83003EAB0F /* ColorItem.swift */,
-				7EB3B94526202ED2003DE911 /* FigmaItem.swift */,
-				7E9B22E3261EC1D400850A01 /* GradientItem.swift */,
-				7E9B22E0261EC1BC00850A01 /* ComponentItem.swift */,
-			);
-			path = Colors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -669,88 +580,69 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E6F912E2643E982004FD4AC /* MovieModel.swift in Sources */,
 				7EB3B92E261F0A11003DE911 /* MockPage.swift in Sources */,
-				7E658987263BC593008CAAC9 /* ProjectsSideBarController.swift in Sources */,
-				7E9B22E1261EC1BC00850A01 /* ComponentItem.swift in Sources */,
+				7E204DBE2645064D00A23563 /* SideBarItems.swift in Sources */,
 				7EB3B93F26201BCE003DE911 /* InfoPage.swift in Sources */,
-				7E658988263BC593008CAAC9 /* ProjectsSideBarModel.swift in Sources */,
 				7E1EB792262831D200910DE9 /* MRWebImage.swift in Sources */,
-				7E6F912F2643E982004FD4AC /* SidebarMenuModel.swift in Sources */,
 				7EB3B922261F0569003DE911 /* ColorsPage.swift in Sources */,
-				7ED0AC8A260627A800A49E3C /* NodeModel.swift in Sources */,
 				7E1EB7982628355400910DE9 /* SideBarModel.swift in Sources */,
-				7E6F912B2643E982004FD4AC /* TVShowListView.swift in Sources */,
 				7E28D092261071F1003EAB0F /* Extension+JSON.swift in Sources */,
-				7E391B0A2601955200227BAC /* FigmaModel.swift in Sources */,
 				7E204DB82644FDF300A23563 /* CacheHelper.swift in Sources */,
 				7E28D08F261060C0003EAB0F /* DirectoryHelper.swift in Sources */,
 				7EB3B925261F0602003DE911 /* PageHeaderView.swift in Sources */,
-				7E28D0AD26117B99003EAB0F /* FigmaColor.swift in Sources */,
-				7E9B22E4261EC1D400850A01 /* GradientItem.swift in Sources */,
 				7EB5DBA6260365BA00CAF4D7 /* DataFetcherService.swift in Sources */,
 				7E9B22EA261EC70D00850A01 /* FigmaImageCellItem.swift in Sources */,
 				7E28D0C726130DBC003EAB0F /* SettingsModel.swift in Sources */,
 				7E9B22F0261EC75000850A01 /* FigmaGradientCell.swift in Sources */,
 				7E9B22E7261EC6E100850A01 /* FigmaColorCellItem.swift in Sources */,
 				7E658994263D23E1008CAAC9 /* SideBarColorButton.swift in Sources */,
-				7E6F91262643E982004FD4AC /* TVShowViewModel.swift in Sources */,
 				7EB5DBA3260365BA00CAF4D7 /* NetworkWebSocket.swift in Sources */,
-				7E28D0A12610A506003EAB0F /* IOSExportModel.swift in Sources */,
 				7E6589A1263FA745008CAAC9 /* SideBarGradientButton copy.swift in Sources */,
 				7E1EB7652628164700910DE9 /* ImagesViewModel.swift in Sources */,
 				7E4C6E8B2636A658001CA544 /* MRCheckBox.swift in Sources */,
 				7EBD53222616E9C500D69B9B /* Button.swift in Sources */,
 				7EBD53252616E9DE00D69B9B /* Textfield.swift in Sources */,
-				7E6F91292643E982004FD4AC /* MovieListView.swift in Sources */,
-				7E391B0B2601955200227BAC /* FigmaViewModel.swift in Sources */,
-				7E28D09E2610A4FC003EAB0F /* ExportModel.swift in Sources */,
 				7E2B82EE2600C0BF00C8CD74 /* CodeModel.swift in Sources */,
-				7E6F91252643E982004FD4AC /* SidebarViewModel.swift in Sources */,
-				7EB3B935262004F0003DE911 /* TestPage.swift in Sources */,
-				7E6F912C2643E982004FD4AC /* TVShowDetailView.swift in Sources */,
+				7E204DDA26450DF100A23563 /* FigmaColor.swift in Sources */,
 				7E2B82D226009DDF00C8CD74 /* Figma_ColorsApp.swift in Sources */,
+				7E204DDC26450DF100A23563 /* FigmaSection.swift in Sources */,
 				7E28D0C626130DBC003EAB0F /* SettingsController.swift in Sources */,
+				7E204DDE26450DF100A23563 /* FigmaItem.swift in Sources */,
 				7EB5DBA8260365BA00CAF4D7 /* NetworkDataFetcher.swift in Sources */,
 				7E28D0A426117B35003EAB0F /* AppSettings.swift in Sources */,
-				7E2343B42619DDA300875A11 /* FigmaImagesModel.swift in Sources */,
 				7E28D0C826130DBC003EAB0F /* SettingsViewModel.swift in Sources */,
+				7E204DDD26450DF100A23563 /* GradientItem.swift in Sources */,
+				7E204DEB26450EC500A23563 /* NodeModel.swift in Sources */,
 				7E28D0B82611A5AF003EAB0F /* Notifications.swift in Sources */,
 				7E1EB7632628164700910DE9 /* ImagesPage.swift in Sources */,
 				7E2B82EF2600C0BF00C8CD74 /* CodeViewModel.swift in Sources */,
+				7E204DDB26450DF100A23563 /* ComponentItem.swift in Sources */,
 				7EB3B928261F06E1003DE911 /* GradientsPage.swift in Sources */,
 				7E1EB7992628355400910DE9 /* SideBarViewModel.swift in Sources */,
-				7E6F912D2643E982004FD4AC /* TVShowModel.swift in Sources */,
 				7EE22E66260DD7ED002E8EDF /* Extension + View.swift in Sources */,
-				7E6F91282643E982004FD4AC /* MovieDetailView.swift in Sources */,
 				7E204DB12644FD1E00A23563 /* NetworkCachedDataFetcher.swift in Sources */,
 				7E25612726293BFC006C17C1 /* ComponentsViewModel.swift in Sources */,
+				7E204DE626450EC000A23563 /* FigmaImagesModel.swift in Sources */,
 				7E2B82ED2600C0BF00C8CD74 /* CodeController.swift in Sources */,
-				7EB3B938262019BC003DE911 /* ContentPage.swift in Sources */,
-				7E658989263BC593008CAAC9 /* ProjectsSideBarViewModel.swift in Sources */,
 				7E28D0CD261310D3003EAB0F /* Extension+Color.swift in Sources */,
-				7E6F912A2643E982004FD4AC /* SidebarView.swift in Sources */,
 				7E1EB7972628355400910DE9 /* SideBarController.swift in Sources */,
 				7E9B2317261ECC2500850A01 /* Extension+Font.swift in Sources */,
+				7E204DC9264507EB00A23563 /* MRButton.swift in Sources */,
 				7E204DAB2644DD9100A23563 /* FigmaCellLabel.swift in Sources */,
 				7EB3B92B261F07B9003DE911 /* ComponentsPage.swift in Sources */,
-				7E391B092601955200227BAC /* FigmaController.swift in Sources */,
+				7E204DE126450DF700A23563 /* ColorItem.swift in Sources */,
 				7EB5DBA7260365BA00CAF4D7 /* NetworkDataPoster.swift in Sources */,
 				7E204DAE2644E1FA00A23563 /* HoverModifier.swift in Sources */,
 				7EB5DBA4260365BA00CAF4D7 /* DataPosterService.swift in Sources */,
-				7E65899D263D3C76008CAAC9 /* FigmaNetworkHelper.swift in Sources */,
 				7EB3B9542621751C003DE911 /* FigmaGradientCellItem.swift in Sources */,
-				7E28D0B126117BB0003EAB0F /* FigmaSection.swift in Sources */,
-				7E28D0A926117B83003EAB0F /* ColorItem.swift in Sources */,
-				7E6F91272643E982004FD4AC /* MovieViewModel.swift in Sources */,
 				7E1EB754262815C300910DE9 /* GradientViewModel.swift in Sources */,
 				7EB5DBA5260365BA00CAF4D7 /* NetworkService.swift in Sources */,
 				7E658991263D23D8008CAAC9 /* SideBarComponentButton.swift in Sources */,
 				7E1EB7642628164700910DE9 /* ImagesModel.swift in Sources */,
+				7E204DEA26450EC500A23563 /* FigmaModel.swift in Sources */,
 				7E28D0992610A4A2003EAB0F /* Tooltip.swift in Sources */,
 				7E9B22ED261EC72B00850A01 /* FigmaColorCell.swift in Sources */,
 				7EBD532C26173ACD00D69B9B /* Extension+Collection.swift in Sources */,
-				7EB3B94626202ED2003DE911 /* FigmaItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

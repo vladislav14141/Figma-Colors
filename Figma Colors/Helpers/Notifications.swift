@@ -10,7 +10,7 @@ import Foundation
 import Combine
 enum Notifications: String {
     
-    case showCode
+
 }
 
 extension Notifications {

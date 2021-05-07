@@ -9,22 +9,18 @@ import SwiftUI
 
 struct InfoPage: View {
     
-//    @StateObject var factory: FigmaFactory
     @EnvironmentObject var factory: FigmaFactory
 
-//    @State private var currentExportType: ExportModel?
     private let figmaTokenURL = URL(string: "https://www.figma.com/")!
     let directoryHelper = DirectoryHelper()
 
-//    @State var exportModels = [IOSExportModel(), IOSAssetsExportModel()]
     @State var selectedExportModel = 0
     @State var codeOpened = false
     @State var navLinkTag: Int?
     @EnvironmentObject var storage: FigmaStorage
  
     init() {
-//        self._factory = StateObject(wrappedValue: viewModel)
-//        self.currentExportType = exportModels[selectedExportModel]
+
     }
     
     var body: some View {
@@ -68,8 +64,8 @@ struct InfoPage: View {
     }
 }
 
-//struct InfoPage_Previews: PreviewProvider {
-//    static var previews: some View {
-//        InfoPage(viewModel: FigmaFactory())
-//    }
-//}
+struct InfoPage_Previews: PreviewProvider {
+    static var previews: some View {
+        InfoPage()
+    }
+}

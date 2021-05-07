@@ -45,48 +45,48 @@ struct MRCheckBox1: View {
     }
 }
 
-struct MRButtonStyle1: ButtonStyle {
-    enum ButtonType {
-        case opacity
-        case plain
-        case scale(CGFloat = 0.9)
-    }
-    var type: ButtonType
-    
-    func makeBody(configuration: Configuration) -> some View {
-        configSetup(configuration)
-    }
-    
-    @ViewBuilder func configSetup(_ configuration: Configuration) -> some View {
-        switch type {
-        case .opacity: opacityConfig(configuration)
-        case .scale(let size): scaleMinConfig(configuration, size: size)
-        case .plain: plainConfig(configuration)
-        }
-    }
-    
-    @ViewBuilder func plainConfig(_ configuration: Configuration) -> some View {
-        configuration
-            .label
-            .opacity(configuration.isPressed ? 0.5 : 1)
-    }
-    
-    @ViewBuilder func opacityConfig(_ configuration: Configuration) -> some View {
-        configuration
-            .label
-            .opacity(configuration.isPressed ? 0.5 : 1)
-            .animation(Animation.easeOut(duration: configuration.isPressed ? 0.05 : 0.2))
-
-    }
-    
-    @ViewBuilder func scaleMinConfig(_ configuration: Configuration, size: CGFloat) -> some View {
-        configuration
-            .label
-            .scaleEffect(configuration.isPressed ? size : 1)
-            .animation(Animation.easeOut(duration: configuration.isPressed ? 0.05 : 0.2))
-
-    }
-}
+//struct MRButtonStyle1: ButtonStyle {
+//    enum ButtonType {
+//        case opacity
+//        case plain
+//        case scale(CGFloat = 0.9)
+//    }
+//    var type: ButtonType
+//    
+//    func makeBody(configuration: Configuration) -> some View {
+//        configSetup(configuration)
+//    }
+//    
+//    @ViewBuilder func configSetup(_ configuration: Configuration) -> some View {
+//        switch type {
+//        case .opacity: opacityConfig(configuration)
+//        case .scale(let size): scaleMinConfig(configuration, size: size)
+//        case .plain: plainConfig(configuration)
+//        }
+//    }
+//    
+//    @ViewBuilder func plainConfig(_ configuration: Configuration) -> some View {
+//        configuration
+//            .label
+//            .opacity(configuration.isPressed ? 0.5 : 1)
+//    }
+//    
+//    @ViewBuilder func opacityConfig(_ configuration: Configuration) -> some View {
+//        configuration
+//            .label
+//            .opacity(configuration.isPressed ? 0.5 : 1)
+//            .animation(Animation.easeOut(duration: configuration.isPressed ? 0.05 : 0.2))
+//
+//    }
+//    
+//    @ViewBuilder func scaleMinConfig(_ configuration: Configuration, size: CGFloat) -> some View {
+//        configuration
+//            .label
+//            .scaleEffect(configuration.isPressed ? size : 1)
+//            .animation(Animation.easeOut(duration: configuration.isPressed ? 0.05 : 0.2))
+//
+//    }
+//}
 
 struct MRCheckBox_Previews: PreviewProvider {
     static var previews: some View {

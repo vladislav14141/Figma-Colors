@@ -34,8 +34,6 @@ class FigmaFactory: ObservableObject {
         }
     }
     
-    @Published var fileDark: FigmaModel?
-    @Published var fileLight: FigmaModel?
 
     var bag = [AnyCancellable]()
     

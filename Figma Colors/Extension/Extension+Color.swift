@@ -23,6 +23,9 @@ extension Color {
     static let tertiaryBackground = Color(NSColor.unemphasizedSelectedContentBackgroundColor)//Color("secondaryBackground")
 
     static let buttonBackground = Color("buttonBackground")
+    static let disabledButtonBackground = Color(.lightGray)
+    static let disabledButtonText = Color(.gray)
+
     static let smallButtonSelectedBackground = Color(NSColor.systemBlue)
     static let smallButtonBackground = Color(NSColor.systemGray)
 

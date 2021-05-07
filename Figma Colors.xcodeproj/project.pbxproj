@@ -24,6 +24,12 @@
 		7E204DB82644FDF300A23563 /* CacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DB72644FDF300A23563 /* CacheHelper.swift */; };
 		7E204DBE2645064D00A23563 /* SideBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DBD2645064D00A23563 /* SideBarItems.swift */; };
 		7E204DC9264507EB00A23563 /* MRButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DC8264507EB00A23563 /* MRButton.swift */; };
+		7E204DDA26450DF100A23563 /* FigmaColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DD526450DF100A23563 /* FigmaColor.swift */; };
+		7E204DDB26450DF100A23563 /* ComponentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DD626450DF100A23563 /* ComponentItem.swift */; };
+		7E204DDC26450DF100A23563 /* FigmaSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DD726450DF100A23563 /* FigmaSection.swift */; };
+		7E204DDD26450DF100A23563 /* GradientItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DD826450DF100A23563 /* GradientItem.swift */; };
+		7E204DDE26450DF100A23563 /* FigmaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DD926450DF100A23563 /* FigmaItem.swift */; };
+		7E204DE126450DF700A23563 /* ColorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DE026450DF700A23563 /* ColorItem.swift */; };
 		7E2343B82619E1CA00875A11 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7E2343B72619E1CA00875A11 /* SDWebImageSwiftUI */; };
 		7E25612726293BFC006C17C1 /* ComponentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25612626293BFC006C17C1 /* ComponentsViewModel.swift */; };
 		7E28D08F261060C0003EAB0F /* DirectoryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D08E261060C0003EAB0F /* DirectoryHelper.swift */; };
@@ -101,6 +107,12 @@
 		7E204DB72644FDF300A23563 /* CacheHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheHelper.swift; sourceTree = "<group>"; };
 		7E204DBD2645064D00A23563 /* SideBarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarItems.swift; sourceTree = "<group>"; };
 		7E204DC8264507EB00A23563 /* MRButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRButton.swift; sourceTree = "<group>"; };
+		7E204DD526450DF100A23563 /* FigmaColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaColor.swift; sourceTree = "<group>"; };
+		7E204DD626450DF100A23563 /* ComponentItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentItem.swift; sourceTree = "<group>"; };
+		7E204DD726450DF100A23563 /* FigmaSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaSection.swift; sourceTree = "<group>"; };
+		7E204DD826450DF100A23563 /* GradientItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientItem.swift; sourceTree = "<group>"; };
+		7E204DD926450DF100A23563 /* FigmaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaItem.swift; sourceTree = "<group>"; };
+		7E204DE026450DF700A23563 /* ColorItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorItem.swift; sourceTree = "<group>"; };
 		7E25612626293BFC006C17C1 /* ComponentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsViewModel.swift; sourceTree = "<group>"; };
 		7E28D08E261060C0003EAB0F /* DirectoryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryHelper.swift; sourceTree = "<group>"; };
 		7E28D091261071F1003EAB0F /* Extension+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+JSON.swift"; sourceTree = "<group>"; };
@@ -290,6 +302,12 @@
 				7EB3B930261FFA64003DE911 /* Pages */,
 				7E2B82F12600C0C400C8CD74 /* Code */,
 				7E204DCB26450B3600A23563 /* Models */,
+				7E204DD626450DF100A23563 /* ComponentItem.swift */,
+				7E204DD526450DF100A23563 /* FigmaColor.swift */,
+				7E204DD926450DF100A23563 /* FigmaItem.swift */,
+				7E204DD726450DF100A23563 /* FigmaSection.swift */,
+				7E204DE026450DF700A23563 /* ColorItem.swift */,
+				7E204DD826450DF100A23563 /* GradientItem.swift */,
 				7E9B22D1261EB99600850A01 /* Views */,
 				7EB5DB9C260365BA00CAF4D7 /* Network */,
 				7E9B22D2261EB9A400850A01 /* Extension */,
@@ -560,14 +578,19 @@
 				7EBD53222616E9C500D69B9B /* Button.swift in Sources */,
 				7EBD53252616E9DE00D69B9B /* Textfield.swift in Sources */,
 				7E2B82EE2600C0BF00C8CD74 /* CodeModel.swift in Sources */,
+				7E204DDA26450DF100A23563 /* FigmaColor.swift in Sources */,
 				7E2B82D226009DDF00C8CD74 /* Figma_ColorsApp.swift in Sources */,
+				7E204DDC26450DF100A23563 /* FigmaSection.swift in Sources */,
 				7E28D0C626130DBC003EAB0F /* SettingsController.swift in Sources */,
+				7E204DDE26450DF100A23563 /* FigmaItem.swift in Sources */,
 				7EB5DBA8260365BA00CAF4D7 /* NetworkDataFetcher.swift in Sources */,
 				7E28D0A426117B35003EAB0F /* AppSettings.swift in Sources */,
 				7E28D0C826130DBC003EAB0F /* SettingsViewModel.swift in Sources */,
+				7E204DDD26450DF100A23563 /* GradientItem.swift in Sources */,
 				7E28D0B82611A5AF003EAB0F /* Notifications.swift in Sources */,
 				7E1EB7632628164700910DE9 /* ImagesPage.swift in Sources */,
 				7E2B82EF2600C0BF00C8CD74 /* CodeViewModel.swift in Sources */,
+				7E204DDB26450DF100A23563 /* ComponentItem.swift in Sources */,
 				7EB3B928261F06E1003DE911 /* GradientsPage.swift in Sources */,
 				7E1EB7992628355400910DE9 /* SideBarViewModel.swift in Sources */,
 				7EE22E66260DD7ED002E8EDF /* Extension + View.swift in Sources */,
@@ -580,6 +603,7 @@
 				7E204DC9264507EB00A23563 /* MRButton.swift in Sources */,
 				7E204DAB2644DD9100A23563 /* FigmaCellLabel.swift in Sources */,
 				7EB3B92B261F07B9003DE911 /* ComponentsPage.swift in Sources */,
+				7E204DE126450DF700A23563 /* ColorItem.swift in Sources */,
 				7EB5DBA7260365BA00CAF4D7 /* NetworkDataPoster.swift in Sources */,
 				7E204DAE2644E1FA00A23563 /* HoverModifier.swift in Sources */,
 				7EB5DBA4260365BA00CAF4D7 /* DataPosterService.swift in Sources */,

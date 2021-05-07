@@ -30,6 +30,9 @@
 		7E204DDD26450DF100A23563 /* GradientItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DD826450DF100A23563 /* GradientItem.swift */; };
 		7E204DDE26450DF100A23563 /* FigmaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DD926450DF100A23563 /* FigmaItem.swift */; };
 		7E204DE126450DF700A23563 /* ColorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DE026450DF700A23563 /* ColorItem.swift */; };
+		7E204DE626450EC000A23563 /* FigmaImagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DE526450EC000A23563 /* FigmaImagesModel.swift */; };
+		7E204DEA26450EC500A23563 /* FigmaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DE826450EC500A23563 /* FigmaModel.swift */; };
+		7E204DEB26450EC500A23563 /* NodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DE926450EC500A23563 /* NodeModel.swift */; };
 		7E2343B82619E1CA00875A11 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7E2343B72619E1CA00875A11 /* SDWebImageSwiftUI */; };
 		7E25612726293BFC006C17C1 /* ComponentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25612626293BFC006C17C1 /* ComponentsViewModel.swift */; };
 		7E28D08F261060C0003EAB0F /* DirectoryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D08E261060C0003EAB0F /* DirectoryHelper.swift */; };
@@ -113,6 +116,9 @@
 		7E204DD826450DF100A23563 /* GradientItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientItem.swift; sourceTree = "<group>"; };
 		7E204DD926450DF100A23563 /* FigmaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaItem.swift; sourceTree = "<group>"; };
 		7E204DE026450DF700A23563 /* ColorItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorItem.swift; sourceTree = "<group>"; };
+		7E204DE526450EC000A23563 /* FigmaImagesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaImagesModel.swift; sourceTree = "<group>"; };
+		7E204DE826450EC500A23563 /* FigmaModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigmaModel.swift; sourceTree = "<group>"; };
+		7E204DE926450EC500A23563 /* NodeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeModel.swift; sourceTree = "<group>"; };
 		7E25612626293BFC006C17C1 /* ComponentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsViewModel.swift; sourceTree = "<group>"; };
 		7E28D08E261060C0003EAB0F /* DirectoryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryHelper.swift; sourceTree = "<group>"; };
 		7E28D091261071F1003EAB0F /* Extension+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+JSON.swift"; sourceTree = "<group>"; };
@@ -251,8 +257,33 @@
 		7E204DCB26450B3600A23563 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7E204DED26450ED800A23563 /* Items */,
+				7E204DEE26450EE000A23563 /* Api */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		7E204DED26450ED800A23563 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				7E204DD626450DF100A23563 /* ComponentItem.swift */,
+				7E204DD526450DF100A23563 /* FigmaColor.swift */,
+				7E204DE826450EC500A23563 /* FigmaModel.swift */,
+				7E204DD926450DF100A23563 /* FigmaItem.swift */,
+				7E204DD726450DF100A23563 /* FigmaSection.swift */,
+				7E204DE526450EC000A23563 /* FigmaImagesModel.swift */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		7E204DEE26450EE000A23563 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				7E204DE926450EC500A23563 /* NodeModel.swift */,
+				7E204DE026450DF700A23563 /* ColorItem.swift */,
+				7E204DD826450DF100A23563 /* GradientItem.swift */,
+			);
+			path = Api;
 			sourceTree = "<group>";
 		};
 		7E28D09B2610A4A7003EAB0F /* Views */ = {
@@ -302,12 +333,6 @@
 				7EB3B930261FFA64003DE911 /* Pages */,
 				7E2B82F12600C0C400C8CD74 /* Code */,
 				7E204DCB26450B3600A23563 /* Models */,
-				7E204DD626450DF100A23563 /* ComponentItem.swift */,
-				7E204DD526450DF100A23563 /* FigmaColor.swift */,
-				7E204DD926450DF100A23563 /* FigmaItem.swift */,
-				7E204DD726450DF100A23563 /* FigmaSection.swift */,
-				7E204DE026450DF700A23563 /* ColorItem.swift */,
-				7E204DD826450DF100A23563 /* GradientItem.swift */,
 				7E9B22D1261EB99600850A01 /* Views */,
 				7EB5DB9C260365BA00CAF4D7 /* Network */,
 				7E9B22D2261EB9A400850A01 /* Extension */,
@@ -587,6 +612,7 @@
 				7E28D0A426117B35003EAB0F /* AppSettings.swift in Sources */,
 				7E28D0C826130DBC003EAB0F /* SettingsViewModel.swift in Sources */,
 				7E204DDD26450DF100A23563 /* GradientItem.swift in Sources */,
+				7E204DEB26450EC500A23563 /* NodeModel.swift in Sources */,
 				7E28D0B82611A5AF003EAB0F /* Notifications.swift in Sources */,
 				7E1EB7632628164700910DE9 /* ImagesPage.swift in Sources */,
 				7E2B82EF2600C0BF00C8CD74 /* CodeViewModel.swift in Sources */,
@@ -596,6 +622,7 @@
 				7EE22E66260DD7ED002E8EDF /* Extension + View.swift in Sources */,
 				7E204DB12644FD1E00A23563 /* NetworkCachedDataFetcher.swift in Sources */,
 				7E25612726293BFC006C17C1 /* ComponentsViewModel.swift in Sources */,
+				7E204DE626450EC000A23563 /* FigmaImagesModel.swift in Sources */,
 				7E2B82ED2600C0BF00C8CD74 /* CodeController.swift in Sources */,
 				7E28D0CD261310D3003EAB0F /* Extension+Color.swift in Sources */,
 				7E1EB7972628355400910DE9 /* SideBarController.swift in Sources */,
@@ -612,6 +639,7 @@
 				7EB5DBA5260365BA00CAF4D7 /* NetworkService.swift in Sources */,
 				7E658991263D23D8008CAAC9 /* SideBarComponentButton.swift in Sources */,
 				7E1EB7642628164700910DE9 /* ImagesModel.swift in Sources */,
+				7E204DEA26450EC500A23563 /* FigmaModel.swift in Sources */,
 				7E28D0992610A4A2003EAB0F /* Tooltip.swift in Sources */,
 				7E9B22ED261EC72B00850A01 /* FigmaColorCell.swift in Sources */,
 				7EBD532C26173ACD00D69B9B /* Extension+Collection.swift in Sources */,

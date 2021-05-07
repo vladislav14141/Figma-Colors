@@ -19,7 +19,7 @@ struct FigmaGradientCellItem: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             LinearGradient(gradient: gradientItem.gradient, startPoint: gradientItem.start, endPoint: gradientItem.end)
-                .onHover { hover in
+                .whenHovered { hover in
                     withAnimation(.easeInOut) {
                         
                         isHoveredView = hover
@@ -57,8 +57,8 @@ struct FigmaGradientCellItem: View {
     @ViewBuilder fileprivate func gradientOverlay(_ figmaColor: FigmaColor, i: Int, reader: GeometryProxy) -> some View {
         figmaColor
             .color
-            .frame(width: hoverWidth(i: i, reader: reader))
-            .onHover { hovered in
+            .frame(width: max(0, hoverWidth(i: i, reader: reader)))
+            .whenHovered { hovered in
                 withAnimation(.easeInOut) {
                     if hovered {
                         hoveredColorIndex = i
@@ -95,12 +95,8 @@ struct FigmaGradientCellItem: View {
 
         }.padding(8)
         .id("Buttons")
-//        .animation(Animation.easeInOut.delay(0.2))
-//        .offset(x: 0, y: 0)
-//        .animation(Animation.easeInOut.delay(0.2))
-//        .transition(.flipFromRight)
-//        .transition(AnyTransition.scale(scale: 0.2, anchor: .top).combined(with: AnyTransition.fade))
     }
+    
     var colorCount: CGFloat { CGFloat(gradientItem.colors.count) }
     
     func hoverWidth(i: Int, reader: GeometryProxy) -> CGFloat {

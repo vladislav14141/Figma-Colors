@@ -22,4 +22,26 @@ extension View {
             redacted(reason: .placeholder)
         }
     }
+    
+    @ViewBuilder func gradiented(color: Color = Color.primaryBackground) -> some View {
+        self.overlay(
+            LinearGradient(gradient: .init(colors: [color.opacity(0.01), color]),
+                           startPoint: .leading,
+                           endPoint: .trailing)
+                .frame(width: 24),
+            alignment: .trailing)
+    }
+    
+    @ViewBuilder func stokedLabel(_ stroked: Bool) -> some View {
+        ZStack(alignment: .leading) {
+            self
+            Divider().animation(.easeIn).transition(.slide).isHidden(!stroked)
+        }.clipped()
+    }
+    
+    func whenHovered(_ mouseIsInside: @escaping (Bool) -> Void) -> some View {
+        modifier(MouseInsideModifier(mouseIsInside))
+    }
+    
 }
+

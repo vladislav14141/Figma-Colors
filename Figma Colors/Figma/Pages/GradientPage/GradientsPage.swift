@@ -24,7 +24,7 @@ struct GradientsPage: View {
                 columns: gradientColumns,
                 alignment: .leading,
                 spacing: lazyStackSpacing,
-                pinnedViews: [.sectionHeaders] )
+                pinnedViews: [] )
             {
                 ForEach(items) { section in
                     

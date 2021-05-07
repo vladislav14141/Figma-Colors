@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FigmaGradientCell: View {
     
-    let gradientItem: GradientItem
+    @ObservedObject var gradientItem: GradientItem
     @State var hoveredItem: ColorItem?
     @State var isHoveredView = false
     
@@ -27,8 +27,7 @@ struct FigmaGradientCell: View {
             }
             .cornerRadius(16)
             .frame(height: 120)
-            
-            Text(gradientItem.shortName).customFont(.callout).foregroundColor(.label)
+            FigmaCellLabel(text: gradientItem.shortName, isSelected: $gradientItem.isSelected)
         }
     }
 }

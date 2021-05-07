@@ -34,7 +34,7 @@ struct InfoPage: View {
                     HStack {
                         Spacer()
                         MRButton(iconName: "gearshape", title: nil, enabled: true) {
-                            factory.showSettings = true
+//                            factory.showSettings = true
                         }.frame(width: 32)
                     }
                     
@@ -49,11 +49,11 @@ struct InfoPage: View {
                     }
                     
                     Group {
-                        MRButton(iconName: "folder.fill", title: "Code", enabled: true) {
+                        MRButton(iconName: "doc.plaintext.fill", title: "Code", enabled: true) {
                             codeOpened = true
                         }
                         
-                        MRButton(iconName: "doc.plaintext.fill", title: "Download Assets", enabled: true) {
+                        MRButton(iconName: "folder.fill", title: "Download Assets", enabled: true) {
                             directoryHelper.downloadAssets(factory: factory)
                         }
                         
@@ -64,7 +64,7 @@ struct InfoPage: View {
                 })
                 Spacer()
             }.padding()
-        }.background(Color.secondaryBackground).cornerRadius(8).frame(minWidth: 150, idealWidth: 200, maxWidth: .infinity).layoutPriority(2)
+        }.background(Color.secondaryBackground).cornerRadius(8).frame(minWidth: 200, idealWidth: 300, maxWidth: .infinity).layoutPriority(2)
     }
 }
 

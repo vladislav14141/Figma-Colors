@@ -35,38 +35,18 @@ struct SideBarComponentButton: View {
 
 struct ComponentSectionButton: View {
     @ObservedObject var section: FigmaSection<ComponentItem>
-    @State var count = ""
-    @State var updater: Bool = false
-
+    var countString: String {
+        "\(section.selectedCount)/\(section.count)"
+    }
+    
     var body: some View {
-        DisclosureGroup(
-            content: {
-                ForEach(section.rows) { row in
-                    ComponentButton(item: row)
-                        .onReceive(row.$isSelected, perform: { value in
-                        count = "\(section.selectedCount)/\(section.count)"
-                            section.isSelected = section.selected()
-                    })
-                }
-                
-            }) {
-            NavigationLink(
-                destination: ComponentsPage(items: .constant([section]))) {
-                HStack {
-                    Text(section.name).font(.callout)
-                    Spacer()
-                    Text(count).font(.caption)
-                    MRCheckBox(isOn: $section.isSelected) { isOn in
-                        isOn ? section.selectAll() : section.unSelectAll()
-                    }
-                }
-            }.onAppear {
-                count = "\(section.selectedCount)/\(section.count)"
-            }.onReceive(section.$isSelected, perform: { _ in
-                count = "\(section.selectedCount)/\(section.count)"
-            })
-
-            
+        HStack {
+            Text(section.name).font(.callout)
+            Spacer()
+            Text(countString).font(.caption)
+            MRCheckBox(isOn: $section.isSelected) { isOn in
+                isOn ? section.selectAll() : section.unSelectAll()
+            }
         }
     }
 }
@@ -83,6 +63,7 @@ struct ComponentButton: View {
             destination: ComponentsPage(items: .constant([section])),
             label: {
                 HStack(spacing: 8) {
+                    MRWebImage(url: item.x3).frame(width: 32, height: 32)
                     Text(item.fullName).font(.callout)
                     Spacer()
                     MRCheckBox(isOn: $item.isSelected)

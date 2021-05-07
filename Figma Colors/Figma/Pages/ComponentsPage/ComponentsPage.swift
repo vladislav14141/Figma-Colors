@@ -24,7 +24,7 @@ struct ComponentsPage: View {
                 columns: colorColumns,
                 alignment: .leading,
                 spacing: lazyStackSpacing,
-                pinnedViews: [.sectionHeaders] )
+                pinnedViews: [] )
             {
                 ForEach(items) { section in
                     Section(header: PageHeaderView(title: section.name)) {

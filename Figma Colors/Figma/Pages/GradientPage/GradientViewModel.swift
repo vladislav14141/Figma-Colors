@@ -8,19 +8,22 @@
 import SwiftUI
 
 import Combine
+enum FigmaSheme {
+    case light
+    case dark
+}
+enum FigmaNodeType {
+    case components
+    case styles
+}
 
 class FigmaFactory: ObservableObject {
     // MARK: - Public Properties
     @Published var fileKeyLight: String
     @Published var fileKeyDark: String
     @Published var figmaToken: String
-//
-    @Published var storage: FigmaStorage
 
-//    @Published var storage: FigmaStorage = FigmaStorage.shared
-//    @Published var figmaColors = [FigmaSection<ColorItem>]()
-//    @Published var figmaGradient = [FigmaSection<GradientItem>]()
-//    @Published var figmaImages = [FigmaSection<ComponentItem>]()
+    @Published var storage: FigmaStorage
 
     var isLoading: Bool {
         get {
@@ -30,8 +33,6 @@ class FigmaFactory: ObservableObject {
             storage.isLoading = newValue
         }
     }
-    @Published var showCode: Bool = false
-    @Published var showSettings = false
     
     @Published var fileDark: FigmaModel?
     @Published var fileLight: FigmaModel?
@@ -40,8 +41,9 @@ class FigmaFactory: ObservableObject {
     
     // MARK: - Private Properties
     private let directoryHelper = DirectoryHelper()
-    private let dataFetcher = NetworkDataFetcher()
+    private let dataFetcher = NetworkCachedDataFetcher()
     private let queue = DispatchQueue(label: "fetch.queue")
+    
     private let group = DispatchGroup()
 
     private var gradientSection: [String: FigmaSection<ColorItem>] = [:]
@@ -64,9 +66,9 @@ class FigmaFactory: ObservableObject {
         fileKeyDark = settings.fileKeyDark
         figmaToken = settings.figmaToken
         
-        Notifications.showCode.publisher().sink {[weak self] g in
-            self?.showCode = true
-        }.store(in: &bag)
+//        Notifications.showCode.publisher().sink {[weak self] g in
+//            self?.showCode = true
+//        }.store(in: &bag)
         
         $fileKeyLight.dropFirst().sink { key in
             settings.fileKeyLight = key
@@ -81,14 +83,6 @@ class FigmaFactory: ObservableObject {
         }.store(in: &bag)
         fetchFigmaStyles(sheme: .light)
         fetchFigmaStyles(sheme: .dark)
-
-//        $figmaColors.sink { sections in
-//            ExportStorage.shared.colors = sections
-//        }.store(in: &bag)
-//
-//        $figmaGradient.sink { sections in
-//            ExportStorage.shared.gradient = sections
-//        }.store(in: &bag)
     }
     
 
@@ -113,7 +107,7 @@ class FigmaFactory: ObservableObject {
             fetchFigmaStyles(sheme: .dark)
         }
         self.isLoading = true
-        fetchImages()
+//        fetchImages()
         group.notify(queue: .main) {
             self.isLoading = false
         }
@@ -271,7 +265,6 @@ extension FigmaFactory {
         guard let components = urlComponents(sheme: sheme) else { return }
 
         let url = "https://api.figma.com/v1/files/\(components.token)/nodes?ids=\(nodeIds)"
-        group.enter()
         dataFetcher.fetchGenericJsonData(urlString: url, decodeBy: NodeModel.self) {
 
             switch $0 {
@@ -282,7 +275,7 @@ extension FigmaFactory {
                 case .components:
                     self.onFetchedImageNode(responce.nodes, sheme: sheme)
                 case .styles:
-                    self.queue.async {
+                    self.queue.async(group: self.group) {
                         self.onFetchedNode(responce.nodes, sheme: sheme)
                         let colors = self.getSections(rows: self.colorsCache)
                         let gradients = self.getSections(rows: self.gradientsCache)
@@ -290,14 +283,11 @@ extension FigmaFactory {
                         DispatchQueue.main.async {
                             self.storage.colors = colors
                             self.storage.gradients = gradients
-                            self.group.leave()
-                            self.objectWillChange.send()
                         }
                     }
                 }
             case .failure(let err):
                 print(err)
-                self.group.leave()
 
             }
         }
@@ -306,7 +296,6 @@ extension FigmaFactory {
     fileprivate func fetchFigmaStyles(sheme: FigmaSheme) {
         guard let components = urlComponents(sheme: sheme) else { return }
 
-        group.enter()
         var url = "https://api.figma.com/v1/files/\(components.token)"
         if let nodeId = components.nodeId {
             url += "?ids=\(nodeId)"
@@ -343,16 +332,13 @@ extension FigmaFactory {
                 
             case .failure(let err):
                 print(err)
-            }
-            self.group.leave()
-        
+            }        
         })
     }
     
     fileprivate func getComponents(nodeIds: String, sheme: FigmaSheme) {
         guard let components = urlComponents(sheme: sheme) else { return }
 
-        group.enter()
         let url = "https://api.figma.com/v1/images/\(components.token)?scale=3&ids=\(nodeIds)"
         
         dataFetcher.fetchGenericJsonData(urlString: url, decodeBy: FigmaImagesModel.self) { result in
@@ -369,29 +355,27 @@ extension FigmaFactory {
             case .failure(let err):
                 print(err)
             }
-            self.group.leave()
         }
     }
     
-    func fetchImages() {
-        guard let components = urlComponents(sheme: .light) else { return }
-        isLoading = true
-        dataFetcher.fetchGenericJsonData(urlString: "https://api.figma.com/v1/files/\(components.token)/images", decodeBy: ImagesModel.self) { [weak self] result in
-            guard let self = self else { return }
-            
-            switch result {
-            
-            case .success(let responce):
-                let images = responce.meta.images.reduce(into: []) { (result, dict) in
-                    result.append(Image1Item(key: dict.key, url: dict.value))
-                }
-                DispatchQueue.main.async {
-                    self.storage.images = images.map({MRWebImage(url: $0.url)})
-                }
-            case .failure(let err):
-                print(err)
-            }
-            DispatchQueue.main.async { self.isLoading = false }
-        }
-    }
+//    func fetchImages() {
+//        guard let components = urlComponents(sheme: .light) else { return }
+//        isLoading = true
+//        dataFetcher.fetchGenericJsonData(urlString: "https://api.figma.com/v1/files/\(components.token)/images", decodeBy: ImagesModel.self) { [weak self] result in
+//            guard let self = self else { return }
+//
+//            switch result {
+//
+//            case .success(let responce):
+//                let images = responce.meta.images.reduce(into: []) { (result, dict) in
+//                    result.append(Image1Item(key: dict.key, url: dict.value))
+//                }
+//                DispatchQueue.main.async {
+//                    self.storage.images = images.map({MRWebImage(url: $0.url)})
+//                }
+//            case .failure(let err):
+//                print(err)
+//            }
+//        }
+//    }
 }

@@ -52,25 +52,20 @@ struct SideBarColorButton: View {
 
 struct ColorSectionButton: View {
     @ObservedObject var section: FigmaSection<ColorItem>
-    @State var count = ""
-    @State var updater: Bool = false
+    var countString: String {
+        "\(section.selectedCount)/\(section.count)"
+    }
     
     var body: some View {
         
         HStack {
             Text(section.name).font(.callout)
             Spacer()
-            Text(count).font(.caption)
+            Text("\(section.selectedCount)/\(section.count)").font(.caption)
             MRCheckBox(isOn: $section.isSelected) { isOn in
                 isOn ? section.selectAll() : section.unSelectAll()
             }
         }
-        .onAppear {
-            count = "\(section.selectedCount)/\(section.count)"
-            
-        }.onReceive(section.$isSelected, perform: { _ in
-            count = "\(section.selectedCount)/\(section.count)"
-        })
     }
 }
 

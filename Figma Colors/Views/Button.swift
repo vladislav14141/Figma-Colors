@@ -85,9 +85,9 @@ struct MRButton: View {
             .frame(height: 32)
         })
         .buttonStyle(MRButtonStyle(enabled: enabled, isHovered: $isHovered))
-        .onHover(perform: {
+        .whenHovered {
             isHovered = $0
-        })
+        }
         
     }
 }
@@ -121,9 +121,9 @@ struct MRSmallButton: View {
         })
         .buttonStyle(MRSmallButtonStyle())
 
-        .onHover(perform: {
+        .whenHovered {
             isHovered = $0
-        })
+        }
     }
     
     @ViewBuilder func onHover() -> some View {

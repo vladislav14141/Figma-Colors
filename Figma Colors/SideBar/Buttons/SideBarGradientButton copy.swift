@@ -35,38 +35,18 @@ struct SideBarGradientButton: View {
 
 struct GradientSectionButton: View {
     @ObservedObject var section: FigmaSection<GradientItem>
-    @State var count = ""
-    @State var updater: Bool = false
-
+    var countString: String {
+        "\(section.selectedCount)/\(section.count)"
+    }
+    
     var body: some View {
-        DisclosureGroup(
-            content: {
-                ForEach(section.rows) { row in
-                    GradientButton(item: row)
-                        .onReceive(row.$isSelected, perform: { value in
-                        count = "\(section.selectedCount)/\(section.count)"
-                            section.isSelected = section.selected()
-                    })
-                }
-                
-            }) {
-            NavigationLink(
-                destination: GradientsPage(items: .constant([section]))) {
-                HStack {
-                    Text(section.name).font(.callout)
-                    Spacer()
-                    Text(count).font(.caption)
-                    MRCheckBox(isOn: $section.isSelected) { isOn in
-                        isOn ? section.selectAll() : section.unSelectAll()
-                    }
-                }
-            }.onAppear {
-                count = "\(section.selectedCount)/\(section.count)"
-            }.onReceive(section.$isSelected, perform: { _ in
-                count = "\(section.selectedCount)/\(section.count)"
-            })
-
-            
+        HStack {
+            Text(section.name).font(.callout)
+            Spacer()
+            Text(countString).font(.caption)
+            MRCheckBox(isOn: $section.isSelected) { isOn in
+                isOn ? section.selectAll() : section.unSelectAll()
+            }
         }
     }
 }
@@ -85,11 +65,11 @@ struct GradientButton: View {
                 HStack(spacing: 8) {
                     HStack(spacing: 4) {
                         if let g = item.light?.gradient {
-                            LinearGradient(gradient: g, startPoint: .leading, endPoint: .trailing).frame(width: 32, height: 32).cornerRadius(2)
+                            LinearGradient(gradient: g, startPoint: .leading, endPoint: .trailing).frame(width: 64, height: 32).cornerRadius(2)
                         }
                         
                         if let g = item.dark?.gradient {
-                            LinearGradient(gradient: g, startPoint: .leading, endPoint: .trailing).frame(width: 32, height: 32).cornerRadius(2)
+                            LinearGradient(gradient: g, startPoint: .leading, endPoint: .trailing).frame(width: 64, height: 32).cornerRadius(2)
 
                         }
                     }
@@ -98,7 +78,7 @@ struct GradientButton: View {
                     MRCheckBox(isOn: $item.isSelected)
                 }
             }
-        )
+        ).frame(minWidth: 200)
     }
 }
 

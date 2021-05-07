@@ -22,7 +22,7 @@ struct MRCheckBox: View {
                     Image(systemName: "checkmark.circle").font(.system(size: 17, weight: .light))
                 }
             }.background(Color.clear).clipShape(Circle())
-        }).buttonStyle(MRButtonStyle1(type: .opacity))
+        }).buttonStyle(MRButtonStyle1(type: .plain))
     }
 }
 
@@ -48,6 +48,7 @@ struct MRCheckBox1: View {
 struct MRButtonStyle1: ButtonStyle {
     enum ButtonType {
         case opacity
+        case plain
         case scale(CGFloat = 0.9)
     }
     var type: ButtonType
@@ -60,7 +61,14 @@ struct MRButtonStyle1: ButtonStyle {
         switch type {
         case .opacity: opacityConfig(configuration)
         case .scale(let size): scaleMinConfig(configuration, size: size)
+        case .plain: plainConfig(configuration)
         }
+    }
+    
+    @ViewBuilder func plainConfig(_ configuration: Configuration) -> some View {
+        configuration
+            .label
+            .opacity(configuration.isPressed ? 0.5 : 1)
     }
     
     @ViewBuilder func opacityConfig(_ configuration: Configuration) -> some View {

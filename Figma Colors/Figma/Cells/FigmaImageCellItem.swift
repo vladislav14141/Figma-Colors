@@ -9,35 +9,17 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct FigmaImageCellItem: View {
-    let item: ComponentItem
+    @ObservedObject var item: ComponentItem
     
     var body: some View {
         if let img = item.x3, let url = URL(string: img) {
             VStack(alignment: .leading, spacing: 8) {
-                
-//                if let size = item.size {
-//
-//
-//                } else {
-//                    MRWebImage(url: url).frame(height: 120).clipped()
-//                }
                 if let img = item.imageX3 {
                     VStack {
-//                        MRWebImage(url: url).frame(width: min(size.width, 120),height: min(size.height, 120)).clipped()
-                        
                         Image(nsImage: img).resizable().aspectRatio(contentMode: .fit).frame(width: min(img.size.height, 120), height: min(img.size.height, 120)).clipped()
                     }.frame(width: 120, height: 120, alignment: .center).background(Color.tertiaryBackground).cornerRadius(8)
                 }
-                Text(item.shortName)
-                    .frame(minWidth: 120, maxWidth: .infinity, alignment: .leading)
-                    .lineLimit(1)
-                    .customFont(.callout)
-                    .foregroundColor(.label)
-                    .overlay(
-                        LinearGradient(gradient: .init(colors: [Color.primaryBackground.opacity(0.01), .primaryBackground]),
-                                       startPoint: .leading,
-                                       endPoint: .trailing).frame(width: 24),
-                        alignment: .trailing)
+                FigmaCellLabel(text: item.shortName, isSelected: $item.isSelected)
             }
             
         }

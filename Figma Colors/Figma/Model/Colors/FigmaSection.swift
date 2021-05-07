@@ -11,7 +11,6 @@ import Combine
 class FigmaSection<Row: FigmaItem>: Identifiable, ObservableObject {
 
     let id = UUID()
-//    typealias Row = FigmaItem
     
     /// "danger"
     let name: String
@@ -20,14 +19,12 @@ class FigmaSection<Row: FigmaItem>: Identifiable, ObservableObject {
         rows.count
     }
     
-    
-    
     var selectedCount: Int {
         rows.filter({$0.isSelected}).count
     }
     
     @Published var isSelected = true
-    
+    private var bag = [AnyCancellable]()
     private(set) var colorsName = Set<Row.ID>()
     private(set) var rows: [Row] = []
     
@@ -42,7 +39,22 @@ class FigmaSection<Row: FigmaItem>: Identifiable, ObservableObject {
     internal init(name: String, colors: [Row] = [Row]()) {
         self.name = name
         self.rows = colors
+        observeRow(rows: colors)
+    }
     
+    func observeRow(rows: [Row]) {
+        rows.forEach { (row) in
+            row.$isSelected.delay(for: 0.1, scheduler: RunLoop.main).sink { [weak self] (selected) in
+                guard let self = self else { return }
+                if selected {
+//                    let select = rows.first(where: {$0.isSelected == false})
+                    print("-- \(self.selectedCount) \(self.count) -- \(rows.first(where: {$0.isSelected == false})?.shortName)")
+                    self.isSelected = self.selectedCount == self.count
+                } else {
+                    self.isSelected = false
+                }
+            }.store(in: &bag)
+        }
     }
     
     
@@ -51,6 +63,7 @@ class FigmaSection<Row: FigmaItem>: Identifiable, ObservableObject {
             rows.append(object)
             colorsName.insert(object.id)
         }
+        observeRow(rows: [object])
     }
     
     func selected() -> Bool {

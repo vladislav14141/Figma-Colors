@@ -108,42 +108,52 @@ struct SideBarController: View {
 struct ColorSideBar: View {
     @Binding var items: [FigmaSection<ColorItem>]
     @State var tab: Int? = 0
+    
     var body: some View {
         List {
             NavigationLink(destination: ColorsPage(items: $items, selected: nil), tag: 0, selection: $tab) {
-                Text("All")
-            }
-
-            ForEach(items) { (section) in
-                NavigationLink(destination: ColorsPage(items: $items, selected: nil), tag: section.id.hashValue, selection: $tab) {
-                    ColorSectionButton(section: section)
+                HStack {
+                    Image(systemName: "atom").foregroundColor(.blue)
+                    Text("All")
+                    Spacer()
                 }
-//                NavigationLink(destination: ColorsPage(items: $items, selected: section.name)) {
             }
-        }//.frame(width: 150, idealWidth: 200, maxWidth: 300)
+            
+            ForEach(items) { (section) in
+                    
+                    Section(header: ColorSectionButton(section: section).padding(.top)) {
+                        ForEach(section.rows) { row in
+                            ColorButton(figmaColor: row)
+                        }
+                    }
+                }
+        }
         .navigationTitle("Colors")
-
     }
 }
 
 struct GradientSideBar: View {
     @Binding var items: [FigmaSection<GradientItem>]
+    @State var tab: Int? = 0
 
     var body: some View {
         List {
-            NavigationLink(destination: GradientsPage(items: $items, selected: nil)) {
-                Text("All")
-            }
-
-            ForEach(items) { (section) in
-                NavigationLink(destination: GradientsPage(items: $items, selected: section.name)) {
-                    HStack {
-                        
-                        Text(section.name)
-                    }
+            NavigationLink(destination: GradientsPage(items: $items, selected: nil), tag: 0, selection: $tab) {
+                HStack {
+                    Image(systemName: "atom").foregroundColor(.blue)
+                    Text("All")
+                    Spacer()
                 }
             }
-        }.frame(minWidth: 150, idealWidth: 200, maxWidth: 300)
+            ForEach(items) { (section) in
+                    
+                    Section(header: GradientSectionButton(section: section)) {
+                        ForEach(section.rows) { row in
+                            GradientButton(item: row)
+                        }
+                    }
+                }
+        }
         .navigationTitle("Gradients")
 
     }
@@ -151,19 +161,25 @@ struct GradientSideBar: View {
 
 struct ComponentsSideBar: View {
     @Binding var items: [FigmaSection<ComponentItem>]
+    @State var tab: Int? = 0
 
     var body: some View {
         List {
-            NavigationLink(destination: ComponentsPage(items: $items, selected: nil)) {
+            NavigationLink(destination: ComponentsPage(items: $items, selected: nil), tag: 0, selection: $tab) {
+                Image(systemName: "atom").foregroundColor(.blue)
                 Text("All")
+                Spacer()
             }
 
             ForEach(items) { (section) in
-                NavigationLink(destination: ComponentsPage(items: $items, selected: section.name)) {
-                    Text(section.name)
+                
+                Section(header: ComponentSectionButton(section: section)) {
+                    ForEach(section.rows) { row in
+                        ComponentButton(item: row)
+                    }
                 }
             }
-        }.frame(minWidth: 150, idealWidth: 200, maxWidth: 300)
+        }
         .navigationTitle("Components")
     }
 }
@@ -173,76 +189,3 @@ struct SideBarController_Previews: PreviewProvider {
         SideBarController()
     }
 }
-
-
-//
-//struct SplitView: View {
-//    @State var selectedMenu: OutlineMenu = .popular
-//
-//    var body: some View {
-//        HStack(spacing: 0) {
-//            ScrollView(showsIndicators: false) {
-//                VStack(alignment: .leading) {
-//                    ForEach(OutlineMenu.allCases) { menu in
-//                        OutlineRow(item: menu, selectedMenu: self.$selectedMenu)
-//                    }
-//                }
-//                .frame(width: 250)
-//            }
-//            .frame(width: 250)
-//            .background(Color(.sRGB, white: 0.1, opacity: 1))
-//            selectedMenu.contentView
-//        }
-//    }
-//}
-//
-//enum OutlineMenu: Int, CaseIterable, Identifiable {
-//    var id: Int {
-//        return self.rawValue
-//    }
-//
-//
-//    case popular, topRated, upcoming, nowPlaying, discover, wishlist, seenlist, myLists, settings
-//
-//    var title: String {
-//        switch self {
-//        case .popular:    return "Popular"
-//        case .topRated:   return "Top rated"
-//        case .upcoming:   return "Upcoming"
-//        case .nowPlaying: return "Now Playing"
-//        case .discover:   return "Discover"
-//        case .wishlist:   return "Wishlist"
-//        case .seenlist:   return "Seenlist"
-//        case .myLists:    return "MyLists"
-//        case .settings:   return "Settings"
-//        }
-//    }
-//
-//    var image: String {
-//        switch self {
-//        case .popular:    return "film.fill"
-//        case .topRated:   return "star.fill"
-//        case .upcoming:   return "clock.fill"
-//        case .nowPlaying: return "play.circle.fill"
-//        case .discover:   return "square.stack.fill"
-//        case .wishlist:   return "heart.fill"
-//        case .seenlist:   return "eye.fill"
-//        case .myLists:    return "text.badge.plus"
-//        case .settings:   return "wrench"
-//        }
-//    }
-//
-//    var contentView: AnyView {
-//        switch self {
-//        case .popular:    return AnyView( NavigationView{ Text("asda") })
-//        case .topRated:   return AnyView( NavigationView{ Text("as") })
-//        case .upcoming:   return AnyView( NavigationView{ Text("as") })
-//        case .nowPlaying: return AnyView( NavigationView{ Text("as") })
-//        case .discover:   return AnyView( Text("as") )
-//        case .wishlist:   return AnyView(Text("as")) )
-//        case .seenlist:   return AnyView( Text("as") )
-//        case .myLists:    return AnyView( Text("as") )
-//        case .settings:   return AnyView( Text("as") )
-//        }
-//    }
-//}

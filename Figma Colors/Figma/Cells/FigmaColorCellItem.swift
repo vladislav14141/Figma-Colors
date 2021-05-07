@@ -13,9 +13,9 @@ struct FigmaColorCellItem: View {
     @State var isCopied = false {
         didSet {
             if isCopied {
-//                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-//                    isCopied = false
-//                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                    isCopied = false
+                }
             }
         }
     }
@@ -55,7 +55,7 @@ struct FigmaColorCellItem: View {
                 
             }.opacity(isHover ? 0.9 : 1)
 
-            .onHover { over in
+            .whenHovered { over in
                 isHover = over
             }
         }

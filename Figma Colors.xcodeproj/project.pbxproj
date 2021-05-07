@@ -17,6 +17,11 @@
 		7E1EB7972628355400910DE9 /* SideBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1EB7942628355400910DE9 /* SideBarController.swift */; };
 		7E1EB7982628355400910DE9 /* SideBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1EB7952628355400910DE9 /* SideBarModel.swift */; };
 		7E1EB7992628355400910DE9 /* SideBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1EB7962628355400910DE9 /* SideBarViewModel.swift */; };
+		7E204DAB2644DD9100A23563 /* FigmaCellLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DAA2644DD9100A23563 /* FigmaCellLabel.swift */; };
+		7E204DAE2644E1FA00A23563 /* HoverModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DAD2644E1FA00A23563 /* HoverModifier.swift */; };
+		7E204DB12644FD1E00A23563 /* NetworkCachedDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DB02644FD1E00A23563 /* NetworkCachedDataFetcher.swift */; };
+		7E204DB52644FDAC00A23563 /* Cache in Frameworks */ = {isa = PBXBuildFile; productRef = 7E204DB42644FDAC00A23563 /* Cache */; };
+		7E204DB82644FDF300A23563 /* CacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DB72644FDF300A23563 /* CacheHelper.swift */; };
 		7E2343B42619DDA300875A11 /* FigmaImagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2343B32619DDA300875A11 /* FigmaImagesModel.swift */; };
 		7E2343B82619E1CA00875A11 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7E2343B72619E1CA00875A11 /* SDWebImageSwiftUI */; };
 		7E25612726293BFC006C17C1 /* ComponentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25612626293BFC006C17C1 /* ComponentsViewModel.swift */; };
@@ -118,6 +123,10 @@
 		7E1EB7942628355400910DE9 /* SideBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarController.swift; sourceTree = "<group>"; };
 		7E1EB7952628355400910DE9 /* SideBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarModel.swift; sourceTree = "<group>"; };
 		7E1EB7962628355400910DE9 /* SideBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarViewModel.swift; sourceTree = "<group>"; };
+		7E204DAA2644DD9100A23563 /* FigmaCellLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaCellLabel.swift; sourceTree = "<group>"; };
+		7E204DAD2644E1FA00A23563 /* HoverModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoverModifier.swift; sourceTree = "<group>"; };
+		7E204DB02644FD1E00A23563 /* NetworkCachedDataFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkCachedDataFetcher.swift; sourceTree = "<group>"; };
+		7E204DB72644FDF300A23563 /* CacheHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheHelper.swift; sourceTree = "<group>"; };
 		7E2343B32619DDA300875A11 /* FigmaImagesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaImagesModel.swift; sourceTree = "<group>"; };
 		7E25612626293BFC006C17C1 /* ComponentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsViewModel.swift; sourceTree = "<group>"; };
 		7E28D08E261060C0003EAB0F /* DirectoryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryHelper.swift; sourceTree = "<group>"; };
@@ -220,6 +229,7 @@
 				7E1EB78F2628313000910DE9 /* URLImage in Frameworks */,
 				7E6F90C82643B8FF004FD4AC /* HighlightedTextEditor in Frameworks */,
 				7E2343B82619E1CA00875A11 /* SDWebImageSwiftUI in Frameworks */,
+				7E204DB52644FDAC00A23563 /* Cache in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +288,7 @@
 			children = (
 				7E28D0982610A4A2003EAB0F /* Tooltip.swift */,
 				7E4C6E8A2636A658001CA544 /* MRCheckBox.swift */,
+				7E204DAA2644DD9100A23563 /* FigmaCellLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -473,7 +484,9 @@
 			children = (
 				7E28D0A326117B35003EAB0F /* AppSettings.swift */,
 				7E28D0B72611A5AF003EAB0F /* Notifications.swift */,
+				7E204DAD2644E1FA00A23563 /* HoverModifier.swift */,
 				7E65899C263D3C76008CAAC9 /* FigmaNetworkHelper.swift */,
+				7E204DB72644FDF300A23563 /* CacheHelper.swift */,
 				7E28D08E261060C0003EAB0F /* DirectoryHelper.swift */,
 			);
 			path = Helpers;
@@ -533,6 +546,7 @@
 			isa = PBXGroup;
 			children = (
 				7EB5DB9D260365BA00CAF4D7 /* NetworkWebSocket.swift */,
+				7E204DB02644FD1E00A23563 /* NetworkCachedDataFetcher.swift */,
 				7EB5DB9E260365BA00CAF4D7 /* DataPosterService.swift */,
 				7EB5DB9F260365BA00CAF4D7 /* NetworkService.swift */,
 				7EB5DBA0260365BA00CAF4D7 /* DataFetcherService.swift */,
@@ -576,6 +590,7 @@
 				7E1EB76C2628208A00910DE9 /* Grid */,
 				7E1EB78E2628313000910DE9 /* URLImage */,
 				7E6F90C72643B8FF004FD4AC /* HighlightedTextEditor */,
+				7E204DB42644FDAC00A23563 /* Cache */,
 			);
 			productName = "Figma Colors";
 			productReference = 7E2B82CE26009DDF00C8CD74 /* Figma Colors.app */;
@@ -610,6 +625,7 @@
 				7E1EB76B2628208A00910DE9 /* XCRemoteSwiftPackageReference "swiftui-grid" */,
 				7E1EB78D2628313000910DE9 /* XCRemoteSwiftPackageReference "url-image" */,
 				7E6F90C62643B8FF004FD4AC /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */,
+				7E204DB32644FDAC00A23563 /* XCRemoteSwiftPackageReference "Cache" */,
 			);
 			productRefGroup = 7E2B82CF26009DDF00C8CD74 /* Products */;
 			projectDirPath = "";
@@ -667,6 +683,7 @@
 				7E6F912B2643E982004FD4AC /* TVShowListView.swift in Sources */,
 				7E28D092261071F1003EAB0F /* Extension+JSON.swift in Sources */,
 				7E391B0A2601955200227BAC /* FigmaModel.swift in Sources */,
+				7E204DB82644FDF300A23563 /* CacheHelper.swift in Sources */,
 				7E28D08F261060C0003EAB0F /* DirectoryHelper.swift in Sources */,
 				7EB3B925261F0602003DE911 /* PageHeaderView.swift in Sources */,
 				7E28D0AD26117B99003EAB0F /* FigmaColor.swift in Sources */,
@@ -706,6 +723,7 @@
 				7E6F912D2643E982004FD4AC /* TVShowModel.swift in Sources */,
 				7EE22E66260DD7ED002E8EDF /* Extension + View.swift in Sources */,
 				7E6F91282643E982004FD4AC /* MovieDetailView.swift in Sources */,
+				7E204DB12644FD1E00A23563 /* NetworkCachedDataFetcher.swift in Sources */,
 				7E25612726293BFC006C17C1 /* ComponentsViewModel.swift in Sources */,
 				7E2B82ED2600C0BF00C8CD74 /* CodeController.swift in Sources */,
 				7EB3B938262019BC003DE911 /* ContentPage.swift in Sources */,
@@ -714,9 +732,11 @@
 				7E6F912A2643E982004FD4AC /* SidebarView.swift in Sources */,
 				7E1EB7972628355400910DE9 /* SideBarController.swift in Sources */,
 				7E9B2317261ECC2500850A01 /* Extension+Font.swift in Sources */,
+				7E204DAB2644DD9100A23563 /* FigmaCellLabel.swift in Sources */,
 				7EB3B92B261F07B9003DE911 /* ComponentsPage.swift in Sources */,
 				7E391B092601955200227BAC /* FigmaController.swift in Sources */,
 				7EB5DBA7260365BA00CAF4D7 /* NetworkDataPoster.swift in Sources */,
+				7E204DAE2644E1FA00A23563 /* HoverModifier.swift in Sources */,
 				7EB5DBA4260365BA00CAF4D7 /* DataPosterService.swift in Sources */,
 				7E65899D263D3C76008CAAC9 /* FigmaNetworkHelper.swift in Sources */,
 				7EB3B9542621751C003DE911 /* FigmaGradientCellItem.swift in Sources */,
@@ -940,6 +960,14 @@
 				minimumVersion = 2.2.3;
 			};
 		};
+		7E204DB32644FDAC00A23563 /* XCRemoteSwiftPackageReference "Cache" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hyperoslo/Cache";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		7E2343B62619E1CA00875A11 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
@@ -976,6 +1004,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7E1EB78D2628313000910DE9 /* XCRemoteSwiftPackageReference "url-image" */;
 			productName = URLImage;
+		};
+		7E204DB42644FDAC00A23563 /* Cache */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7E204DB32644FDAC00A23563 /* XCRemoteSwiftPackageReference "Cache" */;
+			productName = Cache;
 		};
 		7E2343B72619E1CA00875A11 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;

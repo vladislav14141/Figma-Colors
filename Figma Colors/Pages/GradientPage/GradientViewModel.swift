@@ -301,12 +301,12 @@ extension FigmaFactory {
         dataFetcher.fetchGenericJsonData(urlString: url, decodeBy: FigmaModel.self, completion: { result in
             switch result {
             case .success(let success):
-                DispatchQueue.main.async {
-                    switch sheme {
-                    case .dark: self.fileDark = success
-                    case .light: self.fileLight = success
-                    }
-                }
+//                DispatchQueue.main.async {
+//                    switch sheme {
+//                    case .dark: self.fileDark = success
+//                    case .light: self.fileLight = success
+//                    }
+//                }
                 
                 let styles: String = success.styles.compactMap({
                     if $1.styleType == .fill {

@@ -268,10 +268,10 @@
 			children = (
 				7E204DD626450DF100A23563 /* ComponentItem.swift */,
 				7E204DD526450DF100A23563 /* FigmaColor.swift */,
-				7E204DE826450EC500A23563 /* FigmaModel.swift */,
 				7E204DD926450DF100A23563 /* FigmaItem.swift */,
 				7E204DD726450DF100A23563 /* FigmaSection.swift */,
-				7E204DE526450EC000A23563 /* FigmaImagesModel.swift */,
+				7E204DE026450DF700A23563 /* ColorItem.swift */,
+				7E204DD826450DF100A23563 /* GradientItem.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -279,9 +279,9 @@
 		7E204DEE26450EE000A23563 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				7E204DE826450EC500A23563 /* FigmaModel.swift */,
+				7E204DE526450EC000A23563 /* FigmaImagesModel.swift */,
 				7E204DE926450EC500A23563 /* NodeModel.swift */,
-				7E204DE026450DF700A23563 /* ColorItem.swift */,
-				7E204DD826450DF100A23563 /* GradientItem.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";

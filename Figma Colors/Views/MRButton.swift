@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RSTButtonAppereance {
     var backgroundColor = Color.clear
+    var hoveredBackground = Color.clear
     var selectedBackgroundColor = Color.clear
     var textColor = Color.clear
     var disabledBackground = Color.clear
@@ -17,14 +18,32 @@ struct RSTButtonAppereance {
 }
 
 enum RSTButtonAppereanceType {
+    case primaryOpacity2
     case primaryOpacity
     case primary
     var appereance: RSTButtonAppereance {
         switch self {
         case .primary:
-            return RSTButtonAppereance(backgroundColor: Color.buttonBackground, selectedBackgroundColor: Color.buttonBackground.opacity(0.8), textColor: .white, disabledBackground: .disabledButtonBackground, disabledText: .disabledButtonText)
+            return RSTButtonAppereance(backgroundColor: Color.primary08,
+                                       hoveredBackground: Color.primary09,
+                                       selectedBackgroundColor: Color.primary10,
+                                       textColor: .white,
+                                       disabledBackground: .grey06,
+                                       disabledText: .grey11)
         case .primaryOpacity:
-            return RSTButtonAppereance(backgroundColor: Color.buttonBackground.opacity(0.5), selectedBackgroundColor: Color.buttonBackground.opacity(0.25), textColor: .white, disabledBackground: .disabledButtonBackground, disabledText: .disabledButtonText)
+            return RSTButtonAppereance(backgroundColor: Color.primary03,
+                                       hoveredBackground: Color.primary04,
+                                       selectedBackgroundColor: Color.primary05,
+                                       textColor: .white,
+                                       disabledBackground: .grey06,
+                                       disabledText: .grey11)
+        case .primaryOpacity2:
+            return RSTButtonAppereance(backgroundColor: Color.clear,
+                                       hoveredBackground: Color.primary08,
+                                       selectedBackgroundColor: Color.primary10,
+                                       textColor: .white,
+                                       disabledBackground: .grey06,
+                                       disabledText: .grey11)
 
         }
     }
@@ -38,7 +57,8 @@ struct RSTButton: View {
     private var font: Font
     private var enabled: Bool
     @Binding private var loading: Bool
-
+    @State var isHovered = false
+    @State var isPressed = false
     private var type: RSTButtonAppereanceType
     private var appereance: RSTButtonAppereance {
         type.appereance
@@ -46,6 +66,7 @@ struct RSTButton: View {
     
     init(iconName: String? = nil, title: String? = nil, enabled: Bool = true, loading:  Binding<Bool>? = nil, appereance: RSTButtonAppereanceType = .primaryOpacity, onTap: (()->())? = nil) {
         self.title = title
+        self.iconName = iconName
         self.font = .subheadline
         self.enabled = enabled
         self.onTap = onTap
@@ -80,10 +101,16 @@ struct RSTButton: View {
             .frame(minWidth: 32, maxWidth: .infinity)
             .frame(height: 32)
         })
-            .font(font.weight(.semibold))
-            .buttonStyle(RSTButtonStyle(appereance: appereance, enabled: enabled))
-            .disabled(!enabled)
-        
+        .font(font.weight(.semibold))
+        .foregroundColor(enabled ? appereance.textColor : appereance.disabledText)
+        .buttonStyle(MRButtonStyle(type: .opacity) { isPressed = $0 })
+        .background(backgroundColor())
+        .disabled(!enabled)
+        .whenHovered({ (isHovered) in
+            self.isHovered = isHovered
+        })
+        .clipShape(RoundedRectangle(cornerRadius: 8))
+
     }
 
     @ViewBuilder func loadingIndicator() -> some View {
@@ -91,33 +118,13 @@ struct RSTButton: View {
             ProgressView().progressViewStyle(CircularProgressViewStyle())
         }
     }
-}
-
-struct RSTButtonStyle: ButtonStyle {
-    private let appereance: RSTButtonAppereance
-    private let enabled: Bool
     
-    init(appereance: RSTButtonAppereance, enabled: Bool = true) {
-        self.enabled = enabled
-        self.appereance = appereance
-    }
-    
-    func makeBody(configuration: Self.Configuration) -> some View {
-        configuration.label
-            .frame(maxWidth: .infinity)
-            .frame(height: 40)
-            .foregroundColor(enabled ? appereance.textColor : appereance.disabledText)
-            .background(backgroundColor(configuration))
-            .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
-            .clipShape(RoundedRectangle(cornerRadius: .cornerRadius))
-            .disabled(!enabled)
-        
-    }
-    
-    private func backgroundColor(_ configuration: Self.Configuration) -> Color {
+    private func backgroundColor() -> Color {
         if enabled {
-            if configuration.isPressed {
+            if isPressed {
                 return appereance.selectedBackgroundColor
+            } else if isHovered {
+                return appereance.hoveredBackground
             } else {
                 return appereance.backgroundColor
             }
@@ -126,3 +133,36 @@ struct RSTButtonStyle: ButtonStyle {
         }
     }
 }
+
+//struct RSTButtonStyle: ButtonStyle {
+//    private let appereance: RSTButtonAppereance
+//    private let enabled: Bool
+//
+//    init(appereance: RSTButtonAppereance, enabled: Bool = true) {
+//        self.enabled = enabled
+//        self.appereance = appereance
+//    }
+//
+//    func makeBody(configuration: Self.Configuration) -> some View {
+//        configuration.label
+//            .frame(maxWidth: .infinity)
+//            .frame(height: 40)
+//            .foregroundColor(enabled ? appereance.textColor : appereance.disabledText)
+//            .background(backgroundColor(configuration))
+//            .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
+//            .disabled(!enabled)
+//
+//    }
+//
+//    private func backgroundColor(_ configuration: Self.Configuration) -> Color {
+//        if enabled {
+//            if configuration.isPressed {
+//                return appereance.selectedBackgroundColor
+//            } else {
+//                return appereance.backgroundColor
+//            }
+//        } else {
+//            return appereance.disabledBackground
+//        }
+//    }
+//}

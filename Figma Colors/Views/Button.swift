@@ -8,41 +8,89 @@
 import Foundation
 import SwiftUI
 
-struct MRButtonStyle: ButtonStyle {
-    
-    var enabled: Bool
-//    private var color: Color
-    var backgroundColor: Color = .buttonBackground
-    @Binding var isHovered: Bool
-    
-//    init(enabled: Bool = true, isHovered: Bool) {
-//        self.enabled = enabled
-//        self.isHovered = isHovered
+//struct MRButtonStyle: ButtonStyle {
+//
+//    var enabled: Bool
+////    private var color: Color
+//    var backgroundColor: Color = .buttonBackground
+//    @Binding var isHovered: Bool
+//
+////    init(enabled: Bool = true, isHovered: Bool) {
+////        self.enabled = enabled
+////        self.isHovered = isHovered
+////    }
+//
+//    func makeBody(configuration: Self.Configuration) -> some View {
+//        configuration.label
+//            .background(backgroundColor(configuration))
+//            .clipShape(RoundedRectangle(cornerRadius: 8))
+//            .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
+//            .disabled(!enabled)
+//
 //    }
-    
-    func makeBody(configuration: Self.Configuration) -> some View {
-        configuration.label
-            .background(backgroundColor(configuration))
-            .clipShape(RoundedRectangle(cornerRadius: 8))
-            .scaleEffect(configuration.isPressed ? 0.99 : 1.0)
-            .disabled(!enabled)
-        
+//
+//    private func backgroundColor(_ configuration: Self.Configuration) -> Color {
+//        if enabled {
+//            if configuration.isPressed {
+//                return backgroundColor.opacity(0.5)
+//            } else if isHovered {
+//                print(isHovered)
+//                return backgroundColor.opacity(0.25)
+//
+//            } else {
+//                return .clear
+//            }
+//        } else {
+//            return Color.white.opacity(0.1)
+//        }
+//    }
+//}
+
+struct MRButtonStyle: ButtonStyle {
+    enum ButtonType {
+        case opacity
+        case plain
+        case scale(CGFloat = 0.9)
     }
     
-    private func backgroundColor(_ configuration: Self.Configuration) -> Color {
-        if enabled {
-            if configuration.isPressed {
-                return backgroundColor.opacity(0.5)
-            } else if isHovered {
-                print(isHovered)
-                return backgroundColor.opacity(0.25)
-
-            } else {
-                return .clear
-            }
-        } else {
-            return Color.white.opacity(0.1)
+    var type: ButtonType
+    var isPressed: ((Bool)->())?
+    func makeBody(configuration: Configuration) -> some View {
+        configSetup(configuration).onChange(of: configuration.isPressed, perform: { value in
+            isPressed?(value)
+        })
+    }
+    
+    @ViewBuilder func configSetup(_ configuration: Configuration) -> some View {
+        switch type {
+        case .opacity: opacityConfig(configuration)
+        case .scale(let size): scaleMinConfig(configuration, size: size)
+        case .plain: plainConfig(configuration)
+            
         }
+    }
+
+    
+    @ViewBuilder func plainConfig(_ configuration: Configuration) -> some View {
+        configuration
+            .label
+            .opacity(configuration.isPressed ? 0.5 : 1)
+    }
+    
+    @ViewBuilder func opacityConfig(_ configuration: Configuration) -> some View {
+        configuration
+            .label
+            .opacity(configuration.isPressed ? 0.5 : 1)
+            .animation(Animation.easeOut(duration: configuration.isPressed ? 0.05 : 0.2))
+
+    }
+    
+    @ViewBuilder func scaleMinConfig(_ configuration: Configuration, size: CGFloat) -> some View {
+        configuration
+            .label
+            .scaleEffect(configuration.isPressed ? size : 1)
+            .animation(Animation.easeOut(duration: configuration.isPressed ? 0.05 : 0.2))
+
     }
 }
 
@@ -84,7 +132,7 @@ struct MRButton: View {
             .frame(minWidth: 32, maxWidth: .infinity)
             .frame(height: 32)
         })
-        .buttonStyle(MRButtonStyle(enabled: enabled, isHovered: $isHovered))
+        .buttonStyle(MRButtonStyle(type: .plain))
         .whenHovered {
             isHovered = $0
         }

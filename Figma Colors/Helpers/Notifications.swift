@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 enum Notifications: String {
-    
+    case none
 
 }
 

@@ -24,7 +24,6 @@
 		7E204DB82644FDF300A23563 /* CacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DB72644FDF300A23563 /* CacheHelper.swift */; };
 		7E204DBE2645064D00A23563 /* SideBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DBD2645064D00A23563 /* SideBarItems.swift */; };
 		7E204DC9264507EB00A23563 /* MRButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DC8264507EB00A23563 /* MRButton.swift */; };
-		7E204DCD26450B4500A23563 /* FigmaColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E204DCC26450B4500A23563 /* FigmaColor.swift */; };
 		7E2343B82619E1CA00875A11 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7E2343B72619E1CA00875A11 /* SDWebImageSwiftUI */; };
 		7E25612726293BFC006C17C1 /* ComponentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25612626293BFC006C17C1 /* ComponentsViewModel.swift */; };
 		7E28D08F261060C0003EAB0F /* DirectoryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E28D08E261060C0003EAB0F /* DirectoryHelper.swift */; };
@@ -102,7 +101,6 @@
 		7E204DB72644FDF300A23563 /* CacheHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheHelper.swift; sourceTree = "<group>"; };
 		7E204DBD2645064D00A23563 /* SideBarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarItems.swift; sourceTree = "<group>"; };
 		7E204DC8264507EB00A23563 /* MRButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRButton.swift; sourceTree = "<group>"; };
-		7E204DCC26450B4500A23563 /* FigmaColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaColor.swift; sourceTree = "<group>"; };
 		7E25612626293BFC006C17C1 /* ComponentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsViewModel.swift; sourceTree = "<group>"; };
 		7E28D08E261060C0003EAB0F /* DirectoryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryHelper.swift; sourceTree = "<group>"; };
 		7E28D091261071F1003EAB0F /* Extension+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+JSON.swift"; sourceTree = "<group>"; };
@@ -241,7 +239,6 @@
 		7E204DCB26450B3600A23563 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7E204DCC26450B4500A23563 /* FigmaColor.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -563,7 +560,6 @@
 				7EBD53222616E9C500D69B9B /* Button.swift in Sources */,
 				7EBD53252616E9DE00D69B9B /* Textfield.swift in Sources */,
 				7E2B82EE2600C0BF00C8CD74 /* CodeModel.swift in Sources */,
-				7E204DCD26450B4500A23563 /* FigmaColor.swift in Sources */,
 				7E2B82D226009DDF00C8CD74 /* Figma_ColorsApp.swift in Sources */,
 				7E28D0C626130DBC003EAB0F /* SettingsController.swift in Sources */,
 				7EB5DBA8260365BA00CAF4D7 /* NetworkDataFetcher.swift in Sources */,

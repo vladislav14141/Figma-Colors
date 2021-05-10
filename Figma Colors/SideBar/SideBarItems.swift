@@ -17,6 +17,30 @@ struct ColorSideBar: View {
                     Image(systemName: "atom").foregroundColor(.blue)
                     Text("All")
                     Spacer()
+//                    Image(systemName: "checkmark").onTapGesture {
+//                        items.forEach { $0.selectAll() }
+//                    }
+//                    Image(systemName: "xmark").onTapGesture {
+//                        items.forEach { $0.unSelectAll() }
+//                    }
+//                    RSTButton(iconName: "checkmark", appereance: .primaryOpacity2) {
+//                        items.forEach { $0.unSelectAll() }
+//                    }
+//
+//                    RSTButton(iconName: "xmark", appereance: .primaryOpacity2) {
+//                        items.forEach { $0.unSelectAll() }
+//                    }
+                }
+                
+            }
+            
+            HStack {
+                RSTButton(title: "Select", appereance: .primaryOpacity2) {
+                    items.forEach { $0.selectAll() }
+                }
+                
+                RSTButton(title: "Deselect", appereance: .primaryOpacity2) {
+                    items.forEach { $0.unSelectAll() }
                 }
             }
             

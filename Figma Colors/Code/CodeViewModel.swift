@@ -8,52 +8,54 @@
 import Combine
 import Foundation
 
-class CodeViewModel: ObservableObject {
-    enum CodeType {
-        case UIKit
-        case SwiftUI
-        
-        func getExtension(contentType: CodeContentType) -> String {
-            switch contentType {
-            case .colors, .gradients:
-                switch self {
-                case .SwiftUI:
-                    return "extension Color {"
-                case .UIKit:
-                    return "extension UIColor {"
-
-                }
-            case .components: return "extension UIImage {"
-            }
-        }
-        
-        var imp: String {
+enum CodeType {
+    case UIKit
+    case SwiftUI
+    
+    func getExtension(contentType: CodeContentType) -> String {
+        switch contentType {
+        case .colors, .gradients:
             switch self {
-            case .SwiftUI: return "import SwiftUI\n\n"
-            case .UIKit: return "import UIKit\n\n"
+            case .SwiftUI:
+                return "extension Color {"
+            case .UIKit:
+                return "extension UIColor {"
+                
             }
+        case .components: return "extension UIImage {"
         }
     }
     
-    enum CodeContentType {
-        case colors([FigmaSection<ColorItem>])
-        case gradients([FigmaSection<GradientItem>])
-        case components([FigmaSection<ComponentItem>])
-
+    var imp: String {
+        switch self {
+        case .SwiftUI: return "import SwiftUI\n\n"
+        case .UIKit: return "import UIKit\n\n"
+        }
     }
+}
+
+enum CodeContentType {
+    case colors([FigmaSection<ColorItem>])
+    case gradients([FigmaSection<GradientItem>])
+    case components([FigmaSection<ComponentItem>])
+}
+
+class CodeViewModel: ObservableObject {
+    
     // MARK: - Public Properties
-    @Published var storage: FigmaStorage
+//    @Published var storage: FigmaStorage
     @Published var uikit: String = ""
     @Published var swiftui: String = ""
     @Published var useHead = false
     var bag = [AnyCancellable]()
-
+    var initialContentType: CodeContentType
 
     // MARK: - Private Methods
 
     // MARK: - Lifecycle
-    init(storage: FigmaStorage) {
-        self._storage = Published(wrappedValue: storage)
+    init(content: CodeContentType) {
+        self.initialContentType = content
+//        self._storage = Published(wrappedValue: storage)
     }
     
     func generateCode(codeType: CodeType, contentType: CodeContentType) -> String {

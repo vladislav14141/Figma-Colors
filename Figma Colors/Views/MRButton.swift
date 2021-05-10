@@ -25,7 +25,7 @@ enum RSTButtonAppereanceType {
         switch self {
         case .primary:
             return RSTButtonAppereance(backgroundColor: Color.primary08,
-                                       hoveredBackground: Color.primary09,
+                                       hoveredBackground: Color.primary10,
                                        selectedBackgroundColor: Color.primary10,
                                        textColor: .white,
                                        disabledBackground: .grey06,
@@ -100,11 +100,11 @@ struct RSTButton: View {
             .padding(.vertical, 4)
             .frame(minWidth: 32, maxWidth: .infinity)
             .frame(height: 32)
+            .background(backgroundColor())
         })
         .font(font.weight(.semibold))
         .foregroundColor(enabled ? appereance.textColor : appereance.disabledText)
         .buttonStyle(MRButtonStyle(type: .opacity) { isPressed = $0 })
-        .background(backgroundColor())
         .disabled(!enabled)
         .whenHovered({ (isHovered) in
             self.isHovered = isHovered

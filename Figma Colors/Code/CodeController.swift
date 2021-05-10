@@ -66,8 +66,8 @@ struct CodeController: View {
                 
 
             }.onAppear {
-                viewModel.uikit = viewModel.generateCode(codeType: .UIKit, contentType: .colors(viewModel.storage.colors))
-                viewModel.swiftui = viewModel.generateCode(codeType: .SwiftUI, contentType: .colors(viewModel.storage.colors))
+                viewModel.uikit = viewModel.generateCode(codeType: .UIKit, contentType: viewModel.initialContentType)
+                viewModel.swiftui = viewModel.generateCode(codeType: .SwiftUI, contentType: viewModel.initialContentType)
 
             }.frame(minWidth: 600, idealWidth: 1000, maxWidth: .infinity, minHeight: 600, idealHeight: 1000, maxHeight: .infinity, alignment: .center)
         }.padding()
@@ -78,6 +78,14 @@ struct CodeController: View {
     // MARK: - Private Methods
     
 }
+
+//struct CodeNavigationView: View {
+//    var body: some View {
+//        List {
+//            
+//        }
+//    }
+//}
 
 
 

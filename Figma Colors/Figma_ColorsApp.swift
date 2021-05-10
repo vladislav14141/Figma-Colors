@@ -11,8 +11,9 @@ import SwiftUI
 struct Figma_ColorsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentViews()
+            ContentViews().frame(minWidth: 1300, minHeight: 600)
         }
+
     }
 }
 
@@ -39,5 +40,6 @@ struct ContentViews: View {
         }.onAppear {
             factory.storage = storage
         }.environmentObject(factory).environmentObject(storage)
+        
     }
 }

@@ -28,12 +28,13 @@ class AppSettings {
 
 
 class FigmaStorage: ObservableObject {
-    static var shared = FigmaStorage()
+//    static var shared = FigmaStorage()
     @Published var colors = [FigmaSection<ColorItem>]()
     @Published var gradients = [FigmaSection<GradientItem>]()
     @Published var components = [FigmaSection<ComponentItem>]()
     @Published var images: [MRWebImage] = []
     @Published var isLoading = false
+    @Published var navigationLink: NavigationTabItem? = .colors
     var storageIsEmpty: Bool {
         colors.isEmpty && gradients.isEmpty && components.isEmpty
     }

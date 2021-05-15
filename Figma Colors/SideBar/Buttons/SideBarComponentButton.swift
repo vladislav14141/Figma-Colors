@@ -53,7 +53,8 @@ struct ComponentSectionButton: View {
 
 struct ComponentButton: View {
     @ObservedObject var item: ComponentItem
-    
+    @EnvironmentObject var storage: FigmaStorage
+
     var section: FigmaSection<ComponentItem> {
         FigmaSection(name: item.groupName, colors: [item])
     }
@@ -64,7 +65,7 @@ struct ComponentButton: View {
             label: {
                 HStack(spacing: 8) {
                     MRWebImage(url: item.x3).frame(width: 32, height: 32)
-                    Text(item.fullName).font(.callout)
+                    Text(item.fullName(nameCase: storage.nameCase)).font(.callout)
                     Spacer()
                     MRCheckBox(isOn: $item.isSelected)
                 }

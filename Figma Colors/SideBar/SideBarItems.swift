@@ -9,7 +9,8 @@ import SwiftUI
 struct ColorSideBar: View {
     @Binding var items: [FigmaSection<ColorItem>]
     @State var tab: Int? = 0
-    
+    @EnvironmentObject var storage: FigmaStorage
+    @State var update = false
     var body: some View {
         List {
             NavigationLink(destination: ColorsPage(items: $items, selected: nil), tag: 0, selection: $tab) {
@@ -17,29 +18,16 @@ struct ColorSideBar: View {
                     Image(systemName: "atom").foregroundColor(.blue)
                     Text("All")
                     Spacer()
-//                    Image(systemName: "checkmark").onTapGesture {
-//                        items.forEach { $0.selectAll() }
-//                    }
-//                    Image(systemName: "xmark").onTapGesture {
-//                        items.forEach { $0.unSelectAll() }
-//                    }
-//                    RSTButton(iconName: "checkmark", appereance: .primaryOpacity2) {
-//                        items.forEach { $0.unSelectAll() }
-//                    }
-//
-//                    RSTButton(iconName: "xmark", appereance: .primaryOpacity2) {
-//                        items.forEach { $0.unSelectAll() }
-//                    }
                 }
                 
             }
             
             HStack {
-                RSTButton(title: "Select", appereance: .primaryOpacity2) {
+                RSTButton(title: "Select All", appereance: .primaryOpacity2) {
                     items.forEach { $0.selectAll() }
                 }
                 
-                RSTButton(title: "Deselect", appereance: .primaryOpacity2) {
+                RSTButton(title: "Deselect All", appereance: .primaryOpacity2) {
                     items.forEach { $0.unSelectAll() }
                 }
             }
@@ -52,7 +40,11 @@ struct ColorSideBar: View {
                         }
                     }
                 }
-        }
+        }.onReceive(storage.$nameCase, perform: { nameCase in
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(20)) {
+                update.toggle()
+            }
+        })
         .navigationTitle("Colors")
     }
 }
@@ -60,6 +52,7 @@ struct ColorSideBar: View {
 struct GradientSideBar: View {
     @Binding var items: [FigmaSection<GradientItem>]
     @State var tab: Int? = 0
+    @EnvironmentObject var storage: FigmaStorage
 
     var body: some View {
         List {
@@ -70,6 +63,17 @@ struct GradientSideBar: View {
                     Spacer()
                 }
             }
+            
+            HStack {
+                RSTButton(title: "Select All", appereance: .primaryOpacity2) {
+                    items.forEach { $0.selectAll() }
+                }
+                
+                RSTButton(title: "Deselect All", appereance: .primaryOpacity2) {
+                    items.forEach { $0.unSelectAll() }
+                }
+            }
+            
             ForEach(items) { (section) in
                     
                     Section(header: GradientSectionButton(section: section)) {
@@ -94,6 +98,16 @@ struct ComponentsSideBar: View {
                 Image(systemName: "atom").foregroundColor(.blue)
                 Text("All")
                 Spacer()
+            }
+            
+            HStack {
+                RSTButton(title: "Select All", appereance: .primaryOpacity2) {
+                    items.forEach { $0.selectAll() }
+                }
+                
+                RSTButton(title: "Deselect All", appereance: .primaryOpacity2) {
+                    items.forEach { $0.unSelectAll() }
+                }
             }
 
             ForEach(items) { (section) in

@@ -34,13 +34,6 @@ struct SideBarController: View {
     
         var body: some View {
             List {
-//                NavigationLink(destination: InfoPage(), tag: .main, selection: $storage.navigationLink) {
-//                    HStack {
-//                        Image(systemName: "paintbrush.pointed").foregroundColor(.primary)
-//                        Text("Main").font(.callout)
-//                        Spacer()
-//                    }
-//                }
                 
                 NavigationLink(destination: ColorSideBar(items: $storage.colors), tag: .colors, selection: $storage.navigationLink) {
                     HStack {

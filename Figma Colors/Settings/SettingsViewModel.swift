@@ -10,24 +10,18 @@ import Foundation
 
 class SettingsViewModel: ObservableObject {
     // MARK: - Public Properties
-    @Published var nameCase: NameCase
-    @Published var gradientSeparator: String
+//    @Published var nameCase: NameCase
 
     var bag = [AnyCancellable]()
     // MARK: - Private Methods
 
     // MARK: - Lifecycle
     init() {
-        nameCase = settings.nameCase
-        gradientSeparator = settings.gradientSeparator
-        
-        $nameCase.dropFirst().sink { nameCase in
-            settings.nameCase = nameCase
-        }.store(in: &bag)
-        
-        $gradientSeparator.dropFirst().sink { gradientSeparator in
-            settings.gradientSeparator = gradientSeparator
-        }.store(in: &bag)
+//        nameCase = settings.nameCase
+//
+//        $nameCase.dropFirst().sink { nameCase in
+//            settings.nameCase = nameCase
+//        }.store(in: &bag)
     }
     
     // MARK: - Public methods

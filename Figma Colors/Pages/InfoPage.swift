@@ -25,8 +25,9 @@ struct InfoPage: View {
     
     var body: some View {
         List {
-            mainContent()
-        }.popover(isPresented: $codeOpened, content: {
+            settingsContent().isHidden(!settingsOpened)
+            mainContent().transition(.flipFromRight).isHidden(settingsOpened)
+        }.sheet(isPresented: $codeOpened, content: {
             if storage.navigationLink == .colors {
                 
                 CodeController(viewModel: .init(content: .colors(storage.colors)))
@@ -41,11 +42,14 @@ struct InfoPage: View {
     }
     
     @ViewBuilder func mainContent() -> some View {
+        
         HStack {
             Spacer()
-            RSTButton(iconName: "repeat.circle") {
-                settingsOpened.toggle()
-            }
+            RSTButton(iconName: "gearshape", appereance: .primaryOpacity2) {
+                withAnimation {
+                    settingsOpened = true
+                }
+            }.frame(width: 44, height: 44)
         }
         MRTextfield(title: "Figma access token", placeholder: "165961-035dfc42-d428-4cb2-a7d7-7c63ba242e72", text: $factory.figmaToken)
         Group {
@@ -58,25 +62,18 @@ struct InfoPage: View {
         
         Spacer(minLength: 32)
         Group {
-            RSTButton(iconName: "doc.plaintext.fill", title: "Code", enabled: !storage.storageIsEmpty, appereance: .primary) {
+            RSTButton(iconName: "doc.plaintext.fill", title: "Code", enabled: !storage.storageIsEmpty && !factory.isLoading, appereance: .primary) {
                 codeOpened = true
             }
             
-            RSTButton(iconName: "folder.fill", title: "Download Assets", enabled: !storage.storageIsEmpty, appereance: .primary) {
+            RSTButton(iconName: "folder.fill", title: "Download Assets", enabled: !storage.storageIsEmpty && !factory.isLoading, appereance: .primary) {
                 directoryHelper.downloadAssets(factory: factory)
             }
         }
     }
     
     @ViewBuilder func settingsContent() -> some View {
-        HStack {
-            Spacer()
-            RSTButton(iconName: "xmark") {
-                settingsOpened.toggle()
-            }
-        }
-        
-        
+        SettingsController(settingOpened: $settingsOpened).transition(.flipFromRight)
     }
 }
 

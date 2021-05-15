@@ -16,15 +16,14 @@ struct Figma_ColorsApp: App {
 
     }
 }
-
 struct ContentViews: View {
     @StateObject var storage: FigmaStorage
     @StateObject var factory: FigmaFactory
     
     init() {
-        let storage: FigmaStorage = FigmaStorage()
-        let factory = FigmaFactory(storage: storage)
-        self._storage = StateObject(wrappedValue: storage)
+//        let storage: FigmaStorage = storage
+        let factory = FigmaFactory(storage: figmaStorageDefault)
+        self._storage = StateObject(wrappedValue: figmaStorageDefault)
         self._factory = StateObject(wrappedValue: factory)
     }
     var body: some View {

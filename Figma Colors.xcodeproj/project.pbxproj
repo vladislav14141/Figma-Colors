@@ -266,10 +266,10 @@
 		7E204DED26450ED800A23563 /* Items */ = {
 			isa = PBXGroup;
 			children = (
-				7E204DD626450DF100A23563 /* ComponentItem.swift */,
 				7E204DD526450DF100A23563 /* FigmaColor.swift */,
 				7E204DD926450DF100A23563 /* FigmaItem.swift */,
 				7E204DD726450DF100A23563 /* FigmaSection.swift */,
+				7E204DD626450DF100A23563 /* ComponentItem.swift */,
 				7E204DE026450DF700A23563 /* ColorItem.swift */,
 				7E204DD826450DF100A23563 /* GradientItem.swift */,
 			);

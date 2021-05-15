@@ -40,6 +40,7 @@ class FigmaSection<Row: FigmaItem>: Identifiable, ObservableObject {
         self.name = name
         self.rows = colors
         observeRow(rows: colors)
+//        settings.$nameCase.
     }
     
     func observeRow(rows: [Row]) {
@@ -47,8 +48,6 @@ class FigmaSection<Row: FigmaItem>: Identifiable, ObservableObject {
             row.$isSelected.delay(for: 0.1, scheduler: RunLoop.main).sink { [weak self] (selected) in
                 guard let self = self else { return }
                 if selected {
-//                    let select = rows.first(where: {$0.isSelected == false})
-                    print("-- \(self.selectedCount) \(self.count) -- \(rows.first(where: {$0.isSelected == false})?.shortName)")
                     self.isSelected = self.selectedCount == self.count
                 } else {
                     self.isSelected = false

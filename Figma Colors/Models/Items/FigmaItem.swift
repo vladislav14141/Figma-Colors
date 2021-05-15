@@ -18,39 +18,60 @@ class FigmaItem: Identifiable, ObservableObject {
     var groupName: String
 
     var fullName: String {
-        return createName(nameComponents: figmaNameComponents)
+        return createName(nameComponents: figmaNameComponents, nameCase: figmaStorageDefault.nameCase)
     }
     
-    var uiKitCode: String {
-        ""
-    }
-    
-    var swftUICode: String {
-        ""
-    }
-    
-    var fillSubnames: [String] = []
-
     var shortName: String {
         var components = figmaNameComponents
         components.removeFirst()
-        return createName(nameComponents: components)
+        return createName(nameComponents: components, nameCase: figmaStorageDefault.nameCase)
     }
     
-    @Published var isSelected = true
+    func uikitCode(nameCase: NameCase) -> String {
+        ""
+    }
     
+    func swiftuiCode(nameCase: NameCase) -> String {
+        ""
+    }
+
+    
+    var fillSubnames: [String] = []
+
+    
+    @Published var isSelected = true
   
     init(figmaName: String) {
-        let nameComponents = figmaName.components(separatedBy: #"/"#).map({$0.trimmingCharacters(in: .whitespacesAndNewlines)})
+        let brokenCharacter: Set<Character> = [#"/"#, " ", "-", "_", "."]
+        let nameComponents = figmaName.split(whereSeparator: { (char) -> Bool in
+            brokenCharacter.contains(char)
+        }).map({$0.trimmingCharacters(in: .whitespacesAndNewlines)})
         self.figmaName = figmaName
         self.figmaNameComponents = nameComponents
         self.groupName = nameComponents.count > 1 ? nameComponents[0] : "Not a group"
+        
+//        objectWillChange
     }
     
-    func createName(nameComponents: [String]) -> String {
+    func fullName(nameCase: NameCase) -> String {
+        return createName(nameComponents: figmaNameComponents, nameCase: nameCase)
+    }
+    
+    func shortName(nameCase: NameCase) -> String {
+        if figmaNameComponents.count < 2 {
+            return createName(nameComponents: figmaNameComponents, nameCase: nameCase)
+        } else {
+            var components = figmaNameComponents
+            components.removeFirst()
+            return createName(nameComponents: components, nameCase: nameCase)
+
+        }
+    }
+    
+    func createName(nameComponents: [String], nameCase: NameCase, fillSeparator: String = figmaStorageDefault.gradientSeparator) -> String {
         var name = ""
 
-        switch settings.nameCase {
+        switch nameCase {
         case .camelcase:
             name = nameComponents.enumerated().map{
                 if $0 == 0 {
@@ -61,8 +82,11 @@ class FigmaItem: Identifiable, ObservableObject {
             }.joined()
         case .snakecase:
             name = nameComponents.joined(separator: "_")
+        case .kebabcase:
+            name = nameComponents.joined(separator: "-")
+
         }
-        let currentName = ([name] + fillSubnames).joined(separator: settings.gradientSeparator)
+        let currentName = ([name] + fillSubnames).joined(separator: fillSeparator)
         return currentName.isEmpty ? fullName : currentName
     }
 }

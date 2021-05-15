@@ -10,7 +10,7 @@ import HighlightedTextEditor
 let function = try! NSRegularExpression(pattern: "import |extension |static |let ", options: [])
 let classes = try! NSRegularExpression(pattern: " Color| UIColor| UIImage|", options: [])
 let string = try! NSRegularExpression(pattern: "\"\\S*\"", options: [])
-let mark = try! NSRegularExpression(pattern: "// MARK: - \\S*", options: [])
+let mark = try! NSRegularExpression(pattern: "// MARK: - .*", options: [])
 let named = try! NSRegularExpression(pattern: "let \\S*", options: [])
 
 struct CodeController: View {
@@ -18,7 +18,8 @@ struct CodeController: View {
 
     // MARK: - Public Properties
     
-    
+    @EnvironmentObject var storage: FigmaStorage
+
     // MARK: - Private Properties
     @StateObject private var viewModel: CodeViewModel
     private let rules: [HighlightRule] = [
@@ -43,33 +44,63 @@ struct CodeController: View {
     init(viewModel: CodeViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
-    
     var body: some View {
         return VStack {
-            HStack {
-                Spacer()
-                Toggle("Использовать шапку?", isOn: $viewModel.useHead)
-                MRButton(iconName: "xmark", title: nil) {
-                    presentationMode.wrappedValue.dismiss()
-                }.frame(width: 44, height: 44)
-            }
-            HStack {
-                VStack {
+            HStack(spacing: 16) {
+                VStack(alignment: .leading) {
                     Text("UIKit").font(.title).bold()
                     HighlightedTextEditor(text: $viewModel.uikit, highlightRules: rules).font(.body)
                 }
                 
-                VStack {
+                VStack(alignment: .leading) {
                     Text("SwiftUI").font(.title).bold()
                     HighlightedTextEditor(text: $viewModel.swiftui, highlightRules: rules).font(.body)
                 }
-                
 
-            }.onAppear {
+            }.navigationTitle("Code")
+            .toolbar(content: {
+                ToolbarItem(id: "0") {
+                    Picker(selection: $viewModel.selectedContentType, label: EmptyView(), content: {
+                        Text("Colors").tag(0)
+                        Text("Gradients").tag(1)
+                        Text("Components").tag(2)
+                    })
+                }
+                ToolbarItem(id: "1") {
+                    Picker(selection: $viewModel.nameCase, label: EmptyView(), content: {
+                        ForEach(NameCase.allCases, id: \.self) {
+                            Text($0.rawValue)
+                                .tag($0)
+                        }
+                    })
+                }
+                
+                ToolbarItem(id: "2", placement: ToolbarItemPlacement.cancellationAction) {
+                    RSTButton(iconName: "xmark", appereance: .primaryOpacity2) {
+                        presentationMode.wrappedValue.dismiss()
+                    }.frame(width: 44, height: 44)
+                }
+            })
+            .onAppear {
+
+            }.onReceive(viewModel.$selectedContentType, perform: { tag in
+                var content: CodeContentType = CodeContentType.colors(storage.colors)
+                switch tag {
+                case 0: content = CodeContentType.colors(storage.colors)
+                case 1: content = CodeContentType.gradients(storage.gradients)
+                case 2: content = CodeContentType.components(storage.components)
+                default: ()
+                }
+                viewModel.initialContentType = content
                 viewModel.uikit = viewModel.generateCode(codeType: .UIKit, contentType: viewModel.initialContentType)
                 viewModel.swiftui = viewModel.generateCode(codeType: .SwiftUI, contentType: viewModel.initialContentType)
-
-            }.frame(minWidth: 600, idealWidth: 1000, maxWidth: .infinity, minHeight: 600, idealHeight: 1000, maxHeight: .infinity, alignment: .center)
+            }).onReceive(viewModel.$nameCase, perform: { _ in
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) {
+                    viewModel.uikit = viewModel.generateCode(codeType: .UIKit, contentType: viewModel.initialContentType)
+                    viewModel.swiftui = viewModel.generateCode(codeType: .SwiftUI, contentType: viewModel.initialContentType)
+                }
+            })
+            .frame(minWidth: 600, idealWidth: 900, maxWidth: .infinity, minHeight: 400, idealHeight: 600, maxHeight: .infinity, alignment: .center)
         }.padding()
     }
     

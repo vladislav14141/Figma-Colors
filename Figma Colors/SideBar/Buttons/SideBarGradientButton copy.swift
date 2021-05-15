@@ -53,7 +53,8 @@ struct GradientSectionButton: View {
 
 struct GradientButton: View {
     @ObservedObject var item: GradientItem
-    
+    @EnvironmentObject var storage: FigmaStorage
+
     var section: FigmaSection<GradientItem> {
         FigmaSection(name: item.groupName, colors: [item])
     }
@@ -73,7 +74,7 @@ struct GradientButton: View {
 
                         }
                     }
-                    Text(item.fullName).font(.callout)
+                    Text(item.fullName(nameCase: storage.nameCase)).font(.callout)
                     Spacer()
                     MRCheckBox(isOn: $item.isSelected)
                 }

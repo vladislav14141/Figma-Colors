@@ -6,11 +6,7 @@
 //
 
 import SwiftUI
-//protocol FigmaSectionProtocol {
-//    var groupName: String { get }
-//    var fullName: String { get }
-//
-//}
+
 class ColorItem: FigmaItem  {
 
     @Published var light: FigmaColor?
@@ -22,12 +18,12 @@ class ColorItem: FigmaItem  {
         self.dark = dark
     }
     
-    override var swftUICode: String {
-        "   static let \(fullName) = Color(\"\(fullName)\")"
+    override func uikitCode(nameCase: NameCase) -> String {
+        "    static let \(fullName(nameCase: nameCase)) = UIColor(named: \"\(fullName)\")!"
     }
     
-    override var uiKitCode: String {
-        "    static let \(fullName) = UIColor(named: \"\(fullName)\")!"
+    override func swiftuiCode(nameCase: NameCase) -> String {
+        "   static let \(fullName(nameCase: nameCase)) = Color(\"\(fullName)\")"
     }
     
     func setColor(_ color: FigmaColor, for sheme: FigmaSheme) {

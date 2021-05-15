@@ -15,37 +15,29 @@ struct SettingsController: View {
     // MARK: - Private Properties
     @StateObject private var viewModel: SettingsViewModel = SettingsViewModel()
     @Environment(\.presentationMode) var presentationMode
-    let namecases = [NameCase.camelcase, NameCase.snakecase]
-    // MARK: - Lifecycle
-    init() {
+    @Binding var settingOpened: Bool
+    @EnvironmentObject var storage: FigmaStorage
 
-    }
+    // MARK: - Lifecycle
     
     var body: some View {
-        ScrollView {
-            
-            VStack(spacing: 16) {
-                HStack {
-                    Spacer()
-                    MRButton(iconName: "xmark", title: nil) {
-                        presentationMode.wrappedValue.dismiss()
-                    }
+        
+        HStack {
+            Spacer()
+            RSTButton(iconName: "xmark", appereance: .primaryOpacity2) {
+                withAnimation {
+                    settingOpened = false
                 }
-                
-                Picker("Name case", selection: $viewModel.nameCase) {
-                    ForEach(NameCase.allCases, id: \.self) {
-                        Text($0.rawValue)
-                            .tag($0)
-                    }
-                }
-                
-                
-                
-                HStack {
-                    MRTextfield(title: "Separate gradient colors by", placeholder: "-", text: $viewModel.gradientSeparator)
-                }
-            }.padding()
-        }.frame(minWidth: 300, idealWidth: 500, maxWidth: .infinity, minHeight: 300, idealHeight: 500, maxHeight: .infinity, alignment: .center)
+            }.frame(width: 44, height: 44)
+        }
+        MRTextfield(title: "Separate gradient colors by", placeholder: "-", text: $storage.gradientSeparator)
+        
+        Picker("Name case", selection: $storage.nameCase) {
+            ForEach(NameCase.allCases, id: \.self) {
+                Text($0.rawValue)
+                    .tag($0)
+            }
+        }
     }
     
     // MARK: - Public methods
@@ -56,7 +48,7 @@ struct SettingsController: View {
 
 struct SettingsController_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsController()
+        SettingsController(settingOpened: .constant(true))
     }
 }
 

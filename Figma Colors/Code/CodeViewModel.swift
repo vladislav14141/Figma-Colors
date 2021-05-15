@@ -47,8 +47,10 @@ class CodeViewModel: ObservableObject {
     @Published var uikit: String = ""
     @Published var swiftui: String = ""
     @Published var useHead = false
+    @Published var nameCase: NameCase = .camelcase
     var bag = [AnyCancellable]()
-    var initialContentType: CodeContentType
+    @Published var initialContentType: CodeContentType
+    @Published var selectedContentType: Int = 0
 
     // MARK: - Private Methods
 
@@ -59,6 +61,7 @@ class CodeViewModel: ObservableObject {
     }
     
     func generateCode(codeType: CodeType, contentType: CodeContentType) -> String {
+        print("Generate", nameCase.rawValue)
         var content = ""
 
         let bracket = "}"
@@ -84,8 +87,8 @@ class CodeViewModel: ObservableObject {
                 rows.forEach { (color) in
 
                     switch codeType {
-                    case .SwiftUI: content += color.swftUICode
-                    case .UIKit: content += color.uiKitCode
+                    case .SwiftUI: content += color.swiftuiCode(nameCase: nameCase)
+                    case .UIKit: content += color.uikitCode(nameCase: nameCase)
                     }
                     content += nextLine
                 }
@@ -99,8 +102,8 @@ class CodeViewModel: ObservableObject {
                 section.selectedRows.forEach { (color) in
 
                     switch codeType {
-                    case .SwiftUI: content += color.swftUICode
-                    case .UIKit: content += color.uiKitCode
+                    case .SwiftUI: content += color.swiftuiCode(nameCase: nameCase)
+                    case .UIKit: content += color.uikitCode(nameCase: nameCase)
                     }
                     content += nextLine
                 }
@@ -114,8 +117,8 @@ class CodeViewModel: ObservableObject {
                 section.selectedRows.forEach { (color) in
 
                     switch codeType {
-                    case .SwiftUI: content += color.swftUICode
-                    case .UIKit: content += color.uiKitCode
+                    case .SwiftUI: content += color.swiftuiCode(nameCase: nameCase)
+                    case .UIKit: content += color.uikitCode(nameCase: nameCase)
                     }
                     content += nextLine
                 }

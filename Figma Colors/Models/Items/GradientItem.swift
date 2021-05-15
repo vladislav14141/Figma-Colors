@@ -18,15 +18,16 @@ class GradientItem: FigmaItem {
         self.colors = colors
         super.init(figmaName: figmaName)
     }
-    override var swftUICode: String {
+    
+    override func uikitCode(nameCase: NameCase) -> String {
         colors.reduce(into: "") { (result, item) in
-            result += "\n" + item.swftUICode
+            result += "\n" + item.uikitCode(nameCase: nameCase)
         }
     }
     
-    override var uiKitCode: String {
+    override func swiftuiCode(nameCase: NameCase) -> String {
         colors.reduce(into: "") { (result, item) in
-            result += "\n" + item.uiKitCode
+            result += "\n" + item.swiftuiCode(nameCase: nameCase)
         }
     }
     
@@ -37,6 +38,8 @@ class GradientItem: FigmaItem {
             
         }
     }
+    
+//    ful
     
 
 }

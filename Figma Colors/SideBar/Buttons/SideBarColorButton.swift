@@ -75,7 +75,8 @@ struct ColorButton: View {
     var section: FigmaSection<ColorItem> {
         FigmaSection(name: figmaColor.groupName, colors: [figmaColor])
     }
-    
+    @EnvironmentObject var storage: FigmaStorage
+
     var body: some View {
         NavigationLink(
             destination: ColorsPage(items: .constant([section])),
@@ -90,7 +91,7 @@ struct ColorButton: View {
                             .frame(width: 32, height: 32).cornerRadius(2)
 
                     }
-                    Text(figmaColor.fullName).font(.callout)
+                    Text(figmaColor.fullName(nameCase: storage.nameCase)).font(.callout)
                     Spacer()
                     MRCheckBox(isOn: $figmaColor.isSelected)
                 }

@@ -25,22 +25,22 @@ enum RSTButtonAppereanceType {
         switch self {
         case .primary:
             return RSTButtonAppereance(backgroundColor: Color.primary08,
-                                       hoveredBackground: Color.primary10,
-                                       selectedBackgroundColor: Color.primary10,
+                                       hoveredBackground: Color.primary06,
+                                       selectedBackgroundColor: Color.primary04,
                                        textColor: .white,
                                        disabledBackground: .grey06,
                                        disabledText: .grey11)
         case .primaryOpacity:
             return RSTButtonAppereance(backgroundColor: Color.primary03,
-                                       hoveredBackground: Color.primary04,
-                                       selectedBackgroundColor: Color.primary05,
+                                       hoveredBackground: Color.primary02,
+                                       selectedBackgroundColor: Color.primary01,
                                        textColor: .white,
                                        disabledBackground: .grey06,
                                        disabledText: .grey11)
         case .primaryOpacity2:
             return RSTButtonAppereance(backgroundColor: Color.clear,
-                                       hoveredBackground: Color.primary08,
-                                       selectedBackgroundColor: Color.primary10,
+                                       hoveredBackground: Color.primary02,
+                                       selectedBackgroundColor: Color.primary04,
                                        textColor: .white,
                                        disabledBackground: .grey06,
                                        disabledText: .grey11)

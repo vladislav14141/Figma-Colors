@@ -26,12 +26,20 @@ class ComponentItem: FigmaItem {
     
     @Published var size: CGSize?
     
-    override var swftUICode: String {
-        uiKitCode
+//    override var swftUICode: String {
+//        uiKitCode
+//    }
+//    
+//    override var uiKitCode: String {
+//        "    static let \(fullName) = UIImage(named: \"\(fullName)\")!"
+//    }
+    
+    override func uikitCode(nameCase: NameCase) -> String {
+        "    static let \(fullName(nameCase: nameCase)) = UIImage(named: \"\(fullName)\")!"
     }
     
-    override var uiKitCode: String {
-        "    static let \(fullName) = UIImage(named: \"\(fullName)\")!"
+    override func swiftuiCode(nameCase: NameCase) -> String {
+        "    static let \(fullName(nameCase: nameCase)) = UIImage(named: \"\(fullName)\")!"
     }
     
     func json() -> Data {

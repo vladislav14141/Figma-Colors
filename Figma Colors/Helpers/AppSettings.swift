@@ -19,27 +19,43 @@ enum NameCase: String, Equatable, CaseIterable {
 }
 
 class AppSettings {
-//    @AppStorage("FolderSeparator") var folderSeparator: String = "-"
-//    @AppStorage("Uppercased") var uppercased: Bool = false
     @AppStorage("fileKeyLight") var fileKeyLight: String = ""
     @AppStorage("fileKeyDark") var fileKeyDark: String = ""
     @AppStorage("X-Figma-Token") var figmaToken: String = ""
 }
 
-
+import Combine
 class FigmaStorage: ObservableObject {
     @Published var nameCase: NameCase = NameCase.camelcase
     @Published var colors = [FigmaSection<ColorItem>]()
     @Published var gradients = [FigmaSection<GradientItem>]()
     @Published var components = [FigmaSection<ComponentItem>]()
+    
+//    @Published var selectedComponentsCount = 0
+//    @Published var selectedColorsCount = 0
+//    @Published var selectedGradientsCount = 0
+//
+//    @Published var componentsCount = 0
+//    @Published var colorsCount = 0
+//    @Published var gradientsCount = 0
+    
     @Published var images: [MRWebImage] = []
     @Published var isLoading = false
     @Published var navigationLink: NavigationTabItem? = .colors
     @Published var gradientSeparator: String = "-"
+    
+    var bag = [AnyCancellable]()
+    
+    init() {
+
+
+    }
+    
     var storageIsEmpty: Bool {
         colors.isEmpty && gradients.isEmpty && components.isEmpty
     }
     func removeAll() {
+        bag.removeAll()
         colors.removeAll()
         gradients.removeAll()
         components.removeAll()

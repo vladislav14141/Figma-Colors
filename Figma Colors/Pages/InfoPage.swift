@@ -24,10 +24,13 @@ struct InfoPage: View {
     }
     
     var body: some View {
-        List {
-            settingsContent().isHidden(!settingsOpened)
+        VStack(alignment: .leading, spacing: 16) {
+            Group {
+                
+                settingsContent()
+            }.isHidden(!settingsOpened)
             mainContent().transition(.flipFromRight).isHidden(settingsOpened)
-        }.sheet(isPresented: $codeOpened, content: {
+        }.padding().sheet(isPresented: $codeOpened, content: {
             if storage.navigationLink == .colors {
                 
                 CodeController(viewModel: .init(content: .colors(storage.colors)))
@@ -50,11 +53,11 @@ struct InfoPage: View {
                     settingsOpened = true
                 }
             }.frame(width: 44, height: 44)
-        }
-        MRTextfield(title: "Figma access token", placeholder: "165961-035dfc42-d428-4cb2-a7d7-7c63ba242e72", text: $factory.figmaToken)
+        }.padding(.bottom)
         Group {
-            MRTextfield(title: "Figma LIGHT theme URL", placeholder: "ulzno6iXBBVlvMog2k6XsX", text: $factory.fileKeyLight)
-            MRTextfield(title: "Figma DARK theme URL", placeholder: "GQz3OLZgxac5doTwkzTRM6", text: $factory.fileKeyDark)
+            MRTextfield(title: "Figma LIGHT theme URL", placeholder: "Link to file or frame", text: $factory.fileKeyLight)
+            MRTextfield(title: "Figma DARK theme URL", placeholder: "Link to file or frame", text: $factory.fileKeyDark)
+            MRTextfield(title: "Figma access token", placeholder: "Optional. Use token for private files.", tooltip: "Used for private files. Optional.", text: $factory.figmaToken)
             RSTButton(iconName: "repeat.circle", title: "Update", enabled: true, loading: $factory.isLoading, appereance: storage.storageIsEmpty ? .primary : .primaryOpacity2) {
                 factory.getData()
             }

@@ -18,6 +18,8 @@ extension Color {
     static let xcodeColor = Color("xcodeColor")
 
     static let label = Color(NSColor.labelColor)
+    static let secondaryLabel = Color(NSColor.secondaryLabelColor)
+
     static let primaryBackground = Color(NSColor.gridColor)//Color("primaryBackground")
     static let secondaryBackground = Color(NSColor.controlBackgroundColor)//Color("secondaryBackground")
     static let tertiaryBackground = Color(NSColor.unemphasizedSelectedContentBackgroundColor)//Color("secondaryBackground")

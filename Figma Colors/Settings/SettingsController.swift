@@ -21,16 +21,16 @@ struct SettingsController: View {
     // MARK: - Lifecycle
     
     var body: some View {
-        
-        HStack {
-            Spacer()
-            RSTButton(iconName: "xmark", appereance: .primaryOpacity2) {
-                withAnimation {
-                    settingOpened = false
-                }
-            }.frame(width: 44, height: 44)
-        }
-        MRTextfield(title: "Separate gradient colors by", placeholder: "-", text: $storage.gradientSeparator)
+            HStack {
+                Spacer()
+                RSTButton(iconName: "xmark", appereance: .primaryOpacity2) {
+                    withAnimation {
+                        settingOpened = false
+                    }
+                }.frame(width: 44, height: 44)
+            }.padding(.bottom)
+                
+        MRTextfield(title: "Fill separator", placeholder: "-", text: $storage.gradientSeparator)
         
         Picker("Name case", selection: $storage.nameCase) {
             ForEach(NameCase.allCases, id: \.self) {
@@ -38,6 +38,22 @@ struct SettingsController: View {
                     .tag($0)
             }
         }
+        Spacer()
+                RSTButton(iconName: "paperplane", title: "Suggest a feature", enabled: true, loading: nil, appereance: .primaryOpacity2) {
+                    let service = NSSharingService(named: NSSharingService.Name.composeEmail)!
+                    service.recipients = ["cappreem@yandex.ru"]
+                    service.subject = "Figma Assets feature"
+                    
+                    service.perform(withItems: [])
+                }
+                
+                RSTButton(iconName: "exclamationmark.triangle", title: "Report a bug", enabled: true, loading: nil, appereance: .primaryOpacity2) {
+                    let service = NSSharingService(named: NSSharingService.Name.composeEmail)!
+                    service.recipients = ["cappreem@yandex.ru"]
+                    service.subject = "Figma Assets bug"
+                    
+                    service.perform(withItems: [])
+                }            
     }
     
     // MARK: - Public methods

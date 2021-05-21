@@ -39,7 +39,7 @@ class FigmaFactory: ObservableObject {
     
     // MARK: - Private Properties
     private let directoryHelper = DirectoryHelper()
-    private let dataFetcher = NetworkCachedDataFetcher()
+    private let dataFetcher = NetworkDataFetcher()
     private let queue = DispatchQueue(label: "fetch.queue")
     
     private let group = DispatchGroup()
@@ -64,10 +64,6 @@ class FigmaFactory: ObservableObject {
         fileKeyDark = settings.fileKeyDark
         figmaToken = settings.figmaToken
         
-//        Notifications.showCode.publisher().sink {[weak self] g in
-//            self?.showCode = true
-//        }.store(in: &bag)
-        
         $fileKeyLight.dropFirst().sink { key in
             settings.fileKeyLight = key
         }.store(in: &bag)
@@ -79,8 +75,7 @@ class FigmaFactory: ObservableObject {
         $figmaToken.dropFirst().sink { key in
             settings.figmaToken = key
         }.store(in: &bag)
-        fetchFigmaStyles(sheme: .light)
-        fetchFigmaStyles(sheme: .dark)
+        getData()
     }
     
 
@@ -96,6 +91,7 @@ class FigmaFactory: ObservableObject {
     }
     
     func getData() {
+        self.isLoading = true
         clearData()
         if fileKeyLight.isEmpty == false {
             fetchFigmaStyles(sheme: .light)
@@ -104,10 +100,9 @@ class FigmaFactory: ObservableObject {
         if fileKeyDark.isEmpty == false {
             fetchFigmaStyles(sheme: .dark)
         }
-        self.isLoading = true
-//        fetchImages()
         group.notify(queue: .main) {
             self.isLoading = false
+            NSSound.frog?.play()
         }
     }
 
@@ -161,7 +156,9 @@ class FigmaFactory: ObservableObject {
     fileprivate func onFetchedImageNode(_ nodes: [String: NodeModel.Node], sheme: FigmaSheme) {
         nodes.forEach { key, value in
             if let size = value.document.absoluteBoundingBox {
-                self.imageItemDict[key]?.size = .init(width: size.width, height: size.height)
+                DispatchQueue.main.async {
+                    self.imageItemDict[key]?.size = .init(width: size.width, height: size.height)
+                }
             }
         }
     }
@@ -260,8 +257,8 @@ class FigmaFactory: ObservableObject {
 //MARK: - Requests
 extension FigmaFactory {
     fileprivate func getNode(nodeIds: String, nodeType: FigmaNodeType, sheme: FigmaSheme) {
+        group.enter()
         guard let components = urlComponents(sheme: sheme) else { return }
-
         let url = "https://api.figma.com/v1/files/\(components.token)/nodes?ids=\(nodeIds)"
         dataFetcher.fetchGenericJsonData(urlString: url, decodeBy: NodeModel.self) {
 
@@ -288,11 +285,14 @@ extension FigmaFactory {
                 print(err)
 
             }
+            self.group.leave()
+
         }
     }
     
     fileprivate func fetchFigmaStyles(sheme: FigmaSheme) {
         guard let components = urlComponents(sheme: sheme) else { return }
+        group.enter()
 
         var url = "https://api.figma.com/v1/files/\(components.token)"
         if let nodeId = components.nodeId {
@@ -301,12 +301,6 @@ extension FigmaFactory {
         dataFetcher.fetchGenericJsonData(urlString: url, decodeBy: FigmaModel.self, completion: { result in
             switch result {
             case .success(let success):
-//                DispatchQueue.main.async {
-//                    switch sheme {
-//                    case .dark: self.fileDark = success
-//                    case .light: self.fileLight = success
-//                    }
-//                }
                 
                 let styles: String = success.styles.compactMap({
                     if $1.styleType == .fill {
@@ -330,15 +324,18 @@ extension FigmaFactory {
                 
             case .failure(let err):
                 print(err)
-            }        
+            }
+            self.group.leave()
+
         })
     }
     
     fileprivate func getComponents(nodeIds: String, sheme: FigmaSheme) {
         guard let components = urlComponents(sheme: sheme) else { return }
 
-        let url = "https://api.figma.com/v1/images/\(components.token)?scale=3&ids=\(nodeIds)"
-        
+        let url = "https://api.figma.com/v1/images/\(components.token)?scale=3&ids=\(nodeIds)&format=png"
+        group.enter()
+
         dataFetcher.fetchGenericJsonData(urlString: url, decodeBy: FigmaImagesModel.self) { result in
             switch result {
             
@@ -353,6 +350,8 @@ extension FigmaFactory {
             case .failure(let err):
                 print(err)
             }
+            self.group.leave()
+
         }
     }
     

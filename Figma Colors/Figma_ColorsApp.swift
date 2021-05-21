@@ -12,6 +12,8 @@ struct Figma_ColorsApp: App {
     var body: some Scene {
         WindowGroup {
             ContentViews().frame(minWidth: 1300, minHeight: 600)
+                //.aspectRatio(1.6, contentMode: .fill)
+//            1440x900 2560x1600
         }
 
     }

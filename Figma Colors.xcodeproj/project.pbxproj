@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7E1EB754262815C300910DE9 /* GradientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1EB753262815C300910DE9 /* GradientViewModel.swift */; };
+		7E084B7F26562A2900AA9588 /* Extension+Another.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E084B7E26562A2900AA9588 /* Extension+Another.swift */; };
+		7E1EB754262815C300910DE9 /* FigmaFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1EB753262815C300910DE9 /* FigmaFactory.swift */; };
 		7E1EB7632628164700910DE9 /* ImagesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1EB7602628164700910DE9 /* ImagesPage.swift */; };
 		7E1EB7642628164700910DE9 /* ImagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1EB7612628164700910DE9 /* ImagesModel.swift */; };
 		7E1EB7652628164700910DE9 /* ImagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1EB7622628164700910DE9 /* ImagesViewModel.swift */; };
@@ -96,7 +97,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7E1EB753262815C300910DE9 /* GradientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientViewModel.swift; sourceTree = "<group>"; };
+		7E084B7E26562A2900AA9588 /* Extension+Another.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Another.swift"; sourceTree = "<group>"; };
+		7E1EB753262815C300910DE9 /* FigmaFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaFactory.swift; sourceTree = "<group>"; };
 		7E1EB7602628164700910DE9 /* ImagesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesPage.swift; sourceTree = "<group>"; };
 		7E1EB7612628164700910DE9 /* ImagesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesModel.swift; sourceTree = "<group>"; };
 		7E1EB7622628164700910DE9 /* ImagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewModel.swift; sourceTree = "<group>"; };
@@ -129,7 +131,7 @@
 		7E28D0C426130DBC003EAB0F /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		7E28D0C526130DBC003EAB0F /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		7E28D0CC261310D3003EAB0F /* Extension+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Color.swift"; sourceTree = "<group>"; };
-		7E2B82CE26009DDF00C8CD74 /* Figma Colors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Figma Colors.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E2B82CE26009DDF00C8CD74 /* Assets Exporter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Assets Exporter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E2B82D126009DDF00C8CD74 /* Figma_ColorsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Figma_ColorsApp.swift; sourceTree = "<group>"; };
 		7E2B82D826009DE000C8CD74 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7E2B82DA26009DE000C8CD74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -202,7 +204,6 @@
 			isa = PBXGroup;
 			children = (
 				7EB3B927261F06E1003DE911 /* GradientsPage.swift */,
-				7E1EB753262815C300910DE9 /* GradientViewModel.swift */,
 			);
 			path = GradientPage;
 			sourceTree = "<group>";
@@ -315,7 +316,7 @@
 		7E2B82CF26009DDF00C8CD74 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7E2B82CE26009DDF00C8CD74 /* Figma Colors.app */,
+				7E2B82CE26009DDF00C8CD74 /* Assets Exporter.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -400,6 +401,7 @@
 				7E28D091261071F1003EAB0F /* Extension+JSON.swift */,
 				7E9B2316261ECC2500850A01 /* Extension+Font.swift */,
 				7E28D0CC261310D3003EAB0F /* Extension+Color.swift */,
+				7E084B7E26562A2900AA9588 /* Extension+Another.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -412,6 +414,7 @@
 				7E204DAD2644E1FA00A23563 /* HoverModifier.swift */,
 				7E204DB72644FDF300A23563 /* CacheHelper.swift */,
 				7E28D08E261060C0003EAB0F /* DirectoryHelper.swift */,
+				7E1EB753262815C300910DE9 /* FigmaFactory.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -483,9 +486,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7E2B82CD26009DDF00C8CD74 /* Figma Colors */ = {
+		7E2B82CD26009DDF00C8CD74 /* Assets Exporter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7E2B82DE26009DE000C8CD74 /* Build configuration list for PBXNativeTarget "Figma Colors" */;
+			buildConfigurationList = 7E2B82DE26009DE000C8CD74 /* Build configuration list for PBXNativeTarget "Assets Exporter" */;
 			buildPhases = (
 				7E2B82CA26009DDF00C8CD74 /* Sources */,
 				7E2B82CB26009DDF00C8CD74 /* Frameworks */,
@@ -495,7 +498,7 @@
 			);
 			dependencies = (
 			);
-			name = "Figma Colors";
+			name = "Assets Exporter";
 			packageProductDependencies = (
 				7E2343B72619E1CA00875A11 /* SDWebImageSwiftUI */,
 				7E1EB76C2628208A00910DE9 /* Grid */,
@@ -504,7 +507,7 @@
 				7E204DB42644FDAC00A23563 /* Cache */,
 			);
 			productName = "Figma Colors";
-			productReference = 7E2B82CE26009DDF00C8CD74 /* Figma Colors.app */;
+			productReference = 7E2B82CE26009DDF00C8CD74 /* Assets Exporter.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -542,7 +545,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7E2B82CD26009DDF00C8CD74 /* Figma Colors */,
+				7E2B82CD26009DDF00C8CD74 /* Assets Exporter */,
 			);
 		};
 /* End PBXProject section */
@@ -623,6 +626,7 @@
 				7E204DB12644FD1E00A23563 /* NetworkCachedDataFetcher.swift in Sources */,
 				7E25612726293BFC006C17C1 /* ComponentsViewModel.swift in Sources */,
 				7E204DE626450EC000A23563 /* FigmaImagesModel.swift in Sources */,
+				7E084B7F26562A2900AA9588 /* Extension+Another.swift in Sources */,
 				7E2B82ED2600C0BF00C8CD74 /* CodeController.swift in Sources */,
 				7E28D0CD261310D3003EAB0F /* Extension+Color.swift in Sources */,
 				7E1EB7972628355400910DE9 /* SideBarController.swift in Sources */,
@@ -635,7 +639,7 @@
 				7E204DAE2644E1FA00A23563 /* HoverModifier.swift in Sources */,
 				7EB5DBA4260365BA00CAF4D7 /* DataPosterService.swift in Sources */,
 				7EB3B9542621751C003DE911 /* FigmaGradientCellItem.swift in Sources */,
-				7E1EB754262815C300910DE9 /* GradientViewModel.swift in Sources */,
+				7E1EB754262815C300910DE9 /* FigmaFactory.swift in Sources */,
 				7EB5DBA5260365BA00CAF4D7 /* NetworkService.swift in Sources */,
 				7E658991263D23D8008CAAC9 /* SideBarComponentButton.swift in Sources */,
 				7E1EB7642628164700910DE9 /* ImagesModel.swift in Sources */,
@@ -772,6 +776,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Figma Colors/Figma_Colors.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Figma Colors/Preview Content\"";
 				DEVELOPMENT_TEAM = T7BM86Q6MS;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -782,7 +787,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "mironov.Figma-Colors";
+				PRODUCT_BUNDLE_IDENTIFIER = mirouuu.figmaAssets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -796,6 +801,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Figma Colors/Figma_Colors.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Figma Colors/Preview Content\"";
 				DEVELOPMENT_TEAM = T7BM86Q6MS;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -806,7 +812,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "mironov.Figma-Colors";
+				PRODUCT_BUNDLE_IDENTIFIER = mirouuu.figmaAssets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -824,7 +830,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7E2B82DE26009DE000C8CD74 /* Build configuration list for PBXNativeTarget "Figma Colors" */ = {
+		7E2B82DE26009DE000C8CD74 /* Build configuration list for PBXNativeTarget "Assets Exporter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7E2B82DF26009DE000C8CD74 /* Debug */,

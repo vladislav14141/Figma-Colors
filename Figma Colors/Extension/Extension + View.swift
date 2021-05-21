@@ -35,7 +35,10 @@ extension View {
     @ViewBuilder func stokedLabel(_ stroked: Bool) -> some View {
         ZStack(alignment: .leading) {
             self
-            Divider().animation(.easeIn).transition(.slide).isHidden(!stroked)
+            VStack {
+
+                Divider().animation(.easeIn).transition(.slide).isHidden(!stroked)
+            }
         }.clipped()
     }
     
@@ -44,4 +47,5 @@ extension View {
     }
     
 }
+
 

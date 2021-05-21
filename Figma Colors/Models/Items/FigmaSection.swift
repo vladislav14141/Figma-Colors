@@ -45,13 +45,16 @@ class FigmaSection<Row: FigmaItem>: Identifiable, ObservableObject {
     
     func observeRow(rows: [Row]) {
         rows.forEach { (row) in
-            row.$isSelected.delay(for: 0.1, scheduler: RunLoop.main).sink { [weak self] (selected) in
+            row.$isSelected.receive(on: RunLoop.main).sink { [weak self] (selected) in
+                print(selected, rows.first?.figmaName ?? "")
                 guard let self = self else { return }
                 if selected {
                     self.isSelected = self.selectedCount == self.count
                 } else {
                     self.isSelected = false
                 }
+//                figmaStorageDefault.selectedGradientsCount += selected ? 1 : -1
+                
             }.store(in: &bag)
         }
     }

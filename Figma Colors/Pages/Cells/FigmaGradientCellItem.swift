@@ -13,7 +13,14 @@ struct FigmaGradientCellItem: View {
 //    @State var hoveredItem: FigmaColor?
     @State var isHoveredView = false
     @State var hoveredColorIndex: Int?
-
+    @State var isCopied = false {
+        didSet {
+            guard isCopied else { return }
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+                isCopied = false
+            }
+        }
+    }
 
     
     var body: some View {
@@ -77,22 +84,25 @@ struct FigmaGradientCellItem: View {
     @ViewBuilder fileprivate func buttonOverlay() -> some View {
         let figmaColor = gradientItem.colors[hoveredColorIndex ?? 0]
         HStack(spacing: 8) {
-            
-            MRSmallButton("HEX") {
-                let pasteboard = NSPasteboard.general
-                pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
-                pasteboard.setString(figmaColor.hex, forType: NSPasteboard.PasteboardType.string)
-            }.frame(width: 55)
-            .id("Buttons j")
-
-            MRSmallButton("RGBA") {
-                let pasteboard = NSPasteboard.general
-                pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
-                let rgba = "\(figmaColor.red),\(figmaColor.green),\(figmaColor.blue),\(figmaColor.alpha)"
-                pasteboard.setString(rgba, forType: NSPasteboard.PasteboardType.string)
-            }.frame(width: 55)
-            .id("Buttons d")
-
+            if isCopied {
+                Text("Copied")
+                    .font(.title)
+                    .fontWeight(.semibold)
+                    .foregroundColor(figmaColor.color.labelText())
+            } else {
+                Text(figmaColor.hex)
+                    .foregroundColor(figmaColor.color.labelText())
+                    .font(.title)
+                    .fontWeight(.semibold)
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                    .onTapGesture {
+                        let pasteboard = NSPasteboard.general
+                        pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
+                        pasteboard.setString(figmaColor.hex, forType: NSPasteboard.PasteboardType.string)
+                        NSSound.funk?.play()
+                        isCopied = true
+                    }
+            }
         }.padding(8)
         .id("Buttons")
     }

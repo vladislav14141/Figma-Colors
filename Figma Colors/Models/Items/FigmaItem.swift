@@ -9,7 +9,7 @@ import Foundation
 
 class FigmaItem: Identifiable, ObservableObject {
     let id = UUID()
-    
+
     /// "g / 10"
     let figmaName: String
     let figmaNameComponents: [String]
@@ -39,7 +39,7 @@ class FigmaItem: Identifiable, ObservableObject {
     var fillSubnames: [String] = []
 
     
-    @Published var isSelected = true
+    @Published var isSelected = true 
   
     init(figmaName: String) {
         let brokenCharacter: Set<Character> = [#"/"#, " ", "-", "_", "."]

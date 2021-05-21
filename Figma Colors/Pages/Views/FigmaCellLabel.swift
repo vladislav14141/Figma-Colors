@@ -33,5 +33,4 @@ struct FigmaCellLabel: View {
         let opacity: Double = isSelected ? 1 : 0.5
         return isHovered ? Color.blue.opacity(opacity) : Color.label.opacity(opacity)
     }
-    
 }

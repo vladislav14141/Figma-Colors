@@ -64,7 +64,15 @@ struct ComponentButton: View {
             destination: ComponentsPage(items: .constant([section])),
             label: {
                 HStack(spacing: 8) {
-                    MRWebImage(url: item.x3).frame(width: 32, height: 32)
+                    if let img = item.imageX1 {
+                        Image(nsImage: img)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: min(img.size.height, 32), height: min(img.size.height, 32))
+
+                    } else {
+                       ProgressView()
+                    }
                     Text(item.fullName(nameCase: storage.nameCase)).font(.callout)
                     Spacer()
                     MRCheckBox(isOn: $item.isSelected)

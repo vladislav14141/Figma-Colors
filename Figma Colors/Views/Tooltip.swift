@@ -8,12 +8,17 @@
 import SwiftUI
 
 extension View {
-    func tooltip(_ tip: String) -> some View {
-        background(GeometryReader { childGeometry in
-            TooltipView(tip, geometry: childGeometry) {
-                self
-            }
-        })
+    @ViewBuilder func tooltip(_ tip: String?) -> some View {
+        if let tip = tip {
+            
+            background(GeometryReader { childGeometry in
+                TooltipView(tip, geometry: childGeometry) {
+                    self
+                }
+            })
+        } else {
+            self
+        }
     }
 }
 

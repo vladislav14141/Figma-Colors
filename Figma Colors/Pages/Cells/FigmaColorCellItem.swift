@@ -27,27 +27,22 @@ struct FigmaColorCellItem: View {
                         if isCopied {
                             
                             Text("Copied")
-                                .font(.jetBrains(.body))
+                                .font(.title)
+                                .fontWeight(.semibold)
                                 .foregroundColor(figmaColor.color.labelText())
                             
                         } else if isHover {
-                            
-                            HStack(spacing: 8) {
-                                MRSmallButton("hex") {
+                            Text(figmaColor.hex)
+                                .foregroundColor(figmaColor.color.labelText())
+                                .font(.title)
+                                .fontWeight(.semibold)
+                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                                .onTapGesture {
                                     let pasteboard = NSPasteboard.general
                                     pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
                                     pasteboard.setString(figmaColor.hex, forType: NSPasteboard.PasteboardType.string)
                                     isCopied = true
                                 }
-                                
-                                MRSmallButton("rgba") {
-                                    let pasteboard = NSPasteboard.general
-                                    pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
-                                    let rgba = "\(figmaColor.red),\(figmaColor.green),\(figmaColor.blue),\(figmaColor.alpha)"
-                                    pasteboard.setString(rgba, forType: NSPasteboard.PasteboardType.string)
-                                    isCopied = true
-                                }
-                            }.padding(8)
                         }
                         
                     }

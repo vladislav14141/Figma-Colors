@@ -11,11 +11,13 @@ import Cocoa
 class ComponentItem: FigmaItem {
     var x3: String? {
         didSet {
-            downloadImage(from: x3) { [weak self] (image) in
-                guard let img = image else { return }
-                self?.imageX3 = img
-                self?.imageX2 = self?.resize(image: img, scale: 2)
-                self?.imageX1 = self?.resize(image: img, scale: 1)
+            downloadImage(from: x3) { [weak self] (data) in
+                guard let data = data else { return }
+                guard let img3 = NSImage(data: data, scale: 1) else { return }
+
+                self?.imageX3 = img3
+                self?.imageX2 = self?.resize(image: img3, scale: 2)
+                self?.imageX1 = self?.resize(image: img3, scale: 1)
             }
         }
     }
@@ -25,14 +27,6 @@ class ComponentItem: FigmaItem {
     @Published var imageX1: NSImage?
     
     @Published var size: CGSize?
-    
-//    override var swftUICode: String {
-//        uiKitCode
-//    }
-//    
-//    override var uiKitCode: String {
-//        "    static let \(fullName) = UIImage(named: \"\(fullName)\")!"
-//    }
     
     override func uikitCode(nameCase: NameCase) -> String {
         "    static let \(fullName(nameCase: nameCase)) = UIImage(named: \"\(fullName)\")!"
@@ -68,7 +62,8 @@ class ComponentItem: FigmaItem {
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
-    func downloadImage(from url: String?, completion: @escaping (NSImage?) -> ()) {
+    
+    func downloadImage(from url: String?, completion: @escaping (Data?) -> ()) {
         guard let urlS = url, let url = URL(string: urlS) else { return }
         print("Download Started")
         getData(from: url) { data, response, error in
@@ -77,7 +72,8 @@ class ComponentItem: FigmaItem {
             print("Download Finished")
             // always update the UI from the main thread
             DispatchQueue.main.async() { [weak self] in
-                completion(NSImage(data: data, scale: 1))
+//                NSImage(data: <#T##Data#>, scale: <#T##CGFloat#>)
+                completion(data)
             }
         }
     }
@@ -89,7 +85,7 @@ class ComponentItem: FigmaItem {
         image.draw(in: NSMakeRect(0, 0, destSize.width, destSize.height), from: NSMakeRect(0, 0, image.size.width, image.size.height), operation: NSCompositingOperation.sourceOver, fraction: CGFloat(1))
         newImage.unlockFocus()
         newImage.size = destSize
-        return NSImage(data: newImage.tiffRepresentation!)!
+        return newImage
     }
     
     func resize(image:NSImage, scale: CGFloat) -> NSImage {

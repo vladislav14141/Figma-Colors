@@ -34,14 +34,14 @@ enum RSTButtonAppereanceType {
             return RSTButtonAppereance(backgroundColor: Color.primary03,
                                        hoveredBackground: Color.primary02,
                                        selectedBackgroundColor: Color.primary01,
-                                       textColor: .white,
+                                       textColor: .label,
                                        disabledBackground: .grey06,
                                        disabledText: .grey11)
         case .primaryOpacity2:
             return RSTButtonAppereance(backgroundColor: Color.clear,
                                        hoveredBackground: Color.primary02,
                                        selectedBackgroundColor: Color.primary04,
-                                       textColor: .white,
+                                       textColor: .label,
                                        disabledBackground: .grey06,
                                        disabledText: .grey11)
 
@@ -88,12 +88,17 @@ struct RSTButton: View {
             onTap?()
         }, label: {
             HStack {
-                if let icon = iconName {
-                    Image(systemName: icon).font(.title3)
-                }
-                
-                if let title = title {
-                    Text(title).font(font)
+                if loading {
+                    ProgressView().progressViewStyle(LinearProgressViewStyle())
+                } else {
+                    
+                    if let icon = iconName {
+                        Image(systemName: icon).font(.title3)
+                    }
+                    
+                    if let title = title {
+                        Text(title).font(font)
+                    }
                 }
             }
             .padding(.horizontal)
@@ -105,7 +110,7 @@ struct RSTButton: View {
         .font(font.weight(.semibold))
         .foregroundColor(enabled ? appereance.textColor : appereance.disabledText)
         .buttonStyle(MRButtonStyle(type: .opacity) { isPressed = $0 })
-        .disabled(!enabled)
+        .disabled(!loadingEnabled)
         .whenHovered({ (isHovered) in
             self.isHovered = isHovered
         })
@@ -115,7 +120,7 @@ struct RSTButton: View {
 
     @ViewBuilder func loadingIndicator() -> some View {
         if loading {
-            ProgressView().progressViewStyle(CircularProgressViewStyle())
+            
         }
     }
     
